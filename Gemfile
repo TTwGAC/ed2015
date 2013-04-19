@@ -26,6 +26,7 @@ gem 'haml'
 gem 'simple_form'
 gem 'devise'
 gem 'cancan'
+gem 'geocoder'
 gem 'gmaps4rails'
 
 # To use ActiveModel has_secure_password
