@@ -25,6 +25,7 @@ gem 'bootstrap-sass'
 gem 'haml'
 gem 'simple_form'
 gem 'devise'
+gem 'gmaps4rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
