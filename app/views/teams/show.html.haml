@@ -10,7 +10,7 @@
 %p
   Members:
   - @team.users.each do |user|
-    %a{:href => "/user/#{user.id}"}
+    %a{:href => "/users/#{user.id}"}
       = user.first_name
       = user.last_name
     %br
