@@ -3,6 +3,7 @@
   %tr
     %th Name
     %th Email
+    %th Team
     %th Actions
   - @users.each do |user|
     %tr
@@ -11,6 +12,9 @@
         = "\"#{user.nickname}\""
         = user.last_name
       %td= user.email
+      %td
+        %a{href: "/teams/#{user.team_id}"}
+          = user.team_name
       %td
         = link_to 'Show', user
         = link_to 'Edit', edit_user_path(user)
