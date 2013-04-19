@@ -13,3 +13,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Editor files
+.*.sw*
+
+# Filesystem metadata
+.DS_Store
