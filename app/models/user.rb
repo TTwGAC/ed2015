@@ -6,8 +6,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :first_name, :last_name, :nickname, :password, :password_confirmation, :remember_me
   belongs_to :team
+  delegate :name, :id, :to => :team, :prefix => true
   ROLES = %w[admin player observer]
 end
 

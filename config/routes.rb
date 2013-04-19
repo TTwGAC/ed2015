@@ -1,5 +1,5 @@
 Gac2014::Application.routes.draw do
-  resources :teams
+  resources :teams, :users
 
 
   devise_for :users
