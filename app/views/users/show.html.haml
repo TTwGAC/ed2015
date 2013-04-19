@@ -1,19 +1,17 @@
 %p
   Name:
-  = @user.name
+  = @user.first_name
+  = @user.last_name
 %p
-  Slogan:
-  = @user.slogan
+  Nickname:
+  = @user.nickname
 %p
-  Description:
-  = @user.description
+  Email:
+  = @user.email
 %p
-  Members:
-  - @user.users.each do |user|
-    %a{:href => "/user/#{user.id}"}
-      = user.first_name
-      = user.last_name
-    %br
+  Team:
+  %a{href: "/teams/#{@user.team_id}"}
+    = @user.team_name
 
 %p#notice= notice
 = link_to 'Edit', edit_user_path(@user)
