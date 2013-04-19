@@ -1,5 +1,8 @@
 = simple_form_for(@team) do |f|
   = f.error_notification
   .form-inputs
+    = f.input :name
+    = f.input :slogan
+    = f.input :description
   .form-actions
     = f.button :submit

@@ -1,5 +1,5 @@
 class Team < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :slogan, :description
   has_many :users
 end
 

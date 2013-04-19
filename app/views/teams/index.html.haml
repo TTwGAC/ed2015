@@ -1,13 +1,17 @@
 %h1 Listing teams
 %table
   %tr
-    %th
-    %th
-    %th
+    %th Name
+    %th Slogan
+    %th Actions
   - @teams.each do |team|
     %tr
-      %td= link_to 'Show', team
-      %td= link_to 'Edit', edit_team_path(team)
-      %td= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' }
+      %td= team.name
+      %td= team.slogan
+      %td
+        = link_to 'Show', team
+        = link_to 'Edit', edit_team_path(team)
+        = link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
-= link_to 'New Team', new_team_path
+= if can? :create, Team
+  = link_to 'New Team', new_team_path
