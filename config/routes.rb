@@ -1,8 +1,8 @@
 Gac2014::Application.routes.draw do
-  resources :teams, :users
-
+  resources :teams
 
   devise_for :users
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
