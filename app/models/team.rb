@@ -1,6 +1,7 @@
 class Team < ActiveRecord::Base
   attr_accessible :name, :slogan, :description
   has_many :users
+  mount_uploader :logo, LogoUploader
 end
 
 # == Schema Information
