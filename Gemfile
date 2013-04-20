@@ -54,4 +54,5 @@ group :development do
   gem 'annotate'
   gem 'erb2haml'
   gem 'html2haml'
+  gem 'rspec-rails'
 end
