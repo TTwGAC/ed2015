@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130420004037) do
+ActiveRecord::Schema.define(:version => 20130421230815) do
 
   create_table "checkins", :force => true do |t|
     t.datetime "timestamp"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(:version => 20130420004037) do
     t.string   "slogan"
     t.string   "logo"
   end
+
+  add_index "teams", ["name"], :name => "index_teams_on_name", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
