@@ -52,4 +52,5 @@ group :development do
   gem 'erb2haml'
   gem 'html2haml'
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
