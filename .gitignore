@@ -19,3 +19,6 @@
 
 # Filesystem metadata
 .DS_Store
+
+# Configuration privacy
+config/database.yml
