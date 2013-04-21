@@ -16,5 +16,6 @@ end
 #  updated     :datetime
 #  description :text
 #  slogan      :string(255)
+#  logo        :string(255)
 #
 
