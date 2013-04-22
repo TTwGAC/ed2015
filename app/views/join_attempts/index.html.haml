@@ -1,0 +1,6 @@
+= simple_form_for(@join_attempt) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :token
+  .form-actions
+    = f.submit 'Join Team'
