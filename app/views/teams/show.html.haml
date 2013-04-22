@@ -16,6 +16,7 @@
     %br
 
 %p#notice= notice
-= link_to 'Edit', edit_team_path(@team)
-|
-\#{link_to 'Back', teams_path}
+- if can? :edit, @team
+  = link_to 'Edit', edit_team_path(@team)
+  |
+= link_to 'Back', teams_path
