@@ -44,6 +44,8 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.save
+        current_user.team = @team
+        current_user.save!
         format.html { redirect_to @team, notice: 'Team was successfully created.' }
         format.json { render json: @team, status: :created, location: @team }
       else
