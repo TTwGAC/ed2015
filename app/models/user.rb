@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   end
 
   def role
-    self.team ||= Team.where name: "Observers"
+    self.team ||= default_team
     case team.name
     when "Game Control"
       return "admin"
