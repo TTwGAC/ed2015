@@ -36,6 +36,10 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.before(:suite) do
+    require "#{Rails.root}/db/seeds.rb"
+  end
 end
 
 FactoryGirl.find_definitions

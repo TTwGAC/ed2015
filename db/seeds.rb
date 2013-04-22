@@ -6,6 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# Clear out old data. Careful!!!!!
+Team.delete_all
+User.delete_all
+
 # Skip validation because this is a reserved team name
 game_control = Team.new name: "Game Control", slogan: "Keeping you honest since 2014"
 game_control.save! validate: false
