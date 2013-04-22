@@ -53,4 +53,5 @@ group :development do
   gem 'html2haml'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'guard-rspec'
 end
