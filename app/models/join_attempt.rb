@@ -5,6 +5,7 @@ class JoinAttempt
 
   attr_accessor :token
   attr_reader :user, :team
+  delegate :id, :to => :team, :prefix => true
 
   #belongs_to :user
 
@@ -13,6 +14,7 @@ class JoinAttempt
 
   def initialize(params = {})
     @token = params[:token]
+    @user  = params[:user]
   end
 
   # Forms are never themselves persisted
@@ -23,7 +25,6 @@ class JoinAttempt
   def save
     if valid?
       persist!
-      raise "Done!"
       true
     else
       false
@@ -41,10 +42,7 @@ private
   end
 
   def persist!
-    raise "BLAT"
     @user.team = @team
     @user.save!
-    redirect_to "/teams/#{team.id}"
-    @user = @company.users.create!(name: name, email: email)
   end
 end

@@ -5,9 +5,9 @@
   - if user_signed_in?
     %li
       - if current_user.team_name == 'Observers'
-        = link_to 'Join a Team', '/join_attempts'
+        = link_to 'Join a Team', new_join_attempt_path
       - else
-        = link_to current_user.team_name, "/teams/#{current_user.team_id}"
+        = link_to current_user.team_name, team_path(current_user.team_id)
     %li
       = link_to('Logout', destroy_user_session_path, :method=>'delete')
     %li

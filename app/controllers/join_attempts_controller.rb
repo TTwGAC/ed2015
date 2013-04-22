@@ -1,5 +1,5 @@
 class JoinAttemptsController < ApplicationController
-  def index
+  def new
     @join_attempt = JoinAttempt.new
     respond_to do |format|
       format.html # show.html.erb
@@ -8,12 +8,12 @@ class JoinAttemptsController < ApplicationController
   end
 
   def create
+    params[:join_attempt][:user] = current_user
     @join_attempt = JoinAttempt.new params[:join_attempt]
     if @join_attempt.save!
-      flash[:notice] = "You have successfully joined this team!"
-      redirect_to teams_path
+      redirect_to team_path(@join_attempt.team_id)
     else
-      redirect_to join_attempts_path
+      render 'new'
     end
   end
 end
