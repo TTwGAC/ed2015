@@ -8,8 +8,25 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :first_name, :last_name, :nickname, :password, :password_confirmation, :remember_me
   belongs_to :team
+  before_save :default_team
   delegate :name, :id, :to => :team, :prefix => true
   ROLES = %w[admin player observer]
+
+  def default_team
+    self.team ||= Team.first conditions: {name: "Observers"}
+  end
+
+  def role
+    self.team ||= Team.where name: "Observers"
+    case team.name
+    when "Game Control"
+      return "admin"
+    when "Observers"
+      return "observer"
+    else
+      return "player"
+    end
+  end
 end
 
 # == Schema Information

@@ -5,7 +5,7 @@ FactoryGirl.define do
     last_name  "Jungle"
     nickname "King of the Jungle"
     email "tarzan@jungle.com"
-    role "observer"
+    password "asdfghjl"
   end
 
   factory :team do
