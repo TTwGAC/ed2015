@@ -8,7 +8,7 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @teams }
+      format.json { render json: @teams.to_json(only: public_attrs) }
     end
   end
 
@@ -19,7 +19,11 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @team }
+      if can? :manage, @team
+        format.json { render json: @team }
+      else
+        format.json { render json: @team.to_json(only: public_attrs) }
+      end
     end
   end
 
@@ -83,5 +87,11 @@ class TeamsController < ApplicationController
       format.html { redirect_to teams_url }
       format.json { head :no_content }
     end
+  end
+
+private
+
+  def public_attrs
+    [:id, :name, :slogan, :description, :created_at, :updated_at] 
   end
 end
