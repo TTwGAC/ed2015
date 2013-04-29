@@ -13,4 +13,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
     resize_to_fit 50, 50
   end
 
+  def default_url
+	  "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(model.email.downcase)}.png?s=150&d=mm&r=pg"
+  end
+
 end
