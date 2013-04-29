@@ -7,5 +7,7 @@
     = f.input :nickname
     = f.input :password
     = f.input :password_confirmation
+    = f.hidden_field :avatar_cache
+    = f.file_field :avatar
   .form-actions
     = f.button :submit
