@@ -4,5 +4,7 @@
     = f.input :name
     = f.input :slogan
     = f.input :description
+    = f.hidden_field(:logo_cache)
+    = f.file_field(:logo)
   .form-actions
     = f.button :submit

@@ -5,7 +5,7 @@ class Team < ActiveRecord::Base
     "Observers"
   ].map {|team| team.downcase}
 
-  attr_accessible :name, :slogan, :description
+  attr_accessible :name, :slogan, :description, :logo, :logo_cache
   validates :name, :presence => true, :uniqueness => true, :if => :reserved_name?
   before_save :create_token
   has_many :users
