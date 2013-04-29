@@ -5,6 +5,9 @@ development:
 test:
   enhance_image_tag: true
   static_image_support: false
+staging:
+  enhance_image_tag: true
+  static_image_support: false
 production:
   enhance_image_tag: true
   static_image_support: true
