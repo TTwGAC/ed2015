@@ -1,5 +1,11 @@
 class Location < ActiveRecord::Base
-  attr_accessible :address, :latitude, :longitude
+  attr_accessible :address
+
+  acts_as_gmappable
+
+  def gmaps4rails_address
+    self.address
+  end
 end
 
 # == Schema Information
