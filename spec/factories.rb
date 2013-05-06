@@ -1,7 +1,7 @@
 # This will guess the User class
 FactoryGirl.define do
   factory :user do
-    id 1
+    id 999
     first_name "Tarzan"
     last_name  "Jungle"
     nickname "King of the Jungle"
@@ -10,7 +10,7 @@ FactoryGirl.define do
   end
 
   factory :team do
-    id 1
+    id 999
     name "Swinging Vines"
     slogan "We get you there in style"
     description "Tarzan, and friends"
