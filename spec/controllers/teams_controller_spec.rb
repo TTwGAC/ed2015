@@ -11,4 +11,6 @@ describe TeamsController do
     get :index
     assigns(:teams).should_not include Team.first conditions: {name: "Observers"}
   end
+
+  it "should filter out team tokens"
 end

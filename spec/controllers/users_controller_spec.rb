@@ -8,4 +8,6 @@ describe UsersController do
     user.role.should == 'observer'
   end
 
+  it "should filter out private user data"
+
 end
