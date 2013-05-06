@@ -12,5 +12,5 @@
         = link_to('Edit', edit_team_path(team)) if can? :edit, team
         = link_to('Destroy', team, method: :delete, data: { confirm: 'Are you sure?' }) if can? :delete, team
 %br/
-= if can? :create, Team
+- if can? :create, Team
   = link_to 'New Team', new_team_path
