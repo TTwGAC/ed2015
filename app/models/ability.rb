@@ -7,12 +7,16 @@ class Ability
     case user.role
     when "admin"
       can :manage, :all
-    else
-      can :create, Team
+    when "player"
       can :edit, Team, :id => user.team_id
-      can :manage, User, :id => user.id
-      can :read, :all
+    when "observer"
+      can :create, Team
     end
+
+    can :manage, User, :id => user.id
+
+    can :read, Team
+    can :read, User
 
     # Define abilities for the passed in user here. For example:
     #

@@ -11,13 +11,14 @@ class User < ActiveRecord::Base
   before_save :default_team
   delegate :name, :id, :to => :team, :prefix => true
   mount_uploader :avatar, AvatarUploader
-  ROLES = %w[admin player observer]
+  ROLES = %w[admin player observer none]
 
   def default_team
     self.team ||= Team.first conditions: {name: "Observers"}
   end
 
   def role
+    return "none" unless self.id
     self.team ||= default_team
     case team.name
     when "Game Control"
