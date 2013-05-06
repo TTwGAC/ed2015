@@ -1,6 +1,6 @@
 = link_to "Home", root_path, :class => 'brand'
 %ul.nav
-  %li
+  %li{class: params[:controller] == 'teams' ? "active":""}
     = link_to('Teams', '/teams')
   - if user_signed_in?
     %li
