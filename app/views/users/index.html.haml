@@ -20,5 +20,5 @@
         = link_to('Edit', edit_user_path(user)) if can? :edit, user
         = link_to('Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }) if can? :delete, user
 %br/
-= if can? :create, User
+- if can? :create, User
   = link_to 'New User', new_user_path
