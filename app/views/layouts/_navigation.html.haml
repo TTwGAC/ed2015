@@ -1,8 +1,11 @@
 = link_to "Home", root_path, :class => 'brand'
 %ul.nav
-  %li{class: params[:controller] == 'teams' ? "active":""}
-    = link_to('Teams', '/teams')
+  %li{class: params[:controller] == 'teams' ? "active" : ""}
+    = link_to 'Teams', '/teams'
   - if user_signed_in?
+    - if can? :manage, Location
+      %li{class: params[:controller] == 'locations' ? "active" : ""}
+        = link_to 'Locations', '/locations'
     %li
       - if current_user.team_name == 'Observers'
         = link_to 'Join a Team', new_join_attempt_path
