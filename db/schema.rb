@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130429023752) do
+ActiveRecord::Schema.define(:version => 20130507151547) do
 
   create_table "checkins", :force => true do |t|
     t.datetime "timestamp"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20130429023752) do
     t.float    "longitude"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "name"
   end
 
   create_table "teams", :force => true do |t|

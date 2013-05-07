@@ -1,5 +1,5 @@
 class Location < ActiveRecord::Base
-  attr_accessible :address
+  attr_accessible :name, :address, :latitude, :longitude
 
   acts_as_gmappable :process_geocoding => :geocode?, :normalized_address => "address",
                     :lat => 'latitude', :lng => "longitude"

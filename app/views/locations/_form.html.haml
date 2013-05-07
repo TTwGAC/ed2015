@@ -1,6 +1,10 @@
 = simple_form_for(@location) do |f|
   = f.error_notification
   .form-inputs
+    = f.input :name
     = f.input :address
+    \- OR -
+    = f.input :latitude
+    = f.input :longitude
   .form-actions
     = f.button :submit
