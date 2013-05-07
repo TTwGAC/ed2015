@@ -3,7 +3,10 @@ class LocationsController < ApplicationController
   # GET /locations.json
   def index
     @locations = Location.all
-    @locations_map_data = Location.all.to_gmaps4rails
+    @locations_map_data = @locations.to_gmaps4rails do |loc, marker|
+      marker.infowindow render_to_string partial: '/locations/infowindow', locals: {loc: loc}
+      marker.json name: loc.name, address: loc.address
+    end
 
     respond_to do |format|
       format.html # index.html.erb
