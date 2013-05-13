@@ -4,12 +4,13 @@
   Name:
   = @user.first_name
   = @user.last_name
+- if can? :manage, @user
+  %p
+    Email:
+    = @user.email
 %p
   Nickname:
   = @user.nickname
-%p
-  Email:
-  = @user.email
 %p
   Team:
   %a{href: "/teams/#{@user.team_id}"}

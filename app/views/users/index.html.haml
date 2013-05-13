@@ -11,7 +11,12 @@
         = user.first_name
         = "\"#{user.nickname}\""
         = user.last_name
-      %td= user.email
+      - if can? :edit, user
+        %td= user.email
+      - else
+        %td
+          %span{style: 'font-style: italic'}
+            hidden
       %td
         %a{href: "/teams/#{user.team_id}"}
           = user.team_name
