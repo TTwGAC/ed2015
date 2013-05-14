@@ -3,6 +3,10 @@
 %p
   Name:
   = @team.name
+- if can? :edit, @team
+  %p
+    Secret Token:
+    = @team.token
 %p
   Slogan:
   = @team.slogan
