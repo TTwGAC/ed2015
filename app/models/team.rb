@@ -8,6 +8,7 @@ class Team < ActiveRecord::Base
   attr_accessible :name, :slogan, :description, :logo, :logo_cache
   validates :name, :presence => true, :uniqueness => true, :if => :reserved_name?
   before_save :create_token
+  before_destroy :reset_members_to_observers
   has_many :users
   mount_uploader :logo, LogoUploader
 
@@ -19,6 +20,15 @@ class Team < ActiveRecord::Base
     # Yes, this is not ideal but it's probably good enough
     self.token ||= Digest::MD5.hexdigest "#{Time.now}-#{Time.now.nsec}-#{rand 99999}"
   end
+
+  def reset_members_to_observers
+    observers = Team.where(name: 'Observers').first
+    self.users.each do |user|
+      user.team = observers
+      user.save!
+    end
+  end
+
 end
 
 # == Schema Information

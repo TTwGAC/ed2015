@@ -15,6 +15,24 @@ describe Team do
     t.reload
     t.token.should_not be_empty
   end
+
+  it "should associate team members with the Observers team on deletion" do
+    t = Team.create! name: 'about to be destroyed'
+    u = FactoryGirl.build(:user)
+    u.team = t
+    t.save!
+    u.save!
+
+    t = Team.where(name: 'about to be destroyed').first
+    t.users.each do |user|
+      user.team.should == t
+    end
+
+    t.destroy
+    observer = Team.where(name: 'Observers').first
+    u.reload
+    u.team.should == observer
+  end
 end
 
 # == Schema Information
