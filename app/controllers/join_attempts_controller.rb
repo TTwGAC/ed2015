@@ -16,4 +16,11 @@ class JoinAttemptsController < ApplicationController
       render 'new'
     end
   end
+
+  def destroy
+    observers = Team.where(name: 'Observers').first
+    current_user.team = observers
+    current_user.save!
+    redirect_to team_path
+  end
 end

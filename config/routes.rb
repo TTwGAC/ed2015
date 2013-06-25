@@ -2,7 +2,7 @@ Gac2014::Application.routes.draw do
   resources :locations
 
 
-  resources :join_attempts, only: [:index, :new, :create]
+  resources :join_attempts, only: [:index, :new, :create, :destroy]
   resources :teams
 
   devise_for :users
