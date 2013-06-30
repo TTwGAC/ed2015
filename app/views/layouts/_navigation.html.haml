@@ -2,21 +2,21 @@
 %ul.nav
   %li{class: params[:controller] == 'teams' ? "active" : ""}
     = link_to 'Teams', '/teams'
-  - if user_signed_in?
+  - if player_signed_in?
     - if can? :manage, Location
       %li{class: params[:controller] == 'locations' ? "active" : ""}
         = link_to 'Locations', '/locations'
     %li
-      - if current_user.team_name == 'Observers'
+      - if current_player.team_name == 'Observers'
         = link_to 'Join a Team', new_join_attempt_path
       - else
-        = link_to current_user.team_name, team_path(current_user.team_id)
+        = link_to current_player.team_name, team_path(current_player.team_id)
     %li
-      = link_to('Logout', destroy_user_session_path, :method=>'delete')
+      = link_to('Logout', destroy_player_session_path, :method=>'delete')
     %li
-      = link_to('Edit account', edit_user_registration_path)
+      = link_to('Edit account', edit_player_registration_path)
   - else
     %li
-      = link_to('Login', new_user_session_path)
+      = link_to('Login', new_player_session_path)
     %li
-      = link_to('Sign up', new_user_registration_path)
+      = link_to('Sign up', new_player_registration_path)

@@ -4,17 +4,17 @@ class JoinAttempt
   include ActiveModel::Validations
 
   attr_accessor :token
-  attr_reader :user, :team
+  attr_reader :player, :team
   delegate :id, :to => :team, :prefix => true
 
-  #belongs_to :user
+  #belongs_to :player
 
   validate :token_valid?
-  #validates :user, presence: true
+  #validates :player, presence: true
 
   def initialize(params = {})
     @token = params[:token]
-    @user  = params[:user]
+    @player  = params[:player]
   end
 
   # Forms are never themselves persisted
@@ -42,7 +42,7 @@ private
   end
 
   def persist!
-    @user.team = @team
-    @user.save!
+    @player.team = @team
+    @player.save!
   end
 end

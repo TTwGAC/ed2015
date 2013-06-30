@@ -9,7 +9,7 @@ class Team < ActiveRecord::Base
   validates :name, :presence => true, :uniqueness => true, :if => :reserved_name?
   before_save :create_token
   before_destroy :reset_members_to_observers
-  has_many :users
+  has_many :players
   mount_uploader :logo, LogoUploader
 
   def reserved_name?
@@ -23,9 +23,9 @@ class Team < ActiveRecord::Base
 
   def reset_members_to_observers
     observers = Team.where(name: 'Observers').first
-    self.users.each do |user|
-      user.team = observers
-      user.save!
+    self.players.each do |player|
+      player.team = observers
+      player.save!
     end
   end
 

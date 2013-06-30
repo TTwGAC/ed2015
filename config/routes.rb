@@ -5,8 +5,8 @@ Gac2014::Application.routes.draw do
   resources :join_attempts, only: [:index, :new, :create, :destroy]
   resources :teams
 
-  devise_for :users
-  resources :users
+  devise_for :players
+  resources :players
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

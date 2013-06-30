@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class Player < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -33,7 +33,7 @@ end
 
 # == Schema Information
 #
-# Table name: users
+# Table name: players
 #
 #  id                     :integer          not null, primary key
 #  email                  :string(255)      default(""), not null

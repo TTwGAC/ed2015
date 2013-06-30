@@ -1,0 +1,29 @@
+%h1 Listing players
+%table
+  %tr
+    %th Name
+    %th Email
+    %th Team
+    %th Actions
+  - @players.each do |player|
+    %tr
+      %td
+        = player.first_name
+        = "\"#{player.nickname}\""
+        = player.last_name
+      - if can? :edit, player
+        %td= player.email
+      - else
+        %td
+          %span{style: 'font-style: italic'}
+            hidden
+      %td
+        %a{href: "/teams/#{player.team_id}"}
+          = player.team_name
+      %td
+        = link_to 'Show', player
+        = link_to('Edit', edit_player_path(player)) if can? :edit, player
+        = link_to('Destroy', player, method: :delete, data: { confirm: 'Are you sure?' }) if can? :delete, player
+%br/
+- if can? :create, Player
+  = link_to 'New Player', new_player_path

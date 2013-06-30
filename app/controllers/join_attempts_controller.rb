@@ -8,7 +8,7 @@ class JoinAttemptsController < ApplicationController
   end
 
   def create
-    params[:join_attempt][:user] = current_user
+    params[:join_attempt][:player] = current_player
     @join_attempt = JoinAttempt.new params[:join_attempt]
     if @join_attempt.save!
       redirect_to team_path(@join_attempt.team_id)
@@ -19,8 +19,8 @@ class JoinAttemptsController < ApplicationController
 
   def destroy
     observers = Team.where(name: 'Observers').first
-    current_user.team = observers
-    current_user.save!
+    current_player.team = observers
+    current_player.save!
     redirect_to team_path
   end
 end
