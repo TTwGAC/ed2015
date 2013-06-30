@@ -8,7 +8,7 @@
 
 # Clear out old data. Careful!!!!!
 Team.delete_all
-User.delete_all
+Player.delete_all
 
 # Skip validation because this is a reserved team name
 game_control = Team.new name: "Game Control", slogan: "Keeping you honest since 2014"
@@ -18,7 +18,7 @@ game_control.save! validate: false
 observers = Team.new name: "Observers", slogan: '"I like to watch"'
 observers.save! validate: false
 
-ben = User.create! first_name: "Ben",
+ben = Player.create! first_name: "Ben",
   last_name: "Klang",
   nickname: "Leon",
   email: "ben@alkaloid.net",
@@ -27,7 +27,7 @@ ben.team = game_control
 ben.save!
 ben.confirm!
 
-alicia = User.create! first_name: "Alicia",
+alicia = Player.create! first_name: "Alicia",
   last_name: "Cardillo",
   nickname: "Leonetta",
   email: "alicia.cardillo@gmail.com",
