@@ -1,5 +1,8 @@
 %p
-  = cl_image_tag @team.logo, width: 150, height: 150, crop: :fill
+  - if @team.logo.present?
+    = cl_image_tag @team.logo, width: 150, height: 150, crop: :fill
+  - else
+    = image_tag '/confusion.jpg', size: '150x155'
 %p
   Name:
   = @team.name
