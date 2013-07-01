@@ -18,11 +18,22 @@
   = @team.description
 %p
   Members:
+  %br
   - @team.players.each do |player|
     %a{:href => "/players/#{player.id}"}
       = player.first_name
       = player.last_name
     %br
+  = link_to 'Invite a player to this team', new_team_invitation_path
+
+- if can? :edit, @team
+  %p
+    Pending Invitations:
+    %br
+    - @team.team_invitations.each do |invitation|
+      = invitation.email
+      = link_to 'Cancel', team_invitation_path(invitation.id), method: :delete, confirm: 'Are you sure you want to cancel this invitation?'
+      %br
 
 %p#notice= notice
 - if can? :edit, @team

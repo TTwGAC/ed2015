@@ -1,0 +1,8 @@
+%p Invite a team member
+
+= simple_form_for(@team_invitation) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :email
+  .form-actions
+    = f.submit 'Invite'

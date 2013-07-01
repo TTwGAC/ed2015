@@ -10,6 +10,7 @@ class Team < ActiveRecord::Base
   before_save :create_token
   before_destroy :reset_members_to_observers
   has_many :players
+  has_many :team_invitations
   mount_uploader :logo, LogoUploader
 
   def reserved_name?
