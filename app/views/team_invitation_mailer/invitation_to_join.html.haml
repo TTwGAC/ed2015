@@ -14,7 +14,7 @@
       !
     %p
       To join the team, simply
-      %a{href: "#{new_join_attempt_path}/#{@team.token}"}
+      = link_to "#{new_join_attempt_path}/#{@team.token}", only_path: false
         click this link
     %p
       Having trouble with the link? You can also use this token to join the team:
