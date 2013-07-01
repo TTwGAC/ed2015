@@ -1,0 +1,22 @@
+%html
+  %head
+    %meta{content: 'text/html; charset=UTF-8', http-equiv: 'Content-Type'}
+  %body
+    %h1
+      You have been invited to join team
+      = @team.name
+    %p
+      The manager of the team,
+      = @player.first_name
+      = @player.last_name
+      has invited you to join
+      = @team.name
+      !
+    %p
+      To join the team, simply
+      %a{href: "#{new_join_attempt_path}/#{@team.token}"}
+        click this link
+    %p
+      Having trouble with the link? You can also use this token to join the team:
+      = @team.token
+    %p See you in the game!

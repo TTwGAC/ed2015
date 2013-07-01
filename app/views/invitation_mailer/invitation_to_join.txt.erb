@@ -1,0 +1,11 @@
+You have been invited to join team <%= @team.name %>
+
+The manager of the team, <%= "#{@player.first_name} \"#{@player.nickname}\" #{@player.last_name}" %> has invited you to join <%= @team.name %>!
+
+To join the team, simply click on this link:
+<%= "#{new_join_attempt_path}/#{@team.token}" %>
+
+Having trouble with the link? You can also use this token to join the team:
+<%= @team.token %>
+
+See you in the game!
