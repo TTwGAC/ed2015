@@ -2,8 +2,7 @@ class JoinAttemptsController < ApplicationController
   def new
     @join_attempt = JoinAttempt.new
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @team }
+      format.html
     end
   end
 
