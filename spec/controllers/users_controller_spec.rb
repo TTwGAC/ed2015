@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe UsersController do
+describe PlayersController do
   render_views
 
-  it "should find a user" do
-    user = FactoryGirl.build(:user)
-    user.role.should == 'observer'
+  it "should find a player" do
+    player = FactoryGirl.build(:player)
+    player.role.should == 'observer'
   end
 
-  it "should filter out private user data"
+  it "should filter out private player data"
 
 end

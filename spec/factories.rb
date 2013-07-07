@@ -1,6 +1,6 @@
 # This will guess the User class
 FactoryGirl.define do
-  factory :user do
+  factory :player do
     id 999
     first_name "Tarzan"
     last_name  "Jungle"

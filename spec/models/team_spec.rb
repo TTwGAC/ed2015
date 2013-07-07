@@ -18,14 +18,14 @@ describe Team do
 
   it "should associate team members with the Observers team on deletion" do
     t = Team.create! name: 'about to be destroyed'
-    u = FactoryGirl.build(:user)
+    u = FactoryGirl.build(:player)
     u.team = t
     t.save!
     u.save!
 
     t = Team.where(name: 'about to be destroyed').first
-    t.users.each do |user|
-      user.team.should == t
+    t.players.each do |player|
+      player.team.should == t
     end
 
     t.destroy
