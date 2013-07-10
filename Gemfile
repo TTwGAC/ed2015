@@ -35,6 +35,8 @@ gem 'unicorn'
 # To use debugger
 # gem 'debugger'
 
+gem 'airbrake'
+
 group :development do
   gem 'sqlite3'
   gem 'pry-rails'
