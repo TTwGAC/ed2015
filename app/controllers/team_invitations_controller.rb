@@ -12,7 +12,6 @@ class TeamInvitationsController < ApplicationController
     @ti = TeamInvitation.new params[:team_invitation]
     if @ti.save!
       mailer = TeamInvitationMailer.invitation_to_join current_player, current_player.team, params[:team_invitation][:email]
-      puts mailer.inspect
       mailer.deliver
       redirect_to team_path(@ti.team_id)
     else
