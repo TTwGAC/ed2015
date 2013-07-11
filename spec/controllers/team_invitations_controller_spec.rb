@@ -32,5 +32,7 @@ describe TeamInvitationsController do
 
   it %q{should allow resending an invitation to an existing invitee}
 
+  it %q{should disallow sending invitations to the Observer team}
+
 end
 
