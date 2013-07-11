@@ -1,3 +1,5 @@
+require 'utility'
+
 class Team < ActiveRecord::Base
 
   RESERVED_NAMES = [
@@ -18,8 +20,7 @@ class Team < ActiveRecord::Base
   end
 
   def create_token
-    # Yes, this is not ideal but it's probably good enough
-    self.token ||= Digest::MD5.hexdigest "#{Time.now}-#{Time.now.nsec}-#{rand 99999}"
+    self.token ||= ::Utility.gen_token
   end
 
   def reset_members_to_observers
