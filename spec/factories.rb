@@ -14,5 +14,6 @@ FactoryGirl.define do
     name "Swinging Vines"
     slogan "We get you there in style"
     description "Tarzan, and friends"
+    token "ABCD" * 5
   end
 end

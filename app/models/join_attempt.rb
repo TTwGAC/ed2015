@@ -36,9 +36,19 @@ class JoinAttempt
 private
 
   def token_valid?
-    @team = Team.first conditions: {token: @token}
-    #raise @team.inspect
-    errors[:token] = "Invalid team token" unless @team
+    @team = Team.where(token: @token).first
+    unless @team
+      # No team found? Try searching invitations
+      invitation = TeamInvitation.where(token: @token).first
+      @team = invitation.team if invitation
+    end
+
+    if @team
+      return true
+    else
+      errors[:token] = "Invalid team token"
+      return false
+    end
   end
 
   def persist!
