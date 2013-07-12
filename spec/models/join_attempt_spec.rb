@@ -15,6 +15,7 @@ describe JoinAttempt do
     ti = FactoryGirl.build(:team_invitation)
     Team.should_receive(:where).once.with(token: ti.token).and_return []
     TeamInvitation.should_receive(:where).once.with(token: ti.token).and_return [ti]
+    ti.should_receive(:delete!).once
 
     attempt = JoinAttempt.new player: player, token: ti.token
     attempt.should_receive(:persist!).once
