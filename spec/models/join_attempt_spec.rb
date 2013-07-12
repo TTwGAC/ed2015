@@ -21,4 +21,12 @@ describe JoinAttempt do
     attempt.save
   end
 
+  it %q{should not process a team invitation with an invalid token} do
+    Team.should_receive(:where).once.with(token: 'ABCD').and_return []
+    TeamInvitation.should_receive(:where).once.with(token: 'ABCD').and_return []
+
+    attempt = JoinAttempt.new player: player, token: 'ABCD'
+    attempt.should_receive(:persist!).never
+    attempt.save
+  end
 end

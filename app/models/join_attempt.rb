@@ -23,12 +23,7 @@ class JoinAttempt
   end
 
   def save
-    if valid?
-      persist!
-      true
-    else
-      false
-    end
+    persist! if valid?
   end
 
   alias :save! :save
@@ -43,12 +38,8 @@ private
       @team = invitation.team if invitation
     end
 
-    if @team
-      return true
-    else
-      errors[:token] = "Invalid team token"
-      return false
-    end
+    errors[:token] = "Invalid team token" unless @team
+    @team
   end
 
   def persist!
