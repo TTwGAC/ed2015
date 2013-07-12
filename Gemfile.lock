@@ -62,6 +62,9 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     columnize (0.3.6)
+    countries (0.9.2)
+      currencies (>= 0.4.0)
+    currencies (0.4.2)
     debug_inspector (0.0.2)
     debugger (1.5.0)
       columnize (>= 0.3.1)
@@ -132,6 +135,11 @@ GEM
     multi_json (1.7.3)
     orm_adapter (0.4.0)
     pg (0.15.1)
+    phony (1.9.0)
+    phony_rails (0.4.0)
+      activesupport (>= 3.0)
+      countries (>= 0.8.2)
+      phony (>= 1.7.7)
     polyglot (0.3.3)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
@@ -252,6 +260,7 @@ DEPENDENCIES
   jquery-rails
   letter_opener
   pg
+  phony_rails
   pry-debugger
   pry-doc
   pry-rails

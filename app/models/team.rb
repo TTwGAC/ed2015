@@ -7,13 +7,15 @@ class Team < ActiveRecord::Base
     "Observers"
   ].map {|team| team.downcase}
 
-  attr_accessible :name, :slogan, :description, :logo, :logo_cache
+  attr_accessible :name, :slogan, :description, :logo, :logo_cache, :phone
   validates :name, :presence => true, :uniqueness => true, :if => :reserved_name?
+  validates_plausible_phone :phone
   before_save :create_token
   before_destroy :reset_members_to_observers
   has_many :players
   has_many :team_invitations
   mount_uploader :logo, LogoUploader
+  phony_normalize :phone, :default_country_code => 'US'
 
   def reserved_name?
     errors[:name] << "Reserved team names may not be used" if RESERVED_NAMES.include? name.downcase

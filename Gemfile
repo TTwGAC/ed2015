@@ -19,6 +19,7 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'phony_rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

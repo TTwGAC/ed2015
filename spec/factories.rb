@@ -16,5 +16,6 @@ FactoryGirl.define do
     slogan "We get you there in style"
     description "Tarzan, and friends"
     token "ABCD" * 5
+    phone "14045551234"
   end
 end
