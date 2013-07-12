@@ -35,9 +35,8 @@
       = link_to 'Cancel', team_invitation_path(invitation.id), method: :delete, confirm: 'Are you sure you want to cancel this invitation?'
       %br
 
-%p#notice= notice
 - if can? :edit, @team
-  = link_to 'Leave This Team', join_attempt_path(@team), :method => :delete, :confirm => 'Are you sure you want to leave this team?'
+  = link_to 'Leave This Team', join_attempts_path, :method => :delete, :confirm => 'Are you sure you want to leave this team?'
   = link_to 'Edit', edit_team_path(@team)
   |
 = link_to 'Back', teams_path

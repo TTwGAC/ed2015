@@ -2,7 +2,9 @@ Gac2014::Application.routes.draw do
   resources :locations
 
 
-  resources :join_attempts, only: [:index, :new, :create, :destroy]
+  resources :join_attempts, only: [:index, :new, :create]
+  delete '/join_attempts' => 'join_attempts#destroy'
+
   resources :team_invitations, only: [:index, :new, :create, :destroy]
   resources :teams
 

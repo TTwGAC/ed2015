@@ -1,9 +1,11 @@
 class JoinAttemptsController < ApplicationController
   before_filter :authenticate_player!
-  load_and_authorize_resource
+  authorize_resource
 
   def new
     if params[:token]
+      params[:join_attempt] = {}
+      params[:join_attempt][:token] = params.delete :token
       create
     else
       @join_attempt = JoinAttempt.new
@@ -28,6 +30,6 @@ class JoinAttemptsController < ApplicationController
     observers = Team.where(name: 'Observers').first
     current_player.team = observers
     current_player.save!
-    redirect_to team_path
+    redirect_to root_path
   end
 end
