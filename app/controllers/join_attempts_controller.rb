@@ -1,8 +1,12 @@
 class JoinAttemptsController < ApplicationController
   def new
-    @join_attempt = JoinAttempt.new
-    respond_to do |format|
-      format.html
+    if params[:token]
+      create
+    else
+      @join_attempt = JoinAttempt.new
+      respond_to do |format|
+        format.html
+      end
     end
   end
 
@@ -12,6 +16,7 @@ class JoinAttemptsController < ApplicationController
     if @join_attempt.save!
       redirect_to team_path(@join_attempt.team_id)
     else
+      flash[:error] = "Unable to join team: Invalid token"
       render 'new'
     end
   end

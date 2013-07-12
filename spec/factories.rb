@@ -7,6 +7,7 @@ FactoryGirl.define do
     nickname "King of the Jungle"
     email "tarzan@jungle.com"
     password "asdfghjl"
+    team { FactoryGirl.build(:team) }
   end
 
   factory :team do
