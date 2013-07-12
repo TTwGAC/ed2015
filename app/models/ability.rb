@@ -9,8 +9,10 @@ class Ability
       can :manage, :all
     when "player"
       can :edit, Team, :id => player.team_id
+      can [:create, :delete], JoinAttempt
     when "observer"
       can :create, Team
+      can :create, JoinAttempt
     end
 
     can :manage, Player, :id => player.id
