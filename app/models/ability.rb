@@ -8,7 +8,7 @@ class Ability
     when "admin"
       can :manage, :all
     when "player"
-      can :edit, Team, :id => player.team_id
+      can [:edit, :update], Team, :id => player.team_id
       can [:create, :destroy], JoinAttempt
     when "observer"
       can :create, Team
