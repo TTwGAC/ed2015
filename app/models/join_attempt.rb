@@ -31,6 +31,7 @@ class JoinAttempt
 private
 
   def token_valid?
+    @token.strip!
     @team = Team.where(token: @token).first
     unless @team
       # No team found? Try searching invitations
