@@ -29,4 +29,6 @@ describe JoinAttempt do
     attempt.should_receive(:persist!).never
     attempt.save
   end
+
+  it %q{should delete a TeamInvitation once processed}
 end

@@ -36,7 +36,10 @@ private
     unless @team
       # No team found? Try searching invitations
       invitation = TeamInvitation.where(token: @token).first
-      @team = invitation.team if invitation
+      if invitation
+        @team = invitation.team
+        invitation.delete!
+      end
     end
 
     errors[:token] = "Invalid team token" unless @team
