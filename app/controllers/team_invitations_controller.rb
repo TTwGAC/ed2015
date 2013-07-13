@@ -9,7 +9,7 @@ class TeamInvitationsController < ApplicationController
   def create
     params[:team_invitation][:player] = current_player
     params[:team_invitation][:team] = current_player.team
-    @ti = TeamInvitation.new params[:team_invitation]
+    @ti = TeamInvitation.new team_invitation_params
     if @ti.save
       mailer = TeamMailer.invitation_to_join current_player, current_player.team, params[:team_invitation][:email]
       mailer.deliver
@@ -24,5 +24,11 @@ class TeamInvitationsController < ApplicationController
     ti = TeamInvitation.find params[:id]
     ti.delete
     redirect_to team_path ti.team_id
+  end
+
+private
+
+  def team_invitation_params
+    params.require(:team_invitation).permit(:team, :player, :email)
   end
 end

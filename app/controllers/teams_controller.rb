@@ -46,7 +46,7 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.json
   def create
-    @team = Team.new(params[:team])
+    @team = Team.new(team_params)
 
     respond_to do |format|
       if @team.save
@@ -67,7 +67,7 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
 
     respond_to do |format|
-      if @team.update_attributes(params[:team])
+      if @team.update_attributes(team_params)
         format.html { redirect_to @team, notice: 'Team was successfully updated.' }
         format.json { head :no_content }
       else
@@ -93,5 +93,9 @@ private
 
   def public_attrs
     [:id, :name, :slogan, :description, :created_at, :updated_at] 
+  end
+
+  def team_params
+    params.require(:team).permit(:name, :slogan, :description, :logo, :logo_cache, :phone)
   end
 end

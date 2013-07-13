@@ -6,7 +6,6 @@ class Player < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :first_name, :last_name, :nickname, :password, :password_confirmation, :remember_me, :avatar, :avatar_cache
   belongs_to :team
   has_many :team_invitations
   before_save :default_team
