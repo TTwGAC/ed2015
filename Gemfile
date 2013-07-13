@@ -19,6 +19,7 @@ gem 'strong_parameters'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'carrierwave'
+gem 'fog', '~> 1.3.1'
 gem 'cloudinary'
 gem 'phony_rails'
 
