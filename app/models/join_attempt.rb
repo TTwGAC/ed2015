@@ -23,7 +23,10 @@ class JoinAttempt
   end
 
   def save
-    persist! if valid?
+    if valid?
+      persist!
+      notify_team
+    end
   end
 
   alias :save! :save
@@ -49,5 +52,13 @@ private
   def persist!
     @player.team = @team
     @player.save!
+  end
+
+  def notify_team
+    @team.players.each do |player_to_notify|
+      unless @player == player_to_notify
+        TeamMailer.notify_member_joined(@player, player_to_notify, @team).deliver!
+      end
+    end
   end
 end

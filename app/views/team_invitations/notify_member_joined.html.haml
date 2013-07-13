@@ -1,0 +1,17 @@
+%html
+  %head
+    %meta{:content => 'text/html; charset=UTF-8', :'http-equiv' => 'Content-Type'}
+  %body
+    %h1
+      A player has just joined your team!
+    %p
+      = @joining_player.first_name
+      = %q{"#{@joining_player.nickname}"}
+      = @joining_player.last_name
+      has just joined team
+      = @team.name
+      .
+    %p
+      = link_to "See your full team roster", team_path(@team)
+    %p
+      See you in the game!
