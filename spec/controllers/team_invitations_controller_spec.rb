@@ -23,7 +23,7 @@ describe TeamInvitationsController do
     TeamInvitation.should_receive(:new).once.and_return invite
     invite.should_receive(:save).and_return true
     mailer = mock :mailer
-    TeamInvitationMailer.should_receive(:invitation_to_join).once.with(current_player, team, 'foo@xyz.com').and_return mailer
+    TeamMailer.should_receive(:invitation_to_join).once.with(current_player, team, 'foo@xyz.com').and_return mailer
     mailer.should_receive(:deliver).once
     post :create, team_invitation: {email: 'foo@xyz.com'}
   end

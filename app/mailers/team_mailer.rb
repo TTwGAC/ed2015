@@ -1,4 +1,4 @@
-class TeamInvitationMailer < ActionMailer::Base
+class TeamMailer < ActionMailer::Base
   default from: "noreply@gac2014.com"
 
   def invitation_to_join(player, team, recipient)
