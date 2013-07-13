@@ -38,7 +38,7 @@ private
       invitation = TeamInvitation.where(token: @token).first
       if invitation
         @team = invitation.team
-        invitation.delete!
+        invitation.delete
       end
     end
 
