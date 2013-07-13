@@ -8,6 +8,7 @@
 %p
   Name:
   = @team.name
+  = @team.paid ? '(Paid)' : '(Not Paid)'
 - if can? :edit, @team
   %p
     Secret Token:

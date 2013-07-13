@@ -5,6 +5,8 @@
     = f.input :slogan
     = f.input :phone
     = f.input :description
+    - if can? :manage, @team
+      = f.input :paid
     = f.hidden_field :logo_cache
     = f.file_field :logo
   .form-actions

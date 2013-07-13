@@ -3,11 +3,13 @@
   %tr
     %th Name
     %th Slogan
+    %th Paid?
     %th Actions
   - @teams.each do |team|
     %tr
       %td= link_to team.name, team
       %td= team.slogan
+      %td= team.paid ? "Yes" : "No"
       %td
         = link_to('Edit', edit_team_path(team)) if can? :edit, team
         = link_to('Destroy', team, method: :delete, data: { confirm: 'Are you sure?' }) if can? :delete, team
