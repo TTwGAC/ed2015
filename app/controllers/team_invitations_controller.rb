@@ -7,9 +7,8 @@ class TeamInvitationsController < ApplicationController
   end
 
   def create
-    params[:team_invitation][:player] = current_player
-    params[:team_invitation][:team] = current_player.team
-    @ti = TeamInvitation.new team_invitation_params
+    invite_params = {email: params[:team_invitation][:email], player: current_player, team: current_player.team}
+    @ti = TeamInvitation.new invite_params
     if @ti.save
       mailer = TeamMailer.invitation_to_join current_player, current_player.team, params[:team_invitation][:email]
       mailer.deliver

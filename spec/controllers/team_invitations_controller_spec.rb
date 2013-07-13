@@ -11,7 +11,7 @@ describe TeamInvitationsController do
   end
 
   it %q{should assign the invitation to the current player and the current player's team} do
-    params = {'email' => 'foo@xyz.com', 'player' => current_player, 'team' => team}
+    params = {:email => 'foo@xyz.com', :player => current_player, :team => team}
     invite = mock :invitation
     TeamInvitation.should_receive(:new).once.with(params).and_return invite
     invite.should_receive(:save)
