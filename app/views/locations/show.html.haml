@@ -1,6 +1,6 @@
 %p#notice= notice
 %p
-  = gmaps4rails @map_json
+  = gmaps "markers" => {"data" => @map_json}, "map_options" => {"zoom" => 12, "auto_zoom" => false}
 %p
   %b Name:
   = @location.name
