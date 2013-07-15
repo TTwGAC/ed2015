@@ -1,4 +1,7 @@
 class LocationsController < ApplicationController
+  before_filter :authenticate_player!
+  authorize_resource
+
   # GET /locations
   # GET /locations.json
   def index
