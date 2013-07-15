@@ -1,0 +1,99 @@
+<html>
+
+<head>
+<base target="main">
+</head>
+
+<body bgcolor="000000" text="gold" link="gold" vlink="gold" alink="blue">
+
+<center>
+
+<!-- //Stolen cuz I'm too lazy to do it myself... -->
+
+<SCRIPT LANGUAGE="JavaScript">
+// This JavaScript is Copyright 1996-99 Outsource Labs
+// http://www.olabs.com/
+// Permission to use and modify this script is given as long as this
+// notice remains and you agree to do so at your own risk.
+// @author Cameron Gregory
+
+// Check for browser support.
+ ver = navigator.appVersion.substring(0, 1);
+ flip=0;
+ if ( (navigator.appName == "Netscape") && ( ver >= 3 ) ) flip=1;
+ if ( (navigator.appName == "Microsoft Internet Explorer") && (ver >= 4) ) flip=1;
+
+function change(a,im)
+{
+//document.ff.flag.src=im; // yawn .. doesn't work in 3.0 on unix
+x = eval("document."+a);
+if (flip ==1)
+  x.src=im;
+}
+
+function changeLong(a,im,msg)
+{
+//document.ff.flag.src=im; // yawn .. doesn't work in 3.0 on unix
+x = eval("document."+a);
+if (msg!="null")
+  window.status=msg;
+if (flip ==1)
+  x.src=im;
+}
+
+var fred=1;
+
+function MouseOver(image1,image2,imgflags, imghref)
+{
+var x = "a"+fred;
+  document.writeln("<a onMouseOver='change(\""+x+"\",\""+image2+"\")' onMouseOut='change(\""+x+"\",\""+image1+"\")' href=\""+imghref+"\"><IMG name=\""+x+"\" "+imgflags+" SRC=\""+image1+"\"></a>");
+  fred=fred+1;
+}
+
+function MouseOverLong(image1,image2,imgflags, imghref, hrefflags,msg)
+{
+var x = "a"+fred;
+  document.writeln("<a "+hrefflags+" onMouseOver='changeLong(\""+x+"\",\""+image2+"\",\""+msg+"\")' onMouseOut='changeLong(\""+x+"\",\""+image1+"\",\"\")' href=\""+imghref+"\"><IMG name=\""+x+"\" "+imgflags+" SRC=\""+image1+"\"></a>");
+  fred=fred+1;
+}
+</SCRIPT>
+
+<SCRIPT Language="JavaScript">
+      MouseOver("images/button_home.png","images/button_home1.png","border=0", "home.html");
+    </SCRIPT>
+
+<SCRIPT Language="JavaScript">
+      MouseOver("images/button_rules.png","images/button_rules1.png","border=0", "rules.html");
+    </SCRIPT>
+
+<SCRIPT Language="JavaScript">
+      MouseOver("images/button_supplies.png","images/button_supplies1.png","border=0", "supplies.html");
+    </SCRIPT>
+
+<SCRIPT Language="JavaScript">
+      MouseOver("images/button_teams.png","images/button_teams1.png","border=0", "http://gacteams.rogue42.net/Default.aspx?g=23");
+    </SCRIPT>
+
+<SCRIPT Language="JavaScript">
+      MouseOver("images/button_history.png","images/button_history1.png","border=0", "history.html");
+    </SCRIPT>
+
+<SCRIPT Language="JavaScript">
+      MouseOver("images/button_videos.png","images/button_videos1.png","border=0", "videos.html");
+    </SCRIPT>
+
+<SCRIPT Language="JavaScript">
+      MouseOver("images/button_results.png","images/button_results1.png","border=0", "results.html");
+    </SCRIPT>
+
+<SCRIPT Language="JavaScript">
+      MouseOver("images/button_clues.png","images/button_clues1.png","border=0", "clues.html");
+    </SCRIPT>
+
+<SCRIPT Language="JavaScript">
+      MouseOver("images/button_playlist.png","images/button_playlist1.png","border=0", "playlists.html");
+    </SCRIPT>
+
+</center>
+
+</html>
