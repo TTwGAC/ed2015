@@ -1,5 +1,3 @@
-require 'utility'
-
 class Team < ActiveRecord::Base
 
   RESERVED_NAMES = [
@@ -21,7 +19,7 @@ class Team < ActiveRecord::Base
   end
 
   def create_token
-    self.token ||= ::Utility.gen_token
+    self.token ||= SecureRandom.hex(12)
   end
 
   def reset_members_to_observers
