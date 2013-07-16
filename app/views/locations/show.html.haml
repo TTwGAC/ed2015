@@ -1,6 +1,5 @@
 %p#notice= notice
-%p
-  = gmaps "markers" => {"data" => @map_json}, "map_options" => {"zoom" => 12, "auto_zoom" => false}
+= render partial: '/location/map', locals: {map_data: @location.to_gmaps4rails}
 %p
   %b Name:
   = @location.name
