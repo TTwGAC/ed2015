@@ -1,0 +1,11 @@
+%p#notice= notice
+%h2
+  = @puzzle.name
+= render partial: '/locations/map', locals: {map_data: @puzzle.location.to_gmaps4rails}
+%p
+  = render partial: '/locations/infowindow', locals: {loc: @puzzle.location}
+%p
+  = link_to 'Puzzle Document', @puzzle.document_url
+= link_to 'Edit', edit_puzzle_path(@puzzle)
+|
+\#{link_to 'Back', puzzles_path}

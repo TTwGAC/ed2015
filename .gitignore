@@ -23,3 +23,6 @@
 # Configuration privacy
 /config/database.yml
 /.env
+
+# Development temp files
+/public/uploads

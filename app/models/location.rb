@@ -1,4 +1,5 @@
 class Location < ActiveRecord::Base
+  has_many :puzzles
   acts_as_gmappable :process_geocoding => :geocode?, :normalized_address => "address",
                     :lat => 'latitude', :lng => "longitude"
 

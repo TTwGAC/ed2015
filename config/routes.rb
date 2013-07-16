@@ -1,4 +1,7 @@
 Gac2014::Application.routes.draw do
+  resources :puzzles
+
+
   resources :locations
 
 

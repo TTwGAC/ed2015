@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130713141728) do
+ActiveRecord::Schema.define(:version => 20130715213336) do
 
   create_table "checkins", :force => true do |t|
     t.datetime "timestamp"
@@ -59,6 +59,14 @@ ActiveRecord::Schema.define(:version => 20130713141728) do
   add_index "players", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "players", ["email"], :name => "index_users_on_email", :unique => true
   add_index "players", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "puzzles", :force => true do |t|
+    t.string   "name"
+    t.integer  "location_id"
+    t.string   "document"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "team_invitations", :force => true do |t|
     t.integer  "player_id"
