@@ -1,5 +1,5 @@
 class PuzzleDocumentUploader < CarrierWave::Uploader::Base
-  storage Rails.env == 'production' ? :fog : :file
+  storage :fog
 
   def filename
     "#{model.name}_puzzle-#{File.extname(super)}" if original_filename
