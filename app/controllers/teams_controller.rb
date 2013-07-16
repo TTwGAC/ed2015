@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  load_and_authorize_resource
+  authorize_resource
 
   # GET /teams
   # GET /teams.json
@@ -96,6 +96,8 @@ private
   end
 
   def team_params
-    params.require(:team).permit(:name, :slogan, :description, :logo, :logo_cache, :phone)
+    allowed = [:name, :slogan, :description, :logo, :logo_cache, :phone]
+    allowed << :paid if can? :manage, Team
+    params.require(:team).permit(*allowed)
   end
 end
