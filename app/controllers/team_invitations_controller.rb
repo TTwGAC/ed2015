@@ -1,4 +1,7 @@
 class TeamInvitationsController < ApplicationController
+  before_filter :authenticate_player!
+  authorize_resource
+
   def new
     @team_invitation = TeamInvitation.new
     respond_to do |format|
