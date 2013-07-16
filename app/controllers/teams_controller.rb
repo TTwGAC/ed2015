@@ -52,6 +52,13 @@ class TeamsController < ApplicationController
       if @team.save
         current_player.team = @team
         current_player.save!
+
+        admins = Team.where(name: 'Game Control').first.players
+        admins.each do |admin|
+          mailer = TeamMailer.notify_team_created current_player, @team, admin
+          mailer.deliver!
+        end
+
         format.html { redirect_to @team, notice: 'Team was successfully created.' }
         format.json { render json: @team, status: :created, location: @team }
       else

@@ -1,0 +1,15 @@
+%html
+  %head
+    %meta{:content => 'text/html; charset=UTF-8', :'http-equiv' => 'Content-Type'}
+  %body
+    %h1
+      A new team has been created!
+    %p
+      = @player.first_name
+      = %Q{"#{@player.nickname}"}
+      = @player.last_name
+      has created a new team:
+      = link_to @team.name, team_url(@team)
+      !
+    %p
+      Just thought you'd like to know.
