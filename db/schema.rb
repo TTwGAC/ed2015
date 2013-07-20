@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130720053055) do
+ActiveRecord::Schema.define(:version => 20130720070922) do
 
   create_table "checkins", :force => true do |t|
     t.datetime "timestamp"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20130720053055) do
     t.string   "twitter_uid"
     t.string   "twitter_token"
     t.string   "twitter_secret"
+    t.string   "twitter_handle"
   end
 
   add_index "players", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
@@ -73,6 +74,16 @@ ActiveRecord::Schema.define(:version => 20130720053055) do
     t.datetime "updated_at",  :null => false
     t.string   "token"
   end
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "team_invitations", :force => true do |t|
     t.integer  "player_id"

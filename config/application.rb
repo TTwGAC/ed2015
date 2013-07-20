@@ -61,5 +61,7 @@ module Gac2014
 
     # Do not initialize Rails when precompiling assets -- needed for Heroku
     config.assets.initialize_on_precompile = false
+
+    config.session_store :active_record_store
   end
 end
