@@ -5,7 +5,6 @@ class Player < ActiveRecord::Base
   devise :database_authenticatable, :omniauthable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauth_providers => [:facebook, :twitter]
 
-  # Setup accessible (or protected) attributes for your model
   belongs_to :team
   has_many :team_invitations
   before_save :default_team
@@ -28,6 +27,10 @@ class Player < ActiveRecord::Base
     else
       return "player"
     end
+  end
+
+  def has_required_fields?
+    self.first_name && self.last_name
   end
 
   class << self
