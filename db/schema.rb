@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130716170629) do
+ActiveRecord::Schema.define(:version => 20130720053055) do
 
   create_table "checkins", :force => true do |t|
     t.datetime "timestamp"
@@ -54,6 +54,11 @@ ActiveRecord::Schema.define(:version => 20130716170629) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.string   "avatar"
+    t.string   "facebook_uid"
+    t.string   "facebook_token"
+    t.string   "twitter_uid"
+    t.string   "twitter_token"
+    t.string   "twitter_secret"
   end
 
   add_index "players", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

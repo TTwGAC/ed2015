@@ -11,7 +11,7 @@ Gac2014::Application.routes.draw do
   resources :team_invitations, only: [:index, :new, :create, :destroy]
   resources :teams
 
-  devise_for :players
+  devise_for :players, :controllers => { :omniauth_callbacks => "players/omniauth_callbacks" }
   resources :players
 
   # The priority is based upon order of creation:

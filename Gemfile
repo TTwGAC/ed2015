@@ -13,9 +13,21 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'haml'
 gem 'simple_form'
+gem 'strong_parameters'
+
+# Authentication
 gem 'devise'
 gem 'cancan'
-gem 'strong_parameters'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'certified'
+
+# Social
+gem 'twitter'
+gem 'koala', '~> 1.7.0rc1'
+
+# File storage
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'carrierwave'
