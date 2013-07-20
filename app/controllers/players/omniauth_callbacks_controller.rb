@@ -20,8 +20,4 @@ class Players::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     player = Player.find_or_create_for_facebook_oauth(request.env["omniauth.auth"], current_player)
     handle_callback "Facebook", player
   end
-
-  def passthru(provider)
-    raise "WTF"
-  end
 end
