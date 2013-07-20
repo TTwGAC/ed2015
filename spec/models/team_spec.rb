@@ -49,5 +49,7 @@ end
 #  slogan      :string(255)
 #  logo        :string(255)
 #  token       :string(255)
+#  phone       :string(255)
+#  paid        :boolean
 #
 

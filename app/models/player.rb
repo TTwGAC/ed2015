@@ -109,5 +109,11 @@ end
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string(255)
 #  avatar                 :string(255)
+#  facebook_uid           :string(255)
+#  facebook_token         :string(255)
+#  twitter_uid            :string(255)
+#  twitter_token          :string(255)
+#  twitter_secret         :string(255)
+#  twitter_handle         :string(255)
 #
 
