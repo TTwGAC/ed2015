@@ -15,7 +15,7 @@ class Players::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def twitter
     # You need to implement the method below in your model (e.g. app/models/player.rb)
     player = Player.find_or_create_for_twitter_oauth(request.env["omniauth.auth"], current_player)
-    handle_callback "Twitter"
+    handle_callback "Twitter", player
   end
 
   def facebook
