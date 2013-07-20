@@ -75,7 +75,9 @@ class Player < ActiveRecord::Base
           end
         else
           # Create a new Player
-          player = Player.create({password: Devise.friendly_token}.merge(info))
+          player = Player.new({password: Devise.friendly_token}.merge(info))
+          player.skip_confirmation!
+          player.save
         end
       end
       player
