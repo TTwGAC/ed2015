@@ -45,3 +45,6 @@ RSpec.configure do |config|
 end
 
 FactoryGirl.find_definitions
+
+# Reset the DB
+load "#{Rails.root}/db/seeds.rb"
