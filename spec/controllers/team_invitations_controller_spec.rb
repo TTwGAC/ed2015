@@ -1,17 +1,15 @@
 require 'spec_helper'
 
 describe TeamInvitationsController do
-  let(:current_player) { FactoryGirl.build(:player) }
-  let(:team) { FactoryGirl.build(:team) }
   before :each do
-    controller.stub(:current_player) do
-      current_player.team = team
-      current_player
-    end
+    @request.env["devise.mapping"] = Devise.mappings[:player]
+    @current_player = FactoryGirl.build(:player)
+    @current_player.confirm!
+    sign_in @current_player
   end
 
   it %q{should assign the invitation to the current player and the current player's team} do
-    params = {:email => 'foo@xyz.com', :player => current_player, :team => team}
+    params = {:email => 'foo@xyz.com', :player => @current_player, :team => @current_player.team}
     invite = mock :invitation
     TeamInvitation.should_receive(:new).once.with(params).and_return invite
     invite.should_receive(:save)
@@ -23,7 +21,7 @@ describe TeamInvitationsController do
     TeamInvitation.should_receive(:new).once.and_return invite
     invite.should_receive(:save).and_return true
     mailer = mock :mailer
-    TeamMailer.should_receive(:invitation_to_join).once.with(current_player, team, 'foo@xyz.com').and_return mailer
+    TeamMailer.should_receive(:invitation_to_join).once.with(@current_player, @current_player.team, 'foo@xyz.com').and_return mailer
     mailer.should_receive(:deliver).once
     post :create, team_invitation: {email: 'foo@xyz.com'}
   end

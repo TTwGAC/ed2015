@@ -9,6 +9,7 @@ class Ability
       can :manage, :all
     when "player"
       can [:edit, :update], Team, :id => player.team_id
+      can [:create, :destroy], TeamInvitation
       can [:create, :destroy], JoinAttempt
     when "observer"
       can :create, Team
