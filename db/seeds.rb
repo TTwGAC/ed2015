@@ -18,20 +18,20 @@ game_control.save! validate: false
 observers = Team.new name: "Observers", slogan: '"I like to watch"'
 observers.save! validate: false
 
-ben = Player.create! first_name: "Ben",
+ben = Player.new first_name: "Ben",
   last_name: "Klang",
   nickname: "Leon",
-  email: "ben@alkaloid.net",
+  email: "bklang@adhearsion.com",
   password: "abcdefg" # CHANGE THIS!
 ben.team = game_control
+ben.skip_confirmation!
 ben.save!
-ben.confirm!
 
-alicia = Player.create! first_name: "Alicia",
+alicia = Player.new first_name: "Alicia",
   last_name: "Cardillo",
   nickname: "Leonetta",
   email: "alicia.cardillo@gmail.com",
   password: "abcdefg" # CHANGE THIS!
 alicia.team = game_control
+alicia.skip_confirmation!
 alicia.save!
-alicia.confirm!
