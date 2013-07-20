@@ -62,7 +62,7 @@ class Player < ActiveRecord::Base
     def find_or_create(locator, credentials, info)
       player = Player.where(locator).first
       unless player
-        player = Player.where(email: info[:email]).first
+        player = Player.where(email: info[:email]).first if info[:email]
 
         if player
           # Link the existing player to this account
