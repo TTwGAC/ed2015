@@ -43,8 +43,8 @@ end
 
 puts "co 120"
 puts "k120"
-rows.each do |row|
-  puts row
+rows.each_with_index do |row, i|
+  puts "Row #{i+1}: #{row}"
 end
 puts "k120"
 
