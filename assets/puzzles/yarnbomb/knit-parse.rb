@@ -38,6 +38,8 @@ pattern.each_line do |line|
     next
   end
 
+  line.gsub! /^row\s\d+: /i, ''
+
   puts "<tr>"
   @rowcount = 0
   steps = line.split ','
