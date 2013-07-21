@@ -29,10 +29,11 @@ LETTERS = {
 }
 
 
-msg = "GO TO THE SKULL AT L FIVE P"
+msg = ARGV[0].upcase || "GO TO THE SKULL AT L FIVE P"
 
 rows = []
 msg.split('').each do |letter|
+  raise "ERROR: No font data found for \"#{letter}\"" unless LETTERS.has_key?(letter)
   LETTERS[letter].each_with_index do |row, i|
     rows[i] ||= ''
     rows[i] << row
