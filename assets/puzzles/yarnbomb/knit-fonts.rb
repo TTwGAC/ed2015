@@ -25,8 +25,22 @@ LETTERS = {
   "X" => %w{p1,k1,p1 p1,k1,p1 k1,p1,k1 k1,p1,k1 p1,k1,p1 p1,k1,p1},
   "Y" => %w{p1,k1,p1 p1,k1,p1 p1,k1,p1 k1,p1,k1 k1,p1,k1 k1,p1,k1},
   "Z" => %w{p4 k3,p1 k2,p1,k1 k1,p1,k2 p1,k3 p4},
-  " " => %w{k1 k1 k1 k1 k1 k1}
+  "1" => %w{k1,p1,k1 p2,k1 k1,p1,k1 k1,p1,k1 k1,p1,k1 p3},
+  "2" => %w{k1,p2,k1 p1,k2,p1 k2,p1,k1 k1,p1,k2 p1,k3 p4},
+  "3" => %w{k1,p2,k1 p1,k2,p1 k2,p1,k1 k3,p1 p1,k2,p1 k1,p2,k1},
+  "4" => %w{p1,k2,p1 p1,k2,p1 p4 k3,p1 k3,p1 k3,p1},
+  "5" => %w{p3 p1,k2 p2,k1 k2,p1 k2,p1 p2,k1},
+  "6" => %w{k1,p2 p1,k2 p1,k2 p3 p1,k1,p1 p3},
+  "7" => %w{p3 k2,p1 k2,p1 k2,p1 k2,p1 k2,p1},
+  "8" => %w{k1,p2,k1 p1,k2,p1 k1,p2,k1 p1,k2,p1 p1,k2,p1 k1,p2,k1},
+  "9" => %w{p3 p1,k1,p1 p3 k2,p1 k2,p1 k2,p1},
+  "0" => %w{k1,p2,1 p1,k2,p1 p1,k1,p2 p2,k1,p1 p1,k2,p1 k1,p2,k1},
+  " " => %w{k1 k1 k1 k1 k1 k1},
+  "&" => %w{k3,p5,k3 k2,p7,k2 k1,p9,k1 p2,k2,p7 p1,k1,p2,k1,p3,k1,p2 p1,k1,p2,k1,p2,k3,p1 p1,k3,p3,k3,p1 p2,k1,p2,k1,p2,k1,p2 p4,k3,p4 p5,k1,p5 k1,p9,k1 k2,p1,k1,p1,k1,p1,k1,p1,k2 k2,p1,k1,p1,k1,p1,k1,p1,k2 k2,p2,k1,p1,k1,p2,k2 k3,p1,k1,p1,k1,p1,k3 k3,p5,k3}, # SKULL
 }
+
+
+ 
 
 
 msg = ARGV[0].upcase || "GO TO THE SKULL AT L FIVE P"
