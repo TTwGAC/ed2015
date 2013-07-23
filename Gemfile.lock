@@ -118,6 +118,7 @@ GEM
     haml (4.0.2)
       tilt
     hashie (2.0.5)
+    high_voltage (1.2.4)
     hike (1.2.2)
     hpricot (0.8.6)
     html2haml (1.0.1)
@@ -316,6 +317,7 @@ DEPENDENCIES
   gmaps4rails
   guard-rspec
   haml
+  high_voltage
   html2haml
   jquery-rails
   koala (~> 1.7.0rc1)
