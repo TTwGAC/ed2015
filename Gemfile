@@ -36,6 +36,10 @@ gem 'fog', '~> 1.3.1'
 gem 'cloudinary'
 gem 'phony_rails'
 
+# Performance
+gem 'dalli'
+gem 'memcachier'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
