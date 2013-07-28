@@ -1,2 +1,2 @@
-%p
-  = gmaps "markers" => {"data" => map_data}
+- if can? :manage, :all
+  %p= gmaps "markers" => {"data" => map_data}
