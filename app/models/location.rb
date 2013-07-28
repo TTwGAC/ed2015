@@ -1,5 +1,6 @@
 class Location < ActiveRecord::Base
   has_many :puzzles
+  has_many :teams
   before_save :get_token
   acts_as_gmappable :process_geocoding => :geocode?, :normalized_address => "address",
                     :lat => 'latitude', :lng => "longitude"

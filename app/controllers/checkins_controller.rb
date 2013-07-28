@@ -32,6 +32,8 @@ class CheckinsController < ApplicationController
 
     @checkin = Checkin.new player: current_player, team: current_player.team, location: @location
     @checkin.save!
+    current_player.team_location = @location
+    current_player.save!
 
     respond_to do |format|
       format.html # new.html.erb

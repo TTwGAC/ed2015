@@ -18,4 +18,12 @@ describe CheckinsController do
   it %q{should return a 404 when given an invalid ID} do
     expect { get :new, l: 'asdf'  }.to raise_error ActionController::RoutingError 
   end
+
+  it %q{should set the current team's location to the found location} do
+    @current_player.team_location.should be nil
+    loc = FactoryGirl.build(:location)
+    Location.should_receive(:where).once.and_return [loc]
+    get :new, l: loc.token
+    @current_player.team_location.should == loc
+  end
 end

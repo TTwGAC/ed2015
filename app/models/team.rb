@@ -12,6 +12,7 @@ class Team < ActiveRecord::Base
   has_many :players
   has_many :team_invitations
   has_many :checkins
+  belongs_to :location
   mount_uploader :logo, LogoUploader
   phony_normalize :phone, :default_country_code => 'US'
 
