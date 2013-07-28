@@ -11,6 +11,7 @@ class Team < ActiveRecord::Base
   before_destroy :reset_members_to_observers
   has_many :players
   has_many :team_invitations
+  has_many :checkins
   mount_uploader :logo, LogoUploader
   phony_normalize :phone, :default_country_code => 'US'
 

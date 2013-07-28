@@ -1,5 +1,6 @@
 class Location < ActiveRecord::Base
   has_many :puzzles
+  before_save :get_token
   acts_as_gmappable :process_geocoding => :geocode?, :normalized_address => "address",
                     :lat => 'latitude', :lng => "longitude"
 
@@ -9,6 +10,10 @@ class Location < ActiveRecord::Base
 
   def gmaps4rails_address
     self.address
+  end
+
+  def get_token
+    self.token ||= SecureRandom.hex(16)
   end
 end
 

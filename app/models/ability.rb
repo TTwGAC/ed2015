@@ -11,6 +11,7 @@ class Ability
       can [:edit, :update], Team, :id => player.team_id
       can [:create, :destroy], TeamInvitation
       can [:create, :destroy], JoinAttempt
+      can :create, Checkin
     when "observer"
       can :create, Team
       can :create, JoinAttempt

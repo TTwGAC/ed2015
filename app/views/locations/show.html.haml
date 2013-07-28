@@ -1,11 +1,14 @@
 %p#notice= notice
-= render partial: '/location/map', locals: {map_data: @location.to_gmaps4rails}
+= render partial: '/locations/map', locals: {map_data: @location.to_gmaps4rails}
 %p
   %b Name:
   = @location.name
 %p
   %b Address:
   = @location.address
+%p
+  %b Token:
+  = @location.token
 %p
   %b Latitude:
   = @location.latitude

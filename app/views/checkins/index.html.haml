@@ -1,0 +1,18 @@
+%h1 Listing Checkins
+%table.table
+  %tr
+    %th Name
+    %th Timestamp
+    %th Actions
+  - @checkins.each do |checkin|
+    %tr
+      %td
+        = link_to "#{checkin.team_name} @ #{checkin.location_name}", checkin
+      %td
+        = checkin.created_at.localtime
+      %td
+        = link_to 'Edit', edit_checkin_path(checkin)
+        |
+        = link_to 'Destroy', checkin, method: :delete, data: { confirm: %q{Are you REALLY sure? This may break the team's data!} }
+%br/
+= link_to 'Manual Checkin', new_checkin_path

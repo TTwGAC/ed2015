@@ -1,5 +1,12 @@
 class Checkin < ActiveRecord::Base
   belongs_to :location
+  belongs_to :team
+  belongs_to :player
+
+  delegate :name, to: :location, prefix: true
+  delegate :name, to: :team, prefix: true
+  delegate :first_name, :last_name, :nickname, to: :player, prefix: true
+
 end
 
 # == Schema Information
@@ -11,5 +18,7 @@ end
 #  location_id :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  team_id     :integer
+#  player_id   :integer
 #
 

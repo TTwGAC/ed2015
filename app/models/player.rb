@@ -7,6 +7,7 @@ class Player < ActiveRecord::Base
 
   belongs_to :team
   has_many :team_invitations
+  has_many :checkins
   before_save :default_team
   delegate :name, :id, :to => :team, :prefix => true
   mount_uploader :avatar, AvatarUploader

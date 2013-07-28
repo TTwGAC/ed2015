@@ -5,6 +5,9 @@ Gac2014::Application.routes.draw do
   resources :locations
 
 
+  resources :checkins
+
+
   resources :join_attempts, only: [:index, :new, :create]
   delete '/join_attempts' => 'join_attempts#destroy'
 
