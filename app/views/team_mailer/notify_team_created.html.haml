@@ -5,9 +5,7 @@
     %h1
       A new team has been created!
     %p
-      = @player.first_name
-      = %Q{"#{@player.nickname}"}
-      = @player.last_name
+      = @player.name
       has created a new team:
       = link_to @team.name, team_url(@team)
       !

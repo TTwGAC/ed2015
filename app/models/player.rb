@@ -34,6 +34,13 @@ class Player < ActiveRecord::Base
     self.first_name && self.last_name
   end
 
+  def name
+    name = "#{self.first_name} "
+    name << %Q{"#{self.nickname} "} if self.nickname
+    name << self.last_name
+    name
+  end
+
   class << self
     def find_or_create_for_facebook_oauth(auth, signed_in_resource = nil)
       credentials = {

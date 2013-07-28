@@ -7,7 +7,7 @@
   Checkin to
   = link_to @checkin.location_name, location_path(@checkin.location)
   created by
-  = link_to %Q{#{@checkin.player_first_name} "#{@checkin.player_nickname}" #{@checkin.player_last_name}}, player_path(@checkin.player)
+  = link_to @checkin.player_name, @checkin.player
   on
   = link_to @checkin.team_name, team_path(@checkin.team)
   at

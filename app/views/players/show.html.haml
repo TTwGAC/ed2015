@@ -2,8 +2,7 @@
   = image_tag @player.avatar_url :standard
 %p
   Name:
-  = @player.first_name
-  = @player.last_name
+  = @player.name
 - if can? :manage, @player
   %p
     Email:

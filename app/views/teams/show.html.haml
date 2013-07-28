@@ -26,9 +26,7 @@
   Members:
   %br
   - @team.players.each do |player|
-    %a{:href => "/players/#{player.id}"}
-      = player.first_name
-      = player.last_name
+    link_to player.name, player
     %br
   = link_to 'Invite a player to this team', new_team_invitation_path
 

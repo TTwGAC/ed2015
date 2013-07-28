@@ -5,7 +5,7 @@ class Checkin < ActiveRecord::Base
 
   delegate :name, to: :location, prefix: true
   delegate :name, to: :team, prefix: true
-  delegate :first_name, :last_name, :nickname, to: :player, prefix: true
+  delegate :name, to: :player, prefix: true
 
 end
 

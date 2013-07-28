@@ -8,9 +8,7 @@
   - @players.each do |player|
     %tr
       %td
-        = player.first_name
-        = "\"#{player.nickname}\""
-        = player.last_name
+        = player.name
       - if can? :edit, player
         %td= player.email
       - else

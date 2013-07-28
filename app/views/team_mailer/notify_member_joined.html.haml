@@ -5,9 +5,7 @@
     %h1
       A player has just joined your team!
     %p
-      = @joining_player.first_name
-      = %Q{"#{@joining_player.nickname}"}
-      = @joining_player.last_name
+      = @joining_player.name
       has just joined team
       = @team.name
       \.
