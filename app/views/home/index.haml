@@ -1,1 +1,3 @@
 %p GIT A Clue 2014, brought to you by the Geocaching Junkies
+- if can? :manage, :all
+  = render partial: 'gchq', locals: { map_data: @map_data }
