@@ -14,6 +14,7 @@
   %body
     %header.navbar.navbar-fixed-top
       %nav.navbar-inner
+        %img#logo{src: asset_path('logo.png')}
         .container
           = render 'layouts/navigation'
     #main{:role => "main"}
@@ -25,4 +26,3 @@
               = yield
           %footer
           = yield :scripts
-    %img#logo{src: asset_path('logo.png')}
