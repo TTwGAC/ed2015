@@ -32,7 +32,7 @@
           - if current_player.team_name == 'Observers'
             = link_to 'Join a Team', new_join_attempt_path
           - else
-            = link_to current_player.team_name, team_path(current_player.team_id)
+            = link_to "Team #{current_player.team_name}", team_path(current_player.team_id)
   %ul{class: 'nav pull-right'}
     - if player_signed_in?
       %li{class: 'dropdown'}
