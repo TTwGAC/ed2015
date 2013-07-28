@@ -13,9 +13,18 @@
         The Game
         %b{class: 'caret'}
       %ul{class: 'dropdown-menu'}
-        %li= link_to 'About', '#'
-        %li= link_to 'The Rules', page_path('rules')
-        %li= link_to 'Teams', '/teams'
+        %li
+          = link_to '#' do
+            %img{class: 'icon-white', src: asset_path('glyphicons/074_cup.png')}
+            About
+        %li
+          = link_to page_path('rules') do
+            %img{class: 'icon-white', src: asset_path('glyphicons/071_book.png')}
+            Rules
+        %li
+          = link_to '/teams' do
+            %img{class: 'icon-white', src: asset_path('glyphicons/043_group.png')}
+            Teams
     - if player_signed_in?
       - if can? :manage, :all
         %li{class: 'dropdown', style: 'background-color: #fcc'}
@@ -23,10 +32,22 @@
             Game Control
             %b{class: 'caret'}
           %ul{class: 'dropdown-menu'}
-            %li= link_to 'Players', players_path
-            %li= link_to 'Puzzles', puzzles_path
-            %li= link_to 'Locations', locations_path
-            %li= link_to 'Checkins', checkins_path
+            %li
+              = link_to players_path do
+                %img{class: 'icon-white', src: asset_path('glyphicons/003_user.png')}
+                Players
+            %li
+              = link_to puzzles_path do
+                %img{class: 'icon-white', src: asset_path('glyphicons/156_show_thumbnails.png')}
+                Puzzles
+            %li
+              = link_to locations_path do
+                %img{class: 'icon-white', src: asset_path('glyphicons/060_compass.png')}
+                Locations
+            %li
+              = link_to checkins_path do
+                %img{class: 'icon-white', src: asset_path('glyphicons/087_log_book.png')}
+                Checkins
       - else
         %li
           - if current_player.team_name == 'Observers'
