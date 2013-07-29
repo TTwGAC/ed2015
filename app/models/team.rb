@@ -5,7 +5,7 @@ class Team < ActiveRecord::Base
     "Observers"
   ].map {|team| team.downcase}
 
-  validates :name, :presence => true, :uniqueness => true, :if => :reserved_name?
+  validates :name, :uniqueness => {:case_sensitive => false}
   validates_plausible_phone :phone
   before_save :create_token
   before_destroy :reset_members_to_observers
@@ -15,10 +15,6 @@ class Team < ActiveRecord::Base
   belongs_to :location
   mount_uploader :logo, LogoUploader
   phony_normalize :phone, :default_country_code => 'US'
-
-  def reserved_name?
-    errors[:name] << "Reserved team names may not be used" if RESERVED_NAMES.include? name.downcase
-  end
 
   def create_token
     self.token ||= SecureRandom.hex(12)
