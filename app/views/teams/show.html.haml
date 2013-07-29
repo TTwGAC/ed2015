@@ -26,7 +26,7 @@
   Members:
   %br
   - @team.players.each do |player|
-    link_to player.name, player
+    = link_to player.name, player
     %br
   = link_to 'Invite a player to this team', new_team_invitation_path
 
