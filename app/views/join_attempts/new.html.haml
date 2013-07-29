@@ -1,12 +1,15 @@
-%a{href: new_team_path} Create a new team
+%div.row
+  %div.span6.callout
+    %p
+      %a{href: new_team_path} Create a new team
+      = render partial: '/teams/form'
 
-%h3 - OR -
-
-%p Enter the token provided by your team-mate to join her team:
-
-= simple_form_for(@join_attempt) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :token
-  .form-actions
-    = f.submit 'Join Team'
+  %div.span6.callout
+    %p
+      Enter the token provided by your team-mate to join her team:
+      = simple_form_for(@join_attempt, html: {class: 'form-horizontal'}) do |f|
+        = f.error_notification
+        .form-inputs
+          = f.input :token
+        .form-actions
+          = f.submit 'Join Team'

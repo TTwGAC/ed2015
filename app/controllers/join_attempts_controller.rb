@@ -9,6 +9,7 @@ class JoinAttemptsController < ApplicationController
       create
     else
       @join_attempt = JoinAttempt.new
+      @team = Team.new
       respond_to do |format|
         format.html
       end
