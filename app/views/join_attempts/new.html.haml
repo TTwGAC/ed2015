@@ -1,9 +1,5 @@
+%h3 Join or Create a Team
 %div.row
-  %div.span6.callout
-    %p
-      %a{href: new_team_path} Create a new team
-      = render partial: '/teams/form'
-
   %div.span6.callout
     %p
       Enter the token provided by your team-mate to join her team:
@@ -13,3 +9,8 @@
           = f.input :token
         .form-actions
           = f.submit 'Join Team', class: 'btn'
+
+  %div.span6.callout
+    %p
+      %a{href: new_team_path} Create a new team
+      = render partial: '/teams/form'
