@@ -15,6 +15,7 @@ class Team < ActiveRecord::Base
   belongs_to :location
   mount_uploader :logo, LogoUploader
   phony_normalize :phone, :default_country_code => 'US'
+  delegate :name, to: :location, prefix: true
 
   def create_token
     self.token ||= SecureRandom.hex(12)

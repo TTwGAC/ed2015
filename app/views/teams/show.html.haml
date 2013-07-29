@@ -1,18 +1,22 @@
+%h3
+  Team
+  = @team.name
+
 - if current_player.team == @team
-  %h3 You are a member of this team!
+  %h4 You are a member of this team!
 %p
   - if @team.logo.present?
     = cl_image_tag @team.logo, width: 150, height: 150, crop: :fill
   - else
     = image_tag '/confusion.jpg', size: '150x155'
-%p
-  Name:
-  = @team.name
-  = @team.paid ? '(Paid)' : '(Not Paid)'
+
 - if can? :edit, @team
   %p
-    Secret Token:
-    = @team.token
+    Status:
+    = @team.paid ? 'Paid' : 'Not Paid'
+    - if @team.location
+      | Last checked into
+      = link_to @team.location_name, @team.location
 %p
   Slogan:
   = @team.slogan
@@ -40,7 +44,14 @@
       %br
 
 - if can? :edit, @team
-  = link_to 'Leave This Team', join_attempts_path, :method => :delete, :confirm => 'Are you sure you want to leave this team?'
-  = link_to 'Edit', edit_team_path(@team)
-  |
-= link_to 'Back', teams_path
+  %p
+    Secret Token:
+    = @team.token
+
+- if can? :edit, @team
+  = link_to edit_team_path(@team), class: 'btn' do
+    %img{class: 'icon-white', src: asset_path('glyphicons/030_pencil.png')}
+    Edit Team
+  = link_to join_attempts_path, :method => :delete, :confirm => 'Are you sure you want to leave this team?', class: 'btn' do
+    %img{class: 'icon-white', src: asset_path('glyphicons/199_ban.png')}
+    Leave This Team
