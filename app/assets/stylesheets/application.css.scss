@@ -23,11 +23,34 @@ body {
   padding-top: 60px;
 }
 
+.navbar-inner {
+  background-image: linear-gradient(to bottom, #fffcf0, #ffd852);
+}
+
 #logo {
   height: 41px;
   width: 41px;
 }
 
+.navbar {
+  .brand {
+    padding: 0 20px;
+    margin: 0;
+    color: #000;
+  }
+
+  .nav li {
+    background-image: linear-gradient(to bottom, #fffcf0, #e7bb3f);
+    margin: 0 3px;
+    border: 1px solid #e7bb3f;
+    a {
+      color: #000;
+    }
+  }
+  .nav li.admin-only {
+    background-image: linear-gradient(to bottom, #fff0d0, #f99);
+  }
+}
 .callout {
   background-color: whitesmoke;
   border-radius: 5px;

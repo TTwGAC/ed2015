@@ -4,7 +4,9 @@
   %span{class: 'icon-bar'}
   %span{class: 'icon-bar'}
 
-= link_to "Home", root_path, :class => 'brand'
+= link_to root_path, :class => 'brand' do
+  %img#logo{src: asset_path('logo.png')}
+  Home
 
 %div{class: 'nav-collapse collapse'}
   %ul{class: 'nav'}
@@ -27,7 +29,7 @@
             Teams
     - if player_signed_in?
       - if can? :manage, :all
-        %li{class: 'dropdown', style: 'background-color: #fcc'}
+        %li{class: 'dropdown admin-only'}
           %a{href: '#', class: 'dropdown-toggle', "data-toggle" => 'dropdown'}
             Game Control
             %b{class: 'caret'}
