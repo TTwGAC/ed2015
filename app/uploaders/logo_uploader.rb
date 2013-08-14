@@ -13,4 +13,8 @@ class LogoUploader < CarrierWave::Uploader::Base
     resize_to_fit(50, 50)
   end
 
+  def default_url
+    ActionController::Base.helpers.asset_path 'confusion.jpg'
+  end
+
 end
