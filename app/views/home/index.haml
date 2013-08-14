@@ -1,3 +1,10 @@
-%p GIT A Clue 2014, brought to you by the Geocaching Junkies
-- if can? :manage, :all
-  = render partial: 'gchq', locals: { map_data: @map_data }
+%h2
+  Welcome to GIT-A-Clue 2014
+
+
+.row{style: 'height: 250px'}
+  .span-6
+    %ul#clock.med
+      /%li#sec
+      %li#min
+      %li#hour

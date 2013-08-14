@@ -99,3 +99,60 @@ div {
     list-style: square;
   }
 }
+
+#clock {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  margin: 20px auto 0 auto;
+  background: url(asset-path("clockface.png", "image"));
+  list-style: none;
+
+  #sec {
+    background: url(asset-path("clock-sec.png", "image"));
+    z-index: 3;
+  }
+
+  #min {
+    background: url(asset-path("clock-min.png", "image"));
+    z-index: 2;
+  }
+
+  #hour {
+    background: url(asset-path("clock-hour.png", "image"));
+    z-index: 1;
+  }
+
+  #sec, #min, #hour {
+    position: absolute;
+    width: 30px;
+    height: 600px;
+    top: 0px;
+    left: 285px;
+    background-repeat: no-repeat;
+  }
+}
+
+#clock.med {
+  width: 200px;
+  height: 200px;
+  background-size: 200px 200px;
+  #sec, #min, #hour {
+    left: 95px;
+    width: 10px;
+    height: 200px;
+    background-size: 10px 200px;
+  }
+}
+
+#clock.small {
+  width: 100px;
+  height: 100px;
+  background-size: 100px 100px;
+  #sec, #min, #hour {
+    left: 48px;
+    width: 5px;
+    height: 100px;
+    background-size: 5px 100px;
+  }
+}
