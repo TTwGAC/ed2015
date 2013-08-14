@@ -41,11 +41,6 @@ body {
   width: 41px;
 }
 
-#counter .cntSeparator {
-  font-size: 54px;
-  margin: 20px 7px;
-}
-
 .navbar {
   .brand {
     padding: 0 20px;
@@ -65,6 +60,12 @@ body {
     background-image: linear-gradient(to bottom, $nav_admin_top, $nav_admin_bot);
   }
 }
+
+#counter .cntSeparator {
+  font-size: 54px;
+  margin: 20px 7px;
+}
+
 .callout {
   background-color: whitesmoke;
   border-radius: 5px;
