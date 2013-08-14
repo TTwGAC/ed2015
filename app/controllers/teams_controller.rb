@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  authorize_resource
+  load_and_authorize_resource
 
   # GET /teams
   # GET /teams.json
