@@ -21,3 +21,8 @@ jQuery ->
       hrotate = "rotate(" + hours + "deg)"
       $("#hour").css transform: hrotate
     ), 50
+
+  # Countdown to GAC
+  # Month is zero-indexed (3: April) and hours are offset +4 for GMT
+  startDate = new Date(2014, 3, 12, 12, 0, 0);
+  $('#counter').countdown({startTime: startDate})
