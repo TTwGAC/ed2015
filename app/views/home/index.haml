@@ -15,3 +15,19 @@
       /%li#sec
       %li#min
       %li#hour
+
+.row
+  .span-12
+    %h3 Learn more about GAC
+    = link_to page_path('history') do
+      %img{class: 'icon-white', src: asset_path('glyphicons/074_cup.png')}
+      About
+    &nbsp;
+    &nbsp;
+    = link_to page_path('rules') do
+      %img{class: 'icon-white', src: asset_path('glyphicons/071_book.png')}
+      Rules
+.row
+  .span-12
+    Like us on Facebook to get the latest
+    %div{class: "fb-like-box", :"data-href" => "https://www.facebook.com/GitAClue2014", :"data-width" => 292, :"data-height" => 225, :"data-show-faces" => "true", :"data-header" => "true", :"data-stream" => false, :"data-show-border" => "true"}
