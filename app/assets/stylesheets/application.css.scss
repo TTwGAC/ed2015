@@ -14,8 +14,17 @@
 @import "bootstrap";
 @import "bootstrap-responsive";
 
+$facebook_blue: #3c599b;
+$twitter_blue: #00aced;
+$nav_top: #fffcf0;
+$nav_bot: #ffd852;
+$nav_dark: #e7bb3f;
+$nav_admin_top: #fff0d0;
+$nav_admin_bot: #f99;
+$gac_font:  "Michroma", Arial, Helvetica, Sans-Serif;
+
 body {
-  font-family: "Michroma", arial, helvetica, Sans-Serif;
+  font-family: $gac_font;
   background-color: #fff;
   color: #333;
   font-size: 13px;
@@ -24,7 +33,7 @@ body {
 }
 
 .navbar-inner {
-  background-image: linear-gradient(to bottom, #fffcf0, #ffd852);
+  background-image: linear-gradient(to bottom, $nav_top, $nav_bot);
 }
 
 #logo {
@@ -45,15 +54,15 @@ body {
   }
 
   .nav li {
-    background-image: linear-gradient(to bottom, #fffcf0, #e7bb3f);
+    background-image: linear-gradient(to bottom, $nav_top, $nav_dark);
     margin: 0 3px;
-    border: 1px solid #e7bb3f;
+    border: 1px solid $nav_dark;
     a {
       color: #000;
     }
   }
   .nav li.admin-only {
-    background-image: linear-gradient(to bottom, #fff0d0, #f99);
+    background-image: linear-gradient(to bottom, $nav_admin_top, $nav_admin_bot);
   }
 }
 .callout {
