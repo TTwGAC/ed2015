@@ -13,7 +13,7 @@ jQuery.fn.countdown = function(userOptions)
     // startTime and format MUST follow the same format.
     // also you cannot specify a format unordered (e.g. hh:ss:mm is wrong)
     format: "dd:hh:mm:ss",
-    startTime: "01:12:32:55",
+    startTime: new Date(),
     digitImages: 6,
     digitWidth: 53,
     digitHeight: 77,
@@ -21,6 +21,28 @@ jQuery.fn.countdown = function(userOptions)
     image: "<%= asset_path("digits.png") %>"
   };
   var digits = [], interval;
+
+  var calculateDistance = function(startTime)
+  {
+    now = new Date();
+
+    secDuration = 1000
+    minDuration = secDuration*60
+    hourDuration = minDuration*60
+    dayDuration = hourDuration*24
+
+    daysUntil = Math.floor(Math.abs((startTime.getTime() - now.getTime())/dayDuration))
+    now.setTime(now.getTime() + daysUntil * dayDuration)
+
+    hoursUntil = ("0" + Math.floor(Math.abs((startTime.getTime() - now.getTime())/hourDuration))).slice(-2)
+    now.setTime(now.getTime() + hoursUntil * hourDuration)
+
+    minsUntil = ("0" + Math.floor(Math.abs((startTime.getTime() - now.getTime())/minDuration))).slice(-2)
+    now.setTime(now.getTime() + minsUntil * minDuration)
+
+    secsUntil = ("0" + Math.floor(Math.abs((startTime.getTime() - now.getTime())/secDuration))).slice(-2)
+    return daysUntil + ":" + hoursUntil + ":" + minsUntil + ":" + secsUntil
+  }
 
   // Draw digits in given container
   var createDigits = function(where)
@@ -106,6 +128,7 @@ jQuery.fn.countdown = function(userOptions)
   };
 
   $.extend(options, userOptions);
+  options.startTime = calculateDistance(options.startTime);
   this.css({height: options.digitHeight, overflow: 'hidden'});
   createDigits(this);
   interval = setInterval(moveStep(digits.length - 1), 1000);
