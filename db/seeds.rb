@@ -21,7 +21,7 @@ observers.save! validate: false
 ben = Player.new first_name: "Ben",
   last_name: "Klang",
   nickname: "Leon",
-  email: "bklang@adhearsion.com",
+  email: "ben@alkaloid.net"
   password: "abcdefg" # CHANGE THIS!
 ben.team = game_control
 ben.skip_confirmation!
