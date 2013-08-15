@@ -5,7 +5,7 @@ class Team < ActiveRecord::Base
     "Observers"
   ].map {|team| team.downcase}
 
-  validates :name, :uniqueness => {:case_sensitive => false}
+  validates :name, :presence => true, :uniqueness => {:case_sensitive => false}
   validates_plausible_phone :phone
   before_save :create_token
   before_destroy :reset_members_to_observers
