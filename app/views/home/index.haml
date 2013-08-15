@@ -19,20 +19,19 @@
 .row
   .span-12
     %h3 Learn more about GAC
+.row
+  .span-6
     = link_to page_path('history') do
       %img{class: 'icon-white', src: asset_path('glyphicons/074_cup.png')}
       About
-    &nbsp;
-    &nbsp;
+    %br
+    %br
     = link_to page_path('rules') do
       %img{class: 'icon-white', src: asset_path('glyphicons/071_book.png')}
       Rules
     %br
     %br
-
-.row
-  .span-6
-    = link_to 'https://www.facebook.com/GitAClue2014' do
+    = link_to 'https://www.facebook.com/GitAClue2014', style: 'line-height: 2em' do
       = image_tag 'facebook-f-512.png', size: '25x25'
       Like us on Facebook to get the latest
   .span-6
