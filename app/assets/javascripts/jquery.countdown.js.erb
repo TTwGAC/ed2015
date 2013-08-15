@@ -32,7 +32,7 @@ jQuery.fn.countdown = function(userOptions)
     dayDuration = hourDuration*24
 
     // Is there not an easier way to calculate the distance between two dates?
-    daysUntil = Math.floor(Math.abs((startTime.getTime() - now.getTime())/dayDuration))
+    daysUntil = ("00" + Math.floor(Math.abs((startTime.getTime() - now.getTime())/dayDuration))).slice(-3)
     now.setTime(now.getTime() + daysUntil * dayDuration)
 
     hoursUntil = ("0" + Math.floor(Math.abs((startTime.getTime() - now.getTime())/hourDuration))).slice(-2)
