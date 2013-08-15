@@ -2,42 +2,50 @@
   Welcome to GIT-A-Clue 2014
 
 
-.row{style: 'height: 250px'}
-  .span-6{style: 'padding-top: 20px;'}
-    %h3 GAC is Back! The game begins in
-    %div#counter
-    %span{style: "padding-left: 110px;"} Days
-    %span{style: "padding-left: 80px;"} Hours
-    %span{style: "padding-left: 55px;"} Minutes
-    %span{style: "padding-left: 55px;"} Seconds
+.row
   .span-6
-    %ul#clock.med
-      /%li#sec
-      %li#min
-      %li#hour
+    .row
+      .span-6{style: 'padding-top: 20px; min-width: 555px'}
+        %h3 GAC is Back! The game begins in
+        %div#counter
+        %span{style: "padding-left: 110px;"} Days
+        %span{style: "padding-left: 80px;"} Hours
+        %span{style: "padding-left: 55px;"} Minutes
+        %span{style: "padding-left: 55px;"} Seconds
+      .span-6
+        %ul#clock.med
+          /%li#sec
+          %li#min
+          %li#hour
 
-.row
-  .span-12
-    %h3 Learn more about GAC
-.row
-  .span-6
-    = link_to page_path('history') do
-      %img{class: 'icon-white', src: asset_path('glyphicons/074_cup.png')}
-      About
-    %br
-    %br
-    = link_to page_path('rules') do
-      %img{class: 'icon-white', src: asset_path('glyphicons/071_book.png')}
-      Rules
-    %br
-    %br
-    = link_to 'https://www.facebook.com/GitAClue2014', style: 'line-height: 2em' do
-      = image_tag 'facebook-f-512.png', size: '25x25'
-      Like us on Facebook to get the latest
-    %br
-    %br
-    %a{href: "https://twitter.com/GITaClue", class: "twitter-follow-button", :"data-show-count" => "false", :"data-size" => "large"} Follow @GITaClue
-    :javascript
-      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    .row
+      .span-12
+        %h3 Learn more about GAC
+    .row
+      .span-6
+        = link_to page_path('history') do
+          %img{class: 'icon-white', src: asset_path('glyphicons/074_cup.png')}
+          About
+        %br
+        %br
+        = link_to page_path('rules') do
+          %img{class: 'icon-white', src: asset_path('glyphicons/071_book.png')}
+          Rules
+        %br
+        %br
+        = link_to 'https://www.facebook.com/GitAClue2014', style: 'line-height: 2em' do
+          = image_tag 'facebook-f-512.png', size: '25x25'
+          Like us on Facebook to get the latest
+        %br
+        %br
+        %a{href: "https://twitter.com/GITaClue", class: "twitter-follow-button", :"data-show-count" => "false", :"data-size" => "large"} Follow @GITaClue
+        :javascript
+          !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
   .span-6
     %div{class: "fb-like-box", :"data-href" => "https://www.facebook.com/GitAClue2014", :"data-width" => 292, :"data-height" => 225, :"data-show-faces" => "true", :"data-header" => "true", :"data-stream" => false, :"data-show-border" => "true"}
+    %br
+    %br
+    %div{style: "width: 292px"}
+      %a{class: "twitter-timeline", :"data-dnt" => "true", :href => "https://twitter.com/GITaClue", :"data-widget-id" => "368084382419931136", style: "height: 250px; width: 292px"}Tweets by @GITaClue
+      :javascript
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
