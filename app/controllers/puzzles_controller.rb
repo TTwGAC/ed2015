@@ -1,5 +1,9 @@
 class PuzzlesController < ApplicationController
   before_filter :authenticate_player!
+  before_filter do
+    params[:puzzle] &&= puzzle_params
+  end
+
   authorize_resource
 
   # GET /puzzles

@@ -1,5 +1,9 @@
 class CheckinsController < ApplicationController
   before_filter :authenticate_player!
+  before_filter do
+    params[:checkin] &&= checkin_params
+  end
+
   authorize_resource
 
   # GET /checkins

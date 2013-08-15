@@ -1,4 +1,8 @@
 class TeamsController < ApplicationController
+  before_filter do
+    params[:team] &&= team_params
+  end
+
   load_and_authorize_resource
 
   # GET /teams

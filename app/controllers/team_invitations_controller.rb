@@ -1,5 +1,9 @@
 class TeamInvitationsController < ApplicationController
   before_filter :authenticate_player!
+  before_filter do
+    params[:team_invitation] &&= team_invitation_params
+  end
+
   authorize_resource
 
   def new

@@ -1,4 +1,8 @@
 class PlayersController < ApplicationController
+  before_filter do
+    params[:player] &&= player_params
+  end
+
   load_and_authorize_resource
 
   # GET /players
