@@ -3,7 +3,9 @@ class Player < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :omniauthable, :registerable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauth_providers => [:facebook, :twitter]
+         :recoverable, :rememberable, :trackable, :validatable, :omniauth_providers => [:facebook]
+  # When Twitter logins are fixed:
+  # :omniauth_providers => [:facebook, :twitter]
 
   belongs_to :team
   has_many :team_invitations
