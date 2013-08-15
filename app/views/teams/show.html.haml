@@ -2,7 +2,7 @@
   Team
   = @team.name
 
-- if current_player.team == @team
+- if signed_in? && current_player.team == @team
   %h4 You are a member of this team!
 %p
   - if @team.logo.present?
