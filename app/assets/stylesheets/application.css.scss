@@ -90,6 +90,46 @@ div {
   }
 }
 
+.column {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.provider_login_button {
+  width: 200px;
+  height: 25px;
+  color: #fff;
+  border-radius: 5px;
+  display: block;
+  margin-top: 15px;
+  line-height: 1.8em;
+  .logo {
+    height: 25px;
+    width: 25px;
+    float: left;
+    background-size: 25px 25px;
+    margin: 0 5px;
+  }
+}
+
+.provider_login_button.facebook {
+  background-color: $facebook_blue;
+  &:visited { color: #fff }
+  .logo {
+    background-image: url(asset-path('facebook-f-512.png', 'image'));
+  }
+}
+
+.provider_login_button.twitter {
+  background-color: $twitter_blue;
+  &:visited { color: #fff }
+  .logo {
+    background-image: url(asset-path('twitter-logo-300.png', 'image'));
+  }
+}
+
+
 #counter .cntSeparator {
   font-size: 54px;
   margin: 20px 7px;

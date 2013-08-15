@@ -1,10 +1,20 @@
-%h2 Sign in
-%div{class: "fb-login-button", :"data-width" => 200}
-= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-  .form-inputs
-    = f.input :email, :required => false, :autofocus => true
-    = f.input :password, :required => false
-    = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
-  .form-actions
-    = f.button :submit, "Sign in"
-= render "devise/shared/links"
+%h2 GAC Login
+
+.row
+  .span-4.column.column
+    = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+      .form-inputs
+        = f.input :email, :required => false, :autofocus => true
+        = f.input :password, :required => false
+        = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
+      .form-actions
+        = f.button :submit, "Sign in"
+  .span-4.column
+    - resource_class.omniauth_providers.each do |provider|
+      = link_to player_omniauth_authorize_path(provider), class: "provider_login_button #{provider.to_s}" do
+        %div.logo
+        = provider.to_s.titleize
+        Login
+      %br/
+  .span-4.column
+    = render "devise/shared/links"
