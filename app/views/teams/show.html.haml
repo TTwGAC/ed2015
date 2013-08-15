@@ -38,10 +38,13 @@
   %p
     Pending Invitations:
     %br
-    - @team.team_invitations.each do |invitation|
-      = invitation.email
-      = link_to 'Cancel', team_invitation_path(invitation.id), method: :delete, confirm: 'Are you sure you want to cancel this invitation?'
-      %br
+    - if @team.team_invitations.any?
+      - @team.team_invitations.each do |invitation|
+        = invitation.email
+        = link_to 'Cancel', team_invitation_path(invitation.id), method: :delete, confirm: 'Are you sure you want to cancel this invitation?'
+    - else
+      %span{style: 'font-style: italic'} None
+    %br
 
 - if can? :edit, @team
   %p
