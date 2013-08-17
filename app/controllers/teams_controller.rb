@@ -54,7 +54,7 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.save
-        event "create", :team, @team.id, params: team_params
+        event "create", :team, @team.id, description: "#{current_player.name} created team #{@team.name}"
         current_player.team = @team
         current_player.save!
 
@@ -80,7 +80,7 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.update_attributes(team_params)
-        event "update", :team, @team.id, params: team_params
+        event "update", :team, @team.id, description: "#{current_player.name} updated the information for team #{@team.name}"
         format.html { redirect_to @team, notice: 'Team was successfully updated.' }
         format.json { head :no_content }
       else

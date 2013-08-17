@@ -50,7 +50,7 @@ class PlayersController < ApplicationController
 
     respond_to do |format|
       if @player.save
-        event "create", :player, @player.id, params: player_params
+        event "create", :player, @player.id, description: "#{current_player.name} created player #{@player.name}"
         format.html { redirect_to @player, notice: 'Player was successfully created.' }
         format.json { render json: @player.to_json(only: public_attrs), status: :created, location: @player }
       else
@@ -67,7 +67,7 @@ class PlayersController < ApplicationController
 
     respond_to do |format|
       if @player.update_attributes(player_params)
-        event "update", :player, @player.id, params: player_params
+        event "update", :player, @player.id, description: "#{current_player.name} updated the information for #{@player.name}"
         format.html { redirect_to @player, notice: 'Player was successfully updated.' }
         format.json { head :no_content }
       else
