@@ -311,9 +311,10 @@ img.navicon {
 .event_log {
   width: 350px;
   height: 300px;
-  background-color: #eee;
+  background-color: #999;
   .item {
     padding: 3px;
+    margin-bottom: 1px;
     div.location {
       background-image: url(asset-path("glyphicons/060_compass.png", "image"));
       background-size: 14px;
