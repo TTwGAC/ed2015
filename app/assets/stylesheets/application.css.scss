@@ -297,6 +297,16 @@ img.navicon {
   }
 }
 
+.create {
+  @include background_gradient(to bottom, #efe, #dfd);
+}
+.update {
+  @include background_gradient(to bottom, #eef, #ddf);
+}
+.delete {
+  @include background_gradient(to bottom, #fee, #fdd);
+}
+
 
 .event_log {
   width: 250px;
@@ -304,7 +314,6 @@ img.navicon {
   background-color: #eee;
   .item {
     padding: 3px;
-    @include background_gradient(to bottom, #eee, #ddd);
     div.location {
       background-image: url(asset-path("glyphicons/060_compass.png", "image"));
       background-size: 14px;

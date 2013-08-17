@@ -5,7 +5,7 @@ jQuery ->
       success: (data, status, xhr) ->
         container = $(".event_log")
         for event in data.reverse()
-          log_item = $("<p class='item'>")
+          log_item = $("<p class='item #{event.action}'>")
           icon = switch event.subject
             when 'game'
               "<%= asset_path 'glyphicons/074_cup.png' %>"
@@ -25,7 +25,6 @@ jQuery ->
               "<%= asset_path 'glyphicons/060_compass.png' %>"
             when 'checkin'
               "<%= asset_path 'glyphicons/087_log_book.png' %>"
-          log_item.append($("<div class='#{event.action}'>"))
           log_item.append($("<img class='navicon' src='#{icon}'>"))
           log_item.append("&nbsp;#{event.description}&nbsp;")
           dateline = new Date(event.created_at)
