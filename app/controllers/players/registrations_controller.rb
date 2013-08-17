@@ -1,9 +1,18 @@
 class Players::RegistrationsController < Devise::RegistrationsController
+  before_filter :is_new_account?
   after_filter :add_account
+
+  def is_new_account?
+    @new_account = !resource.id
+  end
 
   def add_account
     if resource.persisted? # user is created successfuly
-      event "create", :player, resource.id, description: "#{resource.name} registered as a new player"
+      if @new_account
+        event "create", :player, resource.id, description: "#{resource.name} registered as a new player"
+      else
+        event "update", :player, resource.id, description: "#{resource.name} updated his information"
+      end
     end
   end
   protected :add_account
