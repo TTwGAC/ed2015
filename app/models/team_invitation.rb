@@ -2,6 +2,8 @@ class TeamInvitation < ActiveRecord::Base
   belongs_to :team
   belongs_to :player
   before_save :create_token
+  delegate :name, to: :team, prefix: true
+  delegate :name, to: :player, prefix: true
 
   def create_token
     self.token ||= SecureRandom.hex(12)

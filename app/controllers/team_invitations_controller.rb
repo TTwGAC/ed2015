@@ -17,7 +17,7 @@ class TeamInvitationsController < ApplicationController
     invite_params = {email: params[:team_invitation][:email], player: current_player, team: current_player.team}
     @ti = TeamInvitation.new invite_params
     if @ti.save
-      event "create", :team_invitation, nil, description: "#{current_player.name} invited #{invite_params[:email]} to join team #{invite_params[:team].name}"
+      event "create", :team_invitation, @ti.id, description: "#{current_player.name} invited #{invite_params[:email]} to join team #{invite_params[:team].name}"
       mailer = TeamMailer.invitation_to_join current_player, current_player.team, invite_params[:email]
       mailer.deliver
       redirect_to team_path(current_player.team)
@@ -30,7 +30,7 @@ class TeamInvitationsController < ApplicationController
   def destroy
     ti = TeamInvitation.find params[:id]
     ti.delete
-    event "delete", :team_invitation, nil, description: "#{current_player.name} deleted the invitation to #{invite_params[:email]} to join team #{invite_params[:team].name}"
+    event "delete", :team_invitation, ti.id, description: "#{current_player.name} deleted the invitation for #{ti.email} to join team #{ti.team_name}"
     redirect_to team_path ti.team_id
   end
 

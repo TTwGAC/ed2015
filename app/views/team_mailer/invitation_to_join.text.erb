@@ -3,7 +3,7 @@ You have been invited to join team <%= @team.name %>
 A member of the team, <%= @player.name %>, has invited you to join <%= @team.name %>!
 
 To join the team, simply click on this link:
-<%= url_for "#{new_join_attempt_path}/#{@team.token}", only_path: false %>
+<%= new_join_attempt_url token: @team.token %>
 
 Having trouble with the link? You can also use this token to join the team:
 <%= @team.token %>
