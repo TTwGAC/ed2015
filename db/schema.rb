@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130728204229) do
+ActiveRecord::Schema.define(:version => 20130816234125) do
 
   create_table "checkins", :force => true do |t|
     t.datetime "timestamp"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(:version => 20130728204229) do
     t.datetime "updated_at",  :null => false
     t.integer  "team_id"
     t.integer  "player_id"
+  end
+
+  create_table "events", :force => true do |t|
+    t.integer  "player_id",   :null => false
+    t.string   "subject",     :null => false
+    t.integer  "subject_id"
+    t.string   "action",      :null => false
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "locations", :force => true do |t|
