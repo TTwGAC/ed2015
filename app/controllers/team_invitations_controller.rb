@@ -4,7 +4,7 @@ class TeamInvitationsController < ApplicationController
     params[:team_invitation] &&= team_invitation_params
   end
 
-  authorize_resource
+  load_and_authorize_resource
 
   def new
     @team_invitation = TeamInvitation.new
