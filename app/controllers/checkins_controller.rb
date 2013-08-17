@@ -106,7 +106,7 @@ class CheckinsController < ApplicationController
 private
 
   def public_attrs
-    [:id, :name, :slogan, :description, :created_at, :updated_at] 
+    [:id, :name, :slogan, :description, :created_at, :updated_at]
   end
 
   def checkin_params
