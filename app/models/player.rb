@@ -39,7 +39,7 @@ class Player < ActiveRecord::Base
   def name
     name = "#{self.first_name} "
     name << %Q{"#{self.nickname}" } if self.nickname
-    name << self.last_name
+    name << self.last_name.to_s
     name
   end
 
