@@ -14,6 +14,30 @@
 @import "bootstrap";
 @import "bootstrap-responsive";
 
+@mixin rounded($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin rounded_corner($vert, $horiz, $radius) {
+  -webkit-border-#{$vert}-#{$horiz}-radius: $radius;
+  -moz-border-#{$vert}-#{$horiz}-radius: $radius;
+  -ms-border-#{$vert}-#{$horiz}-radius: $radius;
+  -o-border-#{$vert}-#{$horiz}-radius: $radius;
+  border-#{$vert}-#{$horiz}-radius: $radius;
+}
+
+@mixin background_gradient($direction, $start, $end) {
+  background-image: -webkit-linear-gradient($direction,$start,$end);
+  background-image: -moz-linear-gradient($direction,$start,$end);
+  background-image: -ms-linear-gradient($direction,$start,$end);
+  background-image: -o-linear-gradient($direction,$start,$end);
+  background-image: linear-gradient($direction,$start,$end);
+}
+
 $facebook_blue: #3c599b;
 $twitter_blue: #00aced;
 $nav_top: #fffcf0;
@@ -62,12 +86,17 @@ div {
 }
 
 .navbar-inner {
-  background-image: linear-gradient(to bottom, $nav_top, $nav_bot);
+  @include background_gradient("to bottom", $nav_top, $nav_bot);
 }
 
 #logo {
   height: 41px;
   width: 41px;
+}
+
+img.navicon {
+  height: 14px;
+  width: 14px;
 }
 
 .navbar {
@@ -78,7 +107,7 @@ div {
   }
 
   .nav li {
-    background-image: linear-gradient(to bottom, $nav_top, $nav_dark);
+    @include background_gradient(to bottom, $nav_top, $nav_dark);
     margin: 0 3px;
     border: 1px solid $nav_dark;
     a {
@@ -86,14 +115,48 @@ div {
     }
   }
   .nav li.admin-only {
-    background-image: linear-gradient(to bottom, $nav_admin_top, $nav_admin_bot);
+    @include background_gradient(to bottom, $nav_admin_top, $nav_admin_bot);
   }
 }
 
 .column {
   border: 1px solid #ccc;
-  border-radius: 5px;
+  @include rounded(5px);
   padding: 5px;
+}
+
+.box {
+  $radius: 5px;
+  @include rounded($radius);
+  border: 1px solid #ccc;
+  margin: 5px;
+
+  .box-header {
+    @include rounded_corner(top, left, $radius);
+    @include rounded_corner(top, right, $radius);
+    @include background_gradient(to bottom, $nav_top, $nav_bot);
+    padding: 5px;
+    .title {
+      // FONT SELECTION HERE
+    }
+  }
+
+  .box-content {
+
+  }
+
+}
+
+.scrollable {
+  overflow: auto;
+}
+
+.ico-round {
+  border-radius: 9999px;
+}
+
+.blue {
+  @include background_gradient(to bottom, #a5cae1, #7fb3d4)
 }
 
 .provider_login_button {
@@ -231,5 +294,27 @@ div {
     width: 5px;
     height: 100px;
     background-size: 5px 100px;
+  }
+}
+
+
+.event_log {
+  width: 250px;
+  height: 300px;
+  background-color: #eee;
+  .item {
+    padding: 3px;
+    @include background_gradient(to bottom, #eee, #ddd);
+    div.location {
+      background-image: url(asset-path("glyphicons/060_compass.png", "image"));
+      background-size: 14px;
+      background-repeat: no-repeat;
+      float: left;
+      padding: 5px;
+    }
+  }
+  .timeago {
+    font-size: 0.85em;
+    font-family: Serif;
   }
 }

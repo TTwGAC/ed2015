@@ -1,0 +1,35 @@
+jQuery ->
+  getEvents = ->
+    $.ajax "/events.json",
+      dataType: "json",
+      success: (data, status, xhr) ->
+        container = $(".event_log")
+        for event in data.reverse()
+          log_item = $("<p class='item'>")
+          icon = switch event.subject
+            when 'game'
+              "<%= asset_path 'glyphicons/074_cup.png' %>"
+            when 'rules'
+              "<%= asset_path 'glyphicons/071_book.png' %>"
+            when 'team'
+              "<%= asset_path 'glyphicons/043_group.png' %>"
+            when 'dashboard'
+              "<%= asset_path 'glyphicons/331_dashboard.png' %>"
+            when 'player'
+              "<%= asset_path 'glyphicons/003_user.png' %>"
+            when 'puzzle'
+              "<%= asset_path 'glyphicons/156_show_thumbnails.png' %>"
+            when 'location'
+              "<%= asset_path 'glyphicons/060_compass.png' %>"
+            when 'checkin'
+              "<%= asset_path 'glyphicons/087_log_book.png' %>"
+          log_item.append($("<div class='#{event.action}'>"))
+          log_item.append($("<img class='navicon' src='#{icon}'>"))
+          log_item.append("&nbsp;#{event.description}&nbsp;")
+          dateline = new Date(event.created_at)
+          log_item.append($("<abbr class='timeago' title=#{event.created_at}>#{dateline.toLocaleDateString()} #{dateline.toLocaleTimeString()}</span>"))
+          container.prepend log_item
+        $("abbr.timeago").timeago();
+
+  #setTimeout 'getEvents', 10000
+  getEvents()
