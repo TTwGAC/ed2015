@@ -18,6 +18,13 @@ game_control.save! validate: false
 observers = Team.new name: "Observers", slogan: '"I like to watch"'
 observers.save! validate: false
 
+system = Player.new first_name: 'System',
+  last_name: 'Player',
+  email: 'noreply@gac2014.com',
+  password: SecureRandom.hex(64)
+system.skip_confirmation!
+system.save!
+
 ben = Player.new first_name: "Ben",
   last_name: "Klang",
   nickname: "Leon",
