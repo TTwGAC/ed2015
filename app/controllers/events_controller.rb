@@ -9,7 +9,7 @@ class EventsController < ApplicationController
   # GET /teams.json
   def index
     params[:start] ||= 0
-    params[:limit] ||= 10
+    params[:limit] ||= 1000
     @events = Event.order("created_at DESC").limit(params[:limit]).offset(params[:start])
 
     respond_to do |format|
