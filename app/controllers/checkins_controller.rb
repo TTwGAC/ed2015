@@ -59,15 +59,6 @@ class CheckinsController < ApplicationController
 
     respond_to do |format|
       if @checkin.save
-        current_player.checkin = @checkin
-        current_player.save!
-
-        admins = Checkin.where(name: 'Game Control').first.players
-        admins.each do |admin|
-          mailer = CheckinMailer.notify_checkin_created current_player, @checkin, admin
-          mailer.deliver!
-        end
-
         event "create", :checkin, @checkin.id, params: checkin_params
         format.html { redirect_to @checkin, notice: 'Checkin was successfully created.' }
         format.json { render json: @checkin, status: :created, location: @checkin }
