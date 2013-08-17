@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     if extra[:params] && !extra.has_key?(:description)
       extra[:description] = params.collect{|k,v| "#{k}: #{v}" }.join(", ")
     end
-    current_player = Player.first unless signed_in?
-    Event.create! player: current_player, subject: subject, subject_id: extra[:subject_id], action: action, description: extra[:description]
+    player = signed_in? ? current_player : Player.first
+    Event.create! player: player, subject: subject, subject_id: extra[:subject_id], action: action, description: extra[:description]
   end
 end
