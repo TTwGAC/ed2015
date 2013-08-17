@@ -20,6 +20,7 @@ class JoinAttemptsController < ApplicationController
     params[:join_attempt][:player] = current_player
     @join_attempt = JoinAttempt.new params[:join_attempt]
     if @join_attempt.save!
+      event "create", :join_attempt, nil, description: "#{current_player.name} has joined team #{current_player.team_name}"
       flash[:notice] = "You have successfully joined this team!"
       redirect_to team_path(@join_attempt.team_id)
     else
@@ -29,9 +30,11 @@ class JoinAttemptsController < ApplicationController
   end
 
   def destroy
+    old_team = current_player.team_name
     observers = Team.where(name: 'Observers').first
     current_player.team = observers
     current_player.save!
+    event "create", :join_attempt, nil, description: "#{current_player.name} has left team #{current_player.team_name}"
     redirect_to root_path
   end
 end

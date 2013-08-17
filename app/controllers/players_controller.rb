@@ -50,6 +50,7 @@ class PlayersController < ApplicationController
 
     respond_to do |format|
       if @player.save
+        event "create", :player, @player.id, params: player_params
         format.html { redirect_to @player, notice: 'Player was successfully created.' }
         format.json { render json: @player.to_json(only: public_attrs), status: :created, location: @player }
       else
@@ -66,6 +67,7 @@ class PlayersController < ApplicationController
 
     respond_to do |format|
       if @player.update_attributes(player_params)
+        event "update", :player, @player.id, params: player_params
         format.html { redirect_to @player, notice: 'Player was successfully updated.' }
         format.json { head :no_content }
       else
@@ -80,6 +82,7 @@ class PlayersController < ApplicationController
   def destroy
     @player = Player.find(params[:id])
     @player.destroy
+    event "delete", :player, @player.id, description: "#{current_player.name} deleted player #{@player.name}"
 
     respond_to do |format|
       format.html { redirect_to players_url }

@@ -13,4 +13,11 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def event(action, subject, subject_id = nil, extra = {})
+    if extra[:params] && extra[:description].empty?
+      extra[:description] = params.collect{|k,v| "#{k}: #{v}" }.join(", ")
+    end
+    Event.create player: current_player, subject: subject, subject_id: extra[:subject_id], action: action, description: extra[:description]
+  end
 end

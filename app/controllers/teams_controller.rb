@@ -51,11 +51,10 @@ class TeamsController < ApplicationController
   # POST /teams.json
   def create
     @team = Team.new(team_params)
-    action = @team.id.nil? ? "create" : "update"
 
     respond_to do |format|
       if @team.save
-        Event.create player: current_player, subject: :team, subject_id: @team.id, action: action, description: team_params.to_s
+        event "create", :team, @team.id, params: team_params
         current_player.team = @team
         current_player.save!
 
@@ -81,6 +80,7 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.update_attributes(team_params)
+        event "update", :team, @team.id, params: team_params
         format.html { redirect_to @team, notice: 'Team was successfully updated.' }
         format.json { head :no_content }
       else
@@ -95,6 +95,7 @@ class TeamsController < ApplicationController
   def destroy
     @team = Team.find(params[:id])
     @team.destroy
+    event "delete", :team, @team.id, description: "#{current_player.name} deleted team #{@team.name}"
 
     respond_to do |format|
       format.html { redirect_to teams_url }

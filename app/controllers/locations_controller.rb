@@ -55,6 +55,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.save
+        event "create", :location, @location.id, params: location_params
         format.html { redirect_to @location, notice: 'Location was successfully created.' }
         format.json { render json: @location, status: :created, location: @location }
       else
@@ -71,6 +72,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.update_attributes(location_params)
+        event "update", :location, @location.id, params: location_params
         format.html { redirect_to @location, notice: 'Location was successfully updated.' }
         format.json { head :no_content }
       else
@@ -85,6 +87,7 @@ class LocationsController < ApplicationController
   def destroy
     @location = Location.find(params[:id])
     @location.destroy
+    event "delete", :location, @location.id, description: "#{current_player.name} deleted location #{@location.name}"
 
     respond_to do |format|
       format.html { redirect_to locations_url }

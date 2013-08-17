@@ -35,13 +35,15 @@ class CheckinsController < ApplicationController
     raise ActionController::RoutingError.new('No such location!') unless @location
 
     @checkin = Checkin.new player: current_player, team: current_player.team, location: @location
-    @checkin.save!
-    current_player.team_location = @location
-    current_player.save!
+    if @checkin.save!
+      event action, :checkin, @checkin.id, description: "#{current_player.name} on #{current_player.team_name} checked in at #{@location.name}"
+      current_player.team_location = @location
+      current_player.save!
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @checkin }
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @checkin }
+      end
     end
   end
 
@@ -66,6 +68,7 @@ class CheckinsController < ApplicationController
           mailer.deliver!
         end
 
+        event "create", :checkin, @checkin.id, params: checkin_params
         format.html { redirect_to @checkin, notice: 'Checkin was successfully created.' }
         format.json { render json: @checkin, status: :created, location: @checkin }
       else
@@ -82,6 +85,7 @@ class CheckinsController < ApplicationController
 
     respond_to do |format|
       if @checkin.update_attributes(checkin_params)
+        event "update", :checkin, @checkin.id, params: checkin_params
         format.html { redirect_to @checkin, notice: 'Checkin was successfully updated.' }
         format.json { head :no_content }
       else
@@ -96,6 +100,7 @@ class CheckinsController < ApplicationController
   def destroy
     @checkin = Checkin.find(params[:id])
     @checkin.destroy
+    event "delete", :checkin, @checkin.id, description: "#{current_player.name} deleted #{@checkin.player_name}'s checkin for team #{@checkin.team_name} to #{@checkin.location_name}"
 
     respond_to do |format|
       format.html { redirect_to checkins_url }

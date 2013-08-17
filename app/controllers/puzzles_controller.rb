@@ -53,6 +53,7 @@ class PuzzlesController < ApplicationController
 
     respond_to do |format|
       if @puzzle.save
+        event "create", :puzzle, @puzzle.id, params: puzzle_params
         format.html { redirect_to @puzzle, notice: 'Puzzle was successfully created.' }
         format.json { render json: @puzzle, status: :created, location: @puzzle }
       else
@@ -69,6 +70,7 @@ class PuzzlesController < ApplicationController
 
     respond_to do |format|
       if @puzzle.update_attributes(puzzle_params)
+        event "update", :puzzle, @puzzle.id, params: puzzle_params
         format.html { redirect_to @puzzle, notice: 'Puzzle was successfully updated.' }
         format.json { head :no_content }
       else
@@ -83,6 +85,7 @@ class PuzzlesController < ApplicationController
   def destroy
     @puzzle = Puzzle.find(params[:id])
     @puzzle.destroy
+    event "delete", :puzzle, @puzzle.id, description: "#{current_player.name} deleted puzzle #{@puzzle.name}"
 
     respond_to do |format|
       format.html { redirect_to puzzles_url }
