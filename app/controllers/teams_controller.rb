@@ -51,9 +51,11 @@ class TeamsController < ApplicationController
   # POST /teams.json
   def create
     @team = Team.new(team_params)
+    action = @team.id.nil? ? "create" : "update"
 
     respond_to do |format|
       if @team.save
+        Event.create player: current_player, subject: :team, subject_id: @team.id, action: action, description: team_params.to_s
         current_player.team = @team
         current_player.save!
 
