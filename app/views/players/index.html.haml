@@ -22,6 +22,3 @@
         = link_to 'Show', player
         = link_to('Edit', edit_player_path(player)) if can? :edit, player
         = link_to('Destroy', player, method: :delete, data: { confirm: 'Are you sure?' }) if can? :delete, player
-%br/
-- if can? :create, Player
-  = link_to 'New Player', new_player_path
