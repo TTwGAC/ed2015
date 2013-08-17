@@ -29,7 +29,7 @@
   - @team.players.each do |player|
     = link_to player.name, player
     %br
-  - if can? :edit, @team
+  - if can?(:edit, @team) && @team.name != 'Observers'
     = link_to 'Invite a player to this team', new_team_invitation_path
 
 - if can? :edit, @team
@@ -44,15 +44,16 @@
       %span{style: 'font-style: italic'} None
     %br
 
-- if can? :edit, @team
-  %p
-    Secret Token:
-    = @team.token
+- unless @team.name == 'Observers'
+  - if can? :edit, @team
+    %p
+      Secret Token:
+      = @team.token
 
-- if can? :edit, @team
-  = link_to edit_team_path(@team), class: 'btn' do
-    %img{class: 'icon-white', src: asset_path('glyphicons/030_pencil.png')}
-    Edit Team
-  = link_to join_attempts_path, :method => :delete, :confirm => 'Are you sure you want to leave this team?', class: 'btn' do
-    %img{class: 'icon-white', src: asset_path('glyphicons/199_ban.png')}
-    Leave This Team
+  - if can? :edit, @team
+    = link_to edit_team_path(@team), class: 'btn' do
+      %img{class: 'icon-white', src: asset_path('glyphicons/030_pencil.png')}
+      Edit Team
+    = link_to join_attempts_path, :method => :delete, :confirm => 'Are you sure you want to leave this team?', class: 'btn' do
+      %img{class: 'icon-white', src: asset_path('glyphicons/199_ban.png')}
+      Leave This Team
