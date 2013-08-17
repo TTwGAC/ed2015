@@ -35,6 +35,10 @@
             %b{class: 'caret'}
           %ul{class: 'dropdown-menu'}
             %li
+              = link_to page_path('pregame_dashboard') do
+                %img{class: 'icon-white', src: asset_path('glyphicons/331_dashboard.png')}
+                Pre-Game Dashboard
+            %li
               = link_to players_path do
                 %img{class: 'icon-white', src: asset_path('glyphicons/003_user.png')}
                 Players
