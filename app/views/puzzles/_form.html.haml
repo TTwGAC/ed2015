@@ -7,3 +7,11 @@
     = f.hidden_field :document_cache
   .form-actions
     = f.button :submit
+
+#new_location.modal.hide.fade{:tabindex => "-1"}
+  .modal-header
+    %button.close{"data-dismiss" => "modal", type: 'button'} &times;
+    %h3.modal-title New Location
+  .modal-body
+    .modal-body-content
+      = render :template => 'locations/_form', locals: {remote: true}

@@ -32,6 +32,7 @@ class PuzzlesController < ApplicationController
   # GET /puzzles/new.json
   def new
     @puzzle = Puzzle.new
+    @location = Location.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -99,6 +100,6 @@ private
   # params.require(:person).permit(:name, :age)
   # Also, you can specialize this method with per-user checking of permissible attributes.
   def puzzle_params
-    params.require(:puzzle).permit(:name, :document)
+    params.require(:puzzle).permit(:name, :document, :location_id)
   end
 end
