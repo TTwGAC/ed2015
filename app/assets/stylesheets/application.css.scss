@@ -277,6 +277,10 @@ img.navicon {
   width: 200px;
   height: 200px;
   background-size: 200px 200px;
+  background: url(asset-path("clockface-med.png", "image"));
+  #sec { background: url(asset-path("clock-sec-med.png", "image")); }
+  #min { background: url(asset-path("clock-min-med.png", "image")); }
+  #hour { background: url(asset-path("clock-hour-med.png", "image")); }
   #sec, #min, #hour {
     left: 95px;
     width: 10px;
