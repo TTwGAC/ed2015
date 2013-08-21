@@ -40,6 +40,7 @@
       - @team.team_invitations.each do |invitation|
         = invitation.email
         = link_to 'Cancel', team_invitation_path(invitation.id), method: :delete, confirm: 'Are you sure you want to cancel this invitation?'
+        %br
     - else
       %span{style: 'font-style: italic'} None
     %br
