@@ -71,4 +71,5 @@ group :development do
   gem 'factory_girl_rails'
   gem 'guard-rspec'
   gem "letter_opener"
+  gem 'terminal-notifier-guard'
 end
