@@ -16,4 +16,13 @@ module ApplicationHelper
     content_for(:head) { javascript_include_tag(*files) }
   end
 
+  def flash_class(level)
+    case level
+      when :notice then "alert alert-info"
+      when :success then "alert alert-success"
+      when :warning then "alert"
+      when :error then "alert alert-error"
+      when :alert then "alert alert-error"
+    end
+  end
 end
