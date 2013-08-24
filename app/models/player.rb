@@ -3,9 +3,7 @@ class Player < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :omniauthable, :registerable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauth_providers => [:facebook]
-  # When Twitter logins are fixed:
-  # :omniauth_providers => [:facebook, :twitter]
+         :recoverable, :rememberable, :trackable, :validatable, :omniauth_providers => [:facebook, :twitter]
 
   belongs_to :team
   has_many :team_invitations
@@ -41,57 +39,6 @@ class Player < ActiveRecord::Base
     name << %Q{"#{self.nickname}" } if self.nickname
     name << self.last_name.to_s
     name
-  end
-
-  class << self
-    def find_or_create_for_facebook_oauth(auth, signed_in_resource = nil)
-      credentials = {
-        facebook_uid: auth.uid,
-        facebook_token: auth.credentials.token
-      }
-      info = {
-        email: auth.info.email,
-        first_name: auth.extra.raw_info.first_name,
-        last_name: auth.extra.raw_info.last_name,
-      }
-      find_or_create({facebook_uid: auth.uid}, credentials, info)
-    end
-
-    def find_or_create_for_twitter_oauth(auth, signed_in_resource = nil)
-      credentials = {
-        twitter_uid: auth.uid,
-        twitter_token: auth.credentials.token,
-        twitter_secrent: auth.credentials.secrent
-      }
-      info = {
-        twitter_handle: auth.info.nickname
-      }
-      find_or_create({twitter_uid: auth.uid}, credentials, info)
-    end
-
-    def find_or_create(locator, credentials, info)
-      player = Player.where(locator).first
-      unless player
-        player = Player.where(email: info[:email]).first if info[:email]
-
-        if player
-          # Link the existing player to this account
-          credentials.keys.each do |key|
-            player[key] = credentials[key]
-          end
-          info.keys.each do |key|
-            # Prefer info already in our database
-            player[key] ||= info[key]
-          end
-        else
-          # Create a new Player
-          player = Player.new({password: Devise.friendly_token}.merge(info))
-          player.skip_confirmation!
-          player.save
-        end
-      end
-      player
-    end
   end
 end
 

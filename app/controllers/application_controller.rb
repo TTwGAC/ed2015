@@ -23,7 +23,10 @@ class ApplicationController < ActionController::Base
     Event.create! player: player, subject: subject, subject_id: subject_id, action: action, description: extra[:description]
   end
 
-  def save_thirdparty_creds(service)
+  def save_thirdparty_creds(player, session)
+    return unless session.has_key? 'auth_service'
+    service = session['auth_service']
+    return unless session[service]
     credentials = session[service][:credentials]
     info        = session[service][:info]
 
@@ -36,6 +39,12 @@ class ApplicationController < ActionController::Base
       # Prefer info already in our database
       player[key] ||= info[key]
     end
+    player.save!
+
+    session.delete(:auth_service)
+    session.delete(service)
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|
       u.permit :first_name, :last_name, :email, :nickname, :password, :password_confirmation
