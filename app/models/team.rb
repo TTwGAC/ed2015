@@ -47,5 +47,6 @@ end
 #  token       :string(255)
 #  phone       :string(255)
 #  paid        :boolean
+#  location_id :integer
 #
 
