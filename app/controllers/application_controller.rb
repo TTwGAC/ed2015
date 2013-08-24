@@ -21,4 +21,19 @@ class ApplicationController < ActionController::Base
     player = signed_in? ? current_player : Player.first
     Event.create! player: player, subject: subject, subject_id: subject_id, action: action, description: extra[:description]
   end
+
+  def save_thirdparty_creds(service)
+    credentials = session[service][:credentials]
+    info        = session[service][:info]
+
+    # Link the existing player to this account
+    credentials.keys.each do |key|
+      player[key] = credentials[key]
+    end
+
+    info.keys.each do |key|
+      # Prefer info already in our database
+      player[key] ||= info[key]
+    end
+  end
 end
