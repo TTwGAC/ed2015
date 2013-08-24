@@ -17,7 +17,7 @@ gem 'simple_form'
 gem 'strong_parameters'
 
 # Authentication
-gem 'devise', '~> 3.1.0.rc2'
+gem 'devise', '~> 3.0.0'
 gem 'cancan'
 gem 'omniauth'
 gem 'omniauth-twitter'

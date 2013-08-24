@@ -37,10 +37,11 @@ class ApplicationController < ActionController::Base
       player[key] ||= info[key]
     end
   def configure_permitted_parameters
-    # :email, :password, :password_confirmation allowed by default in Devise
-    [:first_name, :last_name, :nickname].each do |param|
-      devise_parameter_sanitizer.for(:sign_up) << param
-      devise_parameter_sanitizer.for(:account_update) << param
+    devise_parameter_sanitizer.for(:sign_up) do |u|
+      u.permit :first_name, :last_name, :email, :nickname, :password, :password_confirmation
+    end
+    devise_parameter_sanitizer.for(:account_update) do |u|
+      u.permit :first_name, :last_name, :email, :nickname, :password, :password_confirmation, :current_password
     end
   end
 end
