@@ -180,7 +180,7 @@ img.navicon {
   background-color: $facebook_blue;
   &:visited { color: #fff }
   .logo {
-    background-image: url(asset-path('facebook-f-512.png', 'image'));
+    background-image: url(asset-path('facebook-f-25.png', 'image'));
   }
 }
 
@@ -188,7 +188,7 @@ img.navicon {
   background-color: $twitter_blue;
   &:visited { color: #fff }
   .logo {
-    background-image: url(asset-path('twitter-logo-300.png', 'image'));
+    background-image: url(asset-path('twitter-logo-25.png', 'image'));
   }
 }
 
