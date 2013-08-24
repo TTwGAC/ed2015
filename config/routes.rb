@@ -16,8 +16,7 @@ Gac2014::Application.routes.draw do
 
   devise_for :players, :controllers => {
                          :omniauth_callbacks => "players/omniauth_callbacks",
-                         :registrations => "players/registrations",
-                         :passwords => "players/passwords"
+                         :registrations => "players/registrations"
                        }
   resources :players
 

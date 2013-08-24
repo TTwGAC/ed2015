@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_filter :require_player_info
+  before_filter :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery
 
   def current_user
@@ -34,6 +35,12 @@ class ApplicationController < ActionController::Base
     info.keys.each do |key|
       # Prefer info already in our database
       player[key] ||= info[key]
+    end
+  def configure_permitted_parameters
+    # :email, :password, :password_confirmation allowed by default in Devise
+    [:first_name, :last_name, :nickname].each do |param|
+      devise_parameter_sanitizer.for(:sign_up) << param
+      devise_parameter_sanitizer.for(:account_update) << param
     end
   end
 end
