@@ -72,4 +72,5 @@ group :development do
   gem 'guard-rspec'
   gem "letter_opener"
   gem 'terminal-notifier-guard'
+  gem 'dotenv'
 end
