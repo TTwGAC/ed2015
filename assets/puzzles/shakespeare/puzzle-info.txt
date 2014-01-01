@@ -1,0 +1,15 @@
+Link info:
+http://bit.ly/1amzjY1
+
+Redirects to
+
+http://gac2014.com/redirect/spl_puzzle
+
+Which can redirect anywhere.
+
+The program should then output "1amzjY1"
+
+ASCII decimal equivalents:
+
+49 97 109 122 106 89 49
+
