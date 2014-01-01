@@ -31,11 +31,13 @@ class DudeExcellent
       
       t = async do
         @player2 = dial @destination
+        sleep 2
         @player2.say "Dude! You are player 2! Excellent!"
         @player2.say "Hang tight while we get all the players"
       end
 
       @player1 = dial @source
+      sleep 2
       @player1.say "Excellent! You are player 1! Dude!"
       @player1.say "Hang tight while we get all the players"
       t.join
