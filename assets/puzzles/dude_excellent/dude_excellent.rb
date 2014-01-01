@@ -8,10 +8,10 @@ class DudeExcellent
   def show(message)
     log "********* GAME: #{message}"
   end
-  
-  
+
+
   def main_incoming
-  
+
     # We have an inbound connection
     case $currentCall.channel
     when "VOICE"
@@ -24,11 +24,11 @@ class DudeExcellent
       # We have an inbound text
       @source      = validate_number $currentCall.callerID
       @destination = validate_number $currentCall.initialText
-  
+
       reject_invalid_sms
-      
+
       show "Validated numbers: From #{@source} to #{@destination}"
-      
+
       t = async do
         @player2 = dial @destination
         sleep 2
@@ -49,7 +49,7 @@ class DudeExcellent
         @player2.hangup
         throw :done
       end
-      
+
       if @player2.nil?
         @player1.say "Bummer. We couldn't get the other player.  Frownie face."
         @player1.hangup
@@ -95,7 +95,7 @@ class DudeExcellent
       sync_say "Air Guitar!"
 
     end
-  
+
   end
 
   def sync_say(p1string, p2string = nil)
@@ -121,7 +121,7 @@ class DudeExcellent
     event.value
   end
 
-  
+
   ##
   # Attempt to ensure we have a valid NANPA number
   def validate_number(input)
@@ -131,8 +131,8 @@ class DudeExcellent
     digits = nil unless digits.length == 12
     digits
   end
-  
-  
+
+
   def reject_invalid_sms
     message = nil
 
@@ -160,7 +160,7 @@ class DudeExcellent
     end
   end
 end
-  
+
 if $currentCall
   game = DudeExcellent.new self
   catch :done do
