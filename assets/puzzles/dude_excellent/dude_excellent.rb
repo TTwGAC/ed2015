@@ -56,6 +56,10 @@ class DudeExcellent
         throw :done
       end
 
+      sync_say "Player 1. Whenever you hear the word dude, you should repeat it out loud. Player 2. Whenever you hear the word excellent, you should repeat it out loud.  Each player should only repeat their own word.  Whenever you hear the air guitar, you should make the appropriate motion.  Everybody ready? Ok, here we go."
+
+      sleep 1
+
       sync_say "Excellent"
       sleep 1
       sync_say "Dude"
@@ -63,6 +67,33 @@ class DudeExcellent
       sync_say "Excellent"
       sleep 1
       sync_say "Air Guitar!"
+
+      sleep 1
+
+      @player1.say "Dude"
+      sleep 1
+      @player1.say "Dude"
+      sleep 1
+      @player2.say "Excellent"
+      sleep 1
+      @player1.say "Dude"
+      sleep 1
+      sync_say "Air Guitar!"
+
+      sleep 1
+
+      sync_say "Dude"
+      sleep 1
+      sync_say "Dude"
+      sleep 1
+      @player1.say "Dude"
+      sleep 1
+      sync_say "Dude"
+      sleep 1
+      @player2.say "Excellent"
+      sleep 1
+      sync_say "Air Guitar!"
+
     end
   
   end
