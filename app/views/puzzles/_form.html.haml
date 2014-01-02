@@ -3,7 +3,7 @@
   = f.error_notification
   .form-inputs
     = f.input :name
-    = f.input :location_id, collection: Location.find(:all)
+    = f.input :location_id, collection: Location.find(:all), label: "Puzzle Destination"
     = f.file_field :document
     = f.hidden_field :document_cache
   .form-actions
