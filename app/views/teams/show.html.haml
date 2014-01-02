@@ -1,3 +1,6 @@
+- unless @team.paid
+  - flash[:notice] = %{Complete your team's regstration! Pay the entrance fee (see below).}
+
 %h3
   Team
   = @team.name
@@ -11,6 +14,8 @@
   %p
     Status:
     = @team.paid ? 'Paid' : 'Not Paid'
+    - unless @team.paid
+      = link_to 'How to pay entrance fee', page_path('payments')
     - if @team.location
       | Last checked into
       = link_to @team.location_name, @team.location
