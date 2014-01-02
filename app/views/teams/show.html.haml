@@ -55,6 +55,7 @@
     = link_to edit_team_path(@team), class: 'btn' do
       %img{class: 'icon-white', src: asset_path('glyphicons/030_pencil.png')}
       Edit Team
-    = link_to join_attempts_path, :method => :delete, :confirm => 'Are you sure you want to leave this team?', class: 'btn' do
-      %img{class: 'icon-white', src: asset_path('glyphicons/199_ban.png')}
-      Leave This Team
+    - if current_player.team == @team
+      = link_to join_attempts_path, :method => :delete, :confirm => 'Are you sure you want to leave this team?', class: 'btn' do
+        %img{class: 'icon-white', src: asset_path('glyphicons/199_ban.png')}
+        Leave This Team
