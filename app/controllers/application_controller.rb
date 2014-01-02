@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to '/pages/access_denied', :alert => exception.message
+    redirect_to page_path('access_denied'), :alert => exception.message
   end
 
   def current_user
