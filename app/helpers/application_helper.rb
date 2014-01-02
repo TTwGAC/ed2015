@@ -1,3 +1,6 @@
+require 'uri'
+require 'cgi'
+
 module ApplicationHelper
 
   def display_base_errors resource
@@ -24,5 +27,29 @@ module ApplicationHelper
       when :error then "alert alert-error"
       when :alert then "alert alert-error"
     end
+  end
+
+  def youtube_embed(ids, options = {})
+    ids = Array(ids)
+    src =  URI.parse "http://www.youtube.com/embed"
+    params = {
+      'autoplay' => 0,
+      'origin' => 'http://gac2014.com'
+    }
+    case options[:type]
+    when :videolist
+      params['playlist'] = ids.join ","
+    when :playlist
+      params['list'] = ids.first
+      params['listType'] = 'playlist'
+    else
+      src.path << "/#{id.first}"
+    end
+
+    query = []
+    params.each_pair { |k,v| query << "#{CGI.escape k.to_s}=#{CGI.escape v.to_s}" }
+    src.query = query.join "&"
+
+    haml_tag :iframe, id: "ytplayer", type: "text/html", width: "640", height: "390", src: src.to_s, frameborder: "0"
   end
 end

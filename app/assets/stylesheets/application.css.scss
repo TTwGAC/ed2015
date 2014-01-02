@@ -70,6 +70,7 @@ pre {
 
 a {
   color: #000;
+  text-decoration: underline;
   &:visited {
     color: #666;
   }
@@ -104,6 +105,10 @@ img.navicon {
     padding: 0 20px;
     margin: 0;
     color: #000;
+  }
+
+  a {
+    text-decoration: none;
   }
 
   .nav li {
@@ -336,5 +341,11 @@ img.navicon {
 .rules {
   h3 { padding-left: 10px; }
   p { padding-left: 20px; }
+}
+
+.intro-text {
+  font-family: $gac_font;
+  font-size: 1.2em;
+  line-height: 1.5em;
 }
 
