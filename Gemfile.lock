@@ -107,7 +107,7 @@ GEM
       ruby-hmac
     formatador (0.2.4)
     geocoder (1.1.8)
-    gmaps4rails (1.5.6)
+    gmaps4rails (2.1.1)
     guard (1.8.0)
       formatador (>= 0.2.4)
       listen (>= 1.0.0)
