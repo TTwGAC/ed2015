@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to '/pages/access_denied', :alert => exception.message
+  end
+
   def current_user
     current_player
   end
