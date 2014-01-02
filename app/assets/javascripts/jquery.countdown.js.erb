@@ -42,7 +42,7 @@ jQuery.fn.countdown = function(userOptions)
     now.setTime(now.getTime() + minsUntil * minDuration)
 
     secsUntil = ("0" + Math.floor(Math.abs((startTime.getTime() - now.getTime())/secDuration))).slice(-2)
-    return daysUntil + ":" + hoursUntil + ":" + minsUntil + ":" + secsUntil
+    return daysUntil + "  " + hoursUntil + ":" + minsUntil + ":" + secsUntil
   }
 
   // Draw digits in given container
