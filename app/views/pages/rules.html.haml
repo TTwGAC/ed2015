@@ -1,6 +1,19 @@
 .rules
   %h2 Game Mechanics
 
+  %h3 Playing the Game
+  %p
+    %pre
+      = preserve do
+        :escaped
+          Do {
+            clueSite = SolveClue();
+            DriveTo(clueSite);
+            PickUpNextClue();
+          } While (CluesRemaining() > 0);
+
+          GoToEndOfGameParTAY();'
+
   %h3 Checking In
   %p
     Teams must check in at each clue site. A team is considered "checked in" when they have loaded the checkin URL. This URL will typically be found in the form of a QR code at each location. The official time used for all checkins and scoring purposes will be the time of the Game Control server.
@@ -20,11 +33,11 @@
 
   %h3 Team Size
   %p
-    Teams are limited to the number of seatbelts in the team vehicle.  Teams are limited to one vehicle.
+    Teams are limited to the number of seatbelts in the team vehicle, known as the Team Vehicle.  Teams are limited to one vehicle.
 
   %h3 Use the Buddy System
   %p
-    All members of a team must stay together. You may, of course, split up and run around like idiots upon reaching a clue site to find the clue packet, but you must travel as a group from clue site to clue site. Unless specifically directed by Game Control, splitting into two groups to go to different sites is not allowed.
+    All members of a team must travel in their Team Vehicle together. You may, of course, split up and run around like idiots upon reaching a clue site to find the clue packet, but you must travel as a group from clue site to clue site. Unless specifically directed by Game Control, splitting into two groups to go to different sites is not allowed.
 
   %h3 Required Items
   %p
