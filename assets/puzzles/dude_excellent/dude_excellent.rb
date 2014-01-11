@@ -1,6 +1,8 @@
 require 'thread'
 
 class DudeExcellent
+  HOSTED_AUDIO_PATH = 'http://hosting.tropo.com/49286/www/dude_excellent'
+
   def initialize(scope)
     @scope = scope
   end
@@ -60,39 +62,8 @@ class DudeExcellent
 
       sleep 1
 
-      sync_say "Excellent"
-      sleep 1
-      sync_say "Dude"
-      sleep 1
-      sync_say "Excellent"
-      sleep 1
-      sync_say "Air Guitar!"
+      sync_say "#{HOSTED_AUDIO_PATH}/player1.wav", "#{HOSTED_AUDIO_PATH}/player2.wav"
 
-      sleep 1
-
-      @player1.say "Dude"
-      sleep 1
-      @player1.say "Dude"
-      sleep 1
-      @player2.say "Excellent"
-      sleep 1
-      @player1.say "Dude"
-      sleep 1
-      sync_say "Air Guitar!"
-
-      sleep 1
-
-      sync_say "Dude"
-      sleep 1
-      sync_say "Dude"
-      sleep 1
-      @player1.say "Dude"
-      sleep 1
-      sync_say "Dude"
-      sleep 1
-      @player2.say "Excellent"
-      sleep 1
-      sync_say "Air Guitar!"
 
     end
 
