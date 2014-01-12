@@ -3,6 +3,7 @@
   .form-inputs
     = f.input :name
     = f.input :address
+    = f.input :cluster_id, collection: Cluster.find(:all)
     \- OR -
     = f.input :latitude
     = f.input :longitude

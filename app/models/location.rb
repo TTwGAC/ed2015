@@ -1,7 +1,9 @@
 class Location < ActiveRecord::Base
   has_many :puzzles
   has_many :teams
+  belongs_to :cluster
   before_save :get_token
+  delegate :name, :color, to: :cluster, prefix: true
   acts_as_gmappable :process_geocoding => :geocode?, :normalized_address => "address",
                     :lat => 'latitude', :lng => "longitude"
 

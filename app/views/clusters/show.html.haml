@@ -1,0 +1,19 @@
+%h1 Location Cluster
+%p#notice= notice
+%p
+  %b Name:
+  = @cluster.name
+%p
+  %b Order:
+  = @cluster.order
+%p
+  %b Color:
+  = image_tag "map_markers/#{@cluster.color}_MarkerA.png"
+= link_to 'Edit', edit_cluster_path(@cluster)
+|
+\#{link_to 'Back', clusters_path}
+
+%h3 Locations in this cluster:
+%p
+  - @cluster.locations.each do |loc|
+    = link_to loc.name, loc

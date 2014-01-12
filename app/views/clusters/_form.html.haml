@@ -1,0 +1,8 @@
+= simple_form_for(@cluster) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :name
+    = f.input :order
+    = f.input :color, collection: Cluster::COLORS
+  .form-actions
+    = f.button :submit
