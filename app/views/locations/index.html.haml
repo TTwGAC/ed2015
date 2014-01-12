@@ -1,25 +1,22 @@
 - javascript 'gmaps4rails.js'
 %h1 Listing locations
 %p
-  = gmaps4rails @locations_map_data
+  = gmaps4rails map_data(@locations)
 %table.table
-  %tr
-    %th Name
-    %th Address
-    %th Latitude
-    %th Longitude
-    %th Actions
-  - @locations.each do |location|
+  - @map_points.each_pair do |cluster, locations|
     %tr
-      %td= location.name
-      %td= location.address
-      %td= location.latitude
-      %td= location.longitude
-      %td
-        = link_to 'Show', location
-        |
-        = link_to 'Edit', edit_location_path(location)
-        |
-        = link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' }
+      %th{colspan: 2}
+        %h3
+          = link_to cluster.name, cluster
+          = marker_img cluster.color, ''
+    %tr
+      %th Name
+      %th Address
+    - locations.each_pair do |letter, location|
+      %tr
+        %td
+          = marker_img cluster.color, letter
+          = link_to location.name, location
+        %td= location.address
 %br/
 = link_to 'New Location', new_location_path

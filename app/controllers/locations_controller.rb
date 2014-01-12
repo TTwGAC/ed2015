@@ -14,15 +14,7 @@ class LocationsController < ApplicationController
     map_points = {}
 
     respond_to do |format|
-      format.html do
-        @locations_map_data = @locations.to_gmaps4rails do |loc, marker|
-          color = loc.cluster ? loc.cluster_color : "red"
-          map_points[color] = (map_points[color] ? map_points[color].next : 'A')
-          marker.infowindow render_to_string partial: '/locations/infowindow', locals: {loc: loc}
-          marker.json name: loc.name, address: loc.address, picture: asset_path("map_markers/#{color}_Marker#{map_points[color]}.png")
-        end
-        render html: @locations
-      end
+      format.html
       format.json { render json: @locations }
     end
   end
