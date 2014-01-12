@@ -8,7 +8,7 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.where "name NOT IN ('Game Control', 'Observers')"
+    @teams = Team.where("name NOT IN ('Game Control', 'Observers')").order('name')
 
     respond_to do |format|
       format.html # index.html.erb
