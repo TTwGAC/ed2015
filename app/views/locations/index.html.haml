@@ -3,7 +3,9 @@
 %p
   = gmaps4rails map_data(@locations)
 %table.table
-  - @map_points.each_pair do |cluster, locations|
+  - order = @map_points.keys.sort { |a,b| a.order <=> b.order }
+  - order.each do |cluster|
+    - locations = @map_points[cluster]
     %tr
       %th{colspan: 2}
         %h3
