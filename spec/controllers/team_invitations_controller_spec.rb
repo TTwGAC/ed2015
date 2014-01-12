@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe TeamInvitationsController do
+describe TeamInvitationsController, focus: true do
+  include ControllerSpecMixin
+
   before :each do
-    @request.env["devise.mapping"] = Devise.mappings[:player]
-    @current_player = FactoryGirl.build(:player)
-    @current_player.confirm!
-    sign_in @current_player
+    sign_in_as :player
   end
+
 
   it %q{should assign the invitation to the current player and the current player's team} do
     params = {:email => 'foo@xyz.com', :player => @current_player, :team => @current_player.team}

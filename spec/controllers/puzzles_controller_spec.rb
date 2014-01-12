@@ -30,6 +30,12 @@ describe PuzzlesController do
   # PuzzlesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  include ControllerSpecMixin
+
+  before :each do
+    sign_in_as :admin
+  end
+
   describe "GET index" do
     it "assigns all puzzles as @puzzles" do
       puzzle = Puzzle.create! valid_attributes

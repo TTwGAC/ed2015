@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :observer do
+  factory :observer, class: Player do
     id 997
     first_name "Wanna"
     last_name  "Be"
@@ -19,7 +19,7 @@ FactoryGirl.define do
     team { FactoryGirl.build(:team) }
   end
 
-  factory :admin do
+  factory :admin, class: Player do
     id 999
     first_name "Tarzan"
     last_name  "Jungle"

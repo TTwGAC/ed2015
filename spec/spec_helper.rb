@@ -41,6 +41,10 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
+  # Limit spec run to certain tests when requested
+  config.filter_run :focus => true
+  config.run_all_when_everything_filtered = true
+
   config.before(:suite) do
     require "#{Rails.root}/db/seeds.rb"
   end
