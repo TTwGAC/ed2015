@@ -12,7 +12,7 @@ module LocationsHelper
 
   def map_data(locations)
     @map_points ||= {}
-    default_cluster = Cluster.new(name: 'Unclustered', color: 'red', order: 0)
+    default_cluster = Cluster.new(name: 'Unclustered', color: 'red', sequence: 0)
     locations.to_gmaps4rails do |loc, marker|
       cluster = loc.cluster || default_cluster
       @map_points[cluster] ||= {}

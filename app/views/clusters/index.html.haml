@@ -2,14 +2,15 @@
 %table
   %tr
     %th Name
-    %th Order
-    %th
+    %th Sequence
+    %th Color
     %th
     %th
   - @clusters.each do |cluster|
     %tr
       %td= cluster.name
-      %td= cluster.order
+      %td= cluster.sequence
+      %td= cluster.color.capitalize
       %td= link_to 'Show', cluster
       %td= link_to 'Edit', edit_cluster_path(cluster)
       %td= link_to 'Destroy', cluster, method: :delete, data: { confirm: 'Are you sure?' }

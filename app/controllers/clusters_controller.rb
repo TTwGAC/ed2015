@@ -9,7 +9,7 @@ class ClustersController < ApplicationController
   # GET /clusters
   # GET /clusters.json
   def index
-    @clusters = Cluster.find(:all, order: '`order`')
+    @clusters = Cluster.find(:all, order: 'sequence')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -94,6 +94,6 @@ class ClustersController < ApplicationController
     # params.require(:person).permit(:name, :age)
     # Also, you can specialize this method with per-user checking of permissible attributes.
     def cluster_params
-      params.require(:cluster).permit(:name, :order, :color)
+      params.require(:cluster).permit(:name, :sequence, :color)
     end
 end
