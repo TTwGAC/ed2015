@@ -11,7 +11,7 @@ module LocationsHelper
         'A'
       end
       @map_points[cluster][letter] = loc
-      #marker.infowindow render_to_string partial: '/locations/infowindow', locals: {loc: loc}
+      marker.infowindow render(partial: '/locations/infowindow', locals: {loc: loc})
       marker.json name: loc.name, address: loc.address, picture: marker_img_path(cluster.color, letter)
     end
   end
