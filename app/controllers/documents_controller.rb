@@ -2,7 +2,8 @@ class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
   def index
-    @documents = Document.all
+    @documentable = find_documentable
+    @documents = @documentable.documents
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,11 +41,12 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-    @document = Document.new(document_params)
+    @documentable = find_documentable
+    @document = @documentable.documents.build(document_params)
 
     respond_to do |format|
       if @document.save
-        format.html { redirect_to @document, notice: 'Document was successfully created.' }
+        format.html { redirect_to id: nil, notice: 'Document was successfully created.' }
         format.json { render json: @document, status: :created, location: @document }
       else
         format.html { render action: "new" }
@@ -88,5 +90,14 @@ private
   # Also, you can specialize this method with per-user checking of permissible attributes.
   def document_params
     params.require(:document).permit(:description, :name, :private)
+  end
+
+  def find_documentable
+    params.each do |name, value|
+      if name =~ /(.+)_id$/
+        return $1.classify.constantize.find(value)
+      end
+    end
+    nil
   end
 end

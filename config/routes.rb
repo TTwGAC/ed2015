@@ -8,7 +8,9 @@ Gac2014::Application.routes.draw do
   resources :puzzles
 
 
-  resources :locations
+  resources :locations do
+    resources :documents
+  end
 
 
   resources :checkins

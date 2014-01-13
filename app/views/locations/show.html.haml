@@ -25,3 +25,15 @@
 = link_to 'Edit', edit_location_path(@location)
 |
 = link_to 'Delete', @location, method: :delete, data: { confirm: 'Really delete this location?' }
+
+= simple_form_for [@documentable, Document.new] do |f|
+  %p
+    = f.error_notification
+    .form-inputs
+      = f.input :name
+      = f.input :description
+      = f.input :private
+      = f.file_field :file
+      = f.hidden_field :file_cache
+    .form-actions
+      = f.button :submit

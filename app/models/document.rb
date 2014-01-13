@@ -7,5 +7,5 @@ class Document < ActiveRecord::Base
     self.token ||= SecureRandom.hex(16)
   end
 
-  mount_uploader :document, DocumentUploader
+  mount_uploader :file, DocumentUploader
 end
