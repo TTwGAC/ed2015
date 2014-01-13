@@ -1,0 +1,19 @@
+%h1 Listing documents
+%table
+  %tr
+    %th Name
+    %th Description
+    %th Private
+    %th
+    %th
+    %th
+  - @documents.each do |document|
+    %tr
+      %td= document.name
+      %td= document.description
+      %td= document.private
+      %td= link_to 'Show', document
+      %td= link_to 'Edit', edit_document_path(document)
+      %td= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Document', new_document_path
