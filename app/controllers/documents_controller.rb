@@ -81,12 +81,12 @@ class DocumentsController < ApplicationController
     end
   end
 
-  private
+private
 
-    # Use this method to whitelist the permissible parameters. Example:
-    # params.require(:person).permit(:name, :age)
-    # Also, you can specialize this method with per-user checking of permissible attributes.
-    def document_params
-      params.require(:document).permit(:description, :name, :private)
-    end
+  # Use this method to whitelist the permissible parameters. Example:
+  # params.require(:person).permit(:name, :age)
+  # Also, you can specialize this method with per-user checking of permissible attributes.
+  def document_params
+    params.require(:document).permit(:description, :name, :private)
+  end
 end
