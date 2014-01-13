@@ -1,6 +1,7 @@
 class Location < ActiveRecord::Base
   has_many :puzzles
   has_many :teams
+  has_many :documents, as: :documentable
   belongs_to :cluster
   before_save :get_token
   delegate :name, :color, to: :cluster, prefix: true

@@ -5,7 +5,7 @@ class CreateDocuments < ActiveRecord::Migration
       t.text :description
       t.string :token, null: false
       t.boolean :private
-
+      t.references :documentable, polymorphic: true
       t.timestamps
     end
   end

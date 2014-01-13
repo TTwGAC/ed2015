@@ -4,5 +4,8 @@
     = f.input :name
     = f.input :description
     = f.input :private
+    = f.hidden_field :documentable_id
+    = f.hidden_field :documentable_type
+    = f.hidden_field :document_cache
   .form-actions
     = f.button :submit
