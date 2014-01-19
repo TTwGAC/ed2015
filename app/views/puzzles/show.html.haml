@@ -2,11 +2,14 @@
 %p#notice= notice
 %h2
   = @puzzle.name
+
+= render partial: '/documents/list', locals: {documentable: @puzzle}
+
+%h3= "Location: #{@puzzle.location_name}"
 = render partial: '/locations/map', locals: {map_data: @puzzle.location.to_gmaps4rails}
 %p
   = render partial: '/locations/infowindow', locals: {loc: @puzzle.location}
-%p
-  = link_to 'Puzzle Document', @puzzle.document_url
+
 = link_to 'Edit', edit_puzzle_path(@puzzle)
 |
 = link_to 'Delete', @puzzle, method: :delete, data: { confirm: 'Really delete this puzzle?' }

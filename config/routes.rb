@@ -5,7 +5,9 @@ Gac2014::Application.routes.draw do
   resources :clusters
 
 
-  resources :puzzles
+  resources :puzzles do
+    resources :documents
+  end
 
 
   resources :locations do
