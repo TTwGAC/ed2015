@@ -11,8 +11,7 @@
   = image_tag "map_markers/#{@cluster.color}_MarkerA.png"
 = link_to 'Edit', edit_cluster_path(@cluster)
 |
-\#{link_to 'Back', clusters_path}
-
+= link_to 'Delete', @cluster, method: :delete, data: { confirm: 'Really delete this cluster?' }
 %h3 Locations in this cluster:
 %p
   - @cluster.locations.each do |loc|

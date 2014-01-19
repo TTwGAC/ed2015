@@ -6,7 +6,6 @@
     %th Slogan
     - if can? :manage, Team
       %th Paid?
-    %th Actions
   - @teams.each do |team|
     %tr
       %td= link_to team.name, team
@@ -14,9 +13,6 @@
       %td= team.slogan
       - if can? :manage, Team
         %td= team.paid ? "Yes" : "No"
-      %td
-        = link_to('Edit', edit_team_path(team)) if can? :edit, team
-        = link_to('Destroy', team, method: :delete, data: { confirm: 'Are you sure?' }) if can? :delete, team
 %br/
 - if can? :create, Team
   = link_to 'New Team', new_team_path

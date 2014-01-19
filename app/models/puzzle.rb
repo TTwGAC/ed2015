@@ -2,6 +2,7 @@ class Puzzle < ActiveRecord::Base
   belongs_to :location
   mount_uploader :document, PuzzleDocumentUploader
   before_save :get_token
+  delegate :name, to: :location, prefix: true
 
   def get_token
     self.token ||= SecureRandom.hex(16)

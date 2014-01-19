@@ -4,11 +4,10 @@
     %th Name
     %th Email
     %th Team
-    %th Actions
   - @players.each do |player|
     %tr
       %td
-        = player.name
+        = link_to player.name, player
       - if can? :edit, player
         %td= player.email
       - else
@@ -18,7 +17,3 @@
       %td
         %a{href: "/teams/#{player.team_id}"}
           = player.team_name
-      %td
-        = link_to 'Show', player
-        = link_to('Edit', edit_player_path(player)) if can? :edit, player
-        = link_to('Destroy', player, method: :delete, data: { confirm: 'Are you sure?' }) if can? :delete, player

@@ -9,4 +9,4 @@
   = link_to 'Puzzle Document', @puzzle.document_url
 = link_to 'Edit', edit_puzzle_path(@puzzle)
 |
-\#{link_to 'Back', puzzles_path}
+= link_to 'Delete', @puzzle, method: :delete, data: { confirm: 'Really delete this puzzle?' }

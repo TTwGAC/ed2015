@@ -7,7 +7,7 @@
   - clusters.each do |cluster|
     - locations = @map_points[cluster]
     %tr
-      %th{colspan: 2}
+      %th{colspan: 3}
         %h3
           = link_to cluster.name, cluster
           = marker_img cluster.color, ''
@@ -15,11 +15,15 @@
     %tr
       %th Name
       %th Address
+      %th Destination for...
     - locations.each_pair do |letter, location|
       %tr
         %td
           = marker_img cluster.color, letter
           = link_to location.name, location
         %td= location.address
+        %td
+          - location.puzzles.each do |puzzle|
+            = link_to puzzle.name, puzzle
 %br/
 = link_to 'New Location', new_location_path
