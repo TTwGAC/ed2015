@@ -22,9 +22,12 @@
 %p
   Slogan:
   = @team.slogan
-%p
-  Contact Phone:
-  = @team.phone
+
+- if can?(:edit, @team)
+  %p
+    Contact Phone:
+    = @team.phone
+
 %p
   Description:
   = @team.description
