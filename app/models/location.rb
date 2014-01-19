@@ -26,13 +26,17 @@ end
 #
 # Table name: locations
 #
-#  id         :integer          not null, primary key
-#  address    :string(255)
-#  latitude   :float
-#  longitude  :float
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  name       :string(255)
-#  token      :string(255)
+#  id                  :integer          not null, primary key
+#  address             :string(255)
+#  latitude            :float
+#  longitude           :float
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  name                :string(255)
+#  token               :string(255)
+#  cluster_id          :integer
+#  permission_received :boolean
+#  open_time           :time
+#  close_time          :time
 #
 

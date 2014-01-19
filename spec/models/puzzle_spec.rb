@@ -11,7 +11,6 @@ end
 #  id          :integer          not null, primary key
 #  name        :string(255)
 #  location_id :integer
-#  document    :string(255)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  token       :string(255)

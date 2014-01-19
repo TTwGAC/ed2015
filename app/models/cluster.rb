@@ -3,3 +3,16 @@ class Cluster < ActiveRecord::Base
   has_many :locations
   validates_inclusion_of :color, in: COLORS
 end
+
+# == Schema Information
+#
+# Table name: clusters
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  sequence   :integer
+#  color      :string(255)      default("red")
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
