@@ -1,5 +1,10 @@
-%h2= link_to loc.name, loc
+%h3= link_to loc.name, loc
 %p= loc.address
-%h3 Teams Present:
+%p
+  - if loc.permission_received
+    = "&#x2713; Permission Received".html_safe
+  - else
+    = "&times; Permission NOT Received".html_safe
+%h4 Teams Present:
 - loc.teams.each do |team|
   %p= link_to team.name, team

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140112220305) do
+ActiveRecord::Schema.define(:version => 20140119181535) do
 
   create_table "checkins", :force => true do |t|
     t.datetime "timestamp"
@@ -30,6 +30,18 @@ ActiveRecord::Schema.define(:version => 20140112220305) do
     t.datetime "updated_at",                    :null => false
   end
 
+  create_table "documents", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "token",             :null => false
+    t.boolean  "private"
+    t.string   "file"
+    t.integer  "documentable_id"
+    t.string   "documentable_type"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
   create_table "events", :force => true do |t|
     t.integer  "player_id",   :null => false
     t.string   "subject",     :null => false
@@ -44,11 +56,12 @@ ActiveRecord::Schema.define(:version => 20140112220305) do
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.string   "name"
     t.string   "token"
     t.integer  "cluster_id"
+    t.boolean  "permission_received"
   end
 
   create_table "players", :force => true do |t|

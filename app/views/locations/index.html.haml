@@ -7,21 +7,21 @@
   - clusters.each do |cluster|
     - locations = @map_points[cluster]
     %tr
-      %th{colspan: 3}
+      %th{colspan: 4}
         %h3
           = link_to cluster.name, cluster
           = marker_img cluster.color, ''
           = " - #{locations.count} locations"
     %tr
       %th Name
-      %th Address
+      %th Permission?
       %th Destination for...
     - locations.each_pair do |letter, location|
       %tr
         %td
           = marker_img cluster.color, letter
           = link_to location.name, location
-        %td= location.address
+        %td= (location.permission_received ? "&#x2713;" : "&times;").html_safe
         %td
           - location.puzzles.each do |puzzle|
             = link_to puzzle.name, puzzle

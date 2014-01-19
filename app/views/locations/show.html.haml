@@ -8,6 +8,9 @@
   %b Cluster:
   = link_to @location.cluster_name, @location.cluster
 %p
+  %b Permission Received?
+  = @location.permission_received ? "Yes" : "No"
+%p
   %b Address:
   = @location.address
 %p

@@ -4,6 +4,7 @@
     = f.input :name
     = f.input :address
     = f.input :cluster_id, collection: Cluster.find(:all, order: 'name')
+    = f.input :permission_received
     \- OR -
     = f.input :latitude
     = f.input :longitude
