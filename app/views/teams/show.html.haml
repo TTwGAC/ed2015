@@ -1,4 +1,4 @@
-- unless @team.paid
+- if can?(:edit, @team) && !@team.paid
   - flash[:notice] = %{Complete your team's regstration! Pay the entrance fee (see below).}
 
 %h3
