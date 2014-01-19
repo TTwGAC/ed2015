@@ -8,7 +8,7 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    @players = Player.find(:all, order: 'name')
+    @players = Player.find(:all, order: 'first_name')
 
     respond_to do |format|
       format.html # index.html.erb
