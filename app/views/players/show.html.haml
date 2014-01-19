@@ -15,6 +15,5 @@
   %a{href: "/teams/#{@player.team_id}"}
     = @player.team_name
 
-%p#notice= notice
 - if can? :edit, @player
   = link_to 'Edit', edit_player_path(@player)
