@@ -4,16 +4,12 @@
     %th Name
     %th Description
     %th Private
-    %th
-    %th
-    %th
+    %th View
   - @documents.each do |document|
     %tr
-      %td= document.name
+      %td= link_to document.name, document
       %td= document.description
-      %td= document.private
-      %td= link_to 'Show', document
-      %td= link_to 'Edit', edit_document_path(document)
-      %td= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' }
+      %td= document.private ? "Yes" : "No"
+      %td= link_to "View Document", document.file_url
 %br/
 = link_to 'New Document', new_document_path

@@ -8,6 +8,11 @@
 %p
   %b Private:
   = @document.private
+%p
+  %b Belongs To:
+  = link_to @document.documentable_name, @document.documentable
+%p
+  = link_to "Download document", @document.file_url
 = link_to 'Edit', edit_document_path(@document)
 |
-\#{link_to 'Back', documents_path}
+= link_to 'Delete', @document, method: :delete, data: { confirm: 'Really delete this document?' }

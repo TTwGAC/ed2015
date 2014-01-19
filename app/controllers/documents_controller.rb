@@ -1,9 +1,19 @@
 class DocumentsController < ApplicationController
+  before_filter :authenticate_player!
+  before_filter do
+    params[:location] &&= location_params
+  end
+
+  authorize_resource
+
   # GET /documents
   # GET /documents.json
   def index
-    @documentable = find_documentable
-    @documents = @documentable.documents
+    if @documentable = find_documentable
+      @documents = @documentable.documents
+    else
+      @documents = Document.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -46,7 +56,7 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       if @document.save
-        format.html { redirect_to id: nil, notice: 'Document was successfully created.' }
+        format.html { redirect_to @documentable, notice: 'Document was successfully created.' }
         format.json { render json: @document, status: :created, location: @document }
       else
         format.html { render action: "new" }
@@ -89,7 +99,7 @@ private
   # params.require(:person).permit(:name, :age)
   # Also, you can specialize this method with per-user checking of permissible attributes.
   def document_params
-    params.require(:document).permit(:description, :name, :private)
+    params.require(:document).permit(:description, :name, :private, :file)
   end
 
   def find_documentable

@@ -5,6 +5,7 @@ class Location < ActiveRecord::Base
   belongs_to :cluster
   before_save :get_token
   delegate :name, :color, to: :cluster, prefix: true
+  delegate :for_players, :for_game_control, to: :documents, prefix: true
   acts_as_gmappable :process_geocoding => :geocode?, :normalized_address => "address",
                     :lat => 'latitude', :lng => "longitude"
 

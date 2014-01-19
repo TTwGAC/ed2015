@@ -1,9 +1,7 @@
 - javascript 'gmaps4rails.js'
 %p#notice= notice
 = render partial: '/locations/map', locals: {map_data: @location.to_gmaps4rails}
-%p
-  %b Name:
-  = @location.name
+%h2= @location.name
 %p
   %b Cluster:
   = link_to @location.cluster_name, @location.cluster
@@ -17,23 +15,47 @@
   %b Token:
   = @location.token
 %p
-  %b Latitude:
+  %b Coordinates:
   = @location.latitude
-%p
-  %b Longitude:
+  \/
   = @location.longitude
+
+%h3 Documents
+%h4 Public Documents
+%p
+  Public documents are shared with players during the course of the game. DO NOT PUT SPOILERS INTO THESE DOCUMENTS!
+%ul
+  - @location.documents_for_players.each do |document|
+    %li= link_to document.name, document.file_url
+%h4 PRIVATE Documents
+%p
+  Private documents are never sent to players. They contain sensitive, possibly spoiler, information and should not be shared!
+%ul
+  - @location.documents_for_game_control.each do |document|
+    %li= link_to document.name, document.file_url
+
+%div.show_modal{onclick: "$('#new_document').modal()"}
+  Attach New Document
+
+%br/
 = link_to 'Edit', edit_location_path(@location)
 |
 = link_to 'Delete', @location, method: :delete, data: { confirm: 'Really delete this location?' }
 
-= simple_form_for [@documentable, Document.new] do |f|
-  %p
-    = f.error_notification
-    .form-inputs
-      = f.input :name
-      = f.input :description
-      = f.input :private
-      = f.file_field :file
-      = f.hidden_field :file_cache
-    .form-actions
-      = f.button :submit
+#new_document.modal.hide.fade{:tabindex => "-1"}
+  .modal-header
+    %button.close{"data-dismiss" => "modal", type: 'button'} &times;
+    %h3.modal-title Attach New Document
+  .modal-body
+    .modal-body-content
+      = simple_form_for [@location, Document.new] do |f|
+        %p
+          = f.error_notification
+          .form-inputs
+            = f.input :name
+            = f.input :description, as: :text, input_html: {rows: 3, cols: 40}
+            = f.input :private
+            = f.file_field :file
+            = f.hidden_field :file_cache
+          .form-actions
+            = f.button :submit
