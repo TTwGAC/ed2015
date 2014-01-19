@@ -13,6 +13,6 @@
 |
 = link_to 'Delete', @cluster, method: :delete, data: { confirm: 'Really delete this cluster?' }
 %h3 Locations in this cluster:
-%p
+%ul
   - @cluster.locations.each do |loc|
-    = link_to loc.name, loc
+    %li= link_to loc.name, loc
