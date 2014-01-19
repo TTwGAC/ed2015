@@ -357,3 +357,12 @@ img.navicon {
   text-decoration: underline;
   cursor: pointer;
 }
+
+input, select {
+  width: inherit;
+}
+
+.button_controlled_box {
+  border: 1px solid #999;
+  padding: 15px;
+}

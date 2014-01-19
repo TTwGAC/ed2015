@@ -1,12 +1,21 @@
-= simple_form_for(@location, remote: local_assigns[:remote]) do |f|
+= simple_form_for(@location, remote: local_assigns[:remote], html: {class: 'form-horizontal'}) do |f|
   = f.error_notification
   .form-inputs
     = f.input :name
-    = f.input :address
     = f.input :cluster_id, collection: Cluster.find(:all, order: 'name')
     = f.input :permission_received
-    \- OR -
-    = f.input :latitude
-    = f.input :longitude
+    = f.input :open_time
+    = f.input :close_time
+    %div.button_controlled_box
+      %div#location_selector{class: 'btn-group'}
+        %button.btn.active{type: 'button', value: 'address'} Address
+        %button.btn{type: 'button', value: 'coordinates'} Coordinates
+      %div#address_group
+        = f.input :address, input_html: {size: 75}
+      %div#coordinates_group
+        = f.input :latitude
+        = f.input :longitude
   .form-actions
     = f.button :submit
+
+- javascript 'locations.js'
