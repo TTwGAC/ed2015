@@ -16,4 +16,8 @@
     = @player.team_name
 
 - if can? :edit, @player
+  %br
+  %hr
+  %h3
+    Player Controls
   = link_to 'Edit', edit_player_path(@player)
