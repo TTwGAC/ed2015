@@ -8,7 +8,7 @@
     %tr
       %td= link_to puzzle.name, puzzle
       %td= puzzle.origin ? link_to(puzzle.origin_name, puzzle.origin) : ""
-      %td= link_to puzzle.destination_name, puzzle.destination
+      %td= puzzle.destination ? link_to(puzzle.destination_name, puzzle.destination) : ""
 
 %br/
 = link_to 'New Puzzle', new_puzzle_path

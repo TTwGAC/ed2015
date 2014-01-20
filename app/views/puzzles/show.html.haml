@@ -11,17 +11,18 @@
 %h3 Locations
 .row
   .span6
+    %h4 Origin
     - if @puzzle.origin
-      %h4 Origin
       /= render partial: '/locations/map', locals: {map_data: @puzzle.origin.to_gmaps4rails}
       %p
         = render partial: '/locations/infowindow', locals: {loc: @puzzle.origin}
 
   .span6
     %h4 Destination
-    /= render partial: '/locations/map', locals: {map_data: @puzzle.destination.to_gmaps4rails}
-    %p
-      = render partial: '/locations/infowindow', locals: {loc: @puzzle.destination}
+    - if @puzzle.destination
+      /= render partial: '/locations/map', locals: {map_data: @puzzle.destination.to_gmaps4rails}
+      %p
+        = render partial: '/locations/infowindow', locals: {loc: @puzzle.destination}
 
 %hr
 

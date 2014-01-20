@@ -6,6 +6,7 @@ class Puzzle < ActiveRecord::Base
   delegate :name, to: :origin, prefix: true
   delegate :name, to: :destination, prefix: true
   delegate :for_players, :for_game_control, to: :documents, prefix: true
+  validates_presence_of :name
 
   def get_token
     self.token ||= SecureRandom.hex(16)
