@@ -2,6 +2,10 @@
 %h2
   = @puzzle.name
 
+- if @puzzle.description
+  %hr
+  %p= @puzzle.description
+
 %hr
 
 = render partial: '/documents/list', locals: {documentable: @puzzle}

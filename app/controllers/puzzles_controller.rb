@@ -100,6 +100,6 @@ private
   # params.require(:person).permit(:name, :age)
   # Also, you can specialize this method with per-user checking of permissible attributes.
   def puzzle_params
-    params.require(:puzzle).permit(:name, :document, :origin_id, :destination_id)
+    params.require(:puzzle).permit(:name, :description, :origin_id, :destination_id)
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140120211127) do
+ActiveRecord::Schema.define(:version => 20140120222027) do
 
   create_table "checkins", :force => true do |t|
     t.datetime "timestamp"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20140120211127) do
     t.datetime "updated_at",     :null => false
     t.string   "token"
     t.integer  "origin_id"
+    t.text     "description"
   end
 
   create_table "sessions", :force => true do |t|
