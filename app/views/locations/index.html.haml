@@ -15,6 +15,7 @@
     %tr
       %th Name
       %th Permission?
+      %th Open Hours
       %th Destination for...
     - locations.each_pair do |letter, location|
       %tr
@@ -22,6 +23,7 @@
           = marker_img cluster.color, letter
           = link_to location.name, location
         %td= (location.permission_received ? "&#x2713;" : "&times;").html_safe
+        %td= open_hours location
         %td
           - location.puzzles.each do |puzzle|
             = link_to puzzle.name, puzzle

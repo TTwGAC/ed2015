@@ -1,6 +1,9 @@
 %h3= link_to loc.name, loc
 %p= loc.address
 %p
+  Open
+  = open_hours loc
+%p
   - if loc.permission_received
     = "&#x2713; Permission Received".html_safe
   - else

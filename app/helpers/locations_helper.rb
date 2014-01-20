@@ -32,4 +32,14 @@ module LocationsHelper
   def marker_img_path(color, letter)
     asset_path "map_markers/#{color}_Marker#{letter}.png"
   end
+
+  def open_hours(location)
+    result = ""
+    if location.open_time || location.close_time
+      result << location.open_time.strftime("%l:%M %p") if location.open_time
+      result << (result.length > 0 ? " &mdash; " : " until ")
+      result << location.close_time.strftime("%l:%M %p") if location.close_time
+    end
+    result.html_safe
+  end
 end

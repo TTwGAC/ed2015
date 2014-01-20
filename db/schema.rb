@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140119203914) do
+ActiveRecord::Schema.define(:version => 20140119220730) do
 
   create_table "checkins", :force => true do |t|
     t.datetime "timestamp"
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(:version => 20140119203914) do
     t.string   "token"
     t.integer  "cluster_id"
     t.boolean  "permission_received"
+    t.time     "open_time"
+    t.time     "close_time"
   end
 
   create_table "players", :force => true do |t|
