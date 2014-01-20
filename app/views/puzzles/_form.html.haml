@@ -3,7 +3,8 @@
   = f.error_notification
   .form-inputs
     = f.input :name
-    = f.input :location_id, collection: Location.find(:all, order: 'name'), label: "Puzzle Destination"
+    = f.input :origin_id, collection: Location.find(:all, order: 'name'), label: "Puzzle Origin (optional)", hint: "Use only for puzzles that are tied to a physical location"
+    = f.input :destination_id, collection: Location.find(:all, order: 'name'), label: "Puzzle Destination"
   .form-actions
     = f.button :submit
 

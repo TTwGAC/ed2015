@@ -6,14 +6,23 @@
 
 = render partial: '/documents/list', locals: {documentable: @puzzle}
 
-%h3= "Location: #{@puzzle.location_name}"
-= render partial: '/locations/map', locals: {map_data: @puzzle.location.to_gmaps4rails}
-%p
-  = render partial: '/locations/infowindow', locals: {loc: @puzzle.location}
+%hr
 
-= link_to 'Edit', edit_puzzle_path(@puzzle)
-|
-= link_to 'Delete', @puzzle, method: :delete, data: { confirm: 'Really delete this puzzle?' }
+%h3 Locations
+.row
+  .span6
+    - if @puzzle.origin
+      %h4 Origin
+      /= render partial: '/locations/map', locals: {map_data: @puzzle.origin.to_gmaps4rails}
+      %p
+        = render partial: '/locations/infowindow', locals: {loc: @puzzle.origin}
+
+  .span6
+    %h4 Destination
+    /= render partial: '/locations/map', locals: {map_data: @puzzle.destination.to_gmaps4rails}
+    %p
+      = render partial: '/locations/infowindow', locals: {loc: @puzzle.destination}
+
 %hr
 
 %br

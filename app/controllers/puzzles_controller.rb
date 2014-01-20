@@ -49,9 +49,7 @@ class PuzzlesController < ApplicationController
   # POST /puzzles
   # POST /puzzles.json
   def create
-    location = Location.find(params[:puzzle][:location_id])
     @puzzle = Puzzle.new(puzzle_params)
-    @puzzle.location = location
 
     respond_to do |format|
       if @puzzle.save
@@ -101,6 +99,6 @@ private
   # params.require(:person).permit(:name, :age)
   # Also, you can specialize this method with per-user checking of permissible attributes.
   def puzzle_params
-    params.require(:puzzle).permit(:name, :document, :location_id)
+    params.require(:puzzle).permit(:name, :document, :origin_id, :destination_id)
   end
 end

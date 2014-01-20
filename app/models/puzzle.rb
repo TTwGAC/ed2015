@@ -1,8 +1,10 @@
 class Puzzle < ActiveRecord::Base
-  belongs_to :location
+  belongs_to :origin, class_name: "Location", foreign_key: 'origin_id'
+  belongs_to :destination, class_name: "Location", foreign_key: 'destination_id'
   has_many :documents, as: :documentable
   before_save :get_token
-  delegate :name, to: :location, prefix: true
+  delegate :name, to: :origin, prefix: true
+  delegate :name, to: :destination, prefix: true
   delegate :for_players, :for_game_control, to: :documents, prefix: true
 
   def get_token

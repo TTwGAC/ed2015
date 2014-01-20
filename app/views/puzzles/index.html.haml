@@ -2,11 +2,13 @@
 %table.table
   %tr
     %th Name
+    %th Origin
     %th Destination
   - @puzzles.each do |puzzle|
     %tr
       %td= link_to puzzle.name, puzzle
-      %td= link_to puzzle.location_name, puzzle.location
+      %td= puzzle.origin ? link_to(puzzle.origin_name, puzzle.origin) : ""
+      %td= link_to puzzle.destination_name, puzzle.destination
 
 %br/
 = link_to 'New Puzzle', new_puzzle_path

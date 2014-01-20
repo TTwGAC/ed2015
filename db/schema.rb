@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140119220730) do
+ActiveRecord::Schema.define(:version => 20140120211127) do
 
   create_table "checkins", :force => true do |t|
     t.datetime "timestamp"
@@ -105,10 +105,11 @@ ActiveRecord::Schema.define(:version => 20140119220730) do
 
   create_table "puzzles", :force => true do |t|
     t.string   "name"
-    t.integer  "location_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "destination_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.string   "token"
+    t.integer  "origin_id"
   end
 
   create_table "sessions", :force => true do |t|

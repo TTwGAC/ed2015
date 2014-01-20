@@ -1,5 +1,6 @@
 class Location < ActiveRecord::Base
-  has_many :puzzles
+  has_many :origin_puzzles, class_name: 'Puzzle', foreign_key: 'origin_id'
+  has_many :destination_puzzles, class_name: 'Puzzle', foreign_key: 'destination_id'
   has_many :teams
   has_many :documents, as: :documentable
   belongs_to :cluster

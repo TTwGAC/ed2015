@@ -32,20 +32,24 @@ jQuery ->
     $.ajax "/#{name}s.json",
       dataType: "json",
       success: (data, status, xhr) ->
-        select_node = $("#puzzle_#{name}_id")
-        select_node.empty()
-        highest_id = 0
-        for item in data
-          select_node.append("<option value=\"#{item.id}\">#{item.name}</option>")
-          highest_id = item.id if item.id > highest_id
-        addSpacer(select_node)
-        addCreator(select_node)
-        select_node.val(highest_id)
-        true
+        refreshSelections('origin')
+        refreshSelections('destination')
 
-  setupSelector = (name) ->
-    addOptions(name)
-    addCallback(name)
+  refreshSelections = (name) ->
+    select_node = $("#puzzle_#{name}_id")
+    select_node.empty()
+    highest_id = 0
+    for item in data
+      select_node.append("<option value=\"#{item.id}\">#{item.name}</option>")
+      highest_id = item.id if item.id > highest_id
+    addSpacer(select_node)
+    addCreator(select_node)
+    select_node.val(highest_id)
+    true
 
-  setupSelector('location')
+  addOptions('origin')
+  addOptions('destination')
+  addCallback('origin')
+  addCallback('destination')
+
 
