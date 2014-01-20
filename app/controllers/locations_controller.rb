@@ -98,8 +98,4 @@ private
   def location_params
     params.require(:location).permit(:name, :address, :latitude, :longitude, :cluster_id, :permission_received, :open_time, :close_time)
   end
-
-  def asset_path(file)
-    ActionController::Base.helpers.asset_path file
-  end
 end
