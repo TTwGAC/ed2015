@@ -135,6 +135,7 @@ img.navicon {
   @include rounded($radius);
   border: 1px solid #ccc;
   margin: 5px;
+  padding: 5px;
 
   .box-header {
     @include rounded_corner(top, left, $radius);

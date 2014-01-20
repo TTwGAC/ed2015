@@ -2,6 +2,8 @@
 %h2
   = @puzzle.name
 
+%hr
+
 = render partial: '/documents/list', locals: {documentable: @puzzle}
 
 %h3= "Location: #{@puzzle.location_name}"
@@ -12,3 +14,12 @@
 = link_to 'Edit', edit_puzzle_path(@puzzle)
 |
 = link_to 'Delete', @puzzle, method: :delete, data: { confirm: 'Really delete this puzzle?' }
+%hr
+
+%br
+%h3
+  Puzzle Controls
+%p
+  = link_to 'Edit', edit_puzzle_path(@puzzle)
+  |
+  = link_to 'Delete', @puzzle, method: :delete, data: { confirm: 'Really delete this puzzle?' }

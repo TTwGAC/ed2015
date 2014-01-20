@@ -1,30 +1,43 @@
 %h3 Documents
-%h4 Public Documents
-%p
-  Public documents are shared with players during the course of the game. DO NOT PUT SPOILERS INTO THESE DOCUMENTS!
-%table.table
-  %tr
-    %th Name
-    %th Description
-  - documentable.documents_for_players.each do |document|
-    %tr
-      %td= link_to document.name, document.file_url
-      %td= document.description
+.row
+  .span6.box
+    %h4 Public Documents
+    %p
+      Public documents are shared with players during the course of the game. DO NOT PUT SPOILERS INTO THESE DOCUMENTS!
+    - if documentable.documents_for_players.count > 0
+      %table.table
+        %tr
+          %th Name
+          %th Description
+        - documentable.documents_for_players.each do |document|
+          %tr
+            %td= link_to document.name, document.file_url
+            %td= document.description
+    - else
+      %br
+      %p{style: 'font-style: italic'} No documents found
+    %div.show_modal{onclick: "$('#new_document').modal(); $('#document_private').prop('checked', false)"}
+      Attach New Document
 
-%h4 PRIVATE Documents
-%p
-  Private documents are never sent to players. They contain sensitive, possibly spoiler, information and should not be shared!
-%table.table
-  %tr
-    %th Name
-    %th Description
-  - documentable.documents_for_game_control.each do |document|
-    %tr
-      %td= link_to document.name, document.file_url
-      %td= document.description
+  .span6.box
+    %h4 PRIVATE Documents
+    %p
+      Private documents are never sent to players. They contain sensitive, possibly spoiler, information and should not be shared!
+    - if documentable.documents_for_game_control.count > 0
+      %table.table
+        %tr
+          %th Name
+          %th Description
+        - documentable.documents_for_game_control.each do |document|
+          %tr
+            %td= link_to document.name, document.file_url
+            %td= document.description
+    - else
+      %br
+      %p{style: 'font-style: italic'} No documents found
+    %div.show_modal{onclick: "$('#new_document').modal(); $('#document_private').prop('checked', true)"}
+      Attach New Document
 
-%div.show_modal{onclick: "$('#new_document').modal()"}
-  Attach New Document
 
 %br/
 
