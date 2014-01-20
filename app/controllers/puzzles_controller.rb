@@ -67,6 +67,7 @@ class PuzzlesController < ApplicationController
   # PATCH/PUT /puzzles/1.json
   def update
     @puzzle = Puzzle.find(params[:id])
+    @location = Location.new
 
     respond_to do |format|
       if @puzzle.update_attributes(puzzle_params)
