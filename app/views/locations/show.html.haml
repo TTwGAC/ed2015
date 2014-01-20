@@ -23,3 +23,7 @@
   = @location.longitude
 
 = render partial: '/documents/list', locals: {documentable: @location}
+
+= link_to 'Edit', edit_location_path(documentable)
+|
+= link_to 'Delete', documentable, method: :delete, data: { confirm: 'Really delete this location?' }
