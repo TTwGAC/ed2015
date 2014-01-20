@@ -54,6 +54,7 @@ Gac2014::Application.configure do
     gmaps4rails.js
     pregame_dashboard.js
     puzzles.js
+    locations.js
   )
 
   # Disable delivery errors, bad email addresses will be ignored
