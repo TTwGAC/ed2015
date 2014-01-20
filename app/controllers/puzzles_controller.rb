@@ -43,6 +43,7 @@ class PuzzlesController < ApplicationController
   # GET /puzzles/1/edit
   def edit
     @puzzle = Puzzle.find(params[:id])
+    @location = Location.new
   end
 
   # POST /puzzles
