@@ -2,6 +2,7 @@ class Document < ActiveRecord::Base
   belongs_to :documentable, polymorphic: true
   delegate :name, to: :documentable, prefix: true
   delegate :url, to: :file, prefix: true
+  validates_presence_of :name
 
   before_save :get_token
 

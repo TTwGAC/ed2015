@@ -9,6 +9,7 @@ class Location < ActiveRecord::Base
   delegate :for_players, :for_game_control, to: :documents, prefix: true
   acts_as_gmappable :process_geocoding => :geocode?, :normalized_address => "address",
                     :lat => 'latitude', :lng => "longitude"
+  validates_presence_of :name
 
   def geocode?
     (!address.blank? && (latitude.blank? || longitude.blank?)) || address_changed?
