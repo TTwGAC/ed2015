@@ -1,7 +1,8 @@
-%h1 Location Cluster
-%p
-  %b Name:
-  = @cluster.name
+- javascript 'gmaps4rails.js'
+%h1= "Cluster: #{@cluster.name}"
+- unless @cluster.locations.empty?
+  %p
+    = gmaps4rails map_data(@cluster.locations)
 %p
   %b Sequence:
   = @cluster.sequence
