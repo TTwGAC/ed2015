@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require jquery.timeago.js
+//= require table_highlighting.js

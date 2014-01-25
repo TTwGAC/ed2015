@@ -6,13 +6,13 @@
   - clusters = @map_points.keys.sort { |a,b| a.sequence <=> b.sequence }
   - clusters.each do |cluster|
     - locations = @map_points[cluster]
-    %tr
+    %tr.header
       %th{colspan: 5}
         %h3
           = link_to cluster.name, cluster
           = marker_img cluster.color, ''
           = " - #{locations.count} locations"
-    %tr
+    %tr.header
       %th Name
       %th Permission?
       %th Open Hours
