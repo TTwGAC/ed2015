@@ -69,10 +69,11 @@ class DocumentsController < ApplicationController
   # PATCH/PUT /documents/1.json
   def update
     @document = Document.find(params[:id])
+    documentable = @document.documentable
 
     respond_to do |format|
       if @document.update_attributes(document_params)
-        format.html { redirect_to @document, notice: 'Document was successfully updated.' }
+        format.html { redirect_to documentable, notice: 'Document was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

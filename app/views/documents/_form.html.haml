@@ -2,9 +2,12 @@
   = f.error_notification
   .form-inputs
     = f.input :name
-    = f.input :description
+    = f.input :description, input_html: {cols: 80, rows: 3}
     = f.input :private
     = f.file_field :file
+    - if @document.id
+      Only choose a document if you want to replace the existing one
+      %br
     = f.hidden_field :file_cache
   .form-actions
     = f.button :submit
