@@ -16,8 +16,8 @@
       %th Name
       %th Permission?
       %th Open Hours
-      %th Origin for...
-      %th Destination for...
+      %th Solution to...
+      %th Next Puzzle
     - locations.each_pair do |letter, location|
       %tr
         %td
@@ -26,10 +26,10 @@
         %td= (location.permission_received ? "&#x2713;" : "&times;").html_safe
         %td= open_hours location
         %td
-          - location.origin_puzzles.each do |puzzle|
+          - location.destination_puzzles.each do |puzzle|
             = link_to puzzle.name, puzzle
         %td
-          - location.destination_puzzles.each do |puzzle|
+          - location.origin_puzzles.each do |puzzle|
             = link_to puzzle.name, puzzle
 %br/
 = link_to 'New Location', new_location_path
