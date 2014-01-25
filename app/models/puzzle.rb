@@ -1,4 +1,5 @@
 class Puzzle < ActiveRecord::Base
+  STATUSES = %w[ wip needs_testing ready ].freeze
   belongs_to :origin, class_name: "Location", foreign_key: 'origin_id'
   belongs_to :destination, class_name: "Location", foreign_key: 'destination_id'
   has_many :documents, as: :documentable
@@ -7,6 +8,27 @@ class Puzzle < ActiveRecord::Base
   delegate :name, to: :destination, prefix: true
   delegate :for_players, :for_game_control, to: :documents, prefix: true
   validates_presence_of :name
+  validates_inclusion_of :status, in: STATUSES
+
+  def self.statuses
+    STATUSES.inject({}) do |statuses, key|
+      statuses[key] = status_name(key)
+      statuses
+    end
+  end
+
+  def self.status_name(name)
+    case name
+    when 'wip' then 'Work In Progress'
+    when 'needs_testing' then 'Needs Testing'
+    when 'ready' then 'Ready'
+    else ''
+    end
+  end
+
+  def status_name
+    self.class.status_name(self.status)
+  end
 
   def get_token
     self.token ||= SecureRandom.hex(16)
