@@ -9,10 +9,12 @@
         %tr
           %th Name
           %th Description
+          %th Delete
         - documentable.documents_for_players.each do |document|
           %tr
             %td= link_to document.name, document.file_url
             %td= document.description
+            %td= link_to '&times;'.html_safe, document, method: :delete, data: { confirm: 'Really delete this document?' }
     - else
       %br
       %p{style: 'font-style: italic'} No documents found
@@ -28,10 +30,12 @@
         %tr
           %th Name
           %th Description
+          %th Delete
         - documentable.documents_for_game_control.each do |document|
           %tr
             %td= link_to document.name, document.file_url
             %td= document.description
+            %td= link_to '&times;'.html_safe, document, method: :delete, data: { confirm: 'Really delete this document?' }
     - else
       %br
       %p{style: 'font-style: italic'} No documents found

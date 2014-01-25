@@ -85,10 +85,15 @@ class DocumentsController < ApplicationController
   # DELETE /documents/1.json
   def destroy
     @document = Document.find(params[:id])
-    @document.destroy
+    documentable = @document.documentable
+    if @document.destroy
+      flash[:notice] = "Deleted \"#{@document.name}\""
+    else
+      flash[:error] = "Error deleting document"
+    end
 
     respond_to do |format|
-      format.html { redirect_to documents_url }
+      format.html { redirect_to documentable }
       format.json { head :no_content }
     end
   end
