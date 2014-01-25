@@ -9,7 +9,7 @@ module PuzzlesHelper
       when 'wip' then 'glyphicons/136_cogwheel.png'
       when 'needs_testing' then 'glyphicons/150_edit.png'
       when 'ready' then 'glyphicons/198_ok.png'
-      else 'glyphicons/199_ban.png'
+      else 'glyphicons/194_circle_question_mark.png'
       end, options
   end
 end

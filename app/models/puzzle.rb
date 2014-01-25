@@ -22,7 +22,7 @@ class Puzzle < ActiveRecord::Base
     when 'wip' then 'Work In Progress'
     when 'needs_testing' then 'Needs Testing'
     when 'ready' then 'Ready'
-    else ''
+    else 'Unknown'
     end
   end
 
