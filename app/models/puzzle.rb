@@ -1,5 +1,5 @@
 class Puzzle < ActiveRecord::Base
-  STATUSES = %w[ wip needs_testing ready ].freeze
+  STATUSES = [ '', 'wip', 'needs_testing', 'ready' ].freeze
   belongs_to :origin, class_name: "Location", foreign_key: 'origin_id'
   belongs_to :destination, class_name: "Location", foreign_key: 'destination_id'
   has_many :documents, as: :documentable
@@ -7,6 +7,7 @@ class Puzzle < ActiveRecord::Base
   delegate :name, to: :origin, prefix: true
   delegate :name, to: :destination, prefix: true
   delegate :for_players, :for_game_control, to: :documents, prefix: true
+  #delegate :next_puzzle, to: :location
   validates_presence_of :name
   validates_inclusion_of :status, in: STATUSES
 
