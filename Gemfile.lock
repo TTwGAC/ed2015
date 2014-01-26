@@ -43,7 +43,7 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.1)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (2.3.1.0)
+    bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
     builder (3.0.4)
     cancan (1.6.10)
@@ -255,7 +255,7 @@ GEM
     ruby-hmac (0.4.0)
     ruby_parser (3.1.3)
       sexp_processor (~> 4.1)
-    sass (3.2.9)
+    sass (3.2.14)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -306,7 +306,7 @@ DEPENDENCIES
   annotate
   better_errors
   binding_of_caller
-  bootstrap-sass
+  bootstrap-sass (~> 2.3.0)
   cancan
   carrierwave
   certified
@@ -343,6 +343,6 @@ DEPENDENCIES
   sqlite3
   strong_parameters
   terminal-notifier-guard
-  twitter
+  twitter (~> 4.0)
   uglifier (>= 1.0.3)
   unicorn

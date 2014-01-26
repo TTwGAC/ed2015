@@ -11,7 +11,7 @@ gem 'uglifier', '>= 1.0.3'
 gem 'high_voltage'
 
 gem 'jquery-rails'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 2.3.0'
 gem 'haml'
 gem 'simple_form'
 gem 'strong_parameters'
