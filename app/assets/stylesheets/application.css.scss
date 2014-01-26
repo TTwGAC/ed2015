@@ -12,6 +12,7 @@
  *= require_tree .
  */
 @import "bootstrap";
+body { padding-top: 60px; } // Positioning of nav, responsively
 @import "bootstrap-responsive";
 
 @mixin rounded($radius) {
@@ -53,7 +54,6 @@ body {
   color: #333;
   font-size: 13px;
   line-height: 18px;
-  padding-top: 60px;
 }
 
 p, ol, ul, td {
