@@ -16,5 +16,6 @@ end
 #  token          :string(255)
 #  origin_id      :integer
 #  description    :text
+#  status         :string(255)
 #
 

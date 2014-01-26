@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140125211459) do
+ActiveRecord::Schema.define(:version => 20140125225506) do
 
   create_table "checkins", :force => true do |t|
     t.datetime "timestamp"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20140125211459) do
     t.boolean  "permission_received"
     t.time     "open_time"
     t.time     "close_time"
+    t.integer  "next_puzzle_id"
   end
 
   create_table "players", :force => true do |t|

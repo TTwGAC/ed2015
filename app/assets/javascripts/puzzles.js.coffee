@@ -32,7 +32,6 @@ jQuery ->
     $.ajax "/#{name}s.json",
       dataType: "json",
       success: (data, status, xhr) ->
-        refreshSelections('origin')
         refreshSelections('destination')
 
   refreshSelections = (name) ->
@@ -47,9 +46,7 @@ jQuery ->
     select_node.val(highest_id)
     true
 
-  addOptions('origin')
   addOptions('destination')
-  addCallback('origin')
   addCallback('destination')
 
 

@@ -20,11 +20,13 @@
 %h3 Locations
 .row
   .span6
-    %h4 Origin
-    - if @puzzle.origin
-      /= render partial: '/locations/map', locals: {map_data: @puzzle.origin.to_gmaps4rails}
+    %h4 Puzzle Start
+    - if @puzzle.comes_from
+      /= render partial: '/locations/map', locals: {map_data: @puzzle.comes_from.to_gmaps4rails}
       %p
-        = render partial: '/locations/infowindow', locals: {loc: @puzzle.origin}
+        = render partial: '/locations/infowindow', locals: {loc: @puzzle.comes_from}
+    - else
+      %p This puzzle may be started from anywhere
 
   .span6
     %h4 Destination

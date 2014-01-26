@@ -22,6 +22,19 @@
   \/
   = @location.longitude
 
+- if @location.next_puzzle
+  %hr
+  %h3
+    Next Puzzle:
+    = link_to @location.next_puzzle_name, @location.next_puzzle
+  %p If this puzzle requires a physical clue, make sure to set it up on game day!
+
+- unless @location.destination_for_puzzles.empty?
+  %h3 Destination for Puzzles:
+  %ul
+    - @location.destination_for_puzzles.each do |puzzle|
+      %li= link_to puzzle.name, puzzle
+
 %hr
 
 = render partial: '/documents/list', locals: {documentable: @location}

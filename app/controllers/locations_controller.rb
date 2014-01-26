@@ -96,6 +96,6 @@ class LocationsController < ApplicationController
 
 private
   def location_params
-    params.require(:location).permit(:name, :address, :latitude, :longitude, :cluster_id, :permission_received, :open_time, :close_time)
+    params.require(:location).permit(:name, :address, :latitude, :longitude, :cluster_id, :permission_received, :next_puzzle_id, :open_time, :close_time)
   end
 end
