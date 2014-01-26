@@ -9,7 +9,7 @@ class CheckinsController < ApplicationController
   # GET /checkins
   # GET /checkins.json
   def index
-    @checkins = Checkin.all
+    @checkins = Checkin.order('created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
