@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %title= @location.name
+    = stylesheet_link_tag "application", :media => "all"
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Michroma", media: 'all'
+    :css
+      body { text-align: center }
+  %body
+    %div{style: "margin: 0 auto; width: 800px"}
+      %p= image_tag 'logo.png', size: '300x300'
+      %h1= "Welcome to #{@location.name}"
+      = link_to image_tag(qr_code_url(@checkin_url)), @checkin_url

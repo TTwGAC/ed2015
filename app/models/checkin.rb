@@ -2,11 +2,36 @@ class Checkin < ActiveRecord::Base
   belongs_to :location
   belongs_to :team
   belongs_to :player
-  before_save :get_team
+  before_validation :update_links
 
   delegate :name, to: :location, prefix: true
   delegate :name, to: :team, prefix: true
   delegate :name, to: :player, prefix: true
+
+  validates_uniqueness_of :location_id, scope: :team_id
+
+  def self.find_or_create(opts)
+    c = self.where(team_id: opts[:team], location_id: opts[:location]).first
+    c || Checkin.create!(opts)
+  end
+
+  def timestamp
+    super || self.created_at
+  end
+
+  def get_team
+    self.team ||= self.player.team
+  end
+
+  def update_links
+    get_team
+    set_location
+  end
+
+  def set_location
+    team.location = location
+    team.save!
+  end
 
   def next_puzzle
     raise "Record must be saved before getting the next puzzle!" unless persisted?
@@ -33,8 +58,9 @@ class Checkin < ActiveRecord::Base
     next_cluster.locations.sample
   end
 
-  def get_team
-    self.team = player.team
+  def previous
+    last_checkin = Checkin.where(team_id: self.team).order('created_at DESC').limit(2).last
+    last_checkin == self ? nil : last_checkin
   end
 end
 

@@ -8,4 +8,13 @@ FactoryGirl.define do
     token "ABCD" * 5
     phone "14045551234"
   end
+
+  factory :otherteam, class: Team do
+    id 998
+    name "Urbana-nana"
+    slogan "You'll split for us"
+    description "Illinois? What's that noise?"
+    token "ABCD" * 5
+    phone "14045551234"
+  end
 end

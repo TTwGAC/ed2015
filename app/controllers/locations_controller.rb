@@ -94,6 +94,12 @@ class LocationsController < ApplicationController
     end
   end
 
+  def poster
+    @location = Location.find(params[:location_id])
+    @checkin_url = new_checkin_url params: {t: @location.token}
+    render :poster, layout: false
+  end
+
 private
   def location_params
     #if params['location']['open_time(4i)'] == ''

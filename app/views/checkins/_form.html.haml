@@ -1,0 +1,7 @@
+= simple_form_for(@checkin) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :location_id, collection: Location.order('name')
+    = f.input :team_id, collection: Team.order('name')
+  .form-actions
+    = f.button :submit

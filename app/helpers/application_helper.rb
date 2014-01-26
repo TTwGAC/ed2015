@@ -100,4 +100,11 @@ module ApplicationHelper
     end
     result.html_safe
   end
+
+  def qr_code_url(text, ecl = 'H')
+    url = 'https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl='
+    url << CGI.escape(text)
+    url << "&chld=#{ecl}|4"
+    url
+  end
 end

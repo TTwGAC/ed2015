@@ -3,16 +3,15 @@
   %tr.header
     %th Name
     %th Timestamp
-    %th Actions
+    %th Time to solve
   - @checkins.each do |checkin|
     %tr
+      %td= link_to "#{checkin.team_name} @ #{checkin.location_name}", checkin
+      %td= checkin.created_at.localtime.strftime "%l:%M:%S %P"
       %td
-        = link_to "#{checkin.team_name} @ #{checkin.location_name}", checkin
-      %td
-        = checkin.created_at.localtime
-      %td
-        = link_to 'Edit', edit_checkin_path(checkin)
-        |
-        = link_to 'Destroy', checkin, method: :delete, data: { confirm: %q{Are you REALLY sure? This may break the team's data!} }
+        - if p = checkin.previous
+          = distance_of_time_in_words p.created_at, checkin.created_at
+        - else
+          No previous checkin
 %br/
 = link_to 'Manual Checkin', new_checkin_path

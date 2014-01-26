@@ -31,25 +31,23 @@ class CheckinsController < ApplicationController
   # GET /checkins/new
   # GET /checkins/new.json
   def new
-    @location = Location.where(token: params[:l]).first
-    raise ActionController::RoutingError.new('No such location!') unless @location
+    if params[:t]
+      location = Location.where(token: params.delete(:t)).first
+      raise ActionController::RoutingError.new('No such location!') unless location
 
-    @checkin = Checkin.new player: current_player, team: current_player.team, location: @location
-    if @checkin.save
-      event "create", :checkin, @checkin.id, description: "#{current_player.name} on #{current_player.team_name} checked in at #{@location.name}"
-      current_player.team_location = @location
-      current_player.save!
+      @new_params = {location: location, team: current_player.team}
 
-      respond_to do |format|
-        format.html # new.html.erb
-        format.json { render json: @checkin }
-      end
-    else
-      raise "Checkin failed to save: #{@checkin.errors}"
-      respond_to do |format|
-        format.html { render 'bad_checkin' }
-        format.json { render json: {'error' => 'That is not a valid checkin!'} }
-      end
+      create
+      return
+    end
+
+    raise CanCan::AccessDenied.new('Where is your token!?') unless can? :manage, Checkin
+
+    @checkin = Checkin.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @checkin }
     end
   end
 
@@ -61,7 +59,12 @@ class CheckinsController < ApplicationController
   # POST /checkins
   # POST /checkins.json
   def create
-    @checkin = Checkin.new(checkin_params)
+    params = @new_params || checkin_params
+
+    params[:player] = current_player
+
+    @checkin = Checkin.find_or_create params
+    @location = @checkin.location
 
     respond_to do |format|
       if @checkin.save
@@ -107,13 +110,7 @@ class CheckinsController < ApplicationController
 
 private
 
-  def public_attrs
-    [:id, :name, :slogan, :description, :created_at, :updated_at]
-  end
-
   def checkin_params
-    allowed = [:name, :slogan, :description, :logo, :logo_cache, :phone]
-    allowed << :paid if can? :manage, Checkin
-    params.require(:checkin).permit(*allowed)
+    params.require(:checkin).permit(:location_id, :team_id)
   end
 end

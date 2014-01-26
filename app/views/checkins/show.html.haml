@@ -1,17 +1,4 @@
-%h2
-= render partial: '/locations/map', locals: {map_data: @checkin.location.to_gmaps4rails}
-%p
-  = render partial: '/locations/infowindow', locals: {loc: @checkin.location}
-%p
-  Checkin to
-  = link_to @checkin.location_name, location_path(@checkin.location)
-  created by
-  = link_to @checkin.player_name, @checkin.player
-  on
-  = link_to @checkin.team_name, team_path(@checkin.team)
-  at
-  = @checkin.created_at.localtime
-%p
-= link_to 'Edit', edit_checkin_path(@checkin)
-|
-\#{link_to 'Back', checkins_path}
+- if can? :manage, @checkin.location
+  = render partial: 'admin_show'
+- else
+  = render partial: 'player_show'

@@ -1,0 +1,22 @@
+- javascript 'gmaps4rails.js'
+%h2
+  = link_to @checkin.team_name, @checkin.team
+  check-in at
+  = link_to @checkin.location_name, @checkin.location
+
+%h3 Details
+
+%p
+  %b Created by:
+  = link_to @checkin.player_name, @checkin.player
+%p
+  %b Timestamp:
+  = @checkin.created_at.localtime
+
+= render partial: '/locations/map', locals: {map_data: @checkin.location.to_gmaps4rails}
+
+%br
+%h3 Checkin Controls
+= link_to 'Edit', edit_checkin_path(@checkin)
+|
+= link_to "Delete", @checkin, method: :delete, data: { confirm: 'Are you REALLY SURE?! This is probably a bad idea! Don\'t do it!' }

@@ -12,6 +12,7 @@ Gac2014::Application.routes.draw do
 
   resources :locations do
     resources :documents
+    get :poster
   end
 
 
