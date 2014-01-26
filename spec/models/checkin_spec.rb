@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'spec_helper'
 
-describe Checkin, focus: true do
+describe Checkin do
   describe '#next_puzzle' do
     let(:cluster) { FactoryGirl.build :blue_cluster }
     let(:locA) { FactoryGirl.build :location_A }
