@@ -35,14 +35,20 @@ class CheckinsController < ApplicationController
     raise ActionController::RoutingError.new('No such location!') unless @location
 
     @checkin = Checkin.new player: current_player, team: current_player.team, location: @location
-    if @checkin.save!
-      event action, :checkin, @checkin.id, description: "#{current_player.name} on #{current_player.team_name} checked in at #{@location.name}"
+    if @checkin.save
+      event "create", :checkin, @checkin.id, description: "#{current_player.name} on #{current_player.team_name} checked in at #{@location.name}"
       current_player.team_location = @location
       current_player.save!
 
       respond_to do |format|
         format.html # new.html.erb
         format.json { render json: @checkin }
+      end
+    else
+      raise "Checkin failed to save: #{@checkin.errors}"
+      respond_to do |format|
+        format.html { render 'bad_checkin' }
+        format.json { render json: {'error' => 'That is not a valid checkin!'} }
       end
     end
   end

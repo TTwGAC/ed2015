@@ -9,7 +9,7 @@ class Player < ActiveRecord::Base
   has_many :team_invitations
   has_many :checkins
   before_save :default_team
-  delegate :name, :id, :location, :to => :team, :prefix => true
+  delegate :name, :id, :location, :location=, :to => :team, :prefix => true
   mount_uploader :avatar, AvatarUploader
   ROLES = %w[admin player observer none]
 
