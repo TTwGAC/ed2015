@@ -41,14 +41,11 @@
 
 %hr
 
-= link_to "View Check-in Poster", location_poster_path(@location)
-
-%hr
-
 %br
-%h3
-  Location Controls
+%h3 Location Controls
 %p
+= link_to "View/Print Poster", location_poster_path(@location)
+&nbsp;&nbsp;&ndash;&nbsp;&nbsp;
 = link_to 'Edit', edit_location_path(@location)
-|
+&nbsp;&nbsp;&ndash;&nbsp;&nbsp;
 = link_to 'Delete', @location, method: :delete, data: { confirm: 'Really delete this location?' }
