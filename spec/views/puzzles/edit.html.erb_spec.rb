@@ -5,7 +5,7 @@ describe "puzzles/edit" do
     @puzzle = assign(:puzzle, stub_model(Puzzle))
   end
 
-  it "renders the edit puzzle form" do
+  xit "renders the edit puzzle form" do
     render
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers

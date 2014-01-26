@@ -38,7 +38,7 @@ describe ClustersController do
 
 
   describe "GET index" do
-    it "assigns all clusters as @clusters" do
+    xit "assigns all clusters as @clusters" do
       cluster = Cluster.create! valid_attributes
       get :index, {}, valid_session
       assigns(:clusters).should eq([cluster])
@@ -46,7 +46,7 @@ describe ClustersController do
   end
 
   describe "GET show" do
-    it "assigns the requested cluster as @cluster" do
+    xit "assigns the requested cluster as @cluster" do
       cluster = Cluster.create! valid_attributes
       get :show, {:id => cluster.to_param}, valid_session
       assigns(:cluster).should eq(cluster)
@@ -54,14 +54,14 @@ describe ClustersController do
   end
 
   describe "GET new" do
-    it "assigns a new cluster as @cluster" do
+    xit "assigns a new cluster as @cluster" do
       get :new, {}, valid_session
       assigns(:cluster).should be_a_new(Cluster)
     end
   end
 
   describe "GET edit" do
-    it "assigns the requested cluster as @cluster" do
+    xit "assigns the requested cluster as @cluster" do
       cluster = Cluster.create! valid_attributes
       get :edit, {:id => cluster.to_param}, valid_session
       assigns(:cluster).should eq(cluster)
@@ -70,33 +70,33 @@ describe ClustersController do
 
   describe "POST create" do
     describe "with valid params" do
-      it "creates a new Cluster" do
+      xit "creates a new Cluster" do
         expect {
           post :create, {:cluster => valid_attributes}, valid_session
         }.to change(Cluster, :count).by(1)
       end
 
-      it "assigns a newly created cluster as @cluster" do
+      xit "assigns a newly created cluster as @cluster" do
         post :create, {:cluster => valid_attributes}, valid_session
         assigns(:cluster).should be_a(Cluster)
         assigns(:cluster).should be_persisted
       end
 
-      it "redirects to the created cluster" do
+      xit "redirects to the created cluster" do
         post :create, {:cluster => valid_attributes}, valid_session
         response.should redirect_to(Cluster.last)
       end
     end
 
     describe "with invalid params" do
-      it "assigns a newly created but unsaved cluster as @cluster" do
+      xit "assigns a newly created but unsaved cluster as @cluster" do
         # Trigger the behavior that occurs when invalid params are submitted
         Cluster.any_instance.stub(:save).and_return(false)
         post :create, {:cluster => { "name" => "invalid value" }}, valid_session
         assigns(:cluster).should be_a_new(Cluster)
       end
 
-      it "re-renders the 'new' template" do
+      xit "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Cluster.any_instance.stub(:save).and_return(false)
         post :create, {:cluster => { "name" => "invalid value" }}, valid_session
@@ -107,7 +107,7 @@ describe ClustersController do
 
   describe "PUT update" do
     describe "with valid params" do
-      it "updates the requested cluster" do
+      xit "updates the requested cluster" do
         cluster = Cluster.create! valid_attributes
         # Assuming there are no other clusters in the database, this
         # specifies that the Cluster created on the previous line
@@ -117,13 +117,13 @@ describe ClustersController do
         put :update, {:id => cluster.to_param, :cluster => { "name" => "MyString" }}, valid_session
       end
 
-      it "assigns the requested cluster as @cluster" do
+      xit "assigns the requested cluster as @cluster" do
         cluster = Cluster.create! valid_attributes
         put :update, {:id => cluster.to_param, :cluster => valid_attributes}, valid_session
         assigns(:cluster).should eq(cluster)
       end
 
-      it "redirects to the cluster" do
+      xit "redirects to the cluster" do
         cluster = Cluster.create! valid_attributes
         put :update, {:id => cluster.to_param, :cluster => valid_attributes}, valid_session
         response.should redirect_to(cluster)
@@ -131,7 +131,7 @@ describe ClustersController do
     end
 
     describe "with invalid params" do
-      it "assigns the cluster as @cluster" do
+      xit "assigns the cluster as @cluster" do
         cluster = Cluster.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Cluster.any_instance.stub(:save).and_return(false)
@@ -139,7 +139,7 @@ describe ClustersController do
         assigns(:cluster).should eq(cluster)
       end
 
-      it "re-renders the 'edit' template" do
+      xit "re-renders the 'edit' template" do
         cluster = Cluster.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Cluster.any_instance.stub(:save).and_return(false)
@@ -150,14 +150,14 @@ describe ClustersController do
   end
 
   describe "DELETE destroy" do
-    it "destroys the requested cluster" do
+    xit "destroys the requested cluster" do
       cluster = Cluster.create! valid_attributes
       expect {
         delete :destroy, {:id => cluster.to_param}, valid_session
       }.to change(Cluster, :count).by(-1)
     end
 
-    it "redirects to the clusters list" do
+    xit "redirects to the clusters list" do
       cluster = Cluster.create! valid_attributes
       delete :destroy, {:id => cluster.to_param}, valid_session
       response.should redirect_to(clusters_url)

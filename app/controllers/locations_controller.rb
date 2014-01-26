@@ -96,6 +96,12 @@ class LocationsController < ApplicationController
 
 private
   def location_params
+    #if params['location']['open_time(4i)'] == ''
+    #  (1..5).each {|i| params['location']["open_time(#{i}i)"] = nil}
+    #end
+    #if params['location']['close_time(4i)'] == ''
+    #  (1..5).each {|i| params['location']["close_time(#{i}i)"] = nil}
+    #end
     params.require(:location).permit(:name, :address, :latitude, :longitude, :cluster_id, :permission_received, :next_puzzle_id, :open_time, :close_time)
   end
 end
