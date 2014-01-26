@@ -33,7 +33,7 @@ class CheckinsController < ApplicationController
   def new
     if params[:t]
       location = Location.where(token: params.delete(:t)).first
-      raise ActionController::RoutingError.new('No such location!') unless location
+      raise CanCan::AccessDenied.new('No such location!') unless location
 
       @new_params = {location: location, team: current_player.team}
 
