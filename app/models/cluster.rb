@@ -3,6 +3,11 @@ class Cluster < ActiveRecord::Base
   has_many :locations
   validates_inclusion_of :color, in: COLORS
   validates_presence_of :name
+  validates_uniqueness_of :sequence
+
+  def next_cluster
+    Cluster.where('sequence > ?', sequence).order('sequence').first
+  end
 end
 
 # == Schema Information
