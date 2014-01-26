@@ -52,5 +52,11 @@ end
 
 FactoryGirl.find_definitions
 
+class Location < ActiveRecord::Base
+  def geocode?
+    false
+  end
+end
+
 # Reset the DB
 load "#{Rails.root}/db/seeds.rb"
