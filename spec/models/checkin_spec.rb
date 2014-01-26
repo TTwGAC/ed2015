@@ -49,6 +49,8 @@ describe Checkin do
 
       it 'should select a random puzzle from any location without a checkin in the next cluster'
 
+      it 'should not choose a puzzle that has a specific location when the location does not specify it'
+
     end
 
   end
