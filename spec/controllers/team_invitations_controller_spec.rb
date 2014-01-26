@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe TeamInvitationsController, focus: true do
+describe TeamInvitationsController do
   include ControllerSpecMixin
 
   before :each do

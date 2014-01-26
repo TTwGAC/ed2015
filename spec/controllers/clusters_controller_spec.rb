@@ -37,7 +37,7 @@ describe ClustersController do
   end
 
 
-  describe "GET index", focus: true do
+  describe "GET index" do
     it "assigns all clusters as @clusters" do
       cluster = Cluster.create! valid_attributes
       get :index, {}, valid_session
