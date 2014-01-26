@@ -25,7 +25,7 @@ gem 'omniauth-facebook'
 gem 'certified'
 
 # Social
-gem 'twitter'
+gem 'twitter', '~> 4.0'
 gem 'koala', '~> 1.7.0rc1'
 
 # File storage
