@@ -10,7 +10,7 @@ class Puzzle < ActiveRecord::Base
   delegate :for_players, :for_game_control, to: :documents, prefix: true
   delegate :next_puzzle, to: :location
   validates_presence_of :name
-  validates_inclusion_of :status, in: STATUSES
+  validates_inclusion_of :status, in: STATUSES, allow_blank: true
 
   def self.statuses
     STATUSES.inject({}) do |statuses, key|
