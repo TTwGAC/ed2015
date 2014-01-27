@@ -22,7 +22,7 @@ class Puzzle < ActiveRecord::Base
   def self.status_name(name)
     case name
     when 'wip' then 'Work In Progress'
-    when 'needs_testing' then 'Needs Testing'
+    when 'needs_testing' then 'In Testing'
     when 'ready' then 'Ready'
     else 'Unknown'
     end
