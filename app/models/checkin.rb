@@ -30,7 +30,6 @@ class Checkin < ActiveRecord::Base
     get_team
     set_location
     set_puzzle
-    team.save!
   end
 
   def notify_players
@@ -45,10 +44,13 @@ class Checkin < ActiveRecord::Base
 
   def set_location
     team.location = location
+    team.save!
   end
 
   def set_puzzle
-    return true if self.solved_puzzle || self.next_puzzle
+    if self.solved_puzzle || self.next_puzzle
+      logger.warn "NOT setting the puzzle because either solved: #{self.solved_puzzle.inspect} or next: #{self.next_puzzle.inspect}"
+    end
     self.solved_puzzle = self.team.current_puzzle
     self.next_puzzle = select_next_puzzle
     self.team.current_puzzle = self.next_puzzle
@@ -78,10 +80,11 @@ class Checkin < ActiveRecord::Base
 
   def filter_locations(locations)
     locations.select do |location|
+      not_current_location = (location != self.location)
       # Find any location in this cluster that the user has not checked into
       no_checkin = Checkin.where(team_id: self.team).where(location_id: location).none?
       no_source = location.destination_for_puzzles.first.comes_from.nil?
-      no_source && no_checkin
+      not_current_location && no_source && no_checkin
     end
   end
 
