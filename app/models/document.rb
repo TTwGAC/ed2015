@@ -13,6 +13,10 @@ class Document < ActiveRecord::Base
     self.token ||= SecureRandom.hex(16)
   end
 
+  def file_name
+    "#{name}#{File.extname file.url}"
+  end
+
   mount_uploader :file, DocumentUploader
 end
 

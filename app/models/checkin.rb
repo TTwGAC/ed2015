@@ -5,6 +5,7 @@ class Checkin < ActiveRecord::Base
   belongs_to :solved_puzzle, class_name: 'Puzzle', foreign_key: 'solved_puzzle_id'
   belongs_to :next_puzzle, class_name: 'Puzzle', foreign_key: 'next_puzzle_id'
   before_validation :update_links
+  after_save :notify_players
 
   delegate :name, to: :location, prefix: true
   delegate :name, to: :team, prefix: true
@@ -30,6 +31,16 @@ class Checkin < ActiveRecord::Base
     set_location
     set_puzzle
     team.save!
+  end
+
+  def notify_players
+    team.players.each do |player|
+      mailer = TeamMailer.send_puzzle(player, next_puzzle)
+      next_puzzle.documents_for_players.each do |document|
+        mailer.attachments[document.file_name] = document.file.read
+      end
+      mailer.deliver!
+    end
   end
 
   def set_location
