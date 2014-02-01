@@ -5,6 +5,7 @@ class Checkin < ActiveRecord::Base
   belongs_to :solved_puzzle, class_name: 'Puzzle', foreign_key: 'solved_puzzle_id'
   belongs_to :next_puzzle, class_name: 'Puzzle', foreign_key: 'next_puzzle_id'
   before_validation :update_links
+  validates_presence_of :team, :player, :location
   after_save :notify_players
 
   delegate :name, to: :location, prefix: true
