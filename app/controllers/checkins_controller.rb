@@ -67,7 +67,7 @@ class CheckinsController < ApplicationController
     @location = @checkin.location
 
     respond_to do |format|
-      if @checkin.save
+      if @checkin
         event "create", :checkin, @checkin.id, description: "#{current_player.name} checked in for team #{@checkin.team_name} to #{@checkin.location_name}"
         format.html { redirect_to @checkin, notice: 'Checkin was successfully created.' }
         format.json { render json: @checkin, status: :created, location: @checkin }
