@@ -9,12 +9,13 @@
 %p
   %b Created by:
   = link_to @checkin.player_name, @checkin.player
-%p
-  %b Solved:
-  = link_to @checkin.solved_puzzle_name, @checkin.solved_puzzle
-  - if p = @checkin.previous
-    in
-    = distance_of_time_in_words p.created_at, @checkin.created_at
+- if @checkin.solved_puzzle
+  %p
+    %b Solved:
+    = link_to @checkin.solved_puzzle_name, @checkin.solved_puzzle
+    - if p = @checkin.previous
+      in
+      = distance_of_time_in_words p.created_at, @checkin.created_at
 %p
   %b Next puzzle:
   = link_to @checkin.next_puzzle_name, @checkin.next_puzzle
