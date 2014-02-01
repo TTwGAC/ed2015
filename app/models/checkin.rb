@@ -89,7 +89,7 @@ class Checkin < ActiveRecord::Base
   end
 
   def previous
-    last_checkin = Checkin.where(team_id: self.team).order('created_at DESC').limit(2).last
+    last_checkin = Checkin.where(team_id: self.team).where('created_at < ?', created_at).order('created_at DESC').limit(1).first
     last_checkin == self ? nil : last_checkin
   end
 end
