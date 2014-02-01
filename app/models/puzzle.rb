@@ -4,6 +4,8 @@ class Puzzle < ActiveRecord::Base
   has_one :comes_from, class_name: "Location", foreign_key: 'next_puzzle_id'
   belongs_to :destination, class_name: "Location", foreign_key: 'destination_id'
   has_many :documents, as: :documentable
+  has_many :teams
+  has_many :checkins, foreign_key: 'solved_puzzle_id'
   before_save :get_token
   delegate :name, to: :origin, prefix: true
   delegate :name, to: :destination, prefix: true

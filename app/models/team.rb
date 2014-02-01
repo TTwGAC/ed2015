@@ -13,6 +13,7 @@ class Team < ActiveRecord::Base
   has_many :team_invitations
   has_many :checkins
   belongs_to :location
+  belongs_to :current_puzzle, class_name: 'Puzzle', foreign_key: 'current_puzzle_id'
   mount_uploader :logo, LogoUploader
   phony_normalize :phone, :default_country_code => 'US'
   delegate :name, to: :location, prefix: true

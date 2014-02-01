@@ -2,6 +2,8 @@ class Checkin < ActiveRecord::Base
   belongs_to :location
   belongs_to :team
   belongs_to :player
+  belongs_to :solved_puzzle, class_name: 'Puzzle', foreign_key: 'solved_puzzle_id'
+  belongs_to :next_puzzle, class_name: 'Puzzle', foreign_key: 'next_puzzle_id'
   before_validation :update_links
 
   delegate :name, to: :location, prefix: true
@@ -26,36 +28,50 @@ class Checkin < ActiveRecord::Base
   def update_links
     get_team
     set_location
+    set_puzzle
+    team.save!
   end
 
   def set_location
     team.location = location
-    team.save!
   end
 
-  def next_puzzle
-    raise "Record must be saved before getting the next puzzle!" unless persisted?
+  def set_puzzle
+    return true if self.solved_puzzle || self.next_puzzle
+    self.solved_puzzle = self.team.current_puzzle
+    self.next_puzzle = select_next_puzzle
+    self.team.current_puzzle = self.next_puzzle
+  end
 
+  def select_next_puzzle
     return self.location.next_puzzle if self.location.next_puzzle
 
     cluster = location.cluster
 
     raise "Checked into a location not in a cluster!" unless cluster
 
-    possible_locations = cluster.locations.select do |location|
-      # Find any location in this cluster that the user has not checked into
-      Checkin.where(team_id: self.team).where(location_id: location).none?
-    end
+    possible_locations = filter_locations cluster.locations
 
     if possible_locations.any?
-      return possible_locations.sample
+      next_location = possible_locations.sample
+    else
+      next_cluster = cluster.next_cluster
+
+      raise "Need to set up end-game mailer and notify Game Control" unless next_cluster
+
+      next_location = filter_locations(next_cluster.locations).sample
     end
 
-    next_cluster = cluster.next_cluster
+    next_location.destination_for_puzzles.first
+  end
 
-    raise "Need to set up end-game mailer and notify Game Control" unless next_cluster
-
-    next_cluster.locations.sample
+  def filter_locations(locations)
+    locations.select do |location|
+      # Find any location in this cluster that the user has not checked into
+      no_checkin = Checkin.where(team_id: self.team).where(location_id: location).none?
+      no_source = location.destination_for_puzzles.first.comes_from.nil?
+      no_source && no_checkin
+    end
   end
 
   def previous

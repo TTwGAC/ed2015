@@ -35,7 +35,7 @@ describe Checkin do
 
   end
 
-  describe '#next_puzzle' do
+  describe '#select_next_puzzle' do
 
     before :each do
       [cluster, locA, locB, locC, loc_with_puzzle, player] # Instantiate
@@ -49,13 +49,13 @@ describe Checkin do
 
       it "should raise if the checkin is not persisted" do
         checkin = Checkin.new player: player, location: locA
-        expect { checkin.next_puzzle }.to raise_error
+        expect { checkin.select_next_puzzle }.to raise_error
       end
 
       it 'should select the next puzzle when one is specifically named' do
         checkin = Checkin.create! player: player, location: loc_with_puzzle 
 
-        checkin.next_puzzle.should == loc_with_puzzle.next_puzzle
+        checkin.select_next_puzzle.should == loc_with_puzzle.next_puzzle
       end
 
       it 'should select a puzzle from any location without a checkin in the current cluster' do
@@ -63,7 +63,7 @@ describe Checkin do
         Checkin.create! player: player, location: loc_with_puzzle
         checkin = Checkin.create! player: player, location: locB
 
-        checkin.next_puzzle.should == locC
+        checkin.select_next_puzzle.should == locC
       end
 
     end

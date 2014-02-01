@@ -11,15 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140125225506) do
+ActiveRecord::Schema.define(:version => 20140126225525) do
 
   create_table "checkins", :force => true do |t|
     t.datetime "timestamp"
     t.integer  "location_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.integer  "team_id"
     t.integer  "player_id"
+    t.integer  "solved_puzzle_id"
+    t.integer  "next_puzzle_id"
   end
 
   create_table "clusters", :force => true do |t|
@@ -135,8 +137,8 @@ ActiveRecord::Schema.define(:version => 20140125225506) do
   end
 
   create_table "teams", :force => true do |t|
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.string   "name"
     t.datetime "created"
     t.datetime "updated"
@@ -147,6 +149,7 @@ ActiveRecord::Schema.define(:version => 20140125225506) do
     t.string   "phone"
     t.boolean  "paid"
     t.integer  "location_id"
+    t.integer  "current_puzzle_id"
   end
 
   add_index "teams", ["name"], :name => "index_teams_on_name", :unique => true
