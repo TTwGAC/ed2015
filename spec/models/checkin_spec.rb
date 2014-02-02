@@ -10,6 +10,23 @@ describe Checkin do
   let(:locD) { FactoryGirl.create :location_D, cluster: cluster, next_puzzle: puzzle_ending_at_C }
   let(:player) { FactoryGirl.create :player }
 
+  def verify_puzzles(last_puzzle, next_puzzle, checkin, team)
+    checkin.team.should == team
+
+    checkin.next_puzzle.should_not == last_puzzle
+    checkin.next_puzzle.should_not be nil
+
+    checkin.solved_puzzle.should == last_puzzle
+    checkin.next_puzzle.should == next_puzzle
+    team.current_puzzle.should == next_puzzle
+  end
+
+  def verify_location(location, checkin, team)
+    checkin.location.should == location
+    team.location.should == location
+  end
+
+
   before :each do
     FactoryGirl.reload
     [locA, locB, locC, locD, player] # Instantiate
@@ -36,22 +53,20 @@ describe Checkin do
     opts = { player: player, team: team, location: locB }
     c = Checkin.create! opts
 
-    c.team.should == team
-    team.location.should == locB
-    c.next_puzzle.should_not be nil
-    c.solved_puzzle.should be nil
+    verify_puzzles nil, c.next_puzzle, c, team
+    verify_location locB, c, team
 
     # Process next checkin
     last_puzzle = c.next_puzzle
-    next_location = c.next_puzzle.destination
+    next_location = last_puzzle.destination
     opts = { player: player, team: team, location: next_location }
     c = Checkin.create! opts
 
-    c.team.should == team
-    team.location.should == next_location
-    c.next_puzzle.should_not == last_puzzle
-    c.next_puzzle.should_not be nil
-    c.solved_puzzle.should == last_puzzle
+    verify_puzzles last_puzzle, c.next_puzzle, c, team
+    verify_location next_location, c, team
+
+    verify_puzzles last_puzzle, c.next_puzzle, c, team
+    verify_location next_location, c, team
   end
 
 
