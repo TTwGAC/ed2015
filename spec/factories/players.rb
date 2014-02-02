@@ -6,7 +6,7 @@ FactoryGirl.define do
     nickname "Puhleeeze"
     email "wanna@be.com"
     password "asdfghjl"
-    team { Team.where(name: "Observers").first }
+    team Team.where(name: "Observers").first
   end
 
   factory :player do
@@ -16,7 +16,7 @@ FactoryGirl.define do
     nickname "Backslash"
     email "flip@nelson.com"
     password "asdfghjl"
-    team { FactoryGirl.build(:team) }
+    association :team, factory: :team
   end
 
   factory :admin, class: Player do
@@ -26,6 +26,6 @@ FactoryGirl.define do
     nickname "King of the Jungle"
     email "tarzan@jungle.com"
     password "asdfghjl"
-    team { Team.where(name: "Game Control").first }
+    team Team.where(name: "Game Control").first
   end
 end
