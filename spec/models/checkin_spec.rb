@@ -35,14 +35,14 @@ describe Checkin do
 
   it %q{should default the team when not specified} do
     opts = { player: player, location: locC }
-    c = Checkin.create! opts
+    c = Checkin.find_or_create opts
     c.team.should == player.team
   end
 
   it %q{should respect the team when specified} do
     team = FactoryGirl.create :otherteam
     opts = { player: player, team: team, location: locC }
-    c = Checkin.create! opts
+    c = Checkin.find_or_create opts
     c.team.should == team
   end
 
@@ -51,7 +51,7 @@ describe Checkin do
 
     # Process first checkin
     opts = { player: player, team: team, location: locB }
-    c = Checkin.create! opts
+    c = Checkin.find_or_create opts
 
     verify_puzzles nil, c.next_puzzle, c, team
     verify_location locB, c, team
@@ -60,7 +60,7 @@ describe Checkin do
     last_puzzle = c.next_puzzle
     next_location = last_puzzle.destination
     opts = { player: player, team: team, location: next_location }
-    c = Checkin.create! opts
+    c = Checkin.find_or_create opts
 
     verify_puzzles last_puzzle, c.next_puzzle, c, team
     verify_location next_location, c, team
@@ -74,7 +74,7 @@ describe Checkin do
 
     it %q{should return the existing Checkin if one for a given location already exists} do
       opts = { player: player, team: player.team, location: locC }
-      c = Checkin.create! opts
+      c = Checkin.find_or_create opts
       Checkin.find_or_create(opts).should == c
     end
 
@@ -84,14 +84,14 @@ describe Checkin do
     describe 'with locations available in the current cluster' do
 
       it 'should select the next puzzle when one is specifically named' do
-        checkin = Checkin.create! player: player, location: locD
+        checkin = Checkin.find_or_create player: player, location: locD
 
         checkin.select_next_puzzle.should == puzzle_ending_at_C
       end
 
       it 'should select a puzzle from any location without a checkin in the current cluster' do
-        Checkin.create! player: player, location: locD
-        Checkin.create! player: player, location: locC
+        Checkin.find_or_create player: player, location: locD
+        Checkin.find_or_create player: player, location: locC
         checkin = Checkin.new player: player, location: locA
         checkin.valid?.should be true # populate checkin fields
 
@@ -112,14 +112,14 @@ describe Checkin do
 
   describe '#previous' do
     it 'should return the previous checkin for the given team' do
-      c = Checkin.create! player: player, location: locC
-      b = Checkin.create! player: player, location: locB
-      a = Checkin.create! player: player, location: locA
+      c = Checkin.find_or_create player: player, location: locC
+      b = Checkin.find_or_create player: player, location: locB
+      a = Checkin.find_or_create player: player, location: locA
       a.previous.should == b
     end
 
     it 'should return nil if there is no previous checkin' do
-      a = Checkin.create! player: player, location: locA
+      a = Checkin.find_or_create player: player, location: locA
       a.previous.should be_nil
     end
   end
