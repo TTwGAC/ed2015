@@ -4,7 +4,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to page_path('access_denied'), :alert => exception.message
+    flash[:alert] = exception.message
+    respond_to do |format|
+      format.html { render 'pages/access_denied', status: 403 }
+    end
   end
 
   def current_user
