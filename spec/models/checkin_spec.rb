@@ -11,11 +11,8 @@ describe Checkin do
   let(:player) { FactoryGirl.create :player }
 
   before :each do
+    FactoryGirl.reload
     [locA, locB, locC, locD, player] # Instantiate
-  end
-
-  after :each do
-    Checkin.delete_all
   end
 
   it %q{should default the team when not specified} do
@@ -53,9 +50,10 @@ describe Checkin do
       it 'should select a puzzle from any location without a checkin in the current cluster' do
         Checkin.create! player: player, location: locD
         Checkin.create! player: player, location: locC
-        checkin = Checkin.new player: player, location: locC
+        checkin = Checkin.new player: player, location: locA
+        checkin.valid?.should be true # populate checkin fields
 
-        checkin.select_next_puzzle.should == locB.destination_for_puzzles.first
+        checkin.next_puzzle.should == locB.destination_for_puzzles.first
       end
 
     end
