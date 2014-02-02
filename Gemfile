@@ -68,7 +68,7 @@ group :development do
   gem 'erb2haml'
   gem 'html2haml'
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', require: false
   gem 'guard-rspec'
   gem "letter_opener"
   gem 'terminal-notifier-guard'
