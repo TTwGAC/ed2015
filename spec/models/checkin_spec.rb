@@ -64,6 +64,23 @@ describe Checkin do
 
     verify_puzzles last_puzzle, c.next_puzzle, c, team
     verify_location next_location, c, team
+  end
+
+  it %q{should track the previous and next puzzles without a specified team} do
+    team = player.team
+
+    # Process first checkin
+    opts = { player: player, location: locB }
+    c = Checkin.find_or_create opts
+
+    verify_puzzles nil, c.next_puzzle, c, team
+    verify_location locB, c, team
+
+    # Process next checkin
+    last_puzzle = c.next_puzzle
+    next_location = last_puzzle.destination
+    opts = { player: player, location: next_location }
+    c = Checkin.find_or_create opts
 
     verify_puzzles last_puzzle, c.next_puzzle, c, team
     verify_location next_location, c, team
