@@ -13,6 +13,7 @@ describe Checkin do
   before :each do
     FactoryGirl.reload
     [locA, locB, locC, locD, player] # Instantiate
+    player.team.location = player.team.current_puzzle = nil
   end
 
   it %q{should default the team when not specified} do
@@ -27,6 +28,32 @@ describe Checkin do
     c = Checkin.create! opts
     c.team.should == team
   end
+
+  it %q{should track the previous and next puzzles} do
+    team = player.team
+
+    # Process first checkin
+    opts = { player: player, team: team, location: locB }
+    c = Checkin.create! opts
+
+    c.team.should == team
+    team.location.should == locB
+    c.next_puzzle.should_not be nil
+    c.solved_puzzle.should be nil
+
+    # Process next checkin
+    last_puzzle = c.next_puzzle
+    next_location = c.next_puzzle.destination
+    opts = { player: player, team: team, location: next_location }
+    c = Checkin.create! opts
+
+    c.team.should == team
+    team.location.should == next_location
+    c.next_puzzle.should_not == last_puzzle
+    c.next_puzzle.should_not be nil
+    c.solved_puzzle.should == last_puzzle
+  end
+
 
   describe '#find_or_create' do
 
