@@ -19,6 +19,9 @@ describe Checkin do
     checkin.solved_puzzle.should == last_puzzle
     checkin.next_puzzle.should == next_puzzle
     team.current_puzzle.should == next_puzzle
+
+    # Ensure the changes are flushed
+    team.changed?.should be false
   end
 
   def verify_location(location, checkin, team)

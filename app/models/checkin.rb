@@ -33,6 +33,7 @@ class Checkin < ActiveRecord::Base
     get_team
     set_location
     set_puzzle
+    team.save!
   end
 
   def notify_players
@@ -47,7 +48,6 @@ class Checkin < ActiveRecord::Base
 
   def set_location
     team.location = location
-    team.save!
   end
 
   def set_puzzle
