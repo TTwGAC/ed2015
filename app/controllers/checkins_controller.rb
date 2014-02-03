@@ -9,7 +9,11 @@ class CheckinsController < ApplicationController
   # GET /checkins
   # GET /checkins.json
   def index
-    @checkins = Checkin.order('created_at DESC')
+    @checkins = if can? :manage, Checkin
+      Checkin
+    else
+      Checkin.where(team_id: current_player.team)
+    end.order('created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
