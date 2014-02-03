@@ -13,6 +13,7 @@ class Ability
       can [:create, :destroy], JoinAttempt
       can :create, Checkin
       can :read, Checkin, :team_id => player.team_id
+      can :read, Document, private: false
     when "observer"
       can :create, Team
       can :create, JoinAttempt
