@@ -1,4 +1,4 @@
-= simple_form_for(@document) do |f|
+= simple_form_for([@documentable, @document]) do |f|
   = f.error_notification
   .form-inputs
     = f.input :name
