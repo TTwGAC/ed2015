@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe JoinAttemptsController, focus: true do
+describe JoinAttemptsController do
   include ControllerSpecMixin
   before :each do
     sign_in_as :player
