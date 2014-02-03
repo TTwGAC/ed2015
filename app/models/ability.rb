@@ -8,18 +8,18 @@ class Ability
     when "admin"
       can :manage, :all
     when "player"
-      can [:edit, :update], Team, :id => player.team_id
+      can [:edit, :update], Team, id: player.team_id
       can [:create, :destroy], TeamInvitation
       can [:create, :destroy], JoinAttempt
       can :create, Checkin
-      can :read, Checkin, :team_id => player.team_id
+      can :read, Checkin, team_id: player.team_id
       can :read, Document, private: false
     when "observer"
       can :create, Team
       can :create, JoinAttempt
     end
 
-    can :manage, Player, :id => player.id
+    can :manage, Player, id: player.id
 
     can :read, Team
     can :read, Player
