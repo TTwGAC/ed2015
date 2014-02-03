@@ -1,18 +1,16 @@
 require 'spec_helper'
 
-describe JoinAttemptsController do
+describe JoinAttemptsController, focus: true do
+  include ControllerSpecMixin
   before :each do
-    @request.env["devise.mapping"] = Devise.mappings[:player]
-    @current_player = FactoryGirl.build(:player)
-    @current_player.confirm!
-    sign_in @current_player
+    sign_in_as :player
   end
 
   it %q{should process a join request} do
-    ja = mock :join_attempt
-    JoinAttempt.should_receive(:new).once.with("player" => @current_player, "token" => 'abcd').and_return ja
-    ja.should_receive(:save!).once
+    otherteam = FactoryGirl.create :otherteam, token: 'abcd'
+    subject.current_player.team.should_not == otherteam
     get :create, {join_attempt: {token: 'abcd'}}
+    subject.current_player.team.should == otherteam
   end
 
 
