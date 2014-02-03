@@ -4,7 +4,7 @@ class ClustersController < ApplicationController
     params[:cluster] &&= cluster_params
   end
 
-  authorize_resource
+  load_and_authorize_resource
 
   # GET /clusters
   # GET /clusters.json

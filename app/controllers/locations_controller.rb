@@ -4,7 +4,7 @@ class LocationsController < ApplicationController
     params[:location] &&= location_params
   end
 
-  authorize_resource
+  load_and_authorize_resource
 
   # GET /locations
   # GET /locations.json

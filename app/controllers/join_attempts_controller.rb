@@ -1,6 +1,6 @@
 class JoinAttemptsController < ApplicationController
   before_filter :authenticate_player!
-  authorize_resource
+  load_and_authorize_resource
 
   def new
     if params[:token]

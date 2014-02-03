@@ -4,7 +4,7 @@ class CheckinsController < ApplicationController
     params[:checkin] &&= checkin_params
   end
 
-  authorize_resource
+  load_and_authorize_resource
 
   # GET /checkins
   # GET /checkins.json

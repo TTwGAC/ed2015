@@ -4,7 +4,7 @@ class PuzzlesController < ApplicationController
     params[:puzzle] &&= puzzle_params
   end
 
-  authorize_resource
+  load_and_authorize_resource
 
   # GET /puzzles
   # GET /puzzles.json
