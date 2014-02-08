@@ -1,7 +1,7 @@
 class DocumentsController < ApplicationController
   before_filter :authenticate_player!
   before_filter do
-    params[:location] &&= location_params
+    params[:document] &&= document_params
   end
 
   load_and_authorize_resource
