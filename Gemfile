@@ -25,13 +25,14 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'certified'
 
+# Security
+gem 'strong_parameters'
+
 # Social
 gem 'twitter', '~> 4.0'
 gem 'koala', '~> 1.7.0rc1'
 
 # File storage
-gem 'geocoder'
-gem 'gmaps4rails', '~> 1.0'
 gem 'carrierwave'
 gem 'fog', '~> 1.3.1'
 gem 'cloudinary'
