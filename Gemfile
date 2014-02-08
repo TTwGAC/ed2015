@@ -2,20 +2,19 @@ source 'https://rubygems.org'
 ruby '2.1.0'
 
 gem 'rails', '3.2.16'
-
 gem 'pg'
 
-# Former :assets group
+# Layout
 gem 'sass-rails',   '~> 3.2.3'
 gem 'coffee-rails', '~> 3.2.1'
 gem 'uglifier', '>= 1.0.3'
 gem 'high_voltage'
-
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 2.3.0'
 gem 'haml'
+gem 'geocoder'
+gem 'gmaps4rails', '~> 1.0'
 gem 'simple_form'
-gem 'strong_parameters'
 
 # Authentication
 gem 'devise', '~> 3.0.0'
