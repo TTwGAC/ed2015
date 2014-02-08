@@ -1,13 +1,36 @@
 !!!
 %html
   %head
-    %title= @location.name
+    %title GAC Location Posters
     = stylesheet_link_tag "application", :media => "all"
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Michroma", media: 'all'
     :css
       body { text-align: center }
+      @media print {
+        a[href]:after {
+          content: none !important;
+        }
+        .poster {
+          margin: 0 auto;
+          width: 800px;
+          page-break-after: always;
+          page-break-inside: avoid;
+        }
+        hr { display: none }
+      }
   %body
-    %div{style: "margin: 0 auto; width: 800px"}
-      %p= image_tag 'logo.png', size: '300x300'
-      %h1= "Welcome to #{@location.name}"
-      = link_to image_tag(qr_code_url(@checkin_url)), @checkin_url
+    - @locations.each do |location|
+      %div.poster
+        %p= image_tag 'logo.png', size: '300x300'
+        %h1= "Welcome to #{location.name}"
+        - checkin_url = new_checkin_url params: {t: location.token}
+        = link_to image_tag(qr_code_url(checkin_url)), checkin_url
+        %h5
+          This poster is part of a game sponsored by the Georgia Tech Marching Band.
+          %br
+          Please do not remove.
+          %br
+          It will be removed by April 13, 2014
+          %br
+          For questions contact Game Control at 404.475.4820
+        %hr

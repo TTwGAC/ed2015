@@ -94,9 +94,12 @@ class LocationsController < ApplicationController
     end
   end
 
-  def poster
-    @location = Location.find(params[:location_id])
-    @checkin_url = new_checkin_url params: {t: @location.token}
+  def posters
+    if params[:location_id] == 'all'
+      @locations = Location.all
+    else
+      @locations = [Location.find(params[:location_id])]
+    end
     render :poster, layout: false
   end
 
