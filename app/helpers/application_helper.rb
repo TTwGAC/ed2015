@@ -107,4 +107,8 @@ module ApplicationHelper
     url << "&chld=#{ecl}|4"
     url
   end
+
+  def markdown
+    @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
+  end
 end

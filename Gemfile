@@ -15,6 +15,7 @@ gem 'haml'
 gem 'geocoder'
 gem 'gmaps4rails', '~> 1.0'
 gem 'simple_form'
+gem 'redcarpet'
 
 # Authentication
 gem 'devise', '~> 3.0.0'

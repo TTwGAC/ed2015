@@ -7,8 +7,7 @@
       = @puzzle.status_name
 
 - if @puzzle.description
-  %hr
-  %p= @puzzle.description
+  %div.box= markdown.render(@puzzle.description).html_safe
 
 %hr
 

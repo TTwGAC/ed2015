@@ -2,13 +2,11 @@
 %table.table
   %tr.header
     %th Name
-    %th Description
     %th Private
     %th View
   - @documents.each do |document|
     %tr
       %td= link_to document.name, document
-      %td= document.description
       %td= document.private ? "Yes" : "No"
       %td= link_to "View Document", document.file_url
 %br/
