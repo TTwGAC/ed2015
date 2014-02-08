@@ -1,11 +1,10 @@
 - javascript 'gmaps4rails.js'
 %h2
   = @puzzle.name
-
-- if @puzzle.status
-  %h5
-    = status_icon @puzzle
-    = @puzzle.status_name
+  - if @puzzle.status
+    %span{style: 'font-size: 0.8em; float: right'}
+      = status_icon @puzzle
+      = @puzzle.status_name
 
 - if @puzzle.description
   %hr
