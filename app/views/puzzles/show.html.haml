@@ -1,13 +1,15 @@
 - javascript 'gmaps4rails.js'
 %h2
   = @puzzle.name
+  - if @puzzle.expected_ttc
+    %span{style: 'font-size: 0.6em'}= "(#{@puzzle.expected_ttc} minutes)"
   - if @puzzle.status
     %span{style: 'font-size: 0.8em; float: right'}
       = status_icon @puzzle
       = @puzzle.status_name
 
 %h4 Description
-- if @puzzle.description
+- if @puzzle.description.present?
   %div.box= markdown.render(@puzzle.description).html_safe
 
 = render partial: '/documents/list', locals: {documents: @puzzle.documents_for_game_control, document_type: 'private'}

@@ -5,6 +5,7 @@
     = f.input :name
     = f.input :status, collection: Puzzle.statuses.invert
     = f.input :description, input_html: {rows: 5, cols: 80, style: 'width: inherit'}
+    = f.input :expected_ttc, label: "Expected Time-To-Complete (minutes)"
     = f.input :flavortext, input_html: {rows: 5, cols: 80, style: 'width: inherit'}
     = f.input :destination_id, collection: Location.find(:all, order: 'name'), label: "Puzzle Destination"
   .form-actions
