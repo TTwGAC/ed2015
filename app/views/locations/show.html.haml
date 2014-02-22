@@ -53,3 +53,5 @@
 = link_to 'Edit', edit_location_path(@location)
 &nbsp;&nbsp;&ndash;&nbsp;&nbsp;
 = link_to 'Delete', @location, method: :delete, data: { confirm: 'Really delete this location?' }
+
+= render partial: '/documents/new_document_modal', locals: {documentable: @location}
