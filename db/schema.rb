@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140222154557) do
+ActiveRecord::Schema.define(:version => 20140222155742) do
 
   create_table "checkins", :force => true do |t|
     t.datetime "timestamp"
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(:version => 20140222154557) do
     t.string   "status"
     t.text     "flavortext"
     t.integer  "expected_ttc"
+    t.integer  "owner_id"
   end
 
   create_table "sessions", :force => true do |t|

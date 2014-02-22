@@ -7,6 +7,10 @@
     %span{style: 'font-size: 0.8em; float: right'}
       = status_icon @puzzle
       = @puzzle.status_name
+- if @puzzle.owner
+  %p
+    %b Owner:
+    = @puzzle.owner_name
 
 %h4 Description
 - if @puzzle.description.present?

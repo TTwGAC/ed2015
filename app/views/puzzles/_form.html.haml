@@ -4,6 +4,7 @@
   .form-inputs
     = f.input :name
     = f.input :status, collection: Puzzle.statuses.invert
+    = f.input :owner_id, collection: Team.where(name: 'Game Control').first.players
     = f.input :description, input_html: {rows: 5, cols: 80, style: 'width: inherit'}
     = f.input :expected_ttc, label: "Expected Time-To-Complete (minutes)"
     = f.input :flavortext, input_html: {rows: 5, cols: 80, style: 'width: inherit'}
