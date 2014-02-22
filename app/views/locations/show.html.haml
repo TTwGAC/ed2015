@@ -37,7 +37,11 @@
 
 %hr
 
-= render partial: '/documents/list', locals: {documentable: @location}
+%h3 Documents
+
+= render partial: '/documents/list', locals: {documents: @location.documents_for_players, document_type: 'public'}
+
+= render partial: '/documents/list', locals: {documents: @location.documents_for_game_control, document_type: 'private'}
 
 %hr
 
