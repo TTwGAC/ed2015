@@ -111,4 +111,20 @@ module ApplicationHelper
   def markdown
     @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
   end
+
+  def label_for_documents(type)
+    # FIXME: This should be i18n
+    case type
+    when "public" then "Player Documents"
+    when "private" then "Game Control Documents"
+    end
+  end
+
+  def description_for_documents(type)
+    # FIXME: This should be i18n
+    case type
+    when "public" then "Public documents are shared with players during the course of the game. DO NOT PUT SPOILERS INTO THESE DOCUMENTS!"
+    when "private" then "Private documents are never sent to players. They contain sensitive, possibly spoiler, information and should not be shared!"
+    end
+  end
 end

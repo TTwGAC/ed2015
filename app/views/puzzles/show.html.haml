@@ -6,12 +6,11 @@
       = status_icon @puzzle
       = @puzzle.status_name
 
+%h4 Description
 - if @puzzle.description
   %div.box= markdown.render(@puzzle.description).html_safe
 
-%hr
-
-= render partial: '/documents/list', locals: {documentable: @puzzle}
+= render partial: '/documents/list', locals: {documents: @puzzle.documents_for_game_control, document_type: 'private'}
 
 %hr
 
@@ -43,10 +42,14 @@
     = @puzzle.flavortext
   - else
     %span{style: 'font-style: italic'} None
+
+= render partial: '/documents/list', locals: {documents: @puzzle.documents_for_players, document_type: 'public'}
+
 %br
-%h3
-  Puzzle Controls
+%h3 Puzzle Controls
 %p
   = link_to 'Edit', edit_puzzle_path(@puzzle)
   |
   = link_to 'Delete', @puzzle, method: :delete, data: { confirm: 'Really delete this puzzle?' }
+
+= render partial: '/documents/new_document_modal', locals: {documentable: @puzzle}

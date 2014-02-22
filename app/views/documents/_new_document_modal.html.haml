@@ -1,0 +1,17 @@
+#new_document.modal.hide.fade{:tabindex => "-1"}
+  .modal-header
+    %button.close{"data-dismiss" => "modal", type: 'button'} &times;
+    %h3.modal-title Attach New Document
+  .modal-body
+    .modal-body-content
+      = simple_form_for [documentable, Document.new], html: {class: 'form-horizontal'}  do |f|
+        %p
+          = f.error_notification
+          .form-inputs
+            = f.input :name
+            = f.input :description, as: :text, input_html: {rows: 3, cols: 40}
+            = f.input :private
+            = f.file_field :file
+            = f.hidden_field :file_cache
+          .form-actions
+            = f.button :submit
