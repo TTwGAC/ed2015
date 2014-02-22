@@ -55,6 +55,7 @@ Gac2014::Application.configure do
     pregame_dashboard.js
     puzzles.js
     locations.js
+    stupidtable.js
   )
 
   # Disable delivery errors, bad email addresses will be ignored

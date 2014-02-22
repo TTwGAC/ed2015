@@ -1,17 +1,24 @@
+- javascript 'stupidtable.js'
 %h1 Listing Checkins
-%table.table
-  %tr.header
-    %th Name
-    %th Timestamp
-    %th Time to solve
-  - @checkins.each do |checkin|
-    %tr
-      %td= link_to "#{checkin.team_name} @ #{checkin.location_name}", checkin
-      %td= checkin.created_at.localtime.strftime "%l:%M:%S %P"
-      %td
-        - if p = checkin.previous
-          = distance_of_time_in_words p.created_at, checkin.created_at
+%table#checkins.table
+  %thead
+    %tr.header
+      %th{'data-sort' => 'string'} Name
+      %th{'data-sort' => 'int'} Timestamp
+      %th{'data-sort' => 'int'} Time to solve
+  %tbody
+    - @checkins.each do |checkin|
+      %tr
+        %td= link_to "#{checkin.team_name} @ #{checkin.location_name}", checkin
+        %td{'data-sort-value' => checkin.created_at.to_i}= checkin.created_at.localtime.strftime "%l:%M:%S %P"
+        - if prev = checkin.previous
+          %td{'data-sort-value' => (checkin.created_at - prev.created_at).to_i}
+            = distance_of_time_in_words prev.created_at, checkin.created_at
         - else
-          No previous checkin
+          %td{'data-sort-value' => 0}
+            No previous checkin
 %br/
 = link_to 'Manual Checkin', new_checkin_path
+
+:javascript
+  $("#checkins").stupidtable();

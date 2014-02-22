@@ -1,13 +1,19 @@
-%table.table
+- javascript 'stupidtable.js'
 %h1 Listing Clusters
-  %tr.header
-    %th Name
-    %th Sequence
-    %th Color
-  - @clusters.each do |cluster|
-    %tr
-      %td= link_to cluster.name, cluster
-      %td= cluster.sequence
-      %td= cluster.color.capitalize
+%table#clusters.table
+  %thead
+    %tr.header
+      %th{'data-sort' => 'string'} Name
+      %th{'data-sort' => 'int'} Sequence
+      %th{'data-sort' => 'string'} Color
+  %tbody
+    - @clusters.each do |cluster|
+      %tr
+        %td= link_to cluster.name, cluster
+        %td= cluster.sequence
+        %td= cluster.color.capitalize
 %br/
 = link_to 'New Cluster', new_cluster_path
+
+:javascript
+  $("#clusters").stupidtable();

@@ -1,18 +1,24 @@
-%table.table
+- javascript 'stupidtable.js'
 %h1 Listing Teams
-  %tr.header
-    %th Name
-    %th # Players
-    %th Slogan
-    - if can? :manage, Team
-      %th Paid?
-  - @teams.each do |team|
-    %tr
-      %td= link_to team.name, team
-      %td= team.players.count
-      %td= team.slogan
+%table#teams.table
+  %thead
+    %tr.header
+      %th{'data-sort' => 'string'} Name
+      %th{'data-sort' => 'int'} # Players
+      %th Slogan
       - if can? :manage, Team
-        %td= team.paid ? "Yes" : "No"
+        %th Paid?
+  %tbody
+    - @teams.each do |team|
+      %tr
+        %td= link_to team.name, team
+        %td= team.players.count
+        %td= team.slogan
+        - if can? :manage, Team
+          %td= team.paid ? "Yes" : "No"
 %br/
 - if can? :create, Team
   = link_to 'New Team', new_team_path
+
+:javascript
+  $("#teams").stupidtable();

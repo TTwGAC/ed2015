@@ -1,19 +1,25 @@
-%table.table
+- javascript 'stupidtable.js'
 %h1 Listing Players
-  %tr.header
-    %th Name
-    %th Email
-    %th Team
-  - @players.each do |player|
-    %tr
-      %td
-        = link_to player.name, player
-      - if can? :edit, player
-        %td= player.email
-      - else
+%table#players.table
+  %thead
+    %tr.header
+      %th{'data-sort' => 'string'} Name
+      %th{'data-sort' => 'string'} Email
+      %th{'data-sort' => 'string'} Team
+  %tbody
+    - @players.each do |player|
+      %tr
         %td
-          %span{style: 'font-style: italic'}
-            hidden
-      %td
-        %a{href: "/teams/#{player.team_id}"}
-          = player.team_name
+          = link_to player.name, player
+        - if can? :edit, player
+          %td= player.email
+        - else
+          %td
+            %span{style: 'font-style: italic'}
+              hidden
+        %td
+          %a{href: "/teams/#{player.team_id}"}
+            = player.team_name
+
+:javascript
+  $("#players").stupidtable();
