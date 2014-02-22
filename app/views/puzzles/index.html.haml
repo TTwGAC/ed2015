@@ -1,4 +1,3 @@
-%h1= "Listing #{@puzzles.count} puzzles"
 %table.table
   %tr.header
     %th Name
@@ -17,6 +16,7 @@
       %td= puzzle.owner ? puzzle.owner_name : ''
       %td= puzzle.comes_from ? link_to(puzzle.comes_from.name, puzzle.comes_from) : ""
       %td= puzzle.destination ? link_to(puzzle.destination_name, puzzle.destination) : ""
+%h1= "Listing #{@puzzles.count} Puzzles"
 
 %br/
 = link_to 'New Puzzle', new_puzzle_path
