@@ -35,6 +35,14 @@
 
 %hr
 
+%h3 Player Information
+
+%h4 Flavor Text
+%p.box
+  - if @puzzle.flavortext
+    = @puzzle.flavortext
+  - else
+    %span{style: 'font-style: italic'} None
 %br
 %h3
   Puzzle Controls
