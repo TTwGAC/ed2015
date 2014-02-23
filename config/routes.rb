@@ -7,6 +7,7 @@ Gac2014::Application.routes.draw do
 
   resources :puzzles do
     resources :documents
+    resources :hints
   end
 
 

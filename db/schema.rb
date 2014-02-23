@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140222155742) do
+ActiveRecord::Schema.define(:version => 20140223004012) do
 
   create_table "checkins", :force => true do |t|
     t.datetime "timestamp"
@@ -52,6 +52,14 @@ ActiveRecord::Schema.define(:version => 20140222155742) do
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "hints", :force => true do |t|
+    t.text     "hint"
+    t.integer  "puzzle_id"
+    t.integer  "suggested_penalty"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "locations", :force => true do |t|

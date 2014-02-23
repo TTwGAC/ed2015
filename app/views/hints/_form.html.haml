@@ -1,0 +1,7 @@
+= simple_form_for [@puzzle, @hint], html: {class: 'form-horizontal'} do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :hint, input_html: {cols: 80, rows: 3}
+    = f.input :suggested_penalty, hint: 'minutes'
+  .form-actions
+    = f.button :submit

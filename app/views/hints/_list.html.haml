@@ -1,0 +1,25 @@
+- javascript 'stupidtable.js'
+%table#hints.table
+  %thead
+    %tr
+      %th{"data-sort" => "string"} Hint
+      %th{"data-sort" => "int"} Suggested Penalty
+  %tbody
+    - @puzzle.hints.each do |hint|
+      %tr
+        %td= hint.hint
+        %td= hint.suggested_penalty
+:javascript 
+  $("#hints").stupidtable();
+
+%div.show_modal{onclick: "$('#new_hint').modal()"} New Hint
+
+
+#new_hint.modal.hide.fade{:tabindex => "-1"}
+  .modal-header
+    %button.close{"data-dismiss" => "modal", type: 'button'} &times;
+    %h3.modal-title New Hint
+  .modal-body
+    .modal-body-content
+      - @hint = Hint.new
+      = render partial: '/hints/form'

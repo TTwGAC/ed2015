@@ -7,6 +7,7 @@ class Puzzle < ActiveRecord::Base
   has_many :documents, as: :documentable
   has_many :teams
   has_many :checkins, foreign_key: 'solved_puzzle_id'
+  has_many :hints
   before_save :get_token
   delegate :name, to: :origin, prefix: true
   delegate :name, to: :destination, prefix: true

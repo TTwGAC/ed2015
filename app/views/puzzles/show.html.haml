@@ -52,6 +52,11 @@
 = render partial: '/documents/list', locals: {documents: @puzzle.documents_for_players, document_type: 'public'}
 
 %br
+
+%h3 Hints
+
+= render partial: '/hints/list'
+
 %h3 Puzzle Controls
 %p
   = link_to 'Edit', edit_puzzle_path(@puzzle)
