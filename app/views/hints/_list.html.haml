@@ -4,11 +4,17 @@
     %tr
       %th{"data-sort" => "string"} Hint
       %th{"data-sort" => "int"} Suggested Penalty
+      %th Actions
   %tbody
     - @puzzle.hints.each do |hint|
       %tr
         %td= hint.hint
         %td= hint.suggested_penalty
+        %td
+          = link_to "&#x270e;".html_safe, edit_puzzle_hint_path(@puzzle, hint)
+          |
+          = link_to "&times;".html_safe, puzzle_hint_path(@puzzle, hint), method: :delete, data: { confirm: 'Really delete this hint?' }
+
 :javascript 
   $("#hints").stupidtable();
 

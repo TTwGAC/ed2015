@@ -57,7 +57,6 @@ class HintsController < ApplicationController
 
     respond_to do |format|
       if @hint.save
-        event "create", :hint, @hint.id, description: "#{current_player.name} created new hint for puzzle #{@hint.puzzle_name}"
         format.html { redirect_to @hint.puzzle, notice: 'Hint was successfully created.' }
         format.json { render json: @hint, status: :created, location: @hint }
       else
@@ -74,8 +73,7 @@ class HintsController < ApplicationController
 
     respond_to do |format|
       if @hint.update_attributes(hint_params)
-        event "update", :hint, @hint.id, description: "#{current_player.name} updated the details for hint #{@hint.name}"
-        format.html { redirect_to @hint, notice: 'Hint was successfully updated.' }
+        format.html { redirect_to @hint.puzzle, notice: 'Hint was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -88,11 +86,11 @@ class HintsController < ApplicationController
   # DELETE /hints/1.json
   def destroy
     @hint = Hint.find(params[:id])
+    puzzle = @hint.puzzle
     @hint.destroy
-    event "delete", :hint, @hint.id, description: "#{current_player.name} deleted hint #{@hint.name}"
 
     respond_to do |format|
-      format.html { redirect_to hints_url }
+      format.html { redirect_to puzzle }
       format.json { head :no_content }
     end
   end
