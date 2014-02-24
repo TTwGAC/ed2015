@@ -30,6 +30,17 @@ class Team < ActiveRecord::Base
     end
   end
 
+  def playing?
+    paid && active
+  end
+
+  def reasons_not_playing
+    reasons = []
+    reasons << "Not Paid" unless paid
+    reasons << "Not Active" unless active
+    reasons
+  end
+
 end
 
 # == Schema Information

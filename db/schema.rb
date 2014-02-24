@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140223004012) do
+ActiveRecord::Schema.define(:version => 20140224003001) do
 
   create_table "checkins", :force => true do |t|
     t.datetime "timestamp"
@@ -161,6 +161,7 @@ ActiveRecord::Schema.define(:version => 20140223004012) do
     t.boolean  "paid"
     t.integer  "location_id"
     t.integer  "current_puzzle_id"
+    t.boolean  "active"
   end
 
   add_index "teams", ["name"], :name => "index_teams_on_name", :unique => true

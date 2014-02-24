@@ -111,7 +111,7 @@ private
 
   def team_params
     allowed = [:name, :slogan, :description, :logo, :logo_cache, :phone]
-    allowed << :paid if can? :manage, Team
+    allowed += [:paid, :active] if can? :manage, Team
     params.require(:team).permit(*allowed)
   end
 end

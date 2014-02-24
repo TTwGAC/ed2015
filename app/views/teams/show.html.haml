@@ -13,11 +13,20 @@
 - if can? :edit, @team
   %p
     Status:
-    = @team.paid ? 'Paid' : 'Not Paid'
+    %b= @team.playing? ? "&#x2713; READY".html_safe : "&times; NOT READY".html_safe
     - unless @team.paid
+      | Not Paid -
       = link_to 'How to pay entrance fee', page_path('payments')
-    - if @team.location
-      | Last checked into
+    - unless @team.active
+      | Not Active -
+      = link_to 'contact Game Control', 'http://www.facebook.com/GetAClue2014'
+  - unless @team.paid
+    %p
+
+  - if @team.location
+    %p
+      Location:
+      Last checked into
       = link_to @team.location_name, @team.location
 %p
   Slogan:
