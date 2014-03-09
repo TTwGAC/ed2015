@@ -1,5 +1,5 @@
 class Checkin < ActiveRecord::Base
-  class PuzzleSelectionError < StandardError; end
+  class Error < StandardError; end
 
   belongs_to :location
   belongs_to :team
@@ -29,6 +29,8 @@ class Checkin < ActiveRecord::Base
 
   def get_team
     self.team ||= self.player.team
+    raise Error, 'Team is not active, checkin denied' unless self.team.playing?
+    self.team
   end
 
   def update_links
@@ -63,7 +65,7 @@ class Checkin < ActiveRecord::Base
 
   def select_next_puzzle
     if location.next_puzzle
-      raise PuzzleSelectionError, "Designated next puzzle is not ready - Contact Game Control" unless location.next_puzzle.active?
+      raise Error, "Designated next puzzle is not ready - Contact Game Control" unless location.next_puzzle.active?
       return location.next_puzzle
     end
 

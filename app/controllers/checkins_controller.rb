@@ -68,7 +68,7 @@ class CheckinsController < ApplicationController
     begin
       @checkin = Checkin.find_or_create params
       @location = @checkin.location
-    rescue Checkin::PuzzleSelectionError => e
+    rescue Checkin::Error => e
       @checkin = nil
       flash[:error] = e.message
     end

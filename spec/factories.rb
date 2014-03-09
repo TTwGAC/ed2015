@@ -7,6 +7,8 @@ FactoryGirl.define do
     description "Tarzan, and friends"
     token "ABCD" * 5
     phone "14045551234"
+    paid true
+    active true
   end
 
   factory :otherteam, class: Team do
@@ -16,5 +18,7 @@ FactoryGirl.define do
     description "Illinois? What's that noise?"
     token "ABCD" * 5
     phone "14045551234"
+    paid true
+    active true
   end
 end

@@ -89,6 +89,20 @@ describe Checkin do
     verify_location next_location, c, team
   end
 
+  it %q{should deny the checkin if the team is not paid} do
+    team = player.team
+    team.paid = false
+    opts = { player: player, location: locB }
+    expect { Checkin.find_or_create opts }.to raise_error Checkin::Error
+  end
+
+  it %q{should deny the checkin if the team is not active} do
+    team = player.team
+    team.active = false
+    opts = { player: player, location: locB }
+    expect { Checkin.find_or_create opts }.to raise_error Checkin::Error
+  end
+
 
   describe '#find_or_create' do
 
@@ -147,7 +161,7 @@ describe Checkin do
   describe 'scoping to active puzzles' do
     it 'should only consider active puzzles' do
       puzzle_ending_at_C.status = 'wip'
-      expect { Checkin.find_or_create player: player, location: locD }.to raise_error
+      expect { Checkin.find_or_create player: player, location: locD }.to raise_error Checkin::Error
     end
 
     it 'should raise if a location has a next_puzzle that is not ready'
