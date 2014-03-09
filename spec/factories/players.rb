@@ -7,6 +7,7 @@ FactoryGirl.define do
     email "wanna@be.com"
     password "asdfghjl"
     team Team.where(name: "Observers").first
+    phone '14045551234'
   end
 
   factory :player do
@@ -17,6 +18,7 @@ FactoryGirl.define do
     email "flip@nelson.com"
     password "asdfghjl"
     association :team, factory: :team
+    phone '14045551235'
   end
 
   factory :admin, class: Player do
@@ -27,5 +29,6 @@ FactoryGirl.define do
     email "tarzan@jungle.com"
     password "asdfghjl"
     team Team.where(name: "Game Control").first
+    phone '14045551236'
   end
 end

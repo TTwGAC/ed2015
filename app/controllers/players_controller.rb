@@ -96,6 +96,6 @@ private
   end
 
   def player_params
-    params.require(:player).permit(:email, :first_name, :last_name, :nickname, :password, :password_confirmation, :remember_me, :avatar, :avatar_cache)
+    params.require(:player).permit(:email, :first_name, :last_name, :nickname, :phone, :password, :password_confirmation, :remember_me, :avatar, :avatar_cache)
   end
 end

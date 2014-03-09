@@ -53,11 +53,12 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
+    params = [:first_name, :last_name, :email, :phone, :nickname, :password, :password_confirmation]
     devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit :first_name, :last_name, :email, :nickname, :password, :password_confirmation
+      u.permit *params
     end
     devise_parameter_sanitizer.for(:account_update) do |u|
-      u.permit :first_name, :last_name, :email, :nickname, :password, :password_confirmation, :current_password
+      u.permit *params, :current_password
     end
   end
 end
