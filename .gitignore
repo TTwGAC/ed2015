@@ -15,7 +15,8 @@
 /tmp
 
 # Editor files
-.*.sw*
+.sw?
+.*.sw?
 
 # Filesystem metadata
 .DS_Store
