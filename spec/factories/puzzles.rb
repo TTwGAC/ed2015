@@ -3,6 +3,7 @@
 FactoryGirl.define do
   factory :puzzle do
     sequence(:name) { |n| "Puzzle ##{n}" }
+    status 'ready'
   end
 end
 

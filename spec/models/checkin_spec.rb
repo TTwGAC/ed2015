@@ -143,4 +143,14 @@ describe Checkin do
       a.previous.should be_nil
     end
   end
+
+  describe 'scoping to active puzzles' do
+    it 'should only consider active puzzles' do
+      puzzle_ending_at_C.status = 'wip'
+      expect { Checkin.find_or_create player: player, location: locD }.to raise_error
+    end
+
+    it 'should raise if a location has a next_puzzle that is not ready'
+
+  end
 end

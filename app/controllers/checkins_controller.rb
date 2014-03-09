@@ -41,6 +41,8 @@ class CheckinsController < ApplicationController
       return
     end
 
+    # Only admins should ever see the "New Checkin" form.
+    # We should never get here, but just in case...
     raise CanCan::AccessDenied.new('Where is your token!?') unless can? :manage, Checkin
 
     @checkin = Checkin.new
@@ -63,8 +65,13 @@ class CheckinsController < ApplicationController
 
     params[:player] = current_player
 
-    @checkin = Checkin.find_or_create params
-    @location = @checkin.location
+    begin
+      @checkin = Checkin.find_or_create params
+      @location = @checkin.location
+    rescue Checkin::PuzzleSelectionError => e
+      @checkin = nil
+      flash[:error] = e.message
+    end
 
     respond_to do |format|
       if @checkin
@@ -72,7 +79,7 @@ class CheckinsController < ApplicationController
         format.html { redirect_to @checkin, notice: 'Checkin was successfully created.' }
         format.json { render json: @checkin, status: :created, location: @checkin }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to checkins_url }
         format.json { render json: @checkin.errors, status: :unprocessable_entity }
       end
     end

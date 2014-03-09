@@ -1,4 +1,6 @@
 class Checkin < ActiveRecord::Base
+  class PuzzleSelectionError < StandardError; end
+
   belongs_to :location
   belongs_to :team
   belongs_to :player
@@ -60,7 +62,10 @@ class Checkin < ActiveRecord::Base
   end
 
   def select_next_puzzle
-    return self.location.next_puzzle if self.location.next_puzzle
+    if location.next_puzzle
+      raise PuzzleSelectionError, "Designated next puzzle is not ready - Contact Game Control" unless location.next_puzzle.active?
+      return location.next_puzzle
+    end
 
     cluster = location.cluster
 
@@ -78,7 +83,9 @@ class Checkin < ActiveRecord::Base
       next_location = filter_locations(next_cluster.locations).sample
     end
 
-    next_location.destination_for_puzzles.first
+    puzzle = next_location.destination_for_puzzles.first
+    raise PuzzleSelectionError, "Designated next puzzle is not ready - Contact Game Control" unless puzzle.active?
+    puzzle
   end
 
   def filter_locations(locations)

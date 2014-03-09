@@ -1,5 +1,6 @@
 class Puzzle < ActiveRecord::Base
   STATUSES = [ '', 'wip', 'needs_testing', 'ready' ].freeze
+  ACTIVE_STATUSES = ['ready', 'needs_testing'].freeze
   belongs_to :origin, class_name: "Location", foreign_key: 'origin_id'
   has_one :comes_from, class_name: "Location", foreign_key: 'next_puzzle_id'
   belongs_to :destination, class_name: "Location", foreign_key: 'destination_id'
@@ -17,11 +18,17 @@ class Puzzle < ActiveRecord::Base
   validates_presence_of :name
   validates_inclusion_of :status, in: STATUSES, allow_blank: true
 
+  scope :active, -> { where(status: ACTIVE_STATUSES) }
+
   def self.statuses
     STATUSES.inject({}) do |statuses, key|
       statuses[key] = status_name(key)
       statuses
     end
+  end
+
+  def active?
+    ACTIVE_STATUSES.include? self.status
   end
 
   def self.status_name(name)
