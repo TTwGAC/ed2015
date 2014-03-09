@@ -47,9 +47,6 @@
     = link_to player.name, player
     %br
   %br
-  - if can?(:edit, @team) && @team.name != 'Observers'
-    %span{style: 'font-style: italic'}= link_to 'Invite a player to this team', new_team_invitation_path
-    %br
 
 - if can? :edit, @team
   %p
@@ -61,7 +58,11 @@
         = link_to 'Cancel', team_invitation_path(invitation.id), method: :delete, confirm: 'Are you sure you want to cancel this invitation?'
         %br
     - else
-      %span{style: 'font-style: italic'} None
+      %p{style: 'font-style: italic'} None
+    - if can?(:edit, @team) && @team.name != 'Observers'
+      = link_to new_team_invitation_path, class: 'btn' do
+        %img{class: 'icon-white', src: asset_path('glyphicons/006_user_add.png')}
+        Invite a player to this team
     %br
 
 - unless @team.name == 'Observers'
