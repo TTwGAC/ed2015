@@ -1,5 +1,5 @@
 class Puzzle < ActiveRecord::Base
-  STATUSES = [ '', 'wip', 'needs_testing', 'ready' ].freeze
+  STATUSES = [ '', 'wip', 'needs_testing', 'ready', 'disabled' ].freeze
   ACTIVE_STATUSES = ['ready', 'needs_testing'].freeze
   belongs_to :origin, class_name: "Location", foreign_key: 'origin_id'
   has_one :comes_from, class_name: "Location", foreign_key: 'next_puzzle_id'
@@ -36,6 +36,7 @@ class Puzzle < ActiveRecord::Base
     when 'wip' then 'Work In Progress'
     when 'needs_testing' then 'In Testing'
     when 'ready' then 'Ready'
+    when 'disabled' then 'DISABLED'
     else 'Unknown'
     end
   end
