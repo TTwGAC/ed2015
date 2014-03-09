@@ -46,8 +46,10 @@
   - @team.players.each do |player|
     = link_to player.name, player
     %br
+  %br
   - if can?(:edit, @team) && @team.name != 'Observers'
-    = link_to 'Invite a player to this team', new_team_invitation_path
+    %span{style: 'font-style: italic'}= link_to 'Invite a player to this team', new_team_invitation_path
+    %br
 
 - if can? :edit, @team
   %p
