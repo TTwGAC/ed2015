@@ -7,7 +7,7 @@ class Team < ActiveRecord::Base
 
   validates :name, :presence => true, :uniqueness => {:case_sensitive => false}
   validates_plausible_phone :phone
-  before_save :create_token
+  before_save :default_values
   before_destroy :reset_members_to_observers
   has_many :players
   has_many :team_invitations
@@ -17,6 +17,15 @@ class Team < ActiveRecord::Base
   mount_uploader :logo, LogoUploader
   phony_normalize :phone, :default_country_code => 'US'
   delegate :name, to: :location, prefix: true
+
+  def default_values
+    default_active
+    create_token
+  end
+
+  def default_active
+    self.active = true if self.active.nil?
+  end
 
   def create_token
     self.token ||= SecureRandom.hex(12)
