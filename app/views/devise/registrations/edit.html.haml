@@ -15,7 +15,7 @@
     = f.input :password_confirmation, :required => false
     = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true
     = f.hidden_field :avatar_cache
-    = f.file_field :avatar
+    = f.input :avatar, as: :file, label: "Profile photo", hint: "Show us your best mugshot. If you have (and prefer) Gravatar, just leave this blank"
   .form-actions
     = f.button :submit, "Update"
 %h3 Cancel my account
