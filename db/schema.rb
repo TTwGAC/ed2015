@@ -121,7 +121,6 @@ ActiveRecord::Schema.define(:version => 20140309170343) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.string   "token"
-    t.integer  "origin_id"
     t.text     "description"
     t.string   "status"
     t.text     "flavortext"

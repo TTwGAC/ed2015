@@ -1,7 +1,6 @@
 class Puzzle < ActiveRecord::Base
   STATUSES = [ '', 'wip', 'needs_testing', 'ready', 'disabled' ].freeze
   ACTIVE_STATUSES = ['ready', 'needs_testing'].freeze
-  belongs_to :origin, class_name: "Location", foreign_key: 'origin_id'
   has_one :comes_from, class_name: "Location", foreign_key: 'next_puzzle_id'
   belongs_to :destination, class_name: "Location", foreign_key: 'destination_id'
   belongs_to :owner, class_name: 'Player', foreign_key: 'owner_id'
@@ -10,7 +9,6 @@ class Puzzle < ActiveRecord::Base
   has_many :checkins, foreign_key: 'solved_puzzle_id'
   has_many :hints
   before_save :get_token
-  delegate :name, to: :origin, prefix: true
   delegate :name, to: :destination, prefix: true
   delegate :name, to: :owner, prefix: true
   delegate :for_players, :for_game_control, to: :documents, prefix: true

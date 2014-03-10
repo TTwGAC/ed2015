@@ -1,5 +1,4 @@
 class Location < ActiveRecord::Base
-  has_many :origin_for_puzzles, class_name: 'Puzzle', foreign_key: 'origin_id'
   belongs_to :next_puzzle, class_name: 'Puzzle', foreign_key: 'next_puzzle_id'
   has_many :destination_for_puzzles, class_name: 'Puzzle', foreign_key: 'destination_id'
   has_many :teams
