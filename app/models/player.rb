@@ -11,7 +11,7 @@ class Player < ActiveRecord::Base
   before_save :default_team
   delegate :name, :id, :location, :location=, :to => :team, :prefix => true
   validates :first_name, :last_name, presence: true
-  validates :phone, presence: true, phony_plausible: true, length: {minimum: 10}
+  validates :phone, phony_plausible: true, length: {minimum: 10}
   phony_normalize :phone, :default_country_code => 'US'
   mount_uploader :avatar, AvatarUploader
   ROLES = %w[admin player observer none]
