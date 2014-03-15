@@ -117,13 +117,13 @@ describe Checkin do
   describe '#select_next_puzzle' do
     describe 'with locations available in the current cluster' do
 
-      it 'should select the next puzzle when one is specifically named' do
+      it %q{should select the next puzzle when one is specifically named} do
         checkin = Checkin.find_or_create player: player, location: locD
 
         checkin.select_next_puzzle.should == puzzle_ending_at_C
       end
 
-      it 'should select a puzzle from any location without a checkin in the current cluster' do
+      it %q{should select a puzzle from any location without a checkin in the current cluster} do
         Checkin.find_or_create player: player, location: locD
         Checkin.find_or_create player: player, location: locC
         checkin = Checkin.new player: player, location: locA
@@ -136,35 +136,35 @@ describe Checkin do
 
     describe 'with no locations available in the current cluster' do
 
-      it 'should select a random puzzle from any location without a checkin in the next cluster'
+      it %q{should select a random puzzle from any location without a checkin in the next cluster}
 
-      it 'should not choose a puzzle that has a specific location when the location does not specify it'
+      it %q{should not choose a puzzle that has a specific location when the location does not specify it}
 
     end
 
   end
 
   describe '#previous' do
-    it 'should return the previous checkin for the given team' do
+    it %q{should return the previous checkin for the given team} do
       c = Checkin.find_or_create player: player, location: locC
       b = Checkin.find_or_create player: player, location: locB
       a = Checkin.find_or_create player: player, location: locA
       a.previous.should == b
     end
 
-    it 'should return nil if there is no previous checkin' do
+    it %q{should return nil if there is no previous checkin} do
       a = Checkin.find_or_create player: player, location: locA
       a.previous.should be_nil
     end
   end
 
   describe 'scoping to active puzzles' do
-    it 'should only consider active puzzles' do
+    it %q{should only consider active puzzles} do
       puzzle_ending_at_C.status = 'wip'
       expect { Checkin.find_or_create player: player, location: locD }.to raise_error Checkin::Error
     end
 
-    it 'should raise if a location has a next_puzzle that is not ready'
+    it %q{should raise if a location has a next_puzzle that is not ready}
 
   end
 end
