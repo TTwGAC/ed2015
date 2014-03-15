@@ -27,7 +27,7 @@ describe Player do
   end
 
   it "should automatically join the Observers team" do
-    u = Player.create! first_name: "Foo", last_name: "Bar", nickname: "Foobar", email: 'foo@bar.com', password: 'asdfghj'
+    u = Player.create! first_name: "Foo", last_name: "Bar", nickname: "Foobar", email: 'foo@bar.com', password: 'asdfghj', phone: '2125551234'
     u.reload
     u.team.should == Team.first(conditions: {name: "Observers"})
   end
