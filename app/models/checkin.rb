@@ -16,7 +16,9 @@ class Checkin < ActiveRecord::Base
   delegate :name, :flavortext, :documents_for_players, to: :solved_puzzle, prefix: true
   delegate :name, :flavortext, :documents_for_players, to: :next_puzzle, prefix: true
 
-  validates_uniqueness_of :location_id, scope: :team_id
+  validates :location_id, presence: true, uniqueness: { scope: :team_id }
+  validates :team_id, presence: true
+  validates :solved_puzzle_id, presence: true
 
   def self.find_or_create(opts)
     c = self.where(team_id: opts[:team], location_id: opts[:location]).first
