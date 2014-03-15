@@ -71,7 +71,7 @@ class Checkin < ActiveRecord::Base
 
     cluster = location.cluster
 
-    raise "Checked into a location not in a cluster!" unless cluster
+    raise Error, "Checked into a location not in a cluster!" unless cluster
 
     possible_locations = filter_locations cluster.locations
 
@@ -86,7 +86,7 @@ class Checkin < ActiveRecord::Base
     end
 
     puzzle = next_location.destination_for_puzzle
-    raise PuzzleSelectionError, "Designated next puzzle is not ready - Contact Game Control" unless puzzle.active?
+    raise Error, "Selected next puzzle is not ready - Contact Game Control" unless puzzle.active?
     puzzle
   end
 
@@ -96,7 +96,7 @@ class Checkin < ActiveRecord::Base
       # Find any location in this cluster that the user has not checked into
       no_checkin = Checkin.where(team_id: self.team).where(location_id: location).none?
       no_chain = location.destination_for_puzzle.comes_from.nil?
-      not_current_location && no_chain && no_checkin
+      not_current_location && no_chain && no_checkin && location.active?
     end
   end
 

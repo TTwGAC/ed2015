@@ -36,6 +36,11 @@ describe Checkin do
     player.team.location = player.team.current_puzzle = nil
   end
 
+  it %q{should raise if the current location is not in a cluster} do
+    locA.cluster = nil
+    expect { Checkin.find_or_create player: player, location: locA }.to raise_error Checkin::Error
+  end
+
   it %q{should default the team when not specified} do
     opts = { player: player, location: locC }
     c = Checkin.find_or_create opts
@@ -140,6 +145,17 @@ describe Checkin do
 
       it %q{should not choose a puzzle that has a specific location when the location does not specify it}
 
+    end
+
+    describe 'with inactive locations' do
+      it %q{should raise if the selected location with a next_puzzle in inactive} do
+        locD.next_puzzle.status = 'wip'
+        checkin = Checkin.new player: player, location: locD
+
+        expect { checkin.valid? }.to raise_error Checkin::Error
+      end
+
+      it %q{should exclude locations whose puzzles are not active}
     end
 
   end
