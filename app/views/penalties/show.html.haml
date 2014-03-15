@@ -1,3 +1,8 @@
+%h2
+  Showing
+  = @penalty.minutes
+  minute penalty for Team
+  = @penalty.team_name
 %p
   %b Team:
   = link_to @penalty.team_name, @penalty.team
@@ -16,6 +21,9 @@
 %p
   %b Minutes:
   = @penalty.minutes
-= link_to 'Edit', edit_penalty_path(@penalty)
-|
-\#{link_to 'Back', penalties_path}
+- if can? :manage, @penalty
+  = link_to 'Edit', edit_penalty_path(@penalty)
+  |
+  = link_to "Delete", @penalty, method: :delete, data: { confirm: 'Are you sure you want to delete this penalty?' }
+  |
+= link_to 'Back', penalties_path
