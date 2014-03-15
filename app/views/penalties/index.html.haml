@@ -14,7 +14,13 @@
         %tr
           %td= link_to penalty.team_name, penalty.team
           %td= link_to penalty.assigner_name, penalty.assigner
-          %td= link_to penalty.puzzle_name, penalty.puzzle
+          - if penalty.puzzle.present?
+            - if can? :read, penalty.puzzle
+              %td= link_to penalty.puzzle_name, penalty.puzzle
+            - else
+              %td= penalty.puzzle_name
+          - else
+            %td
           %td= penalty.minutes
           %td{'data-sort-value' => penalty.created_at.to_i}= link_to penalty.created_at.localtime.strftime("%l:%M:%S %P"), penalty
           %td= link_to 'View', penalty

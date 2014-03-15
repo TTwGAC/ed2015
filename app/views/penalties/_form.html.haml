@@ -3,7 +3,7 @@
   .form-inputs
     = f.input :team_id, collection: Team.order('name')
     = f.input :puzzle_id, collection: Puzzle.order('name')
-    = f.input :description
+    = f.input :description, input_html: {cols: 80, rows: 3}
     = f.input :minutes
   .form-actions
     = f.button :submit
