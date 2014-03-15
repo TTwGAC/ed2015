@@ -1,0 +1,9 @@
+= simple_form_for(@penalty) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :team_id, collection: Team.order('name')
+    = f.input :puzzle_id, collection: Puzzle.order('name')
+    = f.input :description
+    = f.input :minutes
+  .form-actions
+    = f.button :submit

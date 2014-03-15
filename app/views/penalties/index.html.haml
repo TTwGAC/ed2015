@@ -1,0 +1,22 @@
+- javascript 'stupidtable.js'
+%h1 Listing penalties
+%table.table
+  %thead
+    %tr.header
+      %th{'data-sort' => 'string'} Team
+      %th{'data-sort' => 'string'} Assigner
+      %th{'data-sort' => 'string'} Puzzle
+      %th{'data-sort' => 'int'} Minutes
+      %th{'data-sort' => 'int'} Timestamp
+      %th Action
+    %tbody
+      - @penalties.each do |penalty|
+        %tr
+          %td= link_to penalty.team_name, penalty.team
+          %td= link_to penalty.assigner_name, penalty.assigner
+          %td= link_to penalty.puzzle_name, penalty.puzzle
+          %td= penalty.minutes
+          %td{'data-sort-value' => penalty.created_at.to_i}= link_to penalty.created_at.localtime.strftime("%l:%M:%S %P"), penalty
+          %td= link_to 'View', penalty
+%br/
+= link_to 'New Penalty', new_penalty_path

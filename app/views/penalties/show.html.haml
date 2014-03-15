@@ -1,0 +1,18 @@
+%p
+  %b Team:
+  = link_to @penalty.team_name, @penalty.team
+%p
+  %b Assigner:
+  = link_to @penalty.assigner_name, @penalty.assigner
+%p
+  %b Puzzle:
+  = link_to @penalty.puzzle_name, @penalty.puzzle
+%p
+  %b Description:
+  = @penalty.description
+%p
+  %b Minutes:
+  = @penalty.minutes
+= link_to 'Edit', edit_penalty_path(@penalty)
+|
+\#{link_to 'Back', penalties_path}

@@ -1,4 +1,7 @@
 Gac2014::Application.routes.draw do
+  resources :penalties
+
+
   get '/game' => 'game#show'
   get '/game/edit' => 'game#edit'
   put '/game' => 'game#update'
