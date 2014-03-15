@@ -17,6 +17,10 @@ class Location < ActiveRecord::Base
     (!address.blank? && (latitude.blank? || longitude.blank?)) || address_changed?
   end
 
+  def active?
+    !!(destination_for_puzzle && destination_for_puzzle.active?)
+  end
+
   def gmaps4rails_address
     self.address
   end
