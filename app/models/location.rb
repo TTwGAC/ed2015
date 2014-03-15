@@ -1,6 +1,6 @@
 class Location < ActiveRecord::Base
   belongs_to :next_puzzle, class_name: 'Puzzle', foreign_key: 'next_puzzle_id'
-  has_many :destination_for_puzzles, class_name: 'Puzzle', foreign_key: 'destination_id'
+  has_one :destination_for_puzzle, class_name: 'Puzzle', foreign_key: 'destination_id'
   has_many :teams
   has_many :documents, as: :documentable
   belongs_to :cluster
@@ -8,6 +8,7 @@ class Location < ActiveRecord::Base
   delegate :name, :color, to: :cluster, prefix: true
   delegate :for_players, :for_game_control, to: :documents, prefix: true
   delegate :name, to: :next_puzzle, prefix: true
+  delegate :name, to: :destination_for_puzzle, prefix: true
   acts_as_gmappable :process_geocoding => :geocode?, :normalized_address => "address",
                     :lat => 'latitude', :lng => "longitude"
   validates_presence_of :name

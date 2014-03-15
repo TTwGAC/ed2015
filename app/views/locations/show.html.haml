@@ -29,11 +29,10 @@
     = link_to @location.next_puzzle_name, @location.next_puzzle
   %p If this puzzle requires a physical clue, make sure to set it up on game day!
 
-- unless @location.destination_for_puzzles.empty?
+- if @location.destination_for_puzzle.present?
   %h3 Destination for Puzzles:
   %ul
-    - @location.destination_for_puzzles.each do |puzzle|
-      %li= link_to puzzle.name, puzzle
+    %li= link_to @location.destination_for_puzzle_name, @location.destination_for_puzzle
 
 %hr
 

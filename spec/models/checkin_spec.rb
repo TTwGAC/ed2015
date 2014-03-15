@@ -6,7 +6,7 @@ describe Checkin do
   let(:locA) { FactoryGirl.create :location_A, cluster: cluster }
   let(:locB) { FactoryGirl.create :location_B, cluster: cluster }
   let(:locC) { FactoryGirl.create :location_C, cluster: cluster }
-  let(:puzzle_ending_at_C) { locC.destination_for_puzzles.first }
+  let(:puzzle_ending_at_C) { locC.destination_for_puzzle }
   let(:locD) { FactoryGirl.create :location_D, cluster: cluster, next_puzzle: puzzle_ending_at_C }
   let(:player) { FactoryGirl.create :player }
 
@@ -129,7 +129,7 @@ describe Checkin do
         checkin = Checkin.new player: player, location: locA
         checkin.valid?.should be true # populate checkin fields
 
-        checkin.next_puzzle.should == locB.destination_for_puzzles.first
+        checkin.next_puzzle.should == locB.destination_for_puzzle
       end
 
     end

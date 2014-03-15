@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :location do
-    destination_for_puzzles { [ FactoryGirl.create(:puzzle) ] }
+    destination_for_puzzle { FactoryGirl.create(:puzzle) }
 
     factory :location_A do
       name 'Location A'

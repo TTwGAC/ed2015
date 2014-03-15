@@ -85,7 +85,7 @@ class Checkin < ActiveRecord::Base
       next_location = filter_locations(next_cluster.locations).sample
     end
 
-    puzzle = next_location.destination_for_puzzles.first
+    puzzle = next_location.destination_for_puzzle
     raise PuzzleSelectionError, "Designated next puzzle is not ready - Contact Game Control" unless puzzle.active?
     puzzle
   end
@@ -95,7 +95,7 @@ class Checkin < ActiveRecord::Base
       not_current_location = (location != self.location)
       # Find any location in this cluster that the user has not checked into
       no_checkin = Checkin.where(team_id: self.team).where(location_id: location).none?
-      no_chain = location.destination_for_puzzles.first.comes_from.nil?
+      no_chain = location.destination_for_puzzle.comes_from.nil?
       not_current_location && no_chain && no_checkin
     end
   end
