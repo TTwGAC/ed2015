@@ -21,6 +21,10 @@
 # Filesystem metadata
 .DS_Store
 
+# Temp and backup files
+*~
+*,
+
 # Configuration privacy
 /config/database.yml
 /.env
