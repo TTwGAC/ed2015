@@ -1,5 +1,23 @@
 %h2 You are checked in!
 %p
-  Congratluations, you are checked in to
-  = @checkin.location_name
-%p Details on your next puzzle have been sent to your email.
+  Congratulations! You are checked in to
+  = succeed '.' do
+    = @checkin.location_name
+
+%h2
+  Your Next Puzzle:
+  = @checkin.next_puzzle_name
+
+- if @checkin.next_puzzle_flavortext.present?
+  %h4 Instructions:
+  %p.box= @checkin.next_puzzle_flavortext
+
+- if @checkin.next_puzzle_documents_for_players.present?
+  %h4 Puzzle Documents:
+  %div.box
+    %ul
+      - @checkin.next_puzzle_documents_for_players.each do |doc|
+        %li= link_to doc.name, doc.file_url
+
+
+%p Details on your next puzzle have also been sent to your email.

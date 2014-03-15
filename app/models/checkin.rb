@@ -13,8 +13,8 @@ class Checkin < ActiveRecord::Base
   delegate :name, to: :location, prefix: true
   delegate :name, to: :team, prefix: true
   delegate :name, to: :player, prefix: true
-  delegate :name, to: :solved_puzzle, prefix: true
-  delegate :name, to: :next_puzzle, prefix: true
+  delegate :name, :flavortext, :documents_for_players, to: :solved_puzzle, prefix: true
+  delegate :name, :flavortext, :documents_for_players, to: :next_puzzle, prefix: true
 
   validates_uniqueness_of :location_id, scope: :team_id
 
