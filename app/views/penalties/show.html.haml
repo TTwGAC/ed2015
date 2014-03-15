@@ -6,7 +6,10 @@
   = link_to @penalty.assigner_name, @penalty.assigner
 %p
   %b Puzzle:
-  = link_to @penalty.puzzle_name, @penalty.puzzle
+  - if can? :view, @penalty.puzzle
+    = link_to @penalty.puzzle_name, @penalty.puzzle
+  - else
+    = @penalty.puzzle_name
 %p
   %b Description:
   = @penalty.description
