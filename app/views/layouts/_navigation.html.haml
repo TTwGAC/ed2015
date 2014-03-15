@@ -66,6 +66,10 @@
               = link_to checkins_path do
                 %img{class: 'navicon', src: asset_path('glyphicons/087_log_book.png')}
                 Checkins
+            %li
+              = link_to penalties_path do
+                %img{class: 'navicon', src: asset_path('glyphicons/055_stopwatch.png')}
+                Penalties
       - else
         %li
           - if current_player.team_name == 'Observers'
