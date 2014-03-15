@@ -1,0 +1,9 @@
+%p
+  %b Name:
+  = @game.name
+%p
+  %b Status:
+  = @game.status_name
+= link_to 'Edit', game_edit_path
+|
+\#{link_to 'Back', game_path}

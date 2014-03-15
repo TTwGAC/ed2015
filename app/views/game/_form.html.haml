@@ -1,0 +1,7 @@
+= simple_form_for(@game, :url => url_for(:action => 'update', :controller => 'game')) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :name
+    = f.input :status, collection: Game.statuses.invert
+  .form-actions
+    = f.button :submit

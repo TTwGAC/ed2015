@@ -4,6 +4,9 @@ ruby '2.1.0'
 gem 'rails', '3.2.17'
 gem 'pg'
 
+# Model plugins
+gem 'acts_as_singleton'
+
 # Layout
 gem 'sass-rails',   '~> 3.2.3'
 gem 'coffee-rails', '~> 3.2.1'

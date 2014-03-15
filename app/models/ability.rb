@@ -7,6 +7,7 @@ class Ability
     case player.role
     when "admin"
       can :manage, :all
+      can :manage, Game
     when "player"
       can [:edit, :update], Team, id: player.team_id
       can [:create, :destroy], TeamInvitation, team_id: player.team_id
