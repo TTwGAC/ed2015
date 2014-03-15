@@ -35,6 +35,10 @@ class PenaltiesController < ApplicationController
   def new
     @penalty = Penalty.new
 
+    [:team_id, :puzzle_id, :minutes, :description].each do |param|
+      @penalty.send "#{param}=", params[param] if params.has_key?(param)
+    end
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @penalty }
