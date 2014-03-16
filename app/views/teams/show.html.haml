@@ -75,6 +75,10 @@
     = link_to edit_team_path(@team), class: 'btn' do
       %img{class: 'icon-white', src: asset_path('glyphicons/030_pencil.png')}
       Edit Team
+    - if can? :manage, Penalty
+      = link_to new_penalty_path(team_id: @team.id, puzzle_id: @team.current_puzzle_id), class: 'btn' do
+        %img{class: 'icon-white', src: asset_path('glyphicons/055_stopwatch.png')}
+        Assess Penalty
     - if current_player.team == @team
       = link_to join_attempts_path, :method => :delete, :confirm => 'Are you sure you want to leave this team?', class: 'btn' do
         %img{class: 'icon-white', src: asset_path('glyphicons/199_ban.png')}
