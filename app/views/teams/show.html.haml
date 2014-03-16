@@ -28,6 +28,13 @@
       Location:
       Last checked into
       = link_to @team.location_name, @team.location
+  - if can?(:edit, @team) && @team.current_puzzle
+    %p
+      Current Puzzle:
+      - if can? :read, @team.current_puzzle
+        = link_to @team.current_puzzle_name, @team.current_puzzle
+      - else
+        = @team.current_puzzle_name
 %p
   Slogan:
   = @team.slogan
