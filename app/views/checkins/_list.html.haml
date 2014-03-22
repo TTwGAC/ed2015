@@ -12,7 +12,10 @@
     - @checkins.each do |checkin|
       %tr
         %td= link_to "#{checkin.team_name}", checkin.team
-        %td= link_to "#{checkin.location_name}", checkin.location
+        - if can? :read, checkin.location
+          %td= link_to "#{checkin.location_name}", checkin.location
+        - else
+          %td= checkin.location_name
         %td{'data-sort-value' => checkin.created_at.to_i}= link_to checkin.created_at.localtime.strftime("%l:%M:%S %P"), checkin
         - if prev = checkin.previous
           %td{'data-sort-value' => (checkin.created_at - prev.created_at).to_i}
