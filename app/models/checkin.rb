@@ -97,8 +97,14 @@ class Checkin < ActiveRecord::Base
       not_current_location = (location != self.location)
       # Find any location in this cluster that the user has not checked into
       no_checkin = Checkin.where(team_id: self.team).where(location_id: location).none?
-      no_chain = location.destination_for_puzzle.comes_from.nil?
-      not_current_location && no_chain && no_checkin && location.active?
+      if location.destination_for_puzzle
+        has_puzzle = true
+        no_chain = location.destination_for_puzzle.comes_from.nil?
+      else
+        has_puzzle = false
+        no_chain = false
+      end
+      not_current_location && has_puzzle && no_chain && no_checkin && location.active?
     end
   end
 

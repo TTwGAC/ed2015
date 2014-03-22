@@ -137,6 +137,15 @@ describe Checkin do
         checkin.next_puzzle.should == locB.destination_for_puzzle
       end
 
+      it %q{should not include any location that has no puzzle} do
+        Checkin.find_or_create player: player, location: locD
+        locC.destination_for_puzzle = nil
+        checkin = Checkin.new player: player, location: locA
+        checkin.valid?.should be true # populate checkin fields
+
+        checkin.next_puzzle.should == locB.destination_for_puzzle
+      end
+
     end
 
     describe 'with no locations available in the current cluster' do
