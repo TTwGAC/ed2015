@@ -54,6 +54,7 @@ Gac2014::Application.configure do
     gmaps4rails.js
     pregame_dashboard.js
     puzzles.js
+    penalties.js
     locations.js
     stupidtable.js
   )

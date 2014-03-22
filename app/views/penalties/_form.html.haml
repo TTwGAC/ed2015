@@ -1,8 +1,18 @@
+- javascript 'stupidtable.js'
+- javascript 'penalties.js'
 = simple_form_for(@penalty) do |f|
   = f.error_notification
   .form-inputs
     = f.input :team_id, collection: Team.order('name')
     = f.input :puzzle_id, collection: Puzzle.order('name')
+    %div#hint_box.box
+      %table.table
+        %thead
+          %tr
+            %th{'data-sort' => 'string'} Hint
+            %th{'data-sort' => 'int'} Penalty
+        %tbody#hint_list
+
     = f.input :description, input_html: {cols: 80, rows: 3}
     = f.input :minutes, as: :integer, hint: "To turn this penalty into a bonus, make the number negative", input_html: {pattern: '\d+', required: true}
   .form-actions
