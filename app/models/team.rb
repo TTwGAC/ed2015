@@ -17,7 +17,7 @@ class Team < ActiveRecord::Base
   mount_uploader :logo, LogoUploader
   phony_normalize :phone, :default_country_code => 'US'
   delegate :name, to: :location, prefix: true
-  delegate :name, :id, to: :current_puzzle, prefix: true
+  delegate :name, to: :current_puzzle, prefix: true
 
   def default_values
     default_active
