@@ -64,7 +64,7 @@ class DudeExcellent
 
       sync_say "#{HOSTED_AUDIO_PATH}/player1.wav", "#{HOSTED_AUDIO_PATH}/player2.wav"
 
-
+      sync_say "Thank you for playing.  Good bye."
     end
 
   end
@@ -108,11 +108,11 @@ class DudeExcellent
     message = nil
 
     if @destination == @source
-      response = "That doesn't look right to me, man."
+      response = "SOMEBODY isn't following directions..."
     end
 
     if @destination.nil?
-      response = 'I don\'t get it. Who did you want to call?'
+      response = 'I don\'t get it. Who did you want me to call?'
     end
 
     if response
