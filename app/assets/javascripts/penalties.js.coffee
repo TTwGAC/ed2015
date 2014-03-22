@@ -11,20 +11,29 @@ jQuery ->
     puzzle_id = $('#penalty_puzzle_id')[0].value
     if puzzle_id.trim()
       $.ajax("/puzzles/#{puzzle_id}/hints.json").success (hints) ->
-        console.log hints
-        $(hints).each (hint) ->
-          hint = hints[hint]
+        $(hints).each (index) ->
+          hint = hints[index]
           tr = document.createElement('tr')
-          tr.appendChild add_field(tr, hint.hint)
-          tr.appendChild add_field(tr, hint.suggested_penalty)
+          create_hint(tr, hint.hint, hint.suggested_penalty)
           hint_list.appendChild tr
 
-  add_field = (tr, content) ->
+  create_hint = (tr, hint_text, suggested_penalty) ->
+    callback = ->
+      $('#penalty_description')[0].value = hint_text
+      $('#penalty_minutes')[0].value = suggested_penalty
+
     td = document.createElement('td')
-    text = document.createTextNode content
+    text = document.createTextNode hint_text
     td.appendChild text
-    td
-    
+    $(td).on 'click', callback
+    tr.appendChild td
+
+    td = document.createElement('td')
+    text = document.createTextNode suggested_penalty
+    td.appendChild text
+    $(td).on 'click', callback
+    tr.appendChild td
+
   $('#penalty_puzzle_id').on 'change', refresh_hints
 
   refresh_hints
