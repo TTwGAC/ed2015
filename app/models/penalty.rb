@@ -9,4 +9,9 @@ class Penalty < ActiveRecord::Base
   validates :assigner_id, presence: true
   validates :description, presence: true
   validates :minutes, presence: true
+  after_initialize :init
+
+  def init
+    self.minutes ||= 0
+  end
 end

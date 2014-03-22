@@ -33,7 +33,7 @@ class PenaltiesController < ApplicationController
   # GET /penalties/new
   # GET /penalties/new.json
   def new
-    @penalty = Penalty.new minutes: 0
+    @penalty = Penalty.new
 
     [:team_id, :puzzle_id, :minutes, :description].each do |param|
       @penalty.send "#{param}=", params[param] if params.has_key?(param)
