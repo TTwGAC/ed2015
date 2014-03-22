@@ -1,0 +1,15 @@
+%h2
+  Redirect:
+  = @redirect.name
+
+%p
+  %b Token:
+  = @redirect.token
+
+%p
+  %b Destination URL:
+  = link_to @redirect.destination_url
+
+= link_to 'Edit', edit_redirect_path(@redirect)
+|
+\#{link_to 'Back', redirects_path}

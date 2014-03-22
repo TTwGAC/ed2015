@@ -1,0 +1,8 @@
+= simple_form_for(@redirect) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :name
+    = f.input :token
+    = f.input :destination_url
+  .form-actions
+    = f.button :submit

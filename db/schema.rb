@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140315222116) do
+ActiveRecord::Schema.define(:version => 20140322154236) do
 
   create_table "checkins", :force => true do |t|
     t.datetime "timestamp"
@@ -144,6 +144,14 @@ ActiveRecord::Schema.define(:version => 20140315222116) do
     t.integer  "expected_ttc"
     t.integer  "owner_id"
     t.boolean  "open"
+  end
+
+  create_table "redirects", :force => true do |t|
+    t.string   "token"
+    t.string   "name"
+    t.string   "destination_url"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "sessions", :force => true do |t|

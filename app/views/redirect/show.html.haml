@@ -1,1 +1,9 @@
-%h1 Congrats!
+- content_for :head, %Q{<meta http-equiv="Refresh" content="7; url=#{@redirect.destination_url}"/>}.html_safe
+%h1 Solved!
+
+%h3 Congrats, you solved the puzzle!
+%h4
+  Next Stop:
+  = link_to @redirect.destination_url
+%p
+  This page will redirect in 7 seconds. Please click the link if you are not automatically redirected

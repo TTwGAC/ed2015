@@ -42,7 +42,10 @@ Gac2014::Application.routes.draw do
 
   resources :events
 
-  resources :redirect, only: [:show]
+  get '/redirect/:token' => 'redirect#show'
+  resources :redirects
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

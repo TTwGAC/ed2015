@@ -70,6 +70,10 @@
               = link_to penalties_path do
                 %img{class: 'navicon', src: asset_path('glyphicons/055_stopwatch.png')}
                 Penalties
+            %li
+              = link_to redirects_path do
+                %img{class: 'navicon', src: asset_path('glyphicons/151_new_window.png')}
+                Redirects
       - else
         %li
           - if current_player.team_name == 'Observers'
