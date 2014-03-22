@@ -25,7 +25,9 @@
           = link_to location.name, location
         %td= (location.permission_received ? "&#x2713;" : "&times;").html_safe
         %td= open_hours location
-        %td= link_to location.destination_for_puzzle_name, location.destination_for_puzzle
+        %td
+          - if location.destination_for_puzzle
+            = link_to location.destination_for_puzzle_name, location.destination_for_puzzle
         %td
           - if location.next_puzzle
             = link_to location.next_puzzle_name, location.next_puzzle
