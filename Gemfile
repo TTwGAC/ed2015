@@ -62,6 +62,9 @@ gem 'unicorn'
 
 gem 'airbrake'
 
+# Heroku
+gem 'rails_12factor'
+
 group :development do
   gem 'sqlite3'
   gem 'pry-rails'
