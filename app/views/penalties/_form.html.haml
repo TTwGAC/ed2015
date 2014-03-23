@@ -3,7 +3,7 @@
 = simple_form_for(@penalty) do |f|
   = f.error_notification
   .form-inputs
-    = f.association :team, collection: Team.order('name')
+    = f.association :team, collection: Team.player.order('name')
     = f.association :puzzle, collection: Puzzle.order('name')
     %div#hint_box.box
       %table.table

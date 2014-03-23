@@ -2,6 +2,6 @@
   = f.error_notification
   .form-inputs
     = f.association :location, collection: Location.order('name')
-    = f.association :team, collection: Team.order('name')
+    = f.association :team, collection: Team.player.order('name')
   .form-actions
     = f.button :submit
