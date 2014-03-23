@@ -17,7 +17,7 @@ class Player < ActiveRecord::Base
   ROLES = %w[admin player observer none]
 
   def default_team
-    self.team ||= Team.first conditions: {name: "Observers"}
+    self.team ||= Team.where(name: "Observers").first
   end
 
   def role

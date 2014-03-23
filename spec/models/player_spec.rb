@@ -4,13 +4,13 @@ require 'ostruct'
 describe Player do
   it "should set the role to admin when on the Game Control team" do
     u = FactoryGirl.build(:player)
-    u.team = Team.first conditions: {name: "Game Control"}
+    u.team = Team.where(name: "Game Control").first
     u.role.should == "admin"
   end
 
   it "should set the role to observer when on the Observers team" do
     u = FactoryGirl.build(:player)
-    u.team = Team.first conditions: {name: "Observers"}
+    u.team = Team.where(name: "Observers").first
     u.role.should == "observer"
   end
 
@@ -29,7 +29,7 @@ describe Player do
   it "should automatically join the Observers team" do
     u = Player.create! first_name: "Foo", last_name: "Bar", nickname: "Foobar", email: 'foo@bar.com', password: 'asdfghj', phone: '2125551234'
     u.reload
-    u.team.should == Team.first(conditions: {name: "Observers"})
+    u.team.should == Team.where(name: "Observers").first
   end
 
 end
