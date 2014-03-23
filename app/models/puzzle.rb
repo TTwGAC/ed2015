@@ -13,7 +13,7 @@ class Puzzle < ActiveRecord::Base
   delegate :name, to: :owner, prefix: true
   delegate :for_players, :for_game_control, to: :documents, prefix: true
   delegate :next_puzzle, to: :location
-  validates_presence_of :name
+  validates :name, presence: true
   validates_inclusion_of :status, in: STATUSES, allow_blank: true
 
   scope :active, -> { where(status: ACTIVE_STATUSES) }
