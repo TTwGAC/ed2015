@@ -21,7 +21,8 @@ observers.save! validate: false
 system = Player.new first_name: 'System',
   last_name: 'Player',
   email: 'noreply@gac2014.com',
-  password: SecureRandom.hex(64)
+  password: SecureRandom.hex(64),
+  phone: '14045551234'
 system.skip_confirmation!
 system.save!
 
@@ -29,7 +30,8 @@ ben = Player.new first_name: "Ben",
   last_name: "Klang",
   nickname: "Leon",
   email: "ben@alkaloid.net",
-  password: "abcdefg" # CHANGE THIS!
+  password: "abcdefg", # CHANGE THIS!
+  phone: '14045551235'
 ben.team = game_control
 ben.skip_confirmation!
 ben.save!
@@ -38,7 +40,8 @@ alicia = Player.new first_name: "Alicia",
   last_name: "Cardillo",
   nickname: "Leonetta",
   email: "alicia.cardillo@gmail.com",
-  password: "abcdefg" # CHANGE THIS!
+  password: "abcdefg", # CHANGE THIS!
+  phone: '14045551236'
 alicia.team = game_control
 alicia.skip_confirmation!
 alicia.save!
