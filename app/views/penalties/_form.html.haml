@@ -3,8 +3,8 @@
 = simple_form_for(@penalty) do |f|
   = f.error_notification
   .form-inputs
-    = f.input :team_id, collection: Team.order('name')
-    = f.input :puzzle_id, collection: Puzzle.order('name')
+    = f.association :team_id, collection: Team.order('name')
+    = f.association :puzzle_id, collection: Puzzle.order('name')
     %div#hint_box.box
       %table.table
         %thead
