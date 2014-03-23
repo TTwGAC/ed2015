@@ -22,7 +22,7 @@ gem 'redcarpet'
 
 # Authentication
 gem 'devise', '~> 3.0.0'
-gem 'cancan'
+gem 'cancancan', '~> 1.7'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
