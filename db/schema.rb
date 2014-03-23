@@ -9,72 +9,75 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140322154236) do
+ActiveRecord::Schema.define(version: 20140322154236) do
 
-  create_table "checkins", :force => true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "checkins", force: true do |t|
     t.datetime "timestamp"
     t.integer  "location_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "team_id"
     t.integer  "player_id"
     t.integer  "solved_puzzle_id"
     t.integer  "next_puzzle_id"
   end
 
-  create_table "clusters", :force => true do |t|
+  create_table "clusters", force: true do |t|
     t.string   "name"
     t.integer  "sequence"
-    t.string   "color",      :default => "red"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.string   "color",      default: "red"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
-  create_table "documents", :force => true do |t|
+  create_table "documents", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.string   "token",             :null => false
+    t.string   "token",             null: false
     t.boolean  "private"
     t.string   "file"
     t.integer  "documentable_id"
     t.string   "documentable_type"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
-  create_table "events", :force => true do |t|
-    t.integer  "player_id",   :null => false
-    t.string   "subject",     :null => false
+  create_table "events", force: true do |t|
+    t.integer  "player_id",   null: false
+    t.string   "subject",     null: false
     t.integer  "subject_id"
-    t.string   "action",      :null => false
+    t.string   "action",      null: false
     t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  create_table "games", :force => true do |t|
+  create_table "games", force: true do |t|
     t.string   "name"
     t.string   "status"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "hints", :force => true do |t|
+  create_table "hints", force: true do |t|
     t.text     "hint"
     t.integer  "puzzle_id"
     t.integer  "suggested_penalty"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
-  create_table "locations", :force => true do |t|
+  create_table "locations", force: true do |t|
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "name"
     t.string   "token"
     t.integer  "cluster_id"
@@ -84,29 +87,29 @@ ActiveRecord::Schema.define(:version => 20140322154236) do
     t.integer  "next_puzzle_id"
   end
 
-  create_table "penalties", :force => true do |t|
+  create_table "penalties", force: true do |t|
     t.integer  "team_id"
     t.integer  "assigner_id"
     t.integer  "puzzle_id"
     t.text     "description"
     t.integer  "minutes"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "players", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+  create_table "players", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",          default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "nickname"
@@ -128,15 +131,15 @@ ActiveRecord::Schema.define(:version => 20140322154236) do
     t.string   "phone"
   end
 
-  add_index "players", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
-  add_index "players", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "players", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "players", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "players", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "players", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "puzzles", :force => true do |t|
+  create_table "puzzles", force: true do |t|
     t.string   "name"
     t.integer  "destination_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "token"
     t.text     "description"
     t.string   "status"
@@ -146,36 +149,36 @@ ActiveRecord::Schema.define(:version => 20140322154236) do
     t.boolean  "open"
   end
 
-  create_table "redirects", :force => true do |t|
+  create_table "redirects", force: true do |t|
     t.string   "token"
     t.string   "name"
     t.string   "destination_url"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "sessions", :force => true do |t|
-    t.string   "session_id", :null => false
+  create_table "sessions", force: true do |t|
+    t.string   "session_id", null: false
     t.text     "data"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
-  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", using: :btree
+  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
-  create_table "team_invitations", :force => true do |t|
+  create_table "team_invitations", force: true do |t|
     t.integer  "player_id"
     t.integer  "team_id"
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "token"
   end
 
-  create_table "teams", :force => true do |t|
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+  create_table "teams", force: true do |t|
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "name"
     t.datetime "created"
     t.datetime "updated"
@@ -190,6 +193,6 @@ ActiveRecord::Schema.define(:version => 20140322154236) do
     t.boolean  "active"
   end
 
-  add_index "teams", ["name"], :name => "index_teams_on_name", :unique => true
+  add_index "teams", ["name"], name: "index_teams_on_name", unique: true, using: :btree
 
 end
