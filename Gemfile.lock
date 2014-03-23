@@ -281,10 +281,6 @@ GEM
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     sqlite3 (1.3.9)
-    strong_parameters (0.1.4)
-      actionpack (>= 3.2.0)
-      activemodel (>= 3.2.0)
-      railties (>= 3.2.0)
     terminal-notifier-guard (1.5.3)
     thor (0.19.0)
     thread_safe (0.3.1)
@@ -355,7 +351,6 @@ DEPENDENCIES
   sass-rails (~> 4.0.0)
   simple_form
   sqlite3
-  strong_parameters
   terminal-notifier-guard
   twitter (~> 4.0)
   uglifier (>= 1.3.0)

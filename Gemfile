@@ -28,9 +28,6 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'certified'
 
-# Security
-gem 'strong_parameters'
-
 # Social
 gem 'twitter', '~> 4.0'
 gem 'koala', '~> 1.7.0rc1'
