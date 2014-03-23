@@ -18,6 +18,7 @@ class Team < ActiveRecord::Base
   phony_normalize :phone, :default_country_code => 'US'
   delegate :name, to: :location, prefix: true
   delegate :name, to: :current_puzzle, prefix: true
+  scope :player, -> { where(['LOWER(name) NOT IN (?)', RESERVED_NAMES]) }
 
   def default_values
     default_active
