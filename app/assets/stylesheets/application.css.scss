@@ -383,3 +383,7 @@ input, select {
 .dropdown-backdrop{
     position: static;
 }
+
+.highlighted {
+  @include background_gradient(to bottom, $nav_top, $nav_bot);
+}

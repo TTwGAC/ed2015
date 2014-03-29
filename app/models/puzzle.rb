@@ -47,6 +47,10 @@ class Puzzle < ActiveRecord::Base
   def get_token
     self.token ||= SecureRandom.hex(16)
   end
+
+  def expected_ttc
+    super || 0
+  end
 end
 
 # == Schema Information

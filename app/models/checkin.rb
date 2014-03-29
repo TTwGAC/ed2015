@@ -111,6 +111,15 @@ class Checkin < ActiveRecord::Base
     last_checkin = Checkin.where(team_id: self.team).where('created_at < ?', created_at).order('created_at DESC').limit(1).first
     last_checkin == self ? nil : last_checkin
   end
+
+  def solved_puzzle_expected_ttc
+    if solved_puzzle
+      solved_puzzle.expected_ttc
+    else
+      0
+    end
+  end
+
 end
 
 # == Schema Information

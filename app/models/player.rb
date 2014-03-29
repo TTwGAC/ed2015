@@ -9,7 +9,7 @@ class Player < ActiveRecord::Base
   has_many :team_invitations
   has_many :checkins
   before_save :default_team
-  delegate :name, :id, :location, :location=, :to => :team, :prefix => true
+  delegate :name, :id, :location, :location=, :penalties, :current_puzzle, :to => :team, :prefix => true
   validates :first_name, :last_name, presence: true
   validates :phone, phony_plausible: true, length: {minimum: 10}
   phony_normalize :phone, :default_country_code => 'US'
