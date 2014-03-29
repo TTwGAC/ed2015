@@ -27,7 +27,7 @@ class DashboardController < ApplicationController
   end
 
   def player_dashboard
-    @puzzle = current_player.team_current_puzzle
+    @puzzle = current_player.team_current_puzzle || Puzzle.new
     @penalties = current_player.team_penalties
     respond_to do |format|
       format.html do
