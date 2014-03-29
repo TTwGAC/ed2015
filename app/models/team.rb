@@ -12,6 +12,7 @@ class Team < ActiveRecord::Base
   has_many :players
   has_many :team_invitations
   has_many :checkins
+  has_many :penalties
   belongs_to :location
   belongs_to :current_puzzle, class_name: 'Puzzle', foreign_key: 'current_puzzle_id'
   mount_uploader :logo, LogoUploader
@@ -43,6 +44,17 @@ class Team < ActiveRecord::Base
 
   def playing?
     paid && active
+  end
+
+  def score
+    puzzles_score = checkins.inject(0) do |total, checkin|
+      total += checkin.solved_puzzle_expected_ttc
+    end
+    total_penalties = penalties.inject(0) do |total, p|
+      total += p.minutes
+    end
+
+    puzzles_score - total_penalties
   end
 
   def reasons_not_playing
