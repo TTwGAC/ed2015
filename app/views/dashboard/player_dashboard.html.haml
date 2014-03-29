@@ -1,0 +1,36 @@
+.row
+  .span12
+    %h1
+      Team
+      = current_player.team_name
+%hr
+.row
+  .span8
+    %h2
+      Current Puzzle:
+      = @puzzle.name
+
+    - if @puzzle.flavortext.present?
+      %h4 Introduction:
+      %p.box= @puzzle.flavortext
+
+    
+    %h4 Files:
+    %ul
+      - @puzzle.documents_for_players.each do |document|
+        %li= link_to document.name, document.file_url
+
+    %hr
+
+    / #FIXME: Look up contact number from settings or Game Control team
+    %h4 Contact Game Control: +1-678-384-4464
+    %h4= link_to 'Tune in to Radio GAC', 'http://gchq.gac2014.com/stream'
+    %h6 Next news in 7:33
+
+    %hr
+
+    %h4 Penalties:
+    = render partial: 'penalties/list'
+
+  .span4
+    = render partial: 'leaderboard'

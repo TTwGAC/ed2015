@@ -6,6 +6,8 @@ Gac2014::Application.routes.draw do
   get '/game/edit' => 'game#edit'
   put '/game' => 'game#update'
 
+  get '/dashboard' => 'dashboard#show'
+
 
   resources :documents
 

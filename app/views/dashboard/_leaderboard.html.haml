@@ -1,0 +1,13 @@
+%h1 Leaderboard
+%h4{style: 'font-style: italic'} Results Not Final
+
+%table.table.box
+  %tr
+    %th Team Name
+    %th{style: 'text-align: center'} Score
+
+  - teams_sorted_by_score.each do |team|
+    %tr{class: ('highlighted' if current_player.team == team)}
+      %td= team.name
+      %td{style: 'text-align: center'}= team.score
+

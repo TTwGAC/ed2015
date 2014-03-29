@@ -1,0 +1,35 @@
+- javascript 'stupidtable.js'
+- if @penalties.count > 0
+  %table.table
+    %thead
+      %tr.header
+        - if can? :manage, Penalty
+          %th{'data-sort' => 'string'} Team
+        %th{'data-sort' => 'string'} Puzzle
+        %th{'data-sort' => 'int'} Minutes
+        %th{'data-sort' => 'int'} Timestamp
+        %th{'data-sort' => 'string'} Assigner
+        - if can? :manage, Penalty
+          %th Action
+      %tbody
+        - @penalties.each do |penalty|
+          %tr
+            - if can? :manage, Penalty
+              %td= link_to penalty.team_name, penalty.team
+            - if penalty.puzzle.present?
+              - if can? :read, penalty.puzzle
+                %td= link_to penalty.puzzle_name, penalty.puzzle
+              - else
+                %td= penalty.puzzle_name
+            - else
+              %td
+            %td= penalty.minutes
+            %td{'data-sort-value' => penalty.created_at.to_i}= link_to penalty.created_at.localtime.strftime("%l:%M:%S %P"), penalty
+            %td= link_to penalty.assigner_name, penalty.assigner
+            - if can? :manage, Penalty
+              %td= link_to 'View', penalty
+- else
+  %span{style: 'font-style: italic'} No penalties yet! Keep up the good work!
+- if can? :manage, Penalty
+  %br/
+  = link_to 'New Penalty', new_penalty_path

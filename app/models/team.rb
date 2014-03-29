@@ -47,6 +47,10 @@ class Team < ActiveRecord::Base
   end
 
   def score
+    @score ||= calculate_score
+  end
+
+  def calculate_score
     puzzles_score = checkins.inject(0) do |total, checkin|
       total += checkin.solved_puzzle_expected_ttc
     end
