@@ -387,3 +387,7 @@ input, select {
 .highlighted {
   @include background_gradient(to bottom, $nav_top, $nav_bot);
 }
+
+.gchq_dashboard {
+  width: 1920px;
+}

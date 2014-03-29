@@ -14,10 +14,11 @@ class DashboardController < ApplicationController
   end
 
   def game_control_dashboard
+    @locations = Location.all
     respond_to do |format|
       format.html do
         # Render the UI
-        render :game_control_dashboard
+        render :game_control_dashboard, layout: false
       end
       format.json do
         # Return just the data to update the UI
