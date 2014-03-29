@@ -42,7 +42,8 @@
 - if can?(:edit, @team)
   %p
     Contact Phone:
-    = @team.phone
+    - if @team.phone
+      = Phony.formatted @team.phone, spaces: :-
 
 %p
   Description:
