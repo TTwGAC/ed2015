@@ -60,6 +60,7 @@ Gac2014::Application.configure do
     penalties.js
     locations.js
     stupidtable.js
+    jquery.jplayer.min.js
   )
 
   # Disable delivery errors, bad email addresses will be ignored
