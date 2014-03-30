@@ -390,9 +390,9 @@ input, select {
 
 .gchq_dashboard {
   width: 1920px;
+  text-align: center;
 
   .title {
-    text-align: center;
     @include background_gradient(to bottom, $nav_top, $nav_bot);
   }
 
