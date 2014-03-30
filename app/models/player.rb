@@ -11,7 +11,7 @@ class Player < ActiveRecord::Base
   before_save :default_team
   delegate :name, :id, :location, :location=, :penalties, :current_puzzle, :to => :team, :prefix => true
   validates :first_name, :last_name, presence: true
-  validates :phone, phony_plausible: true, length: {minimum: 10}
+  validates :phone, presence: true, phony_plausible: true, length: {minimum: 10}
   validates :facebook_uid, uniqueness: true, unless: lambda { |p| p.facebook_uid.blank? }
   validates :twitter_uid, uniqueness: true, unless: lambda { |p| p.twitter_uid.blank? }
   phony_normalize :phone, :default_country_code => 'US'
