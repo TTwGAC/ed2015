@@ -12,6 +12,8 @@ class Player < ActiveRecord::Base
   delegate :name, :id, :location, :location=, :penalties, :current_puzzle, :to => :team, :prefix => true
   validates :first_name, :last_name, presence: true
   validates :phone, phony_plausible: true, length: {minimum: 10}
+  validates :facebook_uid, uniqueness: true, unless: lambda { |p| p.facebook_uid.blank? }
+  validates :twitter_uid, uniqueness: true, unless: lambda { |p| p.twitter_uid.blank? }
   phony_normalize :phone, :default_country_code => 'US'
   mount_uploader :avatar, AvatarUploader
   ROLES = %w[admin player observer none]

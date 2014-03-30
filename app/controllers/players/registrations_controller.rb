@@ -4,7 +4,8 @@ class Players::RegistrationsController < Devise::RegistrationsController
     persist_avatar
     if resource.persisted?
       event "create", :player, resource.id, description: "#{resource.name} registered as a new player"
-      save_thirdparty_creds(resource, session)
+      save_thirdparty_creds(resource, session['social'])
+      session.delete 'social'
     end
   end
 

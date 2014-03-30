@@ -10,20 +10,23 @@ class Players::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       twitter_handle: auth.info.nickname
     }
 
-    player = Player.where({twitter_uid: auth.uid}).first
-    if player
-      handle_callback "Twitter", player
+    data = {}
+    data['auth_service'] = 'twitter'
+    data['twitter'] = {credentials: credentials, info: info}
+    data['name'] = "@#{info[:twitter_handle]}"
+
+    if player_signed_in?
+      save_thirdparty_creds current_player, data
+      flash_success data
+      redirect_to '/'
+    elsif player = Player.where({twitter_uid: auth.uid}).first
+      social_login player, data
     else
-      session['auth_service'] = 'twitter'
-      session['twitter'] = {credentials: credentials, info: info}
-      set_flash_message(:success, :success, :kind => 'Twitter', :name => "@#{info[:twitter_handle]}") if is_navigational_format?
-      flash[:notice] = 'To complete registration, please fill out the form below'
-      redirect_to new_player_registration_url
+      social_signup data
     end
   end
 
   def facebook
-    session['auth_service'] = 'facebook'
     auth = request.env["omniauth.auth"]
     credentials = {
       facebook_uid: auth.uid,
@@ -35,43 +38,41 @@ class Players::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       last_name: auth.extra.raw_info.last_name,
     }
 
-    session[:facebook] = {credentials: credentials, info: info}
-    player = find_or_create
-    handle_callback "Facebook", player
-  end
+    data = {}
+    data['auth_service'] = 'facebook'
+    data['facebook'] = {credentials: credentials, info: info}
+    data['name'] = "#{info[:first_name]} #{info[:last_name]}"
 
-  def find_or_create
-    service = session['auth_service']
-    return unless session.has_key? service
-    credentials = session[service][:credentials]
-    info        = session[service][:info]
-
-    locator = {"#{service}_uid" => credentials["#{service}_uid".to_sym]}
-
-    player = Player.where(locator).first
-    unless player
-      player = Player.where(email: info[:email]).first if info[:email]
-
-      if player
-        save_thirdparty_creds(player, session)
-      else
-        # Create a new Player
-        player = Player.new({password: Devise.friendly_token}.merge(info))
-        player.skip_confirmation!
-        player.save!
-        event "create", :player, player.id, description: "#{player.name} registered via #{service.titleize}"
-      end
-    end
-    player
-  end
-
-  def handle_callback(service, player)
-    if player.persisted?
-      # TODO: Check for required information - redirect to edit screen if missing
-      sign_in_and_redirect player, :event => :authentication
-      set_flash_message(:notice, :success, :kind => service, :name => player.name) if is_navigational_format?
+    if player_signed_in?
+      save_thirdparty_creds current_player, data
+      flash_success data
+      redirect_to '/'
+    elsif player = Player.where(facebook_uid: credentials[:facebook_uid]).first
+      social_login player, data
     else
-      redirect_to new_player_registration_url
+      social_signup data
     end
+  end
+
+  def flash_success(data)
+    set_flash_message(:notice, :success, kind: data['auth_service'].capitalize, name: data['name']) if is_navigational_format?
+  end
+
+  def social_login(player, data)
+    save_thirdparty_creds player, data
+    if player.persisted?
+      flash_success data
+      sign_in_and_redirect player, :event => :authentication
+    else
+      session['social'] = data
+      redirect_to edit_player_registration_url
+    end
+  end
+
+  def social_signup(data)
+    session['social'] = data
+    flash_success data
+    flash[:notice] = 'To complete registration, please fill out the form below'
+    redirect_to new_player_registration_url
   end
 end
