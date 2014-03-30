@@ -390,4 +390,14 @@ input, select {
 
 .gchq_dashboard {
   width: 1920px;
+
+  .title {
+    text-align: center;
+    @include background_gradient(to bottom, $nav_top, $nav_bot);
+  }
+
+  .map_container, .gmaps4rails_map {
+    width: 98.6%;
+    height: 500px;
+  }
 }

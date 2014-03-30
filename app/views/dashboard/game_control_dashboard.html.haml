@@ -40,8 +40,11 @@
               = render partial: 'leaderboard'
             .span9
               .row-fluid
-                .span9
-                  Get-A-Clue 2014 (logo)
+                .span9.title
+                  %h1
+                    Get-A-Clue 2014
+                    &nbsp;
+                    = image_tag 'logo.png', size: '64x64'
                 .span3
                   Clock
               .row-fluid
