@@ -18,5 +18,6 @@
   - else
     %br
     %p{style: 'font-style: italic'} No documents found
-  %div.show_modal{onclick: "$('#new_document').modal(); $('#document_private').prop('checked', #{document_type == "public" ? "false" : "true"})"} Attach New Document
+  %div.show_modal{onclick: "$('#new_document').modal(); $('#document_private').prop('checked', #{document_type == "public" ? "false" : "true"})"}
+    %span Attach New Document
 

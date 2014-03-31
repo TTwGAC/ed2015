@@ -39,6 +39,15 @@ body { padding-top: 60px; } // Positioning of nav, responsively
   background-image: linear-gradient($direction,$start,$end);
 }
 
+@mixin pretend_link {
+  text-decoration: underline;
+  cursor: pointer;
+  span:hover {
+    background-color: #000;
+    color: #fff;
+  }
+}
+
 $facebook_blue: #3c599b;
 $twitter_blue: #00aced;
 $nav_top: #fffcf0;
@@ -368,8 +377,7 @@ img.navicon {
 }
 
 .show_modal {
-  text-decoration: underline;
-  cursor: pointer;
+  @include pretend_link;
 }
 
 input, select {
@@ -386,6 +394,10 @@ input, select {
 
 .highlighted {
   @include background_gradient(to bottom, $nav_top, $nav_bot);
+}
+
+#show_player {
+  @include pretend_link;
 }
 
 .gchq_dashboard {
