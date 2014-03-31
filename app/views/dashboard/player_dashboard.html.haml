@@ -17,10 +17,11 @@
       %p.box= @puzzle.flavortext
 
 
-    %h4 Files:
-    %ul
-      - @puzzle.documents_for_players.each do |document|
-        %li= link_to document.name, document.file_url
+    - if @puzzle.documents_for_players.count > 0
+      %h4 Files:
+      %ul
+        - @puzzle.documents_for_players.each do |document|
+          %li= link_to document.name, document.file_url
 
     %hr
 
