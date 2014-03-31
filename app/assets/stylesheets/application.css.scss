@@ -43,6 +43,7 @@ body { padding-top: 60px; } // Positioning of nav, responsively
   text-decoration: underline;
   cursor: pointer;
   span:hover {
+    text-decoration: underline;
     background-color: #000;
     color: #fff;
   }
