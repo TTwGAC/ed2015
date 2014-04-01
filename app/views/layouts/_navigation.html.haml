@@ -35,7 +35,7 @@
       - if can? :manage, :all
         %li{class: 'dropdown admin-only'}
           %a{href: '#', class: 'dropdown-toggle', "data-toggle" => 'dropdown'}
-            Game Control
+            Game Setup
             %b{class: 'caret'}
           %ul{class: 'dropdown-menu'}
             %li
@@ -43,13 +43,13 @@
                 %img{class: 'navicon', src: asset_path('glyphicons/139_adjust_alt.png')}
                 Game Settings
             %li
-              = link_to page_path('pregame_dashboard') do
-                %img{class: 'navicon', src: asset_path('glyphicons/331_dashboard.png')}
-                Pre-Game Dashboard
-            %li
               = link_to players_path do
                 %img{class: 'navicon', src: asset_path('glyphicons/003_user.png')}
                 Players
+            %li
+              = link_to '/teams' do
+                %img{class: 'navicon', src: asset_path('glyphicons/043_group.png')}
+                Teams
             %li
               = link_to puzzles_path do
                 %img{class: 'navicon', src: asset_path('glyphicons/156_show_thumbnails.png')}
@@ -63,17 +63,27 @@
                 %img{class: 'navicon', src: asset_path('glyphicons/060_compass.png')}
                 Locations
             %li
+              = link_to redirects_path do
+                %img{class: 'navicon', src: asset_path('glyphicons/151_new_window.png')}
+                Redirects
+        %li{class: 'dropdown admin-only'}
+          %a{href: '#', class: 'dropdown-toggle', "data-toggle" => 'dropdown'}
+            Game Tools
+            %b{class: 'caret'}
+          %ul{class: 'dropdown-menu'}
+            %li
+              = link_to page_path('pregame_dashboard') do
+                %img{class: 'navicon', src: asset_path('glyphicons/331_dashboard.png')}
+                Dashboard
+            %li
               = link_to checkins_path do
-                %img{class: 'navicon', src: asset_path('glyphicons/087_log_book.png')}
+                %img{class: 'navicon', src: asset_path('glyphicons/258_qrcode.png')}
                 Checkins
             %li
               = link_to penalties_path do
                 %img{class: 'navicon', src: asset_path('glyphicons/055_stopwatch.png')}
                 Penalties
             %li
-              = link_to redirects_path do
-                %img{class: 'navicon', src: asset_path('glyphicons/151_new_window.png')}
-                Redirects
       - else
         %li
           - if current_player.team_name == 'Observers'
