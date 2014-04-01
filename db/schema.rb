@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140322154236) do
+ActiveRecord::Schema.define(version: 20140401024525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(version: 20140322154236) do
   create_table "games", force: true do |t|
     t.string   "name"
     t.string   "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "hints", force: true do |t|
@@ -87,14 +87,29 @@ ActiveRecord::Schema.define(version: 20140322154236) do
     t.integer  "next_puzzle_id"
   end
 
+  create_table "message_deliveries", force: true do |t|
+    t.integer  "message_id"
+    t.string   "destination"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", force: true do |t|
+    t.string   "text"
+    t.integer  "sender_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "penalties", force: true do |t|
     t.integer  "team_id"
     t.integer  "assigner_id"
     t.integer  "puzzle_id"
     t.text     "description"
     t.integer  "minutes"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "players", force: true do |t|
@@ -153,8 +168,8 @@ ActiveRecord::Schema.define(version: 20140322154236) do
     t.string   "token"
     t.string   "name"
     t.string   "destination_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "sessions", force: true do |t|

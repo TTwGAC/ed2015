@@ -84,6 +84,9 @@
                 %img{class: 'navicon', src: asset_path('glyphicons/055_stopwatch.png')}
                 Penalties
             %li
+              = link_to messages_path do
+                %img{class: 'navicon', src: asset_path('glyphicons/336_iphone_shake.png')}
+                Messaging
       - else
         %li
           - if current_player.team_name == 'Observers'

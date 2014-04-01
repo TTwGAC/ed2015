@@ -1,4 +1,6 @@
 Gac2014::Application.routes.draw do
+  resources :messages
+
   resources :penalties
 
 
