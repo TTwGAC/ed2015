@@ -65,6 +65,9 @@ gem 'airbrake'
 # Heroku
 gem 'rails_12factor'
 
+# Used to spread messages across a bank of phone numbers
+gem 'consistent-hashing'
+
 group :development do
   gem 'sqlite3'
   gem 'pry-rails'
