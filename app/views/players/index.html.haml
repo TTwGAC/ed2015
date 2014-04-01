@@ -5,6 +5,7 @@
     %tr.header
       %th{'data-sort' => 'string'} Name
       %th{'data-sort' => 'string'} Email
+      %th{'data-sort' => 'string'} Phone
       %th{'data-sort' => 'string'} Team
   %tbody
     - @players.each do |player|
@@ -15,8 +16,16 @@
           %td= player.email
         - else
           %td
-            %span{style: 'font-style: italic'}
-              hidden
+            %span{style: 'font-style: italic'} hidden
+        - if can? :edit, player
+          - if player.phone
+            %td= Phony.formatted player.phone, spaces: :-, format: :national
+          - else
+            %td
+              %span{style: 'font-style: italic'} No phone yet!
+        - else
+          %td
+            %span{style: 'font-style: italic'} hidden
         %td
           %a{href: "/teams/#{player.team_id}"}
             = player.team_name
