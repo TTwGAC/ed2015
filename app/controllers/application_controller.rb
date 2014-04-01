@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
 
   def save_thirdparty_creds(player, data)
-    return unless data && data.has_key? 'auth_service'
+    return unless data.has_key? 'auth_service'
     service = data['auth_service']
     return unless data[service]
     credentials = data[service][:credentials]
