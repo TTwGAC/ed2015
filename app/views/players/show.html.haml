@@ -7,9 +7,20 @@
   %p
     Email:
     = @player.email
+  %p
+    Phone:
+    - if @player.phone
+      = Phony.formatted @player.phone, spaces: :-, format: :national
+    - else
+      No phone yet!
 %p
   Nickname:
   = @player.nickname
+
+- if can? :manage, @player
+  %p
+    Last sign-in:
+    = @player.last_sign_in_at.localtime.strftime("%Y/%m/%d %l:%M:%S %P")
 %p
   Team:
   %a{href: "/teams/#{@player.team_id}"}
