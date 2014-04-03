@@ -10,7 +10,7 @@ class LogoUploader < CarrierWave::Uploader::Base
   end
 
   version :standard do
-    process :resize_to_fit => [150, 150, :center]
+    process :resize_to_fit => [300, 300, :center]
   end
 
   version :thumbnail do
