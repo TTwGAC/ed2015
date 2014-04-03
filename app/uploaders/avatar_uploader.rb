@@ -6,11 +6,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
   process :tags => ['post_picture']
 
   version :index do
-    process :resize_to_fill => [24, 24, :north]
+    process :resize_to_fit => [24, 24, :center]
   end
 
   version :standard do
-    process :resize_to_fill => [150, 150, :north]
+    process :resize_to_fit => [150, 150, :center]
   end
 
   version :thumbnail do
