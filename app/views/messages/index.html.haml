@@ -1,15 +1,20 @@
+- javascript 'stupidtable.js'
 %h1 Listing messages
-%table
+%table.table
   %thead
     %tr
-      %th
-      %th
-      %th
+      %th{'data-sort' => 'String'} Destination
+      %th{'data-sort' => 'String'} Sender
+      %th{'data-sort' => 'String'} Type
+      %th{'data-sort' => 'String'} Status
+      %th{'data-sort' => 'int'} Time
   %tbody
     - @messages.each do |message|
       %tr
-        %td= link_to 'Show', message
-        %td= link_to 'Edit', edit_message_path(message)
-        %td= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to message.destination_object.name, message
+        %td= link_to message.sender_name, message.sender
+        %td= message.delivery_type
+        %td= message.status
+        %td{'data-sort-value' => message.updated_at.to_i}= link_to message.updated_at.localtime.strftime("%l:%M:%S %P"), message
 %br/
 = link_to 'New Message', new_message_path
