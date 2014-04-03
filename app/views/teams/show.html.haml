@@ -8,7 +8,7 @@
 - if signed_in? && current_player.team == @team
   %h4 You are a member of this team!
 %p
-  = image_tag @team.logo.url, width: '150x150'
+  = image_tag @team.logo_url(:standard), width: '150x150'
 
 - if can? :edit, @team
   %p
