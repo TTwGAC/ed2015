@@ -5,6 +5,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
   process :convert => 'png'
   process :tags => ['post_picture']
 
+  version :index do
+    process :resize_to_fill => [24, 24, :north]
+  end
+
   version :standard do
     process :resize_to_fill => [150, 150, :north]
   end

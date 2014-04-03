@@ -3,6 +3,7 @@
 %table#players.table
   %thead
     %tr.header
+      %th
       %th{'data-sort' => 'string'} Name
       %th{'data-sort' => 'string'} Email
       %th{'data-sort' => 'string'} Phone
@@ -10,6 +11,7 @@
   %tbody
     - @players.each do |player|
       %tr
+        %td= image_tag player.avatar_url(:index), size: '24x24'
         %td
           = link_to player.name, player
         - if can? :edit, player
