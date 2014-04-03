@@ -10,6 +10,7 @@ class Player < ActiveRecord::Base
   has_many :checkins
   before_save :default_team
   delegate :name, :id, :location, :location=, :penalties, :current_puzzle, :to => :team, :prefix => true
+  delegate :playing?, to: :team
   validates :first_name, :last_name, presence: true
   validates :phone, presence: true, phony_plausible: true, length: {minimum: 10}
   validates :facebook_uid, uniqueness: true, unless: lambda { |p| p.facebook_uid.blank? }
