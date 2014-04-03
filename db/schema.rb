@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 20140401024525) do
   create_table "messages", force: true do |t|
     t.text     "text"
     t.integer  "sender_id"
-    t.string   "type"
+    t.string   "delivery_type"
     t.string   "status"
     t.string   "destination"
     t.datetime "created_at"

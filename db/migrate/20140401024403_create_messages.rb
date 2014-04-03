@@ -3,7 +3,7 @@ class CreateMessages < ActiveRecord::Migration
     create_table :messages do |t|
       t.text :text
       t.integer :sender_id
-      t.string :type
+      t.string :delivery_type
       t.string :status
       t.string :destination
       t.timestamps
