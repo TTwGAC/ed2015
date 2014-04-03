@@ -1,5 +1,8 @@
 = simple_form_for(@message) do |f|
   = f.error_notification
   .form-inputs
+    = f.input :delivery_type, collection: Message::DELIVERY_TYPES
+    = f.input :text
+    = f.input :destination, collection: @destinations, as: :grouped_select, group_method: :last, value_method: Proc.new { |o| "#{o.class.name}:#{o.id}" }
   .form-actions
     = f.button :submit
