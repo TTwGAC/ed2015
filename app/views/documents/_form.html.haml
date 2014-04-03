@@ -4,7 +4,7 @@
     = f.input :name
     = f.input :description, input_html: {cols: 80, rows: 3}
     = f.input :private
-    = f.input :file
+    = f.input :file, as: :file
     - if @document.id
       Only choose a document if you want to replace the existing one
       %br
