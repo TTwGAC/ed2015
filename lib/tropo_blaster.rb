@@ -1,9 +1,9 @@
 # encoding: utf-8
 
-class TropoBlast
+class TropoBlaster
   def self.blast(callerid, targets, message, mode)
     params = {
-      token: ENV['TROPO_TOKEN'],
+      token:    ENV['TROPO_TOKEN'],
       callerid: callerid,
       targets:  targets.to_json, # Hack to get around Tropo's nested params limitation
       message:  message,

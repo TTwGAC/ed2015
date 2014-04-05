@@ -1,3 +1,7 @@
+# encoding: utf-8
+
+require 'tropo_blaster'
+
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
@@ -59,12 +63,14 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:message_id])
     if @message.sendable?
       case @message.delivery_type
-      when 'sms'
-        raise 'TODO'
-        TropoBlaster.new mode: 'sms'
-      when 'phone'
-        raise 'TODO'
-        TropoBlaster.new mode: 'voice'
+      when 'sms', 'phone'
+        targets = @message.targets.inject({}) do |targets, player|
+          delivery = MessageDelivery.create destination: player.phone, message: @message, player: player, status: 'queued'
+          targets[delivery.id] = player.phone
+          targets
+        end
+
+        ::TropoBlaster.blast '+19252574739', targets, @message.text, @message.delivery_type
       when 'email'
         @message.targets.each do |player|
           delivery = MessageDelivery.create destination: player.email, message: @message, player: player, status: 'queued'

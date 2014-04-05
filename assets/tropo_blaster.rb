@@ -22,12 +22,33 @@ else
   targets = JSON.parse $targets
   log "Targets: #{targets.inspect}"
   log "Message: #{$message.inspect}"
-  targets.each_pair.each do |id, target|
-    call target, :network => 'SMS'
-    say $message
-    hangup
-    send_confirmation id
-    sleep 1
+  mode = case $mode
+  when 'sms'
+    'SMS'
+  when 'phone'
+    'PSTN'
+  else
+    'SMS'
   end
+  threads = []
+  targets.each_pair do |id, target|
+    if mode == 'SMS'
+      # These must be serial
+      call target, :callerID => $callerid, :network => mode
+      say $message
+      hangup
+      #send_confirmation id
+      sleep 1
+    else
+      # Voice can be done in parallel
+      threads << Thread.new do
+        c = call(target, :callerID => $callerid, :network => mode).value
+        c.say $message
+        c.hangup
+      end
+    end
+  end
+
+  threads.each {|t| t.join}
 end
 
