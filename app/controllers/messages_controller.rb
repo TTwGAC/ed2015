@@ -1,8 +1,13 @@
 # encoding: utf-8
 
 require 'tropo_blaster'
+require 'consistent_hashing'
 
 class MessagesController < ApplicationController
+  # Consistent hash for determining caller ID
+  RING = ConsistentHashing::Ring.new
+  ENV['TROPO_NUMBERS'].split(':').each {|number| RING << number}
+
   before_action :set_message, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
 
@@ -65,12 +70,16 @@ class MessagesController < ApplicationController
       case @message.delivery_type
       when 'sms', 'phone'
         targets = @message.targets.inject({}) do |targets, player|
+          callerid = RING.node_for player.phone
+          targets[callerid] ||= {}
           delivery = MessageDelivery.create destination: player.phone, message: @message, player: player, status: 'queued'
-          targets[delivery.id] = player.phone
+          targets[callerid][delivery.id] = player.phone
           targets
         end
 
-        ::TropoBlaster.blast '+19252574739', targets, @message.text, @message.delivery_type
+        targets.each_pair do |callerid, targets|
+          ::TropoBlaster.blast callerid, targets, @message.text, @message.delivery_type
+        end
       when 'email'
         @message.targets.each do |player|
           delivery = MessageDelivery.create destination: player.email, message: @message, player: player, status: 'queued'
