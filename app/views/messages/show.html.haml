@@ -1,4 +1,43 @@
-%p#notice= notice
+- javascript 'stupidtable.js'
+%h1
+  Message to
+  = @message.destination_name
+
+%p
+  %b Status:
+  = @message.status
+
+%p
+  %b Type:
+  = @message.delivery_type
+
+%p
+  %b Message Contents:
+%p.box= @message.text
+%br
+
+- if @message.status == 'sent'
+  %p
+    %b Delivery History
+  %table#message_deliveries.table
+    %thead
+      %tr.header
+        %th{'data-sort' => 'string'} Destination
+        %th{'data-sort' => 'string'} Address
+        %th{'data-sort' => 'int'} Time Sent
+        %th{'data-sort' => 'string'} Status
+    %tbody
+      - @message.message_deliveries.each do |delivery|
+        %tr
+          %td= link_to delivery.player_name, delivery.player
+          %td= delivery.destination
+          %td{'data-sort-value' => delivery.updated_at.to_i}= delivery.updated_at.localtime.strftime("%l:%M:%S %P")
+          %td= delivery.status
+
+
 = link_to 'Edit', edit_message_path(@message)
 |
 \#{link_to 'Back', messages_path}
+
+:javascript
+  $("#message_deliveries").stupidtable();

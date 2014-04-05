@@ -33,5 +33,8 @@ class Message < ActiveRecord::Base
     end
   end
 
+  def destination_name
+    destination_object.name
+  end
 
 end
