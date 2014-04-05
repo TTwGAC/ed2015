@@ -1,12 +1,12 @@
 - javascript 'stupidtable.js'
 %h1 Listing messages
-%table.table
+%table#messages.table
   %thead
-    %tr
-      %th{'data-sort' => 'String'} Destination
-      %th{'data-sort' => 'String'} Sender
-      %th{'data-sort' => 'String'} Type
-      %th{'data-sort' => 'String'} Status
+    %tr.header
+      %th{'data-sort' => 'string'} Destination
+      %th{'data-sort' => 'string'} Sender
+      %th{'data-sort' => 'string'} Type
+      %th{'data-sort' => 'string'} Status
       %th{'data-sort' => 'int'} Time
   %tbody
     - @messages.each do |message|
@@ -18,3 +18,6 @@
         %td{'data-sort-value' => message.updated_at.to_i}= link_to message.updated_at.localtime.strftime("%l:%M:%S %P"), message
 %br/
 = link_to 'New Message', new_message_path
+
+:javascript
+  $("#messages").stupidtable();
