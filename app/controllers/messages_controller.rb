@@ -57,8 +57,12 @@ class MessagesController < ApplicationController
 
   # DELETE /messages/1
   def destroy
-    @message.destroy
-    redirect_to messages_url, notice: 'Message was successfully destroyed.'
+    if @message.status == 'sent'
+      redirect_to messages_url, alert: 'Sent messages may not be deleted'
+    else
+      @message.destroy
+      redirect_to messages_url, notice: 'Message was successfully destroyed.'
+    end
   end
 
   private
