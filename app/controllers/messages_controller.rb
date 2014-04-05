@@ -48,7 +48,7 @@ class MessagesController < ApplicationController
 
   # PATCH/PUT /messages/1
   def update
-    if @message.update(message_params)
+    if @message.update(message_params.merge(sender: current_player))
       redirect_to @message, notice: 'Message was successfully updated.'
     else
       render action: 'edit'

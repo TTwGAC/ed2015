@@ -4,6 +4,10 @@
   = @message.destination_name
 
 %p
+  %b Created by:
+  = link_to @message.sender_name, @message.sender
+
+%p
   %b Status:
   = @message.status
 
