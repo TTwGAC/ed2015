@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20140401024525) do
 
   create_table "message_deliveries", force: true do |t|
     t.integer  "message_id"
+    t.integer  "player_id"
     t.string   "destination"
     t.string   "status"
     t.datetime "created_at"
