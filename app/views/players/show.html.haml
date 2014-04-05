@@ -20,7 +20,10 @@
 - if can? :manage, @player
   %p
     Last sign-in:
-    = @player.last_sign_in_at.localtime.strftime("%Y/%m/%d %l:%M:%S %P")
+    - if @player.last_sign_in_at
+      = @player.last_sign_in_at.localtime.strftime("%Y/%m/%d %l:%M:%S %P")
+    - else
+      never
 %p
   Team:
   %a{href: "/teams/#{@player.team_id}"}
