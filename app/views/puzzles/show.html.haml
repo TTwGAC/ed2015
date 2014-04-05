@@ -51,6 +51,10 @@
 
 = render partial: '/documents/list', locals: {documents: @puzzle.documents_for_players, document_type: 'public'}
 
+%p
+  %b Include bearing?
+  = @puzzle.include_bearing ? "Yes" : "No"
+
 %br
 
 %h3 Hints

@@ -21,6 +21,9 @@ class CheckinsController < ApplicationController
   # GET /checkins/1.json
   def show
     @checkin = Checkin.find(params[:id])
+    @puzzle = @checkin.next_puzzle
+    @location_coordinates = @checkin.location_coordinates
+    @next_location_coordinates = @checkin.next_location_coordinates
 
     respond_to do |format|
       format.html # show.html.erb

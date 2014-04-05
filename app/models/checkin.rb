@@ -43,7 +43,7 @@ class Checkin < ActiveRecord::Base
 
   def notify_players
     team.players.each do |player|
-      mailer = TeamMailer.send_puzzle(player, next_puzzle)
+      mailer = TeamMailer.send_puzzle(player, self)
       next_puzzle.documents_for_players.each do |document|
         mailer.attachments[document.file_name] = document.file.read
       end
@@ -118,6 +118,22 @@ class Checkin < ActiveRecord::Base
     else
       0
     end
+  end
+
+  def next_location
+    next_puzzle.destination
+  end
+
+  def next_location_name
+    next_puzzle.destination_name
+  end
+
+  def location_coordinates
+    [location.latitude, location.longitude]
+  end
+
+  def next_location_coordinates
+    [next_puzzle.destination.latitude, next_puzzle.destination.longitude]
   end
 
 end

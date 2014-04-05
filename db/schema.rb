@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401024525) do
+ActiveRecord::Schema.define(version: 20140405201243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -157,8 +157,8 @@ ActiveRecord::Schema.define(version: 20140401024525) do
   create_table "puzzles", force: true do |t|
     t.string   "name"
     t.integer  "destination_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "token"
     t.text     "description"
     t.string   "status"
@@ -166,6 +166,7 @@ ActiveRecord::Schema.define(version: 20140401024525) do
     t.integer  "expected_ttc"
     t.integer  "owner_id"
     t.boolean  "open"
+    t.boolean  "include_bearing"
   end
 
   create_table "redirects", force: true do |t|

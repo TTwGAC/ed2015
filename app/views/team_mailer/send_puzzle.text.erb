@@ -1,5 +1,16 @@
+<% require 'vector_calculator' %>
 Your next puzzle!
 
 <%= @puzzle.flavortext %>
 
+<% if @puzzle.include_bearing %>
+  <% heading, distance = VectorCalculator.calc_distance *@location_coordinates, *@next_location_coordinates %>
+Heading and Distance to the next location:
+
+Heading: <%= heading.to_i %>°
+Distance: <%= distance %> ft
+<% end %>
+
+<% if @puzzle.documents_for_players.present? %>
 Details for <%= @puzzle.name %> can be found in the attached document!
+<% end %>

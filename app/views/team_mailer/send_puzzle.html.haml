@@ -1,12 +1,25 @@
+- require 'vector_calculator'
 - markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
 %html
   %head
     %meta{:content => 'text/html; charset=UTF-8', :'http-equiv' => 'Content-Type'}
   %body
-    %h1
-      Your next puzzle!
+    %h1 Your next puzzle!
     %p= markdown.render(@puzzle.flavortext).html_safe
-    %p
-      Details for
-      = @puzzle.name
-      can be found in the attached document!
+    - if @puzzle.include_bearing
+      - heading, distance = VectorCalculator.calc_distance *@location_coordinates, *@next_location_coordinates
+      %h3 Heading and Distance to the next location:
+
+      %ul
+        %li
+          Heading:
+          = "#{heading.to_i}°"
+        %li
+          Distance:
+          = distance.to_i
+          ft
+    - if @puzzle.documents_for_players.present?
+      %p
+        Details for
+        = @puzzle.name
+        can be found in the attached document!

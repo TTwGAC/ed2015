@@ -17,8 +17,11 @@ class TeamMailer < ActionMailer::Base
     mail to: notified_player.email, subject: "#{SUBJECT_TAG} #{joining_player.nickname} has joined team #{team.name}"
   end
 
-  def send_puzzle(player, puzzle)
-    @player, @puzzle = player, puzzle
-    mail to: player.email, subject: "#{SUBJECT_TAG} Your Next Puzzle: #{puzzle.name}"
+  def send_puzzle(player, checkin)
+    @player, @checkin = player, checkin
+    @puzzle = checkin.next_puzzle
+    @location_coordinates = checkin.location_coordinates
+    @next_location_coordinates = checkin.next_location_coordinates
+    mail to: player.email, subject: "#{SUBJECT_TAG} Your Next Puzzle: #{@puzzle.name}"
   end
 end
