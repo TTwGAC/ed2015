@@ -70,10 +70,12 @@ class MessagesController < ApplicationController
       case @message.delivery_type
       when 'sms', 'phone'
         targets = @message.targets.inject({}) do |targets, player|
-          callerid = RING.node_for player.phone
-          targets[callerid] ||= {}
-          delivery = MessageDelivery.create destination: player.phone, message: @message, player: player, status: 'queued'
-          targets[callerid][delivery.id] = player.phone
+          if player.phone.present?
+            callerid = RING.node_for player.phone
+            targets[callerid] ||= {}
+            delivery = MessageDelivery.create destination: player.phone, message: @message, player: player, status: 'queued'
+            targets[callerid][delivery.id] = player.phone
+          end
           targets
         end
 
