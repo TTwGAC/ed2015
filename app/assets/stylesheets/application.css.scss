@@ -110,7 +110,7 @@ h5 { font-size: 1.2em; }
 h6 { font-size: 1.1em; }
 
 .navbar-inner {
-  @include background_gradient("to bottom", $nav_top, $nav_bot);
+  @include background_gradient(to bottom, $nav_top, $nav_bot);
 }
 
 #logo {
