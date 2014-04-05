@@ -1,10 +1,11 @@
+- markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
 %html
   %head
     %meta{:content => 'text/html; charset=UTF-8', :'http-equiv' => 'Content-Type'}
   %body
     %h1
       Your next puzzle!
-    %p= @puzzle.flavortext
+    %p= markdown.render(@puzzle.flavortext).html_safe
     %p
       Details for
       = @puzzle.name

@@ -45,7 +45,7 @@
 %h4 Flavor Text
 %p.box
   - if @puzzle.flavortext
-    = @puzzle.flavortext
+    = markdown.render(@puzzle.flavortext).html_safe
   - else
     %span{style: 'font-style: italic'} None
 
