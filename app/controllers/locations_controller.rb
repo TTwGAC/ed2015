@@ -97,6 +97,9 @@ class LocationsController < ApplicationController
   def posters
     if params[:location_id] == 'all'
       @locations = Location.all
+    elsif params[:location_id] == 'tarpit'
+      # Special tarpit location
+      @locations = [OpenStruct.new(name: '54 Columns', token: '77ab09c2f1928cd50b342958a1b2ba88')]
     else
       @locations = [Location.find(params[:location_id])]
     end

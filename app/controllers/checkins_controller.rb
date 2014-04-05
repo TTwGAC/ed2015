@@ -32,6 +32,12 @@ class CheckinsController < ApplicationController
   # GET /checkins/new.json
   def new
     if params[:t]
+      # Check for the special tarpit token
+      if params[:t] == '77ab09c2f1928cd50b342958a1b2ba88'
+        sleep 10
+        raise ActionController::RoutingError.new('Not Found')
+      end
+
       location = Location.where(token: params.delete(:t)).first
       raise CanCan::AccessDenied.new('No such location!') unless location
 
