@@ -57,7 +57,7 @@ class MessagesController < ApplicationController
 
   def send_message
     @message = Message.find(params[:message_id])
-    unless @message.sendable?
+    if @message.sendable?
       case @message.delivery_type
       when 'sms'
         raise 'TODO'
