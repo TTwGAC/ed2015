@@ -32,6 +32,19 @@
             %img.navicon{src: asset_path('glyphicons/043_group.png')}
             Teams
     - if player_signed_in?
+      %li.dropdown
+        %a.dropdown-toggle{href: '#', 'data-toggle' => 'dropdown'}
+          Player Information
+          %b.caret
+        %ul.dropdown-menu
+          %li
+            = link_to page_path('contact') do
+              %img.navicon{src: asset_path('glyphicons/088_adress_book.png')}
+              Contact Game Control
+          %li
+            = link_to page_path('required_items') do
+              %img.navicon{src: asset_path('glyphicons/029_notes_2.png')}
+              Required Items
       - if can? :manage, :all
         %li.dropdown.admin-only
           %a.dropdown-toggle{href: '#', "data-toggle" => 'dropdown'}
