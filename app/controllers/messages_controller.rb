@@ -61,8 +61,10 @@ class MessagesController < ApplicationController
       case @message.delivery_type
       when 'sms'
         raise 'TODO'
+        TropoBlaster.new mode: 'sms'
       when 'phone'
         raise 'TODO'
+        TropoBlaster.new mode: 'voice'
       when 'email'
         @message.targets.each do |player|
           delivery = MessageDelivery.create destination: player.email, message: @message, player: player, status: 'queued'
