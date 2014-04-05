@@ -1,91 +1,91 @@
 / This is the button for mobile devices that shows/hides the nav
-%a{class: 'btn btn-navbar', "data-toggle" => 'collapse', "data-target" => ".nav-collapse"}
-  %span{class: 'icon-bar'}
-  %span{class: 'icon-bar'}
-  %span{class: 'icon-bar'}
+%a.btn.btn-navbar{"data-toggle" => 'collapse', "data-target" => ".nav-collapse"}
+  %span.icon-bar
+  %span.icon-bar
+  %span.icon-bar
 
 = link_to root_path, :class => 'brand' do
   %img#logo{src: asset_path('logo.png')}
   Home
 
-%div{class: 'nav-collapse collapse'}
-  %ul{class: 'nav'}
-    %li{class: 'dropdown'}
-      %a{href: '#', class: 'dropdown-toggle', "data-toggle" => 'dropdown'}
+%div.nav-collapse.collapse
+  %ul.nav
+    %li.dropdown
+      %a.dropdown-toggle{href: '#', 'data-toggle' => 'dropdown'}
         The Game
-        %b{class: 'caret'}
-      %ul{class: 'dropdown-menu'}
+        %b.caret
+      %ul.dropdown-menu
         %li
           = link_to page_path('about') do
-            %img{class: 'navicon', src: asset_path('glyphicons/054_clock.png')}
+            %img.navicon{src: asset_path('glyphicons/054_clock.png')}
             About
         %li
           = link_to page_path('history') do
-            %img{class: 'navicon', src: asset_path('glyphicons/074_cup.png')}
+            %img.navicon{src: asset_path('glyphicons/074_cup.png')}
             History
         %li
           = link_to page_path('rules') do
-            %img{class: 'navicon', src: asset_path('glyphicons/071_book.png')}
+            %img.navicon{src: asset_path('glyphicons/071_book.png')}
             Rules
         %li
           = link_to '/teams' do
-            %img{class: 'navicon', src: asset_path('glyphicons/043_group.png')}
+            %img.navicon{src: asset_path('glyphicons/043_group.png')}
             Teams
     - if player_signed_in?
       - if can? :manage, :all
-        %li{class: 'dropdown admin-only'}
-          %a{href: '#', class: 'dropdown-toggle', "data-toggle" => 'dropdown'}
+        %li.dropdown.admin-only
+          %a.dropdown-toggle{href: '#', "data-toggle" => 'dropdown'}
             Game Setup
-            %b{class: 'caret'}
-          %ul{class: 'dropdown-menu'}
+            %b.caret
+          %ul.dropdown-menu
             %li
               = link_to game_path do
-                %img{class: 'navicon', src: asset_path('glyphicons/139_adjust_alt.png')}
+                %img.navicon{src: asset_path('glyphicons/139_adjust_alt.png')}
                 Game Settings
             %li
               = link_to players_path do
-                %img{class: 'navicon', src: asset_path('glyphicons/003_user.png')}
+                %img.navicon{src: asset_path('glyphicons/003_user.png')}
                 Players
             %li
               = link_to '/teams' do
-                %img{class: 'navicon', src: asset_path('glyphicons/043_group.png')}
+                %img.navicon{src: asset_path('glyphicons/043_group.png')}
                 Teams
             %li
               = link_to puzzles_path do
-                %img{class: 'navicon', src: asset_path('glyphicons/156_show_thumbnails.png')}
+                %img.navicon{src: asset_path('glyphicons/156_show_thumbnails.png')}
                 Puzzles
             %li
               = link_to clusters_path do
-                %img{class: 'navicon', src: asset_path('glyphicons/096_vector_path_polygon.png')}
+                %img.navicon{src: asset_path('glyphicons/096_vector_path_polygon.png')}
                 Clusters
             %li
               = link_to locations_path do
-                %img{class: 'navicon', src: asset_path('glyphicons/060_compass.png')}
+                %img.navicon{src: asset_path('glyphicons/060_compass.png')}
                 Locations
             %li
               = link_to redirects_path do
-                %img{class: 'navicon', src: asset_path('glyphicons/151_new_window.png')}
+                %img.navicon{src: asset_path('glyphicons/151_new_window.png')}
                 Redirects
-        %li{class: 'dropdown admin-only'}
-          %a{href: '#', class: 'dropdown-toggle', "data-toggle" => 'dropdown'}
+        %li.dropdown.admin-only
+          %a.dropdown-toggle{href: '#', "data-toggle" => 'dropdown'}
             Game Tools
-            %b{class: 'caret'}
-          %ul{class: 'dropdown-menu'}
+            %b.caret
+          %ul.dropdown-menu
             %li
               = link_to page_path('pregame_dashboard') do
-                %img{class: 'navicon', src: asset_path('glyphicons/331_dashboard.png')}
+                %img.navicon{src: asset_path('glyphicons/331_dashboard.png')}
                 Dashboard
             %li
               = link_to checkins_path do
-                %img{class: 'navicon', src: asset_path('glyphicons/258_qrcode.png')}
+                %img.navicon{src: asset_path('glyphicons/258_qrcode.png')}
                 Checkins
             %li
               = link_to penalties_path do
-                %img{class: 'navicon', src: asset_path('glyphicons/055_stopwatch.png')}
+                %img.navicon{src: asset_path('glyphicons/055_stopwatch.png')}
                 Penalties
             %li
               = link_to messages_path do
-                %img{class: 'navicon', src: asset_path('glyphicons/336_iphone_shake.png')}
+                %img.navicon{src: asset_path('glyphicons/336_iphone_shake.png')}
                 Messaging
       - else
         %li
@@ -93,14 +93,14 @@
             = link_to 'Join a Team', new_join_attempt_path
           - else
             = link_to "Team #{current_player.team_name}", team_path(current_player.team_id)
-  %ul{class: 'nav pull-right'}
+  %ul.nav.pull-right
     - if player_signed_in?
-      %li{class: 'dropdown'}
-        %a{href: '#', class: 'dropdown-toggle', "data-toggle" => 'dropdown'}
+      %li.dropdown
+        %a.dropdown-toggle{href: '#', "data-toggle" => 'dropdown'}
           Logged in as
           = current_player.name
-          %b{class: 'caret'}
-        %ul{class: 'dropdown-menu'}
+          %b.caret
+        %ul.dropdown-menu
           %li= link_to('Edit account', edit_player_registration_path)
           %li= link_to('Logout', destroy_player_session_path, :method=>'delete')
     - else
