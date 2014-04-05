@@ -1,0 +1,23 @@
+- javascript 'stupidtable.js'
+%h1 Listing messages
+%table#messages.table
+  %thead
+    %tr.header
+      %th{'data-sort' => 'string'} Destination
+      %th{'data-sort' => 'string'} Sender
+      %th{'data-sort' => 'string'} Type
+      %th{'data-sort' => 'string'} Status
+      %th{'data-sort' => 'int'} Time
+  %tbody
+    - @messages.each do |message|
+      %tr
+        %td= link_to message.destination_object.name, message
+        %td= link_to message.sender_name, message.sender
+        %td= message.delivery_type
+        %td= message.status
+        %td{'data-sort-value' => message.updated_at.to_i}= link_to message.updated_at.localtime.strftime("%l:%M:%S %P"), message
+%br/
+= link_to 'New Message', new_message_path
+
+:javascript
+  $("#messages").stupidtable();

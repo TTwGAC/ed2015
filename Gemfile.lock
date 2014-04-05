@@ -40,6 +40,7 @@ GEM
       rake (>= 0.8.7)
     arel (4.0.2)
     atomic (1.1.16)
+    avl_tree (1.1.3)
     aws_cf_signer (0.1.2)
     bcrypt (3.1.7)
     bcrypt-ruby (3.1.5)
@@ -76,6 +77,8 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     columnize (0.3.6)
+    consistent-hashing (1.0.0)
+      avl_tree (>= 1.1.3)
     countries (0.9.3)
       currencies (~> 0.4.2)
     currencies (0.4.2)
@@ -331,6 +334,7 @@ DEPENDENCIES
   certified
   cloudinary
   coffee-rails (~> 4.0.0)
+  consistent-hashing
   dalli
   devise (~> 3.0.0)
   dotenv

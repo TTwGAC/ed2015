@@ -20,6 +20,7 @@ class Team < ActiveRecord::Base
   delegate :name, to: :location, prefix: true
   delegate :name, to: :current_puzzle, prefix: true
   scope :player, -> { where(['LOWER(name) NOT IN (?)', RESERVED_NAMES]) }
+  scope :playing, -> { player.where(paid: true, active: true) }
 
   def default_values
     default_active
