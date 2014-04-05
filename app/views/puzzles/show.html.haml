@@ -43,7 +43,7 @@
 %h3 Player Information
 
 %h4 Flavor Text
-%p.box
+%div.box
   - if @puzzle.flavortext
     = markdown.render(@puzzle.flavortext).html_safe
   - else
