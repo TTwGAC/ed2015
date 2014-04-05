@@ -35,10 +35,13 @@
           %td= delivery.status
 
 
+- if @message.sendable?
+  = link_to "SEND!", message_send_path(@message), method: :post
+  |
 = link_to 'Edit', edit_message_path(@message)
 |
 \#{link_to 'Back', messages_path}
-- unless @message.status == 'sent'
+- if @message.sendable?
   |
   = link_to "Delete", @message, method: :delete, data: { confirm: 'Are you sure you want to delete this message?' }
 

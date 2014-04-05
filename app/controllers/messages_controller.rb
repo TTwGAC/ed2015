@@ -55,6 +55,30 @@ class MessagesController < ApplicationController
     end
   end
 
+  def send_message
+    @message = Message.find(params[:message_id])
+    unless @message.sendable?
+      case @message.delivery_type
+      when 'sms'
+        raise 'TODO'
+      when 'phone'
+        raise 'TODO'
+      when 'email'
+        @message.targets.each do |player|
+          delivery = MessageDelivery.create destination: player.email, message: @message, player: player, status: 'queued'
+          mailer = MessagingMailer.burdell_broadcast player.email, @message.text
+          mailer.deliver
+          delivery.status = 'sent'
+          delivery.save!
+        end
+      end
+      @message.update status: 'sent'
+      redirect_to @message
+    else
+      redirect_to @message, alert: "This message has already been sent."
+    end
+  end
+
   # DELETE /messages/1
   def destroy
     if @message.status == 'sent'

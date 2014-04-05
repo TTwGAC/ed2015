@@ -1,5 +1,7 @@
 Gac2014::Application.routes.draw do
-  resources :messages
+  resources :messages do
+    post '/send', to: 'messages#send_message', as: 'send'
+  end
 
   resources :penalties
 

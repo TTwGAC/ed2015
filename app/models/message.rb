@@ -37,4 +37,21 @@ class Message < ActiveRecord::Base
     destination_object.name
   end
 
+  def targets
+    if sendable?
+      obj = destination_object
+      case obj.class
+      when Team
+        obj.players
+      when Player
+        [obj]
+      else
+        # Everyone
+        Player.all.select &:playing?
+      end
+    else
+      message_deliveries
+    end
+  end
+
 end
