@@ -10,8 +10,8 @@ class VectorCalculator
   MAGNETIC_VARIATION = -4.88
 
   def self.calc_distance(lat1, lon1, lat2, lon2)
-    dlat = lat1 - lat2
-    dlon = lon1 - lon2
+    dlat = lat2 - lat1
+    dlon = lon2 - lon1
 
     a = dlat * LENGTH_OF_1DEG_LAT
     b = dlon * LENGTH_OF_1DEG_LON
