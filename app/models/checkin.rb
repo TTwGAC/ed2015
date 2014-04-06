@@ -35,6 +35,7 @@ class Checkin < ActiveRecord::Base
   end
 
   def update_links
+    return true unless self.new_record?
     get_team
     set_location
     set_puzzle
