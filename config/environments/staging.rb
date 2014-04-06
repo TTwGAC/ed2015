@@ -77,7 +77,7 @@ Gac2014::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   
   # Specify the base URL for email notifications
-  config.action_mailer.default_url_options = { :host => 'obscure-fjord-4907.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'gac-staging.herokuapp.com' }
 end
 
 ActionMailer::Base.smtp_settings = {
