@@ -72,6 +72,14 @@ class CheckinsController < ApplicationController
   def create
     params = @new_params || checkin_params
 
+    location = params[:location] || Location.find(params[:location_id])
+
+    # Holy Demeter Violation!
+    unless can?(:manage, Checkin) || current_player.team.current_puzzle.destination == location
+      # Other than Game Control, ensure this checkin is for the correct location
+      raise CanCan::AccessDenied.new("You can't check in here - you're at the wrong location!")
+    end
+
     params[:player] = current_player
 
     begin
