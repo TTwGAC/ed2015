@@ -43,6 +43,7 @@ class Checkin < ActiveRecord::Base
   end
 
   def notify_players
+    return true unless self.new_record?
     team.players.each do |player|
       mailer = TeamMailer.send_puzzle(player, self)
       mailer.deliver!
