@@ -22,6 +22,11 @@ class TeamMailer < ActionMailer::Base
     @puzzle = checkin.next_puzzle
     @location_coordinates = checkin.location_coordinates
     @next_location_coordinates = checkin.next_location_coordinates
+
+    @puzzle.documents_for_players.each do |document|
+      attachments[document.file_name] = document.file.read
+    end
+
     mail to: player.email, subject: "#{SUBJECT_TAG} Your Next Puzzle: #{@puzzle.name}"
   end
 end

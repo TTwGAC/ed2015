@@ -44,9 +44,6 @@ class Checkin < ActiveRecord::Base
   def notify_players
     team.players.each do |player|
       mailer = TeamMailer.send_puzzle(player, self)
-      next_puzzle.documents_for_players.each do |document|
-        mailer.attachments[document.file_name] = document.file.read
-      end
       mailer.deliver!
     end
   end
