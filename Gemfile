@@ -45,6 +45,8 @@ gem 'phony_rails'
 gem 'dalli'
 gem 'memcachier'
 
+gem 'mail'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

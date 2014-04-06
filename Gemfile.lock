@@ -350,6 +350,7 @@ DEPENDENCIES
   jquery-rails
   koala (~> 1.7.0rc1)
   letter_opener
+  mail
   memcachier
   omniauth
   omniauth-facebook
