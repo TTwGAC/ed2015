@@ -49,6 +49,9 @@ class Checkin < ActiveRecord::Base
   end
 
   def set_location
+    unless team.current_puzzle_destination == location
+      raise Error.new("You can't check in here - you're at the wrong location!")
+    end
     team.location = location
   end
 
