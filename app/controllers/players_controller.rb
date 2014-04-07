@@ -8,7 +8,13 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    @players = Player.find(:all, order: 'first_name')
+    collection = if request.query_parameters.present?
+      Player.where request.query_parameters
+    else
+      Player.all
+    end
+
+    @players = collection.order 'first_name'
 
     respond_to do |format|
       format.html # index.html.erb
