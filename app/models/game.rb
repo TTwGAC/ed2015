@@ -3,8 +3,6 @@ class Game < ActiveRecord::Base
 
   STATUSES = %w[ pregame running closing closed ]
 
-  validates :hotline_open, presence: true
-  
   def self.statuses
     STATUSES.inject({}) do |statuses, key|
       statuses[key] = status_name(key)
@@ -24,7 +22,5 @@ class Game < ActiveRecord::Base
   def status_name
     self.class.status_name(self.status)
   end
-
-
 
 end
