@@ -210,7 +210,7 @@ img.navicon {
   background-color: $facebook_blue;
   &:visited { color: #fff }
   .logo {
-    background-image: url(asset-path('facebook-f-25.png', 'image'));
+    background-image: url(asset-path('facebook-f-25.png'));
   }
 }
 
@@ -218,7 +218,7 @@ img.navicon {
   background-color: $twitter_blue;
   &:visited { color: #fff }
   .logo {
-    background-image: url(asset-path('twitter-logo-25.png', 'image'));
+    background-image: url(asset-path('twitter-logo-25.png'));
   }
 }
 
@@ -275,21 +275,21 @@ img.navicon {
   width: 600px;
   height: 600px;
   margin: 20px auto 0 auto;
-  background: url(asset-path("clockface.png", "image"));
+  background: url(asset-path("clockface.png"));
   list-style: none;
 
   #sec {
-    background: url(asset-path("clock-sec.png", "image"));
+    background: url(asset-path("clock-sec.png"));
     z-index: 3;
   }
 
   #min {
-    background: url(asset-path("clock-min.png", "image"));
+    background: url(asset-path("clock-min.png"));
     z-index: 2;
   }
 
   #hour {
-    background: url(asset-path("clock-hour.png", "image"));
+    background: url(asset-path("clock-hour.png"));
     z-index: 1;
   }
 
@@ -307,10 +307,10 @@ img.navicon {
   width: 200px;
   height: 200px;
   background-size: 200px 200px;
-  background: url(asset-path("clockface-med.png", "image"));
-  #sec { background: url(asset-path("clock-sec-med.png", "image")); }
-  #min { background: url(asset-path("clock-min-med.png", "image")); }
-  #hour { background: url(asset-path("clock-hour-med.png", "image")); }
+  background: url(asset-path("clockface-med.png"));
+  #sec { background: url(asset-path("clock-sec-med.png")); }
+  #min { background: url(asset-path("clock-min-med.png")); }
+  #hour { background: url(asset-path("clock-hour-med.png")); }
   #sec, #min, #hour {
     left: 95px;
     width: 10px;
@@ -350,7 +350,7 @@ img.navicon {
     padding: 3px;
     margin-bottom: 1px;
     div.location {
-      background-image: url(asset-path("glyphicons/060_compass.png", "image"));
+      background-image: url(asset-path("glyphicons/060_compass.png"));
       background-size: 14px;
       background-repeat: no-repeat;
       float: left;
