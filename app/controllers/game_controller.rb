@@ -46,6 +46,6 @@ class GameController < ApplicationController
     # params.require(:person).permit(:name, :age)
     # Also, you can specialize this method with per-user checking of permissible attributes.
     def game_params
-      params.require(:game).permit(:name, :status)
+      params.require(:game).permit(:name, :status, :hotline_open)
     end
 end

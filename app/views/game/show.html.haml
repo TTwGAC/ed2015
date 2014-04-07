@@ -4,6 +4,10 @@
 %p
   %b Status:
   = @game.status_name
+
+%p
+  %b Hotline Status:
+  = @game.hotline_open ? "Open - Agents at GCHQ" : "Closed - calls sent to mobile"
 = link_to 'Edit', game_edit_path
 |
 \#{link_to 'Back', game_path}

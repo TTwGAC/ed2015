@@ -3,5 +3,6 @@
   .form-inputs
     = f.input :name
     = f.input :status, collection: Game.statuses.invert
+    = f.input :hotline_open, hint: "Checked - Agents at GCHQ; Unchecked - calls sent to mobile"
   .form-actions
     = f.button :submit

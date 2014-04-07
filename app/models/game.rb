@@ -2,6 +2,8 @@ class Game < ActiveRecord::Base
   acts_as_singleton
 
   STATUSES = %w[ pregame running closing closed ]
+
+  validates :hotline_open, presence: true
   
   def self.statuses
     STATUSES.inject({}) do |statuses, key|
