@@ -142,16 +142,21 @@ class Checkin < ActiveRecord::Base
 
 end
 
-# == Schema Information
+# ## Schema Information
 #
-# Table name: checkins
+# Table name: `checkins`
 #
-#  id          :integer          not null, primary key
-#  timestamp   :datetime
-#  location_id :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  team_id     :integer
-#  player_id   :integer
+# ### Columns
 #
-
+# Name                    | Type               | Attributes
+# ----------------------- | ------------------ | ---------------------------
+# **`id`**                | `integer`          | `not null, primary key`
+# **`timestamp`**         | `datetime`         |
+# **`location_id`**       | `integer`          |
+# **`created_at`**        | `datetime`         | `not null`
+# **`updated_at`**        | `datetime`         | `not null`
+# **`team_id`**           | `integer`          |
+# **`player_id`**         | `integer`          |
+# **`solved_puzzle_id`**  | `integer`          |
+# **`next_puzzle_id`**    | `integer`          |
+#

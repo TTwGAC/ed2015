@@ -53,18 +53,25 @@ class Puzzle < ActiveRecord::Base
   end
 end
 
-# == Schema Information
+# ## Schema Information
 #
-# Table name: puzzles
+# Table name: `puzzles`
 #
-#  id             :integer          not null, primary key
-#  name           :string(255)
-#  destination_id :integer
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  token          :string(255)
-#  origin_id      :integer
-#  description    :text
-#  status         :string(255)
+# ### Columns
 #
-
+# Name                   | Type               | Attributes
+# ---------------------- | ------------------ | ---------------------------
+# **`id`**               | `integer`          | `not null, primary key`
+# **`name`**             | `string(255)`      |
+# **`destination_id`**   | `integer`          |
+# **`created_at`**       | `datetime`         | `not null`
+# **`updated_at`**       | `datetime`         | `not null`
+# **`token`**            | `string(255)`      |
+# **`description`**      | `text`             |
+# **`status`**           | `string(255)`      |
+# **`flavortext`**       | `text`             |
+# **`expected_ttc`**     | `integer`          |
+# **`owner_id`**         | `integer`          |
+# **`open`**             | `boolean`          |
+# **`include_bearing`**  | `boolean`          |
+#

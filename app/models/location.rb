@@ -30,22 +30,25 @@ class Location < ActiveRecord::Base
   end
 end
 
-# == Schema Information
+# ## Schema Information
 #
-# Table name: locations
+# Table name: `locations`
 #
-#  id                  :integer          not null, primary key
-#  address             :string(255)
-#  latitude            :float
-#  longitude           :float
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
-#  name                :string(255)
-#  token               :string(255)
-#  cluster_id          :integer
-#  permission_received :boolean
-#  open_time           :time
-#  close_time          :time
-#  next_puzzle_id      :integer
+# ### Columns
 #
-
+# Name                       | Type               | Attributes
+# -------------------------- | ------------------ | ---------------------------
+# **`id`**                   | `integer`          | `not null, primary key`
+# **`address`**              | `string(255)`      |
+# **`latitude`**             | `float`            |
+# **`longitude`**            | `float`            |
+# **`created_at`**           | `datetime`         | `not null`
+# **`updated_at`**           | `datetime`         | `not null`
+# **`name`**                 | `string(255)`      |
+# **`token`**                | `string(255)`      |
+# **`cluster_id`**           | `integer`          |
+# **`permission_received`**  | `boolean`          |
+# **`open_time`**            | `time`             |
+# **`close_time`**           | `time`             |
+# **`next_puzzle_id`**       | `integer`          |
+#

@@ -20,19 +20,22 @@ class Document < ActiveRecord::Base
   mount_uploader :file, DocumentUploader
 end
 
-# == Schema Information
+# ## Schema Information
 #
-# Table name: documents
+# Table name: `documents`
 #
-#  id                :integer          not null, primary key
-#  name              :string(255)
-#  description       :text
-#  token             :string(255)      not null
-#  private           :boolean
-#  file              :string(255)
-#  documentable_id   :integer
-#  documentable_type :string(255)
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
+# ### Columns
 #
-
+# Name                     | Type               | Attributes
+# ------------------------ | ------------------ | ---------------------------
+# **`id`**                 | `integer`          | `not null, primary key`
+# **`name`**               | `string(255)`      |
+# **`description`**        | `text`             |
+# **`token`**              | `string(255)`      | `not null`
+# **`private`**            | `boolean`          |
+# **`file`**               | `string(255)`      |
+# **`documentable_id`**    | `integer`          |
+# **`documentable_type`**  | `string(255)`      |
+# **`created_at`**         | `datetime`         | `not null`
+# **`updated_at`**         | `datetime`         | `not null`
+#

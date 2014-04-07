@@ -30,15 +30,18 @@ describe Cluster do
   end
 end
 
-# == Schema Information
+# ## Schema Information
 #
-# Table name: clusters
+# Table name: `clusters`
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  sequence   :integer
-#  color      :string(255)      default("red")
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+# ### Columns
 #
-
+# Name              | Type               | Attributes
+# ----------------- | ------------------ | ---------------------------
+# **`id`**          | `integer`          | `not null, primary key`
+# **`name`**        | `string(255)`      |
+# **`sequence`**    | `integer`          |
+# **`color`**       | `string(255)`      | `default("red")`
+# **`created_at`**  | `datetime`         | `not null`
+# **`updated_at`**  | `datetime`         | `not null`
+#

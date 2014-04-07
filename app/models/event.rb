@@ -3,17 +3,20 @@ class Event < ActiveRecord::Base
   belongs_to :player
 end
 
-# == Schema Information
+# ## Schema Information
 #
-# Table name: events
+# Table name: `events`
 #
-#  id          :integer          not null, primary key
-#  player_id   :integer          not null
-#  subject     :string(255)      not null
-#  subject_id  :integer
-#  action      :string(255)      not null
-#  description :string(255)
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+# ### Columns
 #
-
+# Name               | Type               | Attributes
+# ------------------ | ------------------ | ---------------------------
+# **`id`**           | `integer`          | `not null, primary key`
+# **`player_id`**    | `integer`          | `not null`
+# **`subject`**      | `string(255)`      | `not null`
+# **`subject_id`**   | `integer`          |
+# **`action`**       | `string(255)`      | `not null`
+# **`description`**  | `string(255)`      |
+# **`created_at`**   | `datetime`         | `not null`
+# **`updated_at`**   | `datetime`         | `not null`
+#

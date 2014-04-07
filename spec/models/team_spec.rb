@@ -35,22 +35,32 @@ describe Team do
   end
 end
 
-# == Schema Information
+# ## Schema Information
 #
-# Table name: teams
+# Table name: `teams`
 #
-#  id          :integer          not null, primary key
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  name        :string(255)
-#  created     :datetime
-#  updated     :datetime
-#  description :text
-#  slogan      :string(255)
-#  logo        :string(255)
-#  token       :string(255)
-#  phone       :string(255)
-#  paid        :boolean
-#  location_id :integer
+# ### Columns
 #
-
+# Name                     | Type               | Attributes
+# ------------------------ | ------------------ | ---------------------------
+# **`id`**                 | `integer`          | `not null, primary key`
+# **`created_at`**         | `datetime`         | `not null`
+# **`updated_at`**         | `datetime`         | `not null`
+# **`name`**               | `string(255)`      |
+# **`created`**            | `datetime`         |
+# **`updated`**            | `datetime`         |
+# **`description`**        | `text`             |
+# **`slogan`**             | `string(255)`      |
+# **`logo`**               | `string(255)`      |
+# **`token`**              | `string(255)`      |
+# **`phone`**              | `string(255)`      |
+# **`paid`**               | `boolean`          |
+# **`location_id`**        | `integer`          |
+# **`current_puzzle_id`**  | `integer`          |
+# **`active`**             | `boolean`          |
+#
+# ### Indexes
+#
+# * `index_teams_on_name` (_unique_):
+#     * **`name`**
+#

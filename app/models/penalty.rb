@@ -15,3 +15,21 @@ class Penalty < ActiveRecord::Base
     self.minutes ||= 0
   end
 end
+
+# ## Schema Information
+#
+# Table name: `penalties`
+#
+# ### Columns
+#
+# Name               | Type               | Attributes
+# ------------------ | ------------------ | ---------------------------
+# **`id`**           | `integer`          | `not null, primary key`
+# **`team_id`**      | `integer`          |
+# **`assigner_id`**  | `integer`          |
+# **`puzzle_id`**    | `integer`          |
+# **`description`**  | `text`             |
+# **`minutes`**      | `integer`          |
+# **`created_at`**   | `datetime`         | `not null`
+# **`updated_at`**   | `datetime`         | `not null`
+#

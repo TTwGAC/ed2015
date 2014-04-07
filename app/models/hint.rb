@@ -11,3 +11,19 @@ class Hint < ActiveRecord::Base
     self.suggested_penalty ||= 0
   end
 end
+
+# ## Schema Information
+#
+# Table name: `hints`
+#
+# ### Columns
+#
+# Name                     | Type               | Attributes
+# ------------------------ | ------------------ | ---------------------------
+# **`id`**                 | `integer`          | `not null, primary key`
+# **`hint`**               | `text`             |
+# **`puzzle_id`**          | `integer`          |
+# **`suggested_penalty`**  | `integer`          |
+# **`created_at`**         | `datetime`         | `not null`
+# **`updated_at`**         | `datetime`         | `not null`
+#

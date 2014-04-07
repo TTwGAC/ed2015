@@ -55,3 +55,21 @@ class Message < ActiveRecord::Base
   end
 
 end
+
+# ## Schema Information
+#
+# Table name: `messages`
+#
+# ### Columns
+#
+# Name                 | Type               | Attributes
+# -------------------- | ------------------ | ---------------------------
+# **`id`**             | `integer`          | `not null, primary key`
+# **`text`**           | `text`             |
+# **`sender_id`**      | `integer`          |
+# **`delivery_type`**  | `string(255)`      |
+# **`status`**         | `string(255)`      |
+# **`destination`**    | `string(255)`      |
+# **`created_at`**     | `datetime`         |
+# **`updated_at`**     | `datetime`         |
+#

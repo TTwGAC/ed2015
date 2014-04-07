@@ -35,3 +35,26 @@ FactoryGirl.define do
     end
   end
 end
+
+# ## Schema Information
+#
+# Table name: `locations`
+#
+# ### Columns
+#
+# Name                       | Type               | Attributes
+# -------------------------- | ------------------ | ---------------------------
+# **`id`**                   | `integer`          | `not null, primary key`
+# **`address`**              | `string(255)`      |
+# **`latitude`**             | `float`            |
+# **`longitude`**            | `float`            |
+# **`created_at`**           | `datetime`         | `not null`
+# **`updated_at`**           | `datetime`         | `not null`
+# **`name`**                 | `string(255)`      |
+# **`token`**                | `string(255)`      |
+# **`cluster_id`**           | `integer`          |
+# **`permission_received`**  | `boolean`          |
+# **`open_time`**            | `time`             |
+# **`close_time`**           | `time`             |
+# **`next_puzzle_id`**       | `integer`          |
+#
