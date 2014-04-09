@@ -57,6 +57,7 @@ Gac2014::Application.configure do
     locations.js
     stupidtable.js
     jquery.jplayer.min.js
+    flipclock.js
   )
 
   # Disable delivery errors, bad email addresses will be ignored

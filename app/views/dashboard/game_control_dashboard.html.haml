@@ -14,6 +14,7 @@
     = csrf_meta_tags
     = yield(:head)
     = javascript_include_tag 'gmaps4rails.js'
+    = javascript_include_tag 'flipclock.js'
     :javascript
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -50,7 +51,8 @@
                     &nbsp;
                     = image_tag 'logo.png', size: '64x64'
                 .span3#clock_dash
-                  Clock
+                  Game Clock
+                  #game_clock
               .row-fluid#dash_contents
                 .span9
                   .row-fluid#map_dash
@@ -87,3 +89,12 @@
     %br/
     %br/
     %br/
+:javascript
+  var clock = $('#game_clock').FlipClock({
+    // ... your options here
+  });
+  start = new Date()
+  start.setHours(8)
+  start.setMinutes(0)
+  start.setSeconds(0)
+  clock.setTime(Math.round((Date.now() - start) / 1000))

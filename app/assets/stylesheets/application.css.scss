@@ -407,7 +407,10 @@ input, select {
 }
 
 .gchq_dashboard {
-  .content, .content .row-fluid, .content .row-fluid div[class*=span] { height: 100% }
+  .content, .content .row-fluid, .content .row-fluid div[class*=span] {
+    height: 100%;
+    overflow: hidden;
+  }
   font-size: 1.3em;
   line-height: 1.5em;
   width: 100%;
@@ -466,24 +469,33 @@ input, select {
   }
 
   #title_bar {
-    height: 15%;
+    height: 10%;
+
+    #clock_dash {
+      position: relative;
+      @include background_gradient(to bottom, #ccc, #666);
+      #game_clock {
+        padding-top: 5px;
+        height: 60%;
+      }
+    }
   }
 
   #dash_contents {
-    height: 85%;
+    height: 90%;
 
     #map_dash {
-      height: 65%;
+      height: 60%;
     }
 
     #radio_gac_dash {
       background-color: $highlight;
       color: #fff;
-      height: 10%;
+      height: 12%;
     }
 
     #bottom_row_dash {
-      height: 25%;
+      height: 28%;
     }
 
     #puzzle_stats_dash {
