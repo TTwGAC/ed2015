@@ -86,4 +86,10 @@ private
     stats[:open] = Checkin.select(:solved_puzzle_id).distinct.map(&:solved_puzzle_id).compact.count
   end
 
+  def get_penalty_stats
+  end
+
+  def get_checkin_stats
+  end
+
 end
