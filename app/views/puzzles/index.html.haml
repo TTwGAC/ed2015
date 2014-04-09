@@ -5,6 +5,7 @@
     %tr.header
       %th{'data-sort' => 'string'} Name
       %th{'data-sort' => 'string'} Status
+      %th{'data-sort' => 'int'} # Checkins
       %th{'data-sort' => 'int'} TTC (minutes)
       %th{'data-sort' => 'string'} Owner
       %th{'data-sort' => 'string'} Pick up at...
@@ -16,6 +17,7 @@
         %td
           = status_icon puzzle, size: '16'
           = puzzle.status_name
+        %td= puzzle.checkins.count
         %td{'data-sort-value' => puzzle.expected_ttc || 0}= puzzle.expected_ttc
         %td= puzzle.owner ? puzzle.owner_name : ''
         %td= puzzle.comes_from ? link_to(puzzle.comes_from.name, puzzle.comes_from) : ""

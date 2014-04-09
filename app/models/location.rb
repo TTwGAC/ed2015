@@ -2,6 +2,7 @@ class Location < ActiveRecord::Base
   belongs_to :next_puzzle, class_name: 'Puzzle', foreign_key: 'next_puzzle_id'
   has_one :destination_for_puzzle, class_name: 'Puzzle', foreign_key: 'destination_id'
   has_many :teams
+  has_many :checkins
   has_many :documents, as: :documentable
   belongs_to :cluster
   before_save :get_token

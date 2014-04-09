@@ -14,6 +14,7 @@
           = " - #{locations.count} locations"
     %tr.header
       %th Name
+      %th # Checkins
       %th Permission?
       %th Open Hours
       %th Solution to...
@@ -23,6 +24,7 @@
         %td
           = marker_img cluster.color, letter
           = link_to location.name, location
+        %td= location.checkins.count
         %td= (location.permission_received ? "&#x2713;" : "&times;").html_safe
         %td= open_hours location
         %td

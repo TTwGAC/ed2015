@@ -8,7 +8,8 @@
       %th{'data-sort' => 'int'} # Players
       %th Slogan
       - if can? :manage, Team
-        %th Playing?
+        %th{'data-sort' => 'string'} Playing?
+        %th{'data-sort' => 'int'} # Checkins
   %tbody
     - @teams.each do |team|
       %tr
@@ -22,6 +23,7 @@
               &#x2713; Yes
             - else
               %span{title: team.reasons_not_playing.join(' | ')} &times; No
+          %td= team.checkins.count
 %br/
 - if can? :create, Team
   = link_to 'New Team', new_team_path
