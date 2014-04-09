@@ -75,12 +75,25 @@
                         %span{style: 'font-size: 1.5em'}
                           = @radio_gac_stats[:listeners]
                   .row-fluid#bottom_row_dash
-                    .span4#puzzle_stats_dash
-                      Puzzle Stats
-                    .span4#checkin_stats_dash
-                      Checkin Stats
-                    .span4#penalty_stats_dash
-                      Penalty Stats
+                    .span4#puzzle_stats_dash.statsbox
+                      %h5 Puzzle Stats
+                      %table.table
+                        %tr
+                          %td Total
+                          %td= @puzzle_stats[:total]
+                        %tr
+                          %td Open
+                          %td= @puzzle_stats[:open]
+                        %tr
+                          %td Completed
+                          %td= @puzzle_stats[:complete]
+                        %tr
+                          %td Unopened
+                          %td= @puzzle_stats[:unopened]
+                    .span4#checkin_stats_dash.statsbox
+                      %h5 Checkin Stats
+                    .span4#penalty_stats_dash.statsbox
+                      %h5 Penalty Stats
 
                 .span3#events_dash
                   %h4 Events

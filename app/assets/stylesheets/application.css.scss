@@ -502,6 +502,15 @@ input, select {
       height: 28%;
     }
 
+    .statsbox {
+      text-align: justify;
+      td {
+        font-family: $gac_font;
+        font-size: 1.2em;
+      }
+      h5 { text-align: center }
+    }
+
     #puzzle_stats_dash {
       background-color: $nav_top;
       height: 100%;

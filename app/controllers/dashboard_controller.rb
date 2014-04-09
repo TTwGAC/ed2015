@@ -83,7 +83,11 @@ private
   def get_puzzle_stats
     stats = {}
     stats[:total] = Puzzle.active.count
+    # This should a faster query then checking each puzzle for #open?
     stats[:open] = Checkin.select(:solved_puzzle_id).distinct.map(&:solved_puzzle_id).compact.count
+    stats[:complete] = Puzzle.active.select { |p| p.completed? }.count
+    stats[:unopened] = stats[:total] - stats[:open]
+    stats
   end
 
   def get_penalty_stats

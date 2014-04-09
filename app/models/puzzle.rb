@@ -51,6 +51,16 @@ class Puzzle < ActiveRecord::Base
   def expected_ttc
     super || 0
   end
+
+  def open?
+    Checkin.where(solved_puzzle: self).count > 0
+  end
+
+  def completed?
+    num_teams = Team.playing.count
+    num_checkins = Checkin.where(solved_puzzle: self).count
+    num_checkins == num_teams
+  end
 end
 
 # ## Schema Information
