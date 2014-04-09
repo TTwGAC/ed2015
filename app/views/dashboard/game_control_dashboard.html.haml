@@ -9,6 +9,7 @@
     %meta{:content => "", :name => "author"}
     = stylesheet_link_tag "application", :media => "all"
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Michroma", media: 'all'
+    = stylesheet_link_tag "http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
     = javascript_include_tag "application"
     = csrf_meta_tags
     = yield(:head)
@@ -21,6 +22,9 @@
 
       ga('create', '#{ENV['GOOGLE_ANALYTICS_ID']}', 'gac2014.com');
       ga('send', 'pageview');
+    :css
+      html, body, #main { height: 100%; overflow: hidden}
+      body { padding: 0 }
 
   %body
     %div#fb-root
@@ -36,34 +40,47 @@
       .container.gchq_dashboard
         .content
           .row-fluid
-            .span3
+            .span3#leaderboard_dash
               = render partial: 'leaderboard'
             .span9
-              .row-fluid
+              .row-fluid#title_bar
                 .span9.title
                   %h1
                     Get-A-Clue 2014
                     &nbsp;
                     = image_tag 'logo.png', size: '64x64'
-                .span3
+                .span3#clock_dash
                   Clock
-              .row-fluid
+              .row-fluid#dash_contents
                 .span9
-                  .row-fluid
+                  .row-fluid#map_dash
                     .span12
                       = gmaps4rails map_data(@locations)
-                  .row-fluid
-                    .span12
-                      Radio GAC
-                  .row-fluid
-                    .span4
+                  .row-fluid#radio_gac_dash
+                    .span-12.block-wrapper
+                      .block-of-3
+                        %h3
+                          %i.icon-music.icon-large.white
+                          Radio GAC
+                      .block-of-3
+                        Current Track:
+                        %br
+                        %span{style: 'font-size: 1.5em'}
+                          = @radio_gac_stats[:track]
+                      .block-of-3
+                        Listeners:
+                        %br
+                        %span{style: 'font-size: 1.5em'}
+                          = @radio_gac_stats[:listeners]
+                  .row-fluid#bottom_row_dash
+                    .span4#puzzle_stats_dash
                       Puzzle Stats
-                    .span4
+                    .span4#checkin_stats_dash
                       Checkin Stats
-                    .span4
+                    .span4#penalty_stats_dash
                       Penalty Stats
 
-                .span3
+                .span3#events_dash
                   %h4 Events
           %footer
           = yield :scripts

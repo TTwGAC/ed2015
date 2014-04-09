@@ -16,7 +16,11 @@ class DashboardController < ApplicationController
 
   def game_control_dashboard
     @locations = Location.all
-    @radio_gac = get_radio_gac_info
+    @radio_gac_stats = get_radio_gac_stats
+    @puzzle_stats    = get_puzzle_stats
+    @penalty_stats   = get_penalty_stats
+    @checkin_stats   = get_checkin_stats
+
     respond_to do |format|
       format.html do
         # Render the UI
@@ -41,7 +45,7 @@ class DashboardController < ApplicationController
 
 private
 
-  def get_radio_gac_info
+  def get_radio_gac_stats
     response = icecast_api('/admin/stats')
     logger.warn "Icecast response: #{response.inspect}"
     stats = {}
@@ -74,6 +78,12 @@ private
     end
 
     @icecast_api.get query, params
+  end
+
+  def get_puzzle_stats
+    stats = {}
+    stats[:total] = Puzzle.active.count
+    stats[:open] = Checkin.select(:solved_puzzle_id).distinct.map(&:solved_puzzle_id).compact.count
   end
 
 end

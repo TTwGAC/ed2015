@@ -57,6 +57,10 @@ $nav_dark: #e7bb3f;
 $nav_admin_top: #fff0d0;
 $nav_admin_bot: #f99;
 $gac_font:  "Michroma", Arial, Helvetica, Sans-Serif;
+$highlight: #7AAFEA;
+$lowlight: #1F8DB4;
+$background: #817E57;
+$outline: #B4AB1F;
 
 body {
   font-family: $gac_font;
@@ -403,15 +407,99 @@ input, select {
 }
 
 .gchq_dashboard {
-  //width: 1920px;
+  .content, .content .row-fluid, .content .row-fluid div[class*=span] { height: 100% }
+  font-size: 1.3em;
+  line-height: 1.5em;
+  //width: 100%;
+  width: 1920px;
+  height: 100%;
+  .box { width: 98% }
   text-align: center;
+  .row-fluid [class*="span"] {
+    margin: 0;
+  }
 
   .title {
     @include background_gradient(to bottom, $nav_top, $nav_bot);
   }
 
   .map_container, .gmaps4rails_map {
-    width: 98.6%;
-    height: 500px;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    border: 0;
+    #map { height: 100%; }
+  }
+
+  .block-wrapper {
+    height: 75px;
+    display: table;
+
+    .block-of-2 {
+      display: table-cell;
+      vertical-align: middle;
+      width: 50%;
+    }
+
+    .block-of-3 {
+      display: table-cell;
+      vertical-align: middle;
+      width: 33%;
+    }
+  }
+
+  .white {
+    color: #fff;
+  }
+
+  #leaderboard_dash {
+    height: 100%;
+    background-color: $outline;
+    .leaderboard {
+      background-color: $background;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.3em;
+      td { font-size: 1.0em; }
+    }
+  }
+
+  #title_bar {
+    height: 15%;
+  }
+
+  #dash_contents {
+    height: 85%;
+
+    #map_dash {
+      height: 65%;
+    }
+
+    #radio_gac_dash {
+      background-color: $highlight;
+      color: #fff;
+      height: 10%;
+    }
+
+    #bottom_row_dash {
+      height: 25%;
+    }
+
+    #puzzle_stats_dash {
+      background-color: $nav_top;
+      height: 100%;
+      width: 33%;
+    }
+    #checkin_stats_dash {
+      background-color: $nav_bot;
+      height: 100%;
+      width: 34%;
+    }
+    #penalty_stats_dash {
+      background-color: $nav_dark;
+      height: 100%;
+      width: 33%;
+    }
   }
 }
