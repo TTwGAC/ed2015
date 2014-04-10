@@ -23,7 +23,13 @@
                 %td= penalty.puzzle_name
             - else
               %td
-            %td= penalty.minutes
+            %td
+              - if penalty.minutes > 0
+                = penalty.minutes
+                penalty
+              - else
+                = penalty.minutes * -1
+                bonus!
             %td{'data-sort-value' => penalty.created_at.to_i}= link_to penalty.created_at.localtime.strftime("%l:%M:%S %P"), penalty
             %td= link_to penalty.assigner_name, penalty.assigner
             - if can? :manage, Penalty
