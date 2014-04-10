@@ -60,16 +60,17 @@
                       = gmaps4rails map_data(@locations)
                   .row-fluid#radio_gac_dash
                     .span-12.block-wrapper
-                      .block-of-3
-                        %h3
+                      .block{style: 'width: 35%'}
+                        %h3{style: 'text-align: left; padding-left: 23px; margin:0'}
                           %i.icon-music.icon-large.white
                           Radio GAC
-                      .block-of-3
+                        #news_countdown
+                      .block{style: 'width: 40%'}
                         Current Track:
                         %br
                         %span{style: 'font-size: 1.5em'}
                           = @radio_gac_stats[:track]
-                      .block-of-3
+                      .block{style: 'width: 25%'}
                         Listeners:
                         %br
                         %span{style: 'font-size: 1.5em'}
@@ -103,11 +104,24 @@
     %br/
     %br/
 :javascript
-  var clock = $('#game_clock').FlipClock({
+  var game_clock = $('#game_clock').FlipClock({
     // ... your options here
   });
   start = new Date()
   start.setHours(8)
   start.setMinutes(0)
   start.setSeconds(0)
-  clock.setTime(Math.round((Date.now() - start) / 1000))
+  game_clock.setTime(Math.round((Date.now() - start) / 1000))
+
+  var news_clock = $('#news_countdown').FlipClock({
+    // ... your options here
+  });
+  start = new Date()
+  if (start.getMinutes() > 5) {
+    start.setHours(start.getHours() + 1)
+  }
+  start.setMinutes(5)
+  start.setSeconds(0)
+  console.log(start)
+  news_clock.setTime(Math.round((start - Date.now()) / 1000))
+  news_clock.setCountdown(true);

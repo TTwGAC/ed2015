@@ -444,16 +444,9 @@ input, select {
     height: 75px;
     display: table;
 
-    .block-of-2 {
+    .block {
       display: table-cell;
       vertical-align: middle;
-      width: 50%;
-    }
-
-    .block-of-3 {
-      display: table-cell;
-      vertical-align: middle;
-      width: 33%;
     }
   }
 
