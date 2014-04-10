@@ -58,9 +58,10 @@ $nav_admin_top: #fff0d0;
 $nav_admin_bot: #f99;
 $gac_font:  "Michroma", Arial, Helvetica, Sans-Serif;
 $highlight: #7AAFEA;
-$lowlight: #1F8DB4;
-$background: #817E57;
-$outline: #B4AB1F;
+$lowlight: #5a0000;
+$background: #ee983e;
+$outline: #f5b447;
+$bright: #e9ea61;
 
 body {
   font-family: $gac_font;
@@ -464,8 +465,8 @@ input, select {
     height: 100%;
     background-color: $outline;
     .leaderboard {
-      background-color: $background;
-      color: #fff;
+      background-color: $lowlight;
+      color: $outline;
       font-weight: bold;
       font-size: 1.3em;
       td { font-size: 1.0em; }
@@ -512,12 +513,12 @@ input, select {
     }
 
     #puzzle_stats_dash {
-      background-color: $nav_top;
+      background-color: $bright;
       height: 100%;
       width: 33%;
     }
     #checkin_stats_dash {
-      background-color: $nav_bot;
+      background-color: $background;
       height: 100%;
       width: 34%;
     }
