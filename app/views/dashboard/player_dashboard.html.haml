@@ -1,5 +1,6 @@
 - content_for(:head) { stylesheet_link_tag 'jplayer.blue.monday.css', media: 'all' }
 - javascript 'jquery.jplayer.min.js'
+- javascript 'flipclock.js'
 .row
   .span12
     %h1
@@ -66,7 +67,8 @@
           %ul
             %li Radio GAC
 
-    %h6 Next news in 7:33
+    %h6 Next news in
+    #news_countdown
 
     %hr
 
@@ -111,3 +113,15 @@
     });
   });
 
+  var clock = $('#news_countdown').FlipClock({
+    // ... your options here
+  });
+  start = new Date()
+  if (start.getMinutes() > 5) {
+    start.setHours(start.getHours() + 1)
+  }
+  start.setMinutes(5)
+  start.setSeconds(0)
+  console.log(start)
+  clock.setTime(Math.round((start - Date.now()) / 1000))
+  clock.setCountdown(true);
