@@ -15,7 +15,7 @@
 
     - if @puzzle.flavortext.present?
       %h4 Introduction:
-      %p.box= @puzzle.flavortext
+      %div.box= markdown.render(@puzzle.flavortext).html_safe
 
 
     - if @puzzle.documents_for_players.count > 0
