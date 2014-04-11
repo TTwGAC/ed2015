@@ -23,7 +23,9 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if current_player.team.playing?
+    if current_player.team_name == 'Game Control'
+      '/'
+    elsif current_player.team.playing?
       '/dashboard'
     else
       '/'
