@@ -10,20 +10,7 @@
 %hr
 .row
   .span8
-    %h2
-      Current Puzzle:
-      = @puzzle.name
-
-    - if @puzzle.flavortext.present?
-      %h4 Introduction:
-      %div.box= markdown.render(@puzzle.flavortext).html_safe
-
-
-    - if @puzzle.documents_for_players.count > 0
-      %h4 Files:
-      %ul
-        - @puzzle.documents_for_players.each do |document|
-          %li= link_to document.name, document.file_url
+    = render 'checkins/current_puzzle_info', locals: {puzzle: @puzzle, location_coordinates: @location_coordinates, next_location_coordinates: @next_location_coordinates}
 
     %hr
 
