@@ -3,7 +3,8 @@
 %table#checkins.table
   %thead
     %tr.header
-      %th{'data-sort' => 'string'} Team
+      - if can? :manage, Checkin
+        %th{'data-sort' => 'string'} Team
       %th{'data-sort' => 'string'} Location
       %th{'data-sort' => 'int'} Timestamp
       %th{'data-sort' => 'int'} Time to solve
@@ -11,7 +12,8 @@
   %tbody
     - @checkins.each do |checkin|
       %tr
-        %td= link_to "#{checkin.team_name}", checkin.team
+        - if can? :manage, Checkin
+          %td= link_to "#{checkin.team_name}", checkin.team
         - if can? :read, checkin.location
           %td= link_to "#{checkin.location_name}", checkin.location
         - else
@@ -25,7 +27,8 @@
             No previous checkin
         %td= link_to 'View Checkin', checkin
 %br/
-= link_to 'Manual Checkin', new_checkin_path
+- if can? :manage, Checkin
+  = link_to 'Manual Checkin', new_checkin_path
 
 :javascript
   $("#checkins").stupidtable();
