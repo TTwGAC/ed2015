@@ -7,7 +7,7 @@
   %h4 Instructions:
   %p.box= locals[:puzzle].flavortext
 - if locals[:puzzle].include_bearing
-  - heading, distance = VectorCalculator.calc_distance *@location_coordinates, *@next_location_coordinates
+  - heading, distance = VectorCalculator.calc_distance *locals[:location_coordinates], *locals[:next_location_coordinates]
   %h3 Heading and Distance to the next location:
   %ul
     %li

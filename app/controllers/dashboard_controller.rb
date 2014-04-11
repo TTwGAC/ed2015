@@ -35,6 +35,10 @@ class DashboardController < ApplicationController
   def player_dashboard
     @puzzle = current_player.team_current_puzzle || Puzzle.new
     @penalties = current_player.team_penalties
+    current_location = current_player.team_location
+    next_location = @puzzle.destination
+    @location_coordinates = [current_location.latitude, current_location.longitude]
+    @next_location_coordinates = [next_location.latitude, next_location.longitude]
     respond_to do |format|
       format.html do
         # Render the UI
