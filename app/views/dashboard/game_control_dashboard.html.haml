@@ -93,6 +93,15 @@
                           %td= @puzzle_stats[:unopened]
                     .span4#checkin_stats_dash.statsbox
                       %h5 Checkin Stats
+                      %table.table
+                        %tr
+                          %td Total
+                          %td= @checkin_stats[:total]
+                        %tr
+                          %td Avg. TTC
+                          %td
+                            = @checkin_stats[:avg_ttc] / 60
+                            min.
                     .span4#penalty_stats_dash.statsbox
                       %h5 Penalty Stats
 

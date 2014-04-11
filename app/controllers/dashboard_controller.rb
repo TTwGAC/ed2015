@@ -98,6 +98,11 @@ private
   end
 
   def get_checkin_stats
+    stats = {}
+    stats[:total] = Checkin.all.count
+    total_checkin_time = Checkin.all.inject(0) { |i, c| i += c.time_to_complete.to_i }
+    stats[:avg_ttc] = total_checkin_time / stats[:total]
+    stats
   end
 
 end

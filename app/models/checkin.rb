@@ -28,6 +28,14 @@ class Checkin < ActiveRecord::Base
     super || self.created_at
   end
 
+  def time_to_complete
+    if previous
+      self.created_at - previous.created_at
+    else
+      0
+    end
+  end
+
   def get_team
     self.team ||= self.player.team
     raise Error, 'Team is not active, checkin denied' unless self.team.playing?

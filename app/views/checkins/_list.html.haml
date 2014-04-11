@@ -19,9 +19,9 @@
         - else
           %td= checkin.location_name
         %td{'data-sort-value' => checkin.created_at.to_i}= link_to checkin.created_at.localtime.strftime("%l:%M:%S %P"), checkin
-        - if prev = checkin.previous
-          %td{'data-sort-value' => (checkin.created_at - prev.created_at).to_i}
-            = distance_of_time_in_words prev.created_at, checkin.created_at
+        - if checkin.previous
+          %td{'data-sort-value' => checkin.time_to_complete.to_i}
+            = distance_of_time_in_words checkin.previous.created_at, checkin.created_at
         - else
           %td{'data-sort-value' => 0}
             No previous checkin
