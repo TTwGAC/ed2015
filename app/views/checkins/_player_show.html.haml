@@ -1,35 +1,10 @@
-- require 'vector_calculator'
 %h2 You are checked in!
 %p
   Congratulations! You are checked in to
   = succeed '.' do
     = @checkin.location_name
 
-%h2
-  Your Next Puzzle:
-  = @checkin.next_puzzle_name
-
-- if @checkin.next_puzzle_flavortext.present?
-  %h4 Instructions:
-  %p.box= @checkin.next_puzzle_flavortext
-- if @puzzle.include_bearing
-  - heading, distance = VectorCalculator.calc_distance *@location_coordinates, *@next_location_coordinates
-  %h3 Heading and Distance to the next location:
-  %ul
-    %li
-      Heading:
-      = "#{heading.to_i}°"
-    %li
-      Distance:
-      = distance.to_i
-      ft
-
-- if @checkin.next_puzzle_documents_for_players.present?
-  %h4 Puzzle Documents:
-  %div.box
-    %ul
-      - @checkin.next_puzzle_documents_for_players.each do |doc|
-        %li= link_to doc.name, doc.file_url
+= render 'checkins/current_puzzle_info', locals: {puzzle: checkin.next_puzzle, heading: heading, distance: distance }
 
 
 %p Details on your next puzzle have also been sent to your email.
