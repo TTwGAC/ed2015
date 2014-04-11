@@ -38,6 +38,10 @@
           %b.caret
         %ul.dropdown-menu
           %li
+            = link_to '/dashboard' do
+              %img.navicon{src: asset_path('glyphicons/331_dashboard.png')}
+              Game Dashboard
+          %li
             = link_to page_path('contact') do
               %img.navicon{src: asset_path('glyphicons/088_adress_book.png')}
               Contact Game Control
