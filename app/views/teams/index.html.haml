@@ -10,6 +10,7 @@
       - if can? :manage, Team
         %th{'data-sort' => 'string'} Playing?
         %th{'data-sort' => 'int'} # Checkins
+        %th{'data-sort' => 'string'} Cur. Puzzle
   %tbody
     - @teams.each do |team|
       %tr
@@ -24,6 +25,10 @@
             - else
               %span{title: team.reasons_not_playing.join(' | ')} &times; No
           %td= team.checkins.count
+          - if team.current_puzzle
+            %td= link_to team.current_puzzle_name, team.current_puzzle
+          - else
+            %td n/a
 %br/
 - if can? :create, Team
   = link_to 'New Team', new_team_path
