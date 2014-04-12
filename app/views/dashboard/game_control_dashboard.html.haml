@@ -16,6 +16,7 @@
     = yield(:head)
     = javascript_include_tag 'gmaps4rails.js'
     = javascript_include_tag 'flipclock.js'
+    = javascript_include_tag 'pregame_dashboard.js'
     :javascript
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -107,7 +108,11 @@
                       %h5 Penalty Stats
 
                 .span3#events_dash
-                  %h4 Events
+                  %div.box
+                    %div.box-header
+                      %h4 Recent Events
+                    %div.box_content.event_log.scrollable
+
           %footer
           = yield :scripts
     %br/
