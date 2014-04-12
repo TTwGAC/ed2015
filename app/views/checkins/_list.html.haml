@@ -26,9 +26,6 @@
           %td{'data-sort-value' => 0}
             No previous checkin
         %td= link_to 'View Checkin', checkin
-%br/
-- if can? :manage, Checkin
-  = link_to 'Manual Checkin', new_checkin_path
 
 :javascript
   $("#checkins").stupidtable();

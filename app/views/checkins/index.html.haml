@@ -1,1 +1,6 @@
+- if can? :manage, Checkin
+  %p= link_to 'Manual Checkin', new_checkin_path
 = render partial: 'list'
+%br/
+- if can? :manage, Checkin
+  %p= link_to 'Manual Checkin', new_checkin_path
