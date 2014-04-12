@@ -34,6 +34,5 @@ jQuery ->
     $(td).on 'click', callback
     tr.appendChild td
 
-  $('#penalty_puzzle_id').on 'change', refresh_hints
-
-  refresh_hints
+  $(document).ready ->
+    refresh_hints()
