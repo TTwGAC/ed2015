@@ -36,3 +36,4 @@ jQuery ->
 
   $(document).ready ->
     refresh_hints()
+    $('#penalty_puzzle_id').on 'change', refresh_hints
