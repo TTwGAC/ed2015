@@ -25,9 +25,9 @@
         %td= puzzle.destination ? link_to(puzzle.destination_name, puzzle.destination) : ""
         %td
           - if puzzle.completed?
-            Yes
+            %b Yes
           - else
-            No
+            = "No (#{puzzle.num_checkins} / #{Team.playing.count})"
 
 %br/
 = link_to 'New Puzzle', new_puzzle_path

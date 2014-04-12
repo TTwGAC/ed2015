@@ -56,6 +56,10 @@ class Puzzle < ActiveRecord::Base
     Checkin.where(solved_puzzle: self).count > 0
   end
 
+  def num_checkins
+    Checkin.where(location: self).count
+  end
+
   def completed?
     num_teams = Team.playing.count
     num_checkins = Checkin.where(solved_puzzle: self).count

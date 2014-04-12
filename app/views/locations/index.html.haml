@@ -19,6 +19,8 @@
       %th Open Hours
       %th Solution to...
       %th Next Puzzle
+      - if can? :manage, Location
+        %th Complete?
     - locations.each_pair do |letter, location|
       %tr
         %td
@@ -33,6 +35,12 @@
         %td
           - if location.next_puzzle
             = link_to location.next_puzzle_name, location.next_puzzle
+        - if can? :manage, Location
+          %td
+            - if location.completed?
+              %b Yes
+            - else
+              = "No (#{location.num_checkins} / #{Team.playing.count})"
 %br/
 = link_to 'New Location', new_location_path
 |

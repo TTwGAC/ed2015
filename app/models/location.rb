@@ -29,6 +29,19 @@ class Location < ActiveRecord::Base
   def get_token
     self.token ||= SecureRandom.hex(16)
   end
+
+  def open?
+    Checkin.where(location: self).count > 0
+  end
+
+  def num_checkins
+    Checkin.where(location: self).count
+  end
+
+  def completed?
+    num_teams = Team.playing.count
+    num_checkins == num_teams
+  end
 end
 
 # ## Schema Information
