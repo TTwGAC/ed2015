@@ -11,6 +11,7 @@
         %th{'data-sort' => 'string'} Playing?
         %th{'data-sort' => 'int'} # Checkins
         %th{'data-sort' => 'string'} Cur. Puzzle
+        %th{'data-sort' => 'string'} Last Loc.
   %tbody
     - @teams.each do |team|
       %tr
@@ -29,6 +30,12 @@
             %td= link_to team.current_puzzle_name, team.current_puzzle
           - else
             %td n/a
+          %td
+            - if team.location
+              = link_to team.location_name, team.location
+            - else
+              Unknown
+
 %br/
 - if can? :create, Team
   = link_to 'New Team', new_team_path
