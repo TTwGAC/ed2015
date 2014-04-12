@@ -25,6 +25,8 @@ jQuery ->
               "<%= asset_path 'glyphicons/060_compass.png' %>"
             when 'checkin'
               "<%= asset_path 'glyphicons/087_log_book.png' %>"
+            when 'penalty'
+              "<%= asset_path 'glyphicons/055_stopwatch.png' %>"
           log_item.append($("<img class='navicon' src='#{icon}'>"))
           log_item.append("&nbsp;#{event.description}&nbsp;")
           dateline = new Date(event.created_at)

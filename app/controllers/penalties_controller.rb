@@ -58,6 +58,7 @@ class PenaltiesController < ApplicationController
 
     respond_to do |format|
       if @penalty.save
+        event "create", :penalty, @penalty.id, description: "#{@penalty.assigner_name} assigned a penalty for team #{@penalty.team_name} on #{@penalty.puzzle_name}"
         format.html { redirect_to @penalty, notice: 'Penalty was successfully created.' }
         format.json { render json: @penalty, status: :created, location: @penalty }
       else
