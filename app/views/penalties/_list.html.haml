@@ -1,6 +1,6 @@
 - javascript 'stupidtable.js'
 - if @penalties.count > 0
-  %table.table
+  %table#penalties.table
     %thead
       %tr.header
         - if can? :manage, Penalty
@@ -39,3 +39,6 @@
 - if can? :manage, Penalty
   %br/
   = link_to 'New Penalty', new_penalty_path
+
+:javascript
+  $("#penalties").stupidtable();
