@@ -22,15 +22,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  #def after_sign_in_path_for(resource)
-  #  if current_player.team_name == 'Game Control'
-  #    '/'
-  #  elsif current_player.team.playing?
-  #    '/dashboard'
-  #  else
-  #    '/'
-  #  end
-  #end
+  def after_sign_in_path_for(resource)
+    if current_player.team_name == 'Game Control'
+      '/'
+    elsif current_player.team.playing?
+      '/dashboard'
+    else
+      '/'
+    end
+  end
 
   def event(action, subject, subject_id = nil, extra = {})
     if extra[:params] && !extra.has_key?(:description)
