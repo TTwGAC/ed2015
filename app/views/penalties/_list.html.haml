@@ -36,9 +36,6 @@
               %td= link_to 'View', penalty
 - else
   %span{style: 'font-style: italic'} No penalties yet! Keep up the good work!
-- if can? :manage, Penalty
-  %br/
-  = link_to 'New Penalty', new_penalty_path
 
 :javascript
   $("#penalties").stupidtable();
