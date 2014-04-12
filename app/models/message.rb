@@ -40,7 +40,7 @@ class Message < ActiveRecord::Base
   def targets
     if sendable?
       obj = destination_object
-      case obj.class
+      case obj
       when Team
         obj.players
       when Player
