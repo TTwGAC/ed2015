@@ -85,7 +85,7 @@ class CheckinsController < ApplicationController
     respond_to do |format|
       if @checkin
         event "create", :checkin, @checkin.id, description: "#{current_player.name} checked in for team #{@checkin.team_name} to #{@checkin.location_name}"
-        format.html { redirect_to @checkin, notice: 'Checkin was successfully created.' }
+        format.html { redirect_to '/dashboard', notice: 'Checkin was successfully created.' }
         format.json { render json: @checkin, status: :created, location: @checkin }
       else
         format.html { redirect_to checkins_url }
