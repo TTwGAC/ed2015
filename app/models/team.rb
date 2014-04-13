@@ -78,7 +78,7 @@ class Team < ActiveRecord::Base
       playing_time = 0
     end
 
-    playing_time - total_penalties
+    playing_time + total_penalties
   end
 
   def total_penalties
