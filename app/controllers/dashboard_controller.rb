@@ -103,9 +103,9 @@ private
     team_penalties = Penalty.all.group(:team_id).sum(:minutes)
     team_penalties = team_penalties.sort_by { |team_id, minutes| minutes }
     team_id, minutes = team_penalties.last
-    stats[:worst_team] = "#{Team.find(team_id).name}: #{minutes}"
+    stats[:worst_team] = "#{Team.find(team_id).name}: #{minutes.round(1)}"
     team_id, minutes = team_penalties.first
-    stats[:best_team] = "#{Team.find(team_id).name}: #{minutes}"
+    stats[:best_team] = "#{Team.find(team_id).name}: #{minutes.to_i}"
     stats
   end
 
