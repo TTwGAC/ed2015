@@ -97,6 +97,13 @@ private
   end
 
   def get_penalty_stats
+    stats = {}
+    stats[:total] = Penalty.all.count
+    stats[:average] = Penalty.all.average(:minutes)
+    team_penalties = Penalty.all.group(:team_id).sum(:minutes)
+    team_id, minutes = team_penalties.sort_by { |team_id, minutes| minutes }.last
+    stats[:worst_team] = "#{Team.find(team_id).name}: #{minutes}"
+    stats
   end
 
   def get_checkin_stats

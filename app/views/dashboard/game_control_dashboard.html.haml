@@ -106,6 +106,20 @@
                             min.
                     .span4#penalty_stats_dash.statsbox
                       %h5 Penalty Stats
+                      %table.table
+                        %tr
+                          %td Total
+                          %td= @penalty_stats[:total]
+                        %tr
+                          %td Avg. Penalty
+                          %td
+                            = @penalty_stats[:average]
+                            min.
+                        %tr
+                          %td Worst Team
+                          %td
+                            = @penalty_stats[:worst_team]
+                            min.
 
                 .span3#events_dash
                   %div.box
