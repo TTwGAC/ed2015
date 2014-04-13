@@ -72,13 +72,13 @@ class Team < ActiveRecord::Base
 
     last_checkin = Checkin.where(team: self, next_puzzle: last_puzzle).first
     
+    playing_time = 0
     if last_checkin
       playing_time = last_checkin.created_at - Time.mktime(2014, 4, 12, 8, 0, 0)
-    else
-      playing_time = 0
+      playing_time += total_penalties
     end
 
-    playing_time + total_penalties
+    playing_time
   end
 
   def total_penalties
