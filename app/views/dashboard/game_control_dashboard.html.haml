@@ -113,12 +113,12 @@
                         %tr
                           %td Avg. Penalty
                           %td
-                            = @penalty_stats[:average]
+                            = @penalty_stats[:average].to_i
                             min.
                         %tr
                           %td Worst Team
                           %td
-                            = @penalty_stats[:worst_team]
+                            = @penalty_stats[:worst_team].to_i
                             min.
 
                 .span3#events_dash
