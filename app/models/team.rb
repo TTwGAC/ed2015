@@ -70,11 +70,10 @@ class Team < ActiveRecord::Base
     first_location = Location.find 56 # Game Check-In
     last_puzzle = Puzzle.find 42 # End Of Game!
 
-    first_checkin = Checkin.where(team: self, location: first_location).first
     last_checkin = Checkin.where(team: self, next_puzzle: last_puzzle).first
     
-    if first_checkin && last_checkin
-      playing_time = last_checkin.created_at - first_checkin.created_at
+    if last_checkin
+      playing_time = last_checkin.created_at - Time.mktime(2014, 4, 12, 8, 0, 0)
     else
       playing_time = 0
     end
