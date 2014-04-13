@@ -48,19 +48,46 @@ class Team < ActiveRecord::Base
   end
 
   def score
-    @score ||= calculate_score
+    @score ||= if Game.instance.status == 'closed'
+      # Final score calculations
+      calculate_final_score
+    else
+      # Provisional score calculation
+      calculate_provisional_score
+    end
   end
 
-  def calculate_score
+  def calculate_provisional_score
     puzzles_score = checkins.inject(0) do |total, checkin|
       total += checkin.solved_puzzle_expected_ttc
-    end
-    total_penalties = penalties.inject(0) do |total, p|
-      total += p.minutes
     end
 
     puzzles_score - total_penalties
   end
+
+  def calculate_final_score
+    # FIXME: Convert these two pieces of information into Game settings
+    first_location = Location.find 56 # Game Check-In
+    last_puzzle = Puzzle.find 42 # End Of Game!
+
+    first_checkin = Checkin.where(team: self, location: first_location).first
+    last_checkin = Checkin.where(team: self, next_puzzle: last_puzzle).first
+    
+    if first_checkin && last_checkin
+      playing_time = last_checkin.time - first_checkin.time
+    else
+      playing_time = 0
+    end
+
+    playing_time - total_penalties
+  end
+
+  def total_penalties
+    penalties.inject(0) do |total, p|
+      total += p.minutes
+    end
+  end
+    
 
   def reasons_not_playing
     reasons = []

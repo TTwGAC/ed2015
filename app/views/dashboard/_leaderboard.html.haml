@@ -1,5 +1,9 @@
 %h1 Leaderboard
-%h4{style: 'font-style: italic'} Results Not Final
+%h4{style: 'font-style: italic'}
+  - if Game.instance.status == 'closed'
+    Final Results
+  - else
+    Results Not Final
 
 %table.leaderboard.table.box
   %tr
@@ -9,5 +13,13 @@
   - teams_sorted_by_score.each do |team|
     %tr{class: ('highlighted' if current_player.team == team)}
       %td= team.name
-      %td{style: 'text-align: center'}= team.score
+      %td{style: 'text-align: center'}
+        - if Game.instance.status == 'closed' && team.score <= 0
+          DNF
+        - else
+          - if team.score <= 0
+            / Hack to easily calculate elapsed time
+            = "-#{Time.at(team.score * -1).utc.strftime("%H:%M:%S")}"
+          - else
+            = Time.at(team.score).utc.strftime("%H:%M:%S")
 
