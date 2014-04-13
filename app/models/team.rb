@@ -44,7 +44,7 @@ class Team < ActiveRecord::Base
   end
 
   def playing?
-    player && paid && active
+    paid && active
   end
 
   def score
