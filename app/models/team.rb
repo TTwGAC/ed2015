@@ -62,7 +62,7 @@ class Team < ActiveRecord::Base
       total += checkin.solved_puzzle_expected_ttc
     end
 
-    puzzles_score - total_penalties
+    (puzzles_score * 60) - total_penalties
   end
 
   def calculate_final_score
@@ -83,7 +83,7 @@ class Team < ActiveRecord::Base
 
   def total_penalties
     penalties.inject(0) do |total, p|
-      total += p.minutes
+      total += (p.minutes * 60)
     end
   end
     
