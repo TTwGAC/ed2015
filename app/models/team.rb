@@ -74,7 +74,7 @@ class Team < ActiveRecord::Base
     last_checkin = Checkin.where(team: self, next_puzzle: last_puzzle).first
     
     if first_checkin && last_checkin
-      playing_time = last_checkin.time - first_checkin.time
+      playing_time = last_checkin.created_at - first_checkin.created_at
     else
       playing_time = 0
     end
