@@ -68,4 +68,8 @@ class ApplicationController < ActionController::Base
       u.permit *params, :current_password
     end
   end
+
+  def authenticate_player_unless_game_closed
+    authenticate_player! unless Game.instance.status == 'closed'
+  end
 end
