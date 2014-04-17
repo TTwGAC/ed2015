@@ -84,9 +84,9 @@
   - checkin = Checkin.find(391)
   %b= link_to "128.9 seconds", checkin
   (just over two minutes) between
-  = link_to checkin.location_name, checkin.location
-  and
   = link_to checkin.previous.location_name, checkin.previous.location
+  and
+  = link_to checkin.location_name, checkin.location
   by
   - player = checkin.previous.player
   = link_to player.name, player
@@ -95,6 +95,7 @@
   = link_to player.name, player
   of
   = link_to player.team_name, player.team
+%p
   Puzzle:
   = link_to checkin.solved_puzzle_name, checkin.solved_puzzle
 
@@ -103,9 +104,9 @@
   - checkin = Checkin.find(256)
   %b= link_to "4.37 hours", checkin
   between
-  = link_to checkin.location_name, checkin.location
-  and
   = link_to checkin.previous.location_name, checkin.previous.location
+  and
+  = link_to checkin.location_name, checkin.location
   by
   - player = checkin.previous.player
   = link_to player.name, player
@@ -114,13 +115,26 @@
   = link_to player.name, player
   of
   = link_to player.team_name, player.team
+%p
   Puzzle: Flag Football, then
   = link_to checkin.solved_puzzle_name, checkin.solved_puzzle
 
 %h3 Slowest Checkin By A Team Not Distracted By Flag Football
 %p
-3.35 hours between spinArella and Tanyard Creek Park, both by Clay "Papa Bear” Proctor of Team I'm not a gynecologist per se...
-Puzzle: 1979 TV Commercial
+  - checkin = Checkin.find(375)
+  %b= link_to "3.35 hours"
+  between
+  = link_to checkin.previous.location_name, checkin.previous.location
+  and
+  = link_to checkin.location_name, checkin.location
+  both by
+  - player = checkin.player
+  = link_to player.name, player
+  of
+  = link_to player.team_name, player.team
+%p
+  Puzzle:
+  = link_to checkin.solved_puzzle_name, checkin.solved_puzzle
 
 %h3 Favorite Puzzle
 %p By near-universal acclamation
