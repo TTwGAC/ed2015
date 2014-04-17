@@ -23,12 +23,15 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if current_player.team_name == 'Game Control'
-      current_player_path
-    elsif current_player.team.playing? && Game.instance.status == 'running'
+    if current_player.team.playing? && Game.instance.status == 'running'
       '/dashboard'
     else
-      current_player_path
+      sign_in_url = url_for(:action => 'new', :controller => 'sessions', :only_path => false, :protocol => 'http')
+      if request.referer == sign_in_url
+        super
+      else
+        stored_location_for(resource) || request.referer || root_path
+      end
     end
   end
 
