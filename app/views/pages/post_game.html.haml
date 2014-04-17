@@ -15,7 +15,7 @@
   %b= link_to team.name, team
   with a final time (including bonuses/bonii and penalties) of
   %b 13 hours 45 minutes 15 seconds.
-%p
+%p.superlative_description
   Congrats! You get to put on
   = link_to 'GAC 2015', 'http://twitter.com/gac2015'
 
@@ -26,13 +26,15 @@
   %b= link_to team.name, team
   with a final time (including bonuses/bonii and penalties) of
   %b 17 hours 16 minutes 12 seconds.
-  %p Congrats! You don't have to do anything at all! Bask in that glory.
+%p.superlative_description Congrats! You don't have to do anything at all! Bask in that glory.
 
 %h3 The Full Scoreboard
 %div= link_to image_tag('final_results.png', alt: 'GAC2014 Final Results', size: '240x340'), asset_path('final_results.png')
 
+%hr
+
 %h3 Most Prolific
-%p Most check-ins by any individual
+%p.superlative_description Most check-ins by any individual
 %p
   - player = Player.find(29) # Joshua "Billy" Dover
   %b= link_to player.name, player
@@ -40,7 +42,10 @@
   = link_to player.team_name, player.team # Monkey Steve
   with 35 Checkins
 
+%hr
+
 %h3 Fastest Checkin
+%p.superlative_description Shortest time between two checkins
 %p
   - checkin = Checkin.find(118)
   %b= link_to "8.9 seconds", checkin
@@ -58,8 +63,10 @@
   = link_to player.team_name, player.team # Cixelsyd Maet
   Puzzle: Burger Bowl Orienteering Challenge
 
+%hr
+
 %h3 Fastest Checkin Outside Burger Bowl
-%p (also excluding Mother, thanks to the manual checkins from Salon Modelo)
+%p.superlative_description (also excluding Mother, thanks to the manual checkins from Salon Modelo)
 %p
   - checkin = Checkin.find(249)
   %b= link_to "118.6 seconds", checkin
@@ -74,13 +81,13 @@
   = link_to player.name, player
   of
   = link_to player.team_name, player.team # Monkey Steve
-%p
+%p.superlative_description
   Puzzle:
   - puzzle = Puzzle.find(14) # Fold Here
   = link_to puzzle.name, puzzle
-
-%h3 Second Fastest (like above)
+%br
 %p 
+  %b.superlative_description Runner Up:
   - checkin = Checkin.find(391)
   %b= link_to "128.9 seconds", checkin
   (just over two minutes) between
@@ -95,11 +102,14 @@
   = link_to player.name, player
   of
   = link_to player.team_name, player.team
-%p
+%p.superlative_description
   Puzzle:
   = link_to checkin.solved_puzzle_name, checkin.solved_puzzle
 
+%hr
+
 %h3 Slowest Checkin
+%p.superlative_description Longest time between checkins
 %p
   - checkin = Checkin.find(256)
   %b= link_to "4.37 hours", checkin
@@ -115,9 +125,11 @@
   = link_to player.name, player
   of
   = link_to player.team_name, player.team
-%p
+%p.superlative_description
   Puzzle: Flag Football, then
   = link_to checkin.solved_puzzle_name, checkin.solved_puzzle
+
+%hr
 
 %h3 Slowest Checkin By A Team Not Distracted By Flag Football
 %p
@@ -132,61 +144,75 @@
   = link_to player.name, player
   of
   = link_to player.team_name, player.team
-%p
+%p.superlative_description
   Puzzle:
   = link_to checkin.solved_puzzle_name, checkin.solved_puzzle
 
+%hr
+
 %h3 Favorite Puzzle
-%p By near-universal acclamation
+%p.superlative_description By near-universal acclamation
 %p
   - puzzle = Puzzle.find(8)
   %b= link_to puzzle.name, puzzle
 %div= link_to image_tag('tribal_conflict_plaque.jpeg', alt: 'Tribal Conflict Plaque', size: '400x400'), asset_path('tribal_conflict_plaque.jpeg')
 
 
+%hr
+
 %h3 Hardest Puzzle
-%p Measured by cumulative time spent across all teams between the previous checkin and the checkin at the end of this puzzle
+%p.superlative_description Measured by cumulative time spent across all teams between the previous checkin and the checkin at the end of this puzzle
 %p
   - puzzle = Puzzle.find(3)
   %b= link_to puzzle.name, puzzle
   with a total of 19.2 team-hours
 
+%hr
+
 %h3 Easiest Puzzle
-%p Same measurement as above
+%p.superlative_description Least cumulative time spent across all teams
 %p
   - puzzle = Puzzle.find(37)
   %b= link_to puzzle.name, puzzle
   with a total of 0.44 team-hours
 
+%hr
+
 %h3 Easiest Non-Burger-Bowl Puzzle
-%p Same measurement as above
+%p.superlative_description Least cumulative time spent across all teams, excluding all Burger Bowl puzzles
 %p
   - puzzle = Puzzle.find(40)
   %b= link_to puzzle.name, puzzle
   (a.k.a. “Kanye West Egg”) with a total of 1.98 team-hours
 
+%hr
+
 %h3 Most Evil Puzzle
-%p As measured by the most cumulative penalties assigned across all teams
+%p.superlative_description As measured by the most cumulative penalties assigned across all teams
 %p
   - puzzle = Puzzle.find(1)
   %b= link_to puzzle.name, puzzle
   with a total of 440 minutes in penalties
 
 %p
-  Runner up:
+  %b.superlative_description Runner up:
   - puzzle = Puzzle.find(26)
   %b= link_to puzzle.name, puzzle
   with a total of 250 minutes in penalties
 
+%hr
+
 %h3 Least Evil While Still Being Somewhat Evil Puzzle
-%p As measured by the least cumulative penalties, though excluding puzzles with no penalties
+%p.superlative_description As measured by the least cumulative penalties, though excluding puzzles with no penalties
 %p
   - puzzle = Puzzle.find(16)
   %b= link_to puzzle.name, puzzle
   (a.k.a. Periodic Table) with 5 minutes in penalties
 
+%hr
+
 %h3 Totally Benign Puzzles
-%p Puzzles that incurred no penalties for any team, ever
+%p.superlative_description Puzzles that incurred no penalties for any team, ever
 %ul
   - puzzle = Puzzle.find(27)
   %li= link_to puzzle.name, puzzle
@@ -194,15 +220,19 @@
   %li= link_to puzzle.name, puzzle
   %li Burger Bowl Orienteering Cluster
 
+%hr
+
 %h3 Most Ass-Kissingest Team
+%p.superlative_description As measured by most total bonuses awarded
 %p
-  As measured by most total bonuses awarded
   - team = Team.find(3)
   %b= link_to team.name, team
   with 140 minutes in bonuses (or “bonii”)
 
+%hr
+
 %h3 Most “Special” Team
-%p As measured by most total penalties awarded
+%p.superlative_description As measured by most total penalties awarded
 %p
   - team = Team.find(5)
   %b= link_to team.name, team

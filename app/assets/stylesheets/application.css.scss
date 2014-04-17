@@ -407,6 +407,10 @@ input, select {
   @include pretend_link;
 }
 
+.superlative_description {
+  font-style: italic;
+}
+
 .gchq_dashboard {
   .content, .content .row-fluid, .content .row-fluid div[class*=span] {
     height: 100%;
