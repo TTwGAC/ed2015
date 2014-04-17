@@ -1,0 +1,195 @@
+%h1 Get-A-Clue 2014 Results
+
+%p
+  Game Control 2014 wants to thank all the teams and players for participating in GAC2014.  We had a blast putting it together. This page serves as a recap of the event and lists several of the highlights from the game.  We've opened up the entire site, including all the planning documents, puzzle and location details.  Also, don't miss the
+  = link_to 'newspaper article on GAC2014,', 'http://saportareport.com/blog/2014/04/get-a-clue/'
+  and the collections of photos on Facebook from
+  = link_to 'pre-game preparations', 'https://www.facebook.com/media/set/?set=a.783466894999102.1073741831.646190068726786&type=1'
+  and
+  = link_to 'game-day team madness!','FIXME'
+
+%h3 The Winners
+%p
+  Finishing in First Place, Team
+  - team = Team.find(10)
+  %b= link_to team.name, team
+  with a final time (including bonuses/bonii and penalties) of
+  %b 13 hours 45 minutes 15 seconds.
+%p
+  Congrats! You get to put on
+  = link_to 'GAC 2015', 'http://gac2015.com'
+
+%h3 The REAL Winners
+%p
+  Finishing in Second Place, Team
+  - team = Team.find(11)
+  %b= link_to team.name, team
+  with a final time (including bonuses/bonii and penalties) of
+  %b 17 hours 16 minutes 12 seconds.
+  %p Congrats! You don't have to do anything at all! Bask in that glory.
+
+%h3 The Full Scoreboard
+%div= link_to image_tag('final_results.png', alt: 'GAC2014 Final Results', size: '240x340'), asset_path('final_results.png')
+
+%h3 Most Prolific
+%p Most check-ins by any individual
+%p
+  - player = Player.find(29) # Joshua "Billy" Dover
+  %b= link_to player.name, player
+  of
+  = link_to player.team_name, player.team # Monkey Steve
+  with 35 Checkins
+
+%h3 Fastest Checkin
+%p
+  - checkin = Checkin.find(118)
+  %b= link_to "8.9 seconds", checkin
+  (sounds fishy to me) between
+  - location = Location.find(47) # Burger Bowl #5
+  = link_to location.name, location
+  (The Bench)
+  and
+  - location = Location.find(46) # Burger Bowl #4
+  = link_to location.name, location
+  (The Shed), both by
+  - player = Player.find(54) # Adam "Yenruhc" Churney
+  = link_to player.name, player
+  of
+  = link_to player.team_name, player.team # Cixelsyd Maet
+  Puzzle: Burger Bowl Orienteering Challenge
+
+%h3 Fastest Checkin Outside Burger Bowl
+%p (also excluding Mother, thanks to the manual checkins from Salon Modelo)
+%p
+  - checkin = Checkin.find(249)
+  %b= link_to "118.6 seconds", checkin
+  (just under 2 minutes) between
+  - location = Location.find(29) # Colbeh
+  = link_to location.name, location
+  and
+  - location = Location.find(13) # Paper Plane
+  = link_to location.name, location
+  by
+  - player = Player.find(29) # Joshua "Billy" Dover
+  = link_to player.name, player
+  of
+  = link_to player.team_name, player.team # Monkey Steve
+%p
+  Puzzle:
+  - puzzle = Puzzle.find(14) # Fold Here
+  = link_to puzzle.name, puzzle
+
+%h3 Second Fastest (like above)
+%p 
+  - checkin = Checkin.find(391)
+  %b= link_to "128.9 seconds", checkin
+  (just over two minutes) between
+  = link_to checkin.location_name, checkin.location
+  and
+  = link_to checkin.previous.location_name, checkin.previous.location
+  by
+  - player = checkin.previous.player
+  = link_to player.name, player
+  and
+  - player = checkin.player
+  = link_to player.name, player
+  of
+  = link_to player.team_name, player.team
+  Puzzle:
+  = link_to checkin.solved_puzzle_name, checkin.solved_puzzle
+
+%h3 Slowest Checkin
+%p
+  - checkin = Checkin.find(256)
+  %b= link_to "4.37 hours", checkin
+  between
+  = link_to checkin.location_name, checkin.location
+  and
+  = link_to checkin.previous.location_name, checkin.previous.location
+  by
+  - player = checkin.previous.player
+  = link_to player.name, player
+  and
+  - player = checkin.player
+  = link_to player.name, player
+  of
+  = link_to player.team_name, player.team
+  Puzzle: Flag Football, then
+  = link_to checkin.solved_puzzle_name, checkin.solved_puzzle
+
+%h3 Slowest Checkin By A Team Not Distracted By Flag Football
+%p
+3.35 hours between spinArella and Tanyard Creek Park, both by Clay "Papa Bear” Proctor of Team I'm not a gynecologist per se...
+Puzzle: 1979 TV Commercial
+
+%h3 Favorite Puzzle
+%p By near-universal acclamation
+%p
+  - puzzle = Puzzle.find(8)
+  %b= link_to puzzle.name, puzzle
+%div= link_to image_tag('tribal_conflict_plaque.jpeg', alt: 'Tribal Conflict Plaque', size: '400x400'), asset_path('tribal_conflict_plaque.jpeg')
+
+
+%h3 Hardest Puzzle
+%p Measured by cumulative time spent across all teams between the previous checkin and the checkin at the end of this puzzle
+%p
+  - puzzle = Puzzle.find(3)
+  %b= link_to puzzle.name, puzzle
+  with a total of 19.2 team-hours
+
+%h3 Easiest Puzzle
+%p Same measurement as above
+%p
+  - puzzle = Puzzle.find(37)
+  %b= link_to puzzle.name, puzzle
+  with a total of 0.44 team-hours
+
+%h3 Easiest Non-Burger-Bowl Puzzle
+%p Same measurement as above
+%p
+  - puzzle = Puzzle.find(40)
+  %b= link_to puzzle.name, puzzle
+  (a.k.a. “Kanye West Egg”) with a total of 1.98 team-hours
+
+%h3 Most Evil Puzzle
+%p As measured by the most cumulative penalties assigned across all teams
+%p
+  - puzzle = Puzzle.find(1)
+  %b= link_to puzzle.name, puzzle
+  with a total of 440 minutes in penalties
+
+%p
+  Runner up:
+  - puzzle = Puzzle.find(26)
+  %b= link_to puzzle.name, puzzle
+  with a total of 250 minutes in penalties
+
+%h3 Least Evil While Still Being Somewhat Evil Puzzle
+%p As measured by the least cumulative penalties, though excluding puzzles with no penalties
+%p
+  - puzzle = Puzzle.find(16)
+  %b= link_to puzzle.name, puzzle
+  (a.k.a. Periodic Table) with 5 minutes in penalties
+
+%h3 Totally Benign Puzzles
+%p Puzzles that incurred no penalties for any team, ever
+%ul
+  - puzzle = Puzzle.find(27)
+  %li= link_to puzzle.name, puzzle
+  - puzzle = Puzzle.find(19)
+  %li= link_to puzzle.name, puzzle
+  %li Burger Bowl Orienteering Cluster
+
+%h3 Most Ass-Kissingest Team
+%p
+  As measured by most total bonuses awarded
+  - team = Team.find(3)
+  %b= link_to team.name, team
+  with 140 minutes in bonuses (or “bonii”)
+
+%h3 Most “Special” Team
+%p As measured by most total penalties awarded
+%p
+  - team = Team.find(5)
+  %b= link_to team.name, team
+  with 240 minutes in penalties
