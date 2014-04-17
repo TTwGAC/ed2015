@@ -24,11 +24,11 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if current_player.team_name == 'Game Control'
-      '/'
-    elsif current_player.team.playing?
+      current_player_path
+    elsif current_player.team.playing? && Game.instance.status == 'running'
       '/dashboard'
     else
-      '/'
+      current_player_path
     end
   end
 
