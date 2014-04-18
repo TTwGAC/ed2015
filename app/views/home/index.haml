@@ -12,6 +12,9 @@
     .row
       .span-6{style: 'padding-top: 20px; min-width: 555px'}
         %h3 GAC is Over! Thanks for playing.
+        %ul
+          %li= link_to 'Final Game Results & Statistics', page_path('results')
+          %li= link_to 'Radio GAC Archives', page_path('radio_gac')
       .span-6
         %ul#clock.med
           /%li#sec
