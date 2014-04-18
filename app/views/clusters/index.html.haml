@@ -12,8 +12,9 @@
         %td= link_to cluster.name, cluster
         %td= cluster.sequence
         %td= cluster.color.capitalize
-%br/
-= link_to 'New Cluster', new_cluster_path
+- if can? :manage, Cluster
+  %br/
+  = link_to 'New Cluster', new_cluster_path
 
 :javascript
   $("#clusters").stupidtable();
