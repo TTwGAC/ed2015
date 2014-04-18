@@ -32,7 +32,7 @@
             %img.navicon{src: asset_path('glyphicons/043_group.png')}
             Teams
         %li
-          = link_to page_path('post_game') do
+          = link_to page_path('results') do
             %img.navicon{src: asset_path('glyphicons/074_cup.png')}
             Game Results
     - if player_signed_in? || can?(:read, :all)
