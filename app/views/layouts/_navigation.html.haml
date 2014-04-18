@@ -31,7 +31,11 @@
           = link_to '/teams' do
             %img.navicon{src: asset_path('glyphicons/043_group.png')}
             Teams
-    - if player_signed_in?
+        %li
+          = link_to page_path('post_game') do
+            %img.navicon{src: asset_path('glyphicons/074_cup.png')}
+            Game Results
+    - if player_signed_in? || can?(:read, :all)
       %li.dropdown
         %a.dropdown-toggle{href: '#', 'data-toggle' => 'dropdown'}
           Player Information
@@ -53,7 +57,7 @@
             = link_to page_path('required_items') do
               %img.navicon{src: asset_path('glyphicons/029_notes_2.png')}
               Required Items
-      - if can? :manage, :all
+      - if can? :read, :all
         %li.dropdown.admin-only
           %a.dropdown-toggle{href: '#', "data-toggle" => 'dropdown'}
             Game Setup
@@ -93,10 +97,6 @@
             %b.caret
           %ul.dropdown-menu
             %li
-              = link_to page_path('pregame_dashboard') do
-                %img.navicon{src: asset_path('glyphicons/331_dashboard.png')}
-                Dashboard
-            %li
               = link_to checkins_path do
                 %img.navicon{src: asset_path('glyphicons/258_qrcode.png')}
                 Checkins
@@ -104,10 +104,11 @@
               = link_to penalties_path do
                 %img.navicon{src: asset_path('glyphicons/055_stopwatch.png')}
                 Penalties
-            %li
-              = link_to messages_path do
-                %img.navicon{src: asset_path('glyphicons/336_iphone_shake.png')}
-                Messaging
+            - if can? :manage, :all
+              %li
+                = link_to messages_path do
+                  %img.navicon{src: asset_path('glyphicons/336_iphone_shake.png')}
+                  Messaging
       - else
         %li
           - if current_player.team_name == 'Observers'

@@ -12,4 +12,5 @@
         %td= link_to redirect.token, edit_redirect_path(redirect)
         %td= link_to redirect.destination_url, redirect.destination_url
 %br/
-= link_to 'New Redirect', new_redirect_path
+- if can? :manage, Redirect
+  = link_to 'New Redirect', new_redirect_path

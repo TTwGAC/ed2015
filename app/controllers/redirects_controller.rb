@@ -1,5 +1,5 @@
 class RedirectsController < ApplicationController
-  before_filter :authenticate_player!
+  before_filter :authenticate_player_unless_game_closed
   before_filter do
     params[:redirect] &&= redirect_params
   end

@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-  before_filter :authenticate_player!
+  before_filter :authenticate_player_unless_game_closed
   before_filter do
     params[:location] &&= location_params
   end
