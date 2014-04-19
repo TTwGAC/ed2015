@@ -26,11 +26,17 @@ class ApplicationController < ActionController::Base
     if current_player.team.playing? && Game.instance.status == 'running'
       '/dashboard'
     else
-      sign_in_url = url_for(:action => 'new', :controller => 'sessions', :only_path => false, :protocol => 'http')
-      if request.referer == sign_in_url
-        super
+      if request.env['omniauth.origin']
+        # Handle OAuth login
+        '/'
       else
-        stored_location_for(resource) || request.referer || root_path
+        # Standard login
+        sign_in_url = url_for(:action => 'new', :controller => 'sessions', :only_path => false, :protocol => 'http')
+        if request.referer == sign_in_url
+          super
+        else
+          stored_location_for(resource) || request.referer || root_path
+        end
       end
     end
   end
