@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe GamesController do
+describe GameController do
   describe "routing" do
 
     it "routes to #index" do
