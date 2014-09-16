@@ -58,6 +58,3 @@ class Location < ActiveRecord::Base
     false
   end
 end
-
-# Reset the DB
-load "#{Rails.root}/db/seeds.rb"
