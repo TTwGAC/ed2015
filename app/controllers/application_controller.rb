@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
 
   def event(action, subject, subject_id = nil, extra = {})
     if extra[:params] && !extra.has_key?(:description)
-      extra[:description] = params.collect{|k,v| "#{k}: #{v}" }.join(", ")
+      extra[:description] = extra[:params].collect{|k,v| "#{k}: #{v}" }.join(", ")
     end
     player = signed_in? ? current_player : Player.first
     Event.create! player: player, subject: subject, subject_id: subject_id, action: action, description: extra[:description]
