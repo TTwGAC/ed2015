@@ -11,7 +11,7 @@ describe Team do
   end
 
   it "should create a random team secret on creation" do
-    t = Team.create! name: 'random team secret test'
+    t = Team.create! name: 'random team secret test', phone: '+14045551234'
     t.reload
     t.token.should_not be_empty
   end
