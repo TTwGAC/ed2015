@@ -65,7 +65,9 @@ gem 'unicorn'
 gem 'airbrake'
 
 # Heroku
-gem 'rails_12factor'
+group :production do
+  gem 'rails_12factor'
+end
 
 # Used to spread messages across a bank of phone numbers
 gem 'consistent-hashing'
