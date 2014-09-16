@@ -72,7 +72,8 @@ end
 # Used to spread messages across a bank of phone numbers
 gem 'consistent-hashing'
 
-group :development do
+group :development, :test do
+  gem 'dotenv'
   gem 'sqlite3'
   gem 'pry-rails'
   gem 'pry-debugger'
