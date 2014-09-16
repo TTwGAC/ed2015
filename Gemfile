@@ -59,9 +59,6 @@ gem 'unicorn'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-# gem 'debugger'
-
 gem 'airbrake'
 
 # Heroku
@@ -76,7 +73,6 @@ group :development, :test do
   gem 'dotenv'
   gem 'sqlite3'
   gem 'pry-rails'
-  gem 'pry-debugger'
   gem 'pry-doc'
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -88,5 +84,4 @@ group :development, :test do
   gem 'guard-rspec'
   gem "letter_opener"
   gem 'terminal-notifier-guard'
-  gem 'dotenv'
 end
