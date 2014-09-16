@@ -1,11 +1,9 @@
 require 'spec_helper'
 
 describe ApplicationController do
+  include ControllerSpecMixin
   before :each do
-    @request.env["devise.mapping"] = Devise.mappings[:player]
-    @current_player = FactoryGirl.build(:player)
-    @current_player.confirm!
-    sign_in @current_player
+    sign_in_as :player
   end
 
   describe '#event' do
