@@ -36,7 +36,7 @@ module ApplicationHelper
     src =  URI.parse "http://www.youtube.com/embed"
     params = {
       'autoplay' => 0,
-      'origin' => 'http://gac2014.com'
+      'origin' => 'http://gac2015.com'
     }
     case options[:type]
     when :videolist

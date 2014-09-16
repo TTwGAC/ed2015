@@ -1,6 +1,6 @@
 class TeamMailer < ActionMailer::Base
-  default from: "noreply@gac2014.com"
-  SUBJECT_TAG = '[GAC2014]'
+  default from: "noreply@gac2015.com"
+  SUBJECT_TAG = '[GAC2015]'
 
   def notify_team_created(player, team, recipient)
     @player, @team, @recipient = player, team, recipient

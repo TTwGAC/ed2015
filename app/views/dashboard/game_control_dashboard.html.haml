@@ -5,7 +5,7 @@
     %meta{:charset => "utf-8"}
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
     %meta{'http-equiv' => 'refresh', content: '30'}
-    %title= content_for?(:title) ? yield(:title) : "Get A Clue 2014"
+    %title= content_for?(:title) ? yield(:title) : "Get A Clue #{t :year}"
     %meta{:content => "", :name => "description"}
     %meta{:content => "", :name => "author"}
     = stylesheet_link_tag "application", :media => "all"
@@ -49,9 +49,9 @@
               .row-fluid#title_bar
                 .span9.title
                   %h1
-                    Get-A-Clue 2014
+                    Get-A-Clue #{t :year}
                     &nbsp;
-                    = image_tag 'logo.png', size: '64x64'
+                    = image_tag 't3qaRsLo.jpeg', size: '64x64'
                 .span3#clock_dash
                   Game Clock
                   #game_clock
