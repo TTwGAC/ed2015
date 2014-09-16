@@ -47,8 +47,6 @@ RSpec.configure do |config|
   end
 end
 
-FactoryGirl.find_definitions
-
 require 'location'
 class Location < ActiveRecord::Base
   def geocode?
