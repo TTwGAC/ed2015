@@ -36,10 +36,10 @@ ben.team = game_control
 ben.skip_confirmation!
 ben.save!
 
-alicia = Player.new first_name: "Alicia",
-  last_name: "Cardillo",
-  nickname: "Leonetta",
-  email: "alicia.cardillo@gmail.com",
+alicia = Player.new first_name: "Alex",
+  last_name: "Bowers",
+  nickname: "woot",
+  email: "alexandra.bowers@gmail.com",
   password: "abcdefg", # CHANGE THIS!
   phone: '14045551236'
 alicia.team = game_control
