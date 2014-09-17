@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  # TODO: This really should be converted to be a polymorphic model
+  # See Document for an example
   validates_presence_of :player_id, :subject, :action
   belongs_to :player
 end

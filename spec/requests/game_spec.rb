@@ -1,9 +1,25 @@
 require 'spec_helper'
 
-describe "Games" do
+describe GameController, type: :controller do
+  include ControllerSpecMixin
+
   describe "GET /game" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
+    it "redirect access to unauthenticated players" do
+      get game_path
+      response.status.should be(302)
+    end
+
+    it "deny access to authenticated, non-admin players" do
+      pending "Devise sign_in for request specs seems broken"
+      sign_in_as :player
+      get game_path
+      response.status.should be(401)
+    end
+
+
+    it "allows access to authenticated admins" do
+      pending "Devise sign_in for request specs seems broken"
+      sign_in_as :admin
       get game_path
       response.status.should be(200)
     end

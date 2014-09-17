@@ -32,6 +32,7 @@ describe Checkin do
 
   before :each do
     FactoryGirl.reload
+    Checkin.delete_all
     [locA, locB, locC, locD, player] # Instantiate
     player.team.location = player.team.current_puzzle = nil
   end
@@ -130,20 +131,26 @@ describe Checkin do
 
       it %q{should select a puzzle from any location without a checkin in the current cluster} do
         Checkin.find_or_create player: player, location: locD
-        Checkin.find_or_create player: player, location: locC
-        checkin = Checkin.new player: player, location: locA
-        checkin.valid?.should be true # populate checkin fields
+        c1 = Checkin.find_or_create player: player, location: locC
+        c2 = Checkin.new player: player, location: c1.next_puzzle.destination
+        c2.valid?.should be true # populate checkin fields
 
-        checkin.next_puzzle.should == locB.destination_for_puzzle
+        # Check that the selected next puzzle is one of the 2 possibilities
+        [locB, locA].map(&:destination_for_puzzle).include?(c2.next_puzzle).should be true
       end
 
       it %q{should not include any location that has no puzzle} do
-        Checkin.find_or_create player: player, location: locD
-        locC.destination_for_puzzle = nil
-        checkin = Checkin.new player: player, location: locA
-        checkin.valid?.should be true # populate checkin fields
+        # A: No Puzzle
+        # B: Valid
+        # C: checkin2
+        # D: checkin1
+        locA.destination_for_puzzle = nil
+        locA.save!
+        checkin1 = Checkin.find_or_create player: player, location: locD
+        checkin2 = Checkin.new player: player, location: checkin1.next_puzzle.destination
+        checkin2.valid?.should be true # populate checkin fields
 
-        checkin.next_puzzle.should == locB.destination_for_puzzle
+        checkin2.next_puzzle.should == locB.destination_for_puzzle
       end
 
     end
@@ -171,10 +178,10 @@ describe Checkin do
 
   describe '#previous' do
     it %q{should return the previous checkin for the given team} do
-      c = Checkin.find_or_create player: player, location: locC
-      b = Checkin.find_or_create player: player, location: locB
-      a = Checkin.find_or_create player: player, location: locA
-      a.previous.should == b
+      d = Checkin.find_or_create player: player, location: locD
+      c = Checkin.find_or_create player: player, location: d.next_puzzle.destination
+      b = Checkin.find_or_create player: player, location: c.next_puzzle.destination
+      b.previous.should == c
     end
 
     it %q{should return nil if there is no previous checkin} do

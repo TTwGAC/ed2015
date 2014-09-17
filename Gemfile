@@ -59,21 +59,20 @@ gem 'unicorn'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-# gem 'debugger'
-
 gem 'airbrake'
 
 # Heroku
-gem 'rails_12factor'
+group :production do
+  gem 'rails_12factor'
+end
 
 # Used to spread messages across a bank of phone numbers
 gem 'consistent-hashing'
 
-group :development do
+group :development, :test do
+  gem 'dotenv'
   gem 'sqlite3'
   gem 'pry-rails'
-  gem 'pry-debugger'
   gem 'pry-doc'
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -81,9 +80,8 @@ group :development do
   gem 'erb2haml'
   gem 'html2haml'
   gem 'rspec-rails'
-  gem 'factory_girl_rails', require: false
+  gem 'factory_girl_rails'
   gem 'guard-rspec'
   gem "letter_opener"
   gem 'terminal-notifier-guard'
-  gem 'dotenv'
 end

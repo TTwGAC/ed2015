@@ -31,7 +31,6 @@ describe CheckinsController do
 
   it %q{should set the current team's location to the found location} do
     subject.current_player.team_location.should be nil
-    Location.should_receive(:where).once.and_return [locA]
     get :new, t: locA.token
     subject.current_player.team_location.should == locA
   end

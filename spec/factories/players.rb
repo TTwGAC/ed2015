@@ -17,7 +17,7 @@ FactoryGirl.define do
     nickname "Backslash"
     email "flip@nelson.com"
     password "asdfghjl"
-    association :team, factory: :team
+    team
     phone '14045551235'
   end
 

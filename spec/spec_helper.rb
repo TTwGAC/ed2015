@@ -20,9 +20,6 @@ RSpec.configure do |config|
   # config.mock_with :flexmock
   # config.mock_with :rr
 
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
@@ -50,13 +47,9 @@ RSpec.configure do |config|
   end
 end
 
-FactoryGirl.find_definitions
-
+require 'location'
 class Location < ActiveRecord::Base
   def geocode?
     false
   end
 end
-
-# Reset the DB
-load "#{Rails.root}/db/seeds.rb"
