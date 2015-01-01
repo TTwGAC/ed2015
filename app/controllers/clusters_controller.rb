@@ -51,7 +51,7 @@ class ClustersController < ApplicationController
 
     respond_to do |format|
       if @cluster.save
-        format.html { redirect_to @cluster, notice: 'Cluster was successfully created.' }
+        format.html { redirect_to @cluster, flash: { success: 'Cluster was successfully created.' } }
         format.json { render json: @cluster, status: :created, location: @cluster }
       else
         format.html { render action: "new" }
@@ -67,7 +67,7 @@ class ClustersController < ApplicationController
 
     respond_to do |format|
       if @cluster.update_attributes(cluster_params)
-        format.html { redirect_to @cluster, notice: 'Cluster was successfully updated.' }
+        format.html { redirect_to @cluster, flash: { success: 'Cluster was successfully updated.' } }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

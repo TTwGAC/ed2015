@@ -50,7 +50,7 @@ class RedirectsController < ApplicationController
 
     respond_to do |format|
       if @redirect.save
-        format.html { redirect_to @redirect, notice: 'Redirect was successfully created.' }
+        format.html { redirect_to @redirect, flash: { success: 'Redirect was successfully created.' } }
         format.json { render json: @redirect, status: :created, location: @redirect }
       else
         format.html { render action: "new" }
@@ -66,7 +66,7 @@ class RedirectsController < ApplicationController
 
     respond_to do |format|
       if @redirect.update_attributes(redirect_params)
-        format.html { redirect_to @redirect, notice: 'Redirect was successfully updated.' }
+        format.html { redirect_to @redirect, flash: { success: 'Redirect was successfully updated.' } }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

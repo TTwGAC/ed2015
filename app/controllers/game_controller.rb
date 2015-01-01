@@ -31,7 +31,7 @@ class GameController < ApplicationController
 
     respond_to do |format|
       if @game.update_attributes(game_params)
-        format.html { redirect_to game_path, notice: 'Game was successfully updated.' }
+        format.html { redirect_to game_path, flash: { success: 'Game was successfully updated.' } }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

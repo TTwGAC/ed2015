@@ -21,7 +21,7 @@ class JoinAttemptsController < ApplicationController
     @join_attempt = JoinAttempt.new params[:join_attempt]
     if @join_attempt.save!
       event "create", :join_attempt, nil, description: "#{current_player.name} has joined team #{current_player.team_name}"
-      flash[:notice] = "You have successfully joined this team!"
+      flash[:success] = "You have successfully joined this team!"
       redirect_to team_path(@join_attempt.team_id)
     else
       flash[:error] = "Unable to join team: Invalid token"

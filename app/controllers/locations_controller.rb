@@ -55,7 +55,7 @@ class LocationsController < ApplicationController
     respond_to do |format|
       if @location.save
         event "create", :location, @location.id, description: "#{current_player.name} created new location #{@location.name}"
-        format.html { redirect_to @location, notice: 'Location was successfully created.' }
+        format.html { redirect_to @location, flash: { success: 'Location was successfully created.' } }
         format.json { render json: @location, status: :created, location: @location }
       else
         format.html { render action: "new" }
@@ -72,7 +72,7 @@ class LocationsController < ApplicationController
     respond_to do |format|
       if @location.update_attributes(location_params)
         event "update", :location, @location.id, description: "#{current_player.name} updated the details for #{@location.name}"
-        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
+        format.html { redirect_to @location, flash: { success: 'Location was successfully updated.' } }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

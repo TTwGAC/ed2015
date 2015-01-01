@@ -64,7 +64,7 @@ class TeamsController < ApplicationController
           mailer.deliver!
         end
 
-        format.html { redirect_to @team, notice: 'Team was successfully created.' }
+        format.html { redirect_to @team, flash: { success: 'Team was successfully created.' } }
         format.json { render json: @team, status: :created, location: @team }
       else
         format.html { render action: "new" }
@@ -81,7 +81,7 @@ class TeamsController < ApplicationController
     respond_to do |format|
       if @team.update_attributes(team_params)
         event "update", :team, @team.id, description: "#{current_player.name} updated the information for team #{@team.name}"
-        format.html { redirect_to @team, notice: 'Team was successfully updated.' }
+        format.html { redirect_to @team, flash: { success: 'Team was successfully updated.' } }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

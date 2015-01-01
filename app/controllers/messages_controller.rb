@@ -48,7 +48,7 @@ class MessagesController < ApplicationController
     @message.sender = current_player
 
     if @message.save
-      redirect_to @message, notice: 'Message was successfully created.'
+      redirect_to @message, flash: { success: 'Message was successfully created.' }
     else
       get_destinations
       render action: 'new'
@@ -58,7 +58,7 @@ class MessagesController < ApplicationController
   # PATCH/PUT /messages/1
   def update
     if @message.update(message_params.merge(sender: current_player))
-      redirect_to @message, notice: 'Message was successfully updated.'
+      redirect_to @message, flash: { success: 'Message was successfully updated.' }
     else
       render action: 'edit'
     end
@@ -104,7 +104,7 @@ class MessagesController < ApplicationController
       redirect_to messages_url, alert: 'Sent messages may not be deleted'
     else
       @message.destroy
-      redirect_to messages_url, notice: 'Message was successfully destroyed.'
+      redirect_to messages_url, flash: { success: 'Message was successfully deleted.' }
     end
   end
 
