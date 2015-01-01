@@ -9,7 +9,7 @@ class PuzzlesController < ApplicationController
   # GET /puzzles
   # GET /puzzles.json
   def index
-    @puzzles = Puzzle.find(:all, order: 'name')
+    @puzzles = Puzzle.order :name
 
     respond_to do |format|
       format.html # index.html.erb

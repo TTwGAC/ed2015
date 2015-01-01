@@ -9,7 +9,7 @@ class ClustersController < ApplicationController
   # GET /clusters
   # GET /clusters.json
   def index
-    @clusters = Cluster.find(:all, order: 'sequence')
+    @clusters = Cluster.order :sequence
 
     respond_to do |format|
       format.html # index.html.erb
