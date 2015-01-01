@@ -34,7 +34,7 @@ class JoinAttemptsController < ApplicationController
     observers = Team.where(name: 'Observers').first
     current_player.team = observers
     current_player.save!
-    event "create", :join_attempt, nil, description: "#{current_player.name} has left team #{current_player.team_name}"
+    event "create", :join_attempt, nil, description: "#{current_player.name} has left team #{old_team.name} for #{current_player.team_name}"
     redirect_to root_path
   end
 end
