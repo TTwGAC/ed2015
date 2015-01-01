@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby '2.1.0'
+ruby '2.1.5'
 
-gem 'rails', '4.0.4'
+gem 'rails', '4.1.8'
 gem 'pg'
 
 # Model plugins
@@ -37,7 +37,7 @@ gem 'koala', '~> 1.7.0rc1'
 
 # File storage
 gem 'carrierwave'
-gem 'fog', '~> 1.3.1'
+gem 'fog'
 gem 'cloudinary'
 gem 'phony_rails'
 
@@ -80,7 +80,7 @@ group :development, :test do
   gem 'erb2haml'
   gem 'html2haml'
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  #gem 'factory_girl_rails'
   gem 'guard-rspec'
   gem "letter_opener"
   gem 'terminal-notifier-guard'
