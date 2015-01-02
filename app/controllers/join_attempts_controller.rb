@@ -1,11 +1,15 @@
 class JoinAttemptsController < ApplicationController
+  before_filter do
+    session[:team_invitation_token] = params[:token] if params[:token]
+  end
+
   before_filter :authenticate_player!
   load_and_authorize_resource
 
   def new
-    if params[:token]
-      params[:join_attempt] = {}
-      params[:join_attempt][:token] = params.delete :token
+    token = params.delete(:token) || session.delete(:team_invitation_token)
+    if token
+      params[:join_attempt] = { token: token }
       create
     else
       @join_attempt = JoinAttempt.new
@@ -30,7 +34,7 @@ class JoinAttemptsController < ApplicationController
   end
 
   def destroy
-    old_team = current_player.team_name
+    old_team = current_player.team
     observers = Team.where(name: 'Observers').first
     current_player.team = observers
     current_player.save!

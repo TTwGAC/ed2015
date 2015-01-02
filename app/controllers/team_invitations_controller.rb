@@ -19,7 +19,7 @@ class TeamInvitationsController < ApplicationController
     if @ti.save
       event "create", :team_invitation, @ti.id, description: "#{current_player.name} invited #{invite_params[:email]} to join team #{invite_params[:team].name}"
       flash[:success] = "Invitation sent to #{invite_params[:email]}"
-      mailer = TeamMailer.invitation_to_join current_player, current_player.team, invite_params[:email]
+      mailer = TeamMailer.invitation_to_join current_player, @ti, invite_params[:email]
       mailer.deliver
       redirect_to team_path(current_player.team)
     else

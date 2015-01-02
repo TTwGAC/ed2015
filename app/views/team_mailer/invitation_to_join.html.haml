@@ -4,19 +4,19 @@
   %body
     %h1
       You have been invited to join team
-      = @team.name
+      = @invitation.team_name
     %p
       A member of the team,
       = @player.first_name
       = @player.last_name
       has invited you to join
-      = @team.name
+      = @invitation.team_name
       !
     %p
       To join the team, simply
-      = link_to "click this link", new_join_attempt_url(token: @team.token)
+      = link_to "click this link", new_join_attempt_url(token: @invitation.token)
     %p
       Having trouble with the link? You can also use this token to join the team:
-      = @team.token
+      = @invitation.token
     %p
       See you in the game!

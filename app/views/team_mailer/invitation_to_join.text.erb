@@ -1,11 +1,11 @@
-You have been invited to join team <%= @team.name %>
+You have been invited to join team <%= @invitation.team_name %>
 
-A member of the team, <%= @player.name %>, has invited you to join <%= @team.name %>!
+A member of the team, <%= @player.name %>, has invited you to join <%= @invitation.team_name %>!
 
 To join the team, simply click on this link:
-<%= new_join_attempt_url token: @team.token %>
+<%= new_join_attempt_url token: @invitation.token %>
 
 Having trouble with the link? You can also use this token to join the team:
-<%= @team.token %>
+<%= @invitation.token %>
 
 See you in the game!
