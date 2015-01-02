@@ -31,6 +31,8 @@ class JoinAttemptsController < ApplicationController
       redirect_to team_path(@join_attempt.team_id)
     else
       flash[:error] = "Unable to join team: Invalid token"
+      @join_attempt ||= JoinAttempt.new
+      @team ||= Team.new
       render 'new'
     end
   end
