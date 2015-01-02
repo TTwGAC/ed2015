@@ -7,8 +7,10 @@ class JoinAttemptsController < ApplicationController
   load_and_authorize_resource
 
   def new
-    token = params.delete(:token) || session.delete(:team_invitation_token)
+    token = params.delete(:token) || session[:team_invitation_token]
     if token
+      # session #delete doesn't work: https://www.ruby-forum.com/topic/103267
+      session[:team_invitation_token] = nil
       params[:join_attempt] = { token: token }
       create
     else
