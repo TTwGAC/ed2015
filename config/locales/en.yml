@@ -2,4 +2,19 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  title: 'Get A Clue'
+  tag_line: 'Take It To The Limit!'
+  year: '2015'
+
+  #media
+  twitter: '@GAC2015'
+  twitter_link: 'https://twitter.com/GAC2015'
+  fb_link: 'https://www.facebook.com/GAC2015'
+
+  #contact us
+  gc_contact_phone: '404.555.1234'
+
+  #payment info
+  payment_email: 'payme@ahsfsjhdf.com'
+
+

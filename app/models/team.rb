@@ -67,7 +67,7 @@ class Team < ActiveRecord::Base
 
   def calculate_final_score
     # FIXME: Convert these two pieces of information into Game settings
-    start_time = Time.mktime(2014, 4, 12, 8, 0, 0)
+    start_time = Time.mktime(2015, 4, 11, 8, 0, 0)
     last_puzzle = Puzzle.find 42 # End Of Game!
 
     last_checkin = Checkin.where(team: self, next_puzzle: last_puzzle).first

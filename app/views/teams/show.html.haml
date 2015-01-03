@@ -19,7 +19,7 @@
       = link_to 'How to pay entrance fee', page_path('payments')
     - unless @team.active
       | Not Active -
-      = link_to 'contact Game Control', 'http://www.facebook.com/GetAClue2014'
+      = link_to 'contact Game Control', :fb_link
   - unless @team.paid
     %p
 

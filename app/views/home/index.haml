@@ -2,34 +2,27 @@
 - javascript 'jquery.countdown.js'
 
 %h2
-  Welcome to Get A Clue 2014
+  #{t :title} - #{t :tag_line}
 
 %h4
-  April 12, 2014
+  April 11, #{t :year}
 
 .row
   .span-6
     .row
       .span-6{style: 'padding-top: 20px; min-width: 555px'}
-        %h3 GAC is Over! Thanks for playing.
-        %ul
-          %li= link_to 'Final Game Results & Statistics', page_path('results')
-          %li= link_to 'Radio GAC Archives', page_path('radio_gac')
-      .span-6
-        %ul#clock.med
-          /%li#sec
-          %li#min
-          %li#hour
+        %h3 GAC is starting up! Game Control is on this. 
+        /%ul/%li= link_to 'Final Game Results & Statistics', page_path('results')/%li= link_to 'Radio GAC Archives', page_path('radio_gac')
+        .counter#counter 
+
 
     .row
       .span-12
         %h2 News
         %ul
-          %li= link_to 'Game Control completes a multi-hop trip, stopping in 1958 and 1858 - April 5, 2014', 'https://www.facebook.com/GetAClue2014/posts/779409692071489?stream_ref=1'
-          %li= link_to 'Game Control completes first successful round trip with human passengers - March 30, 2014', 'https://www.facebook.com/photo.php?fbid=777218645623927&set=a.659219530757173.1073741828.646190068726786&type=1&stream_ref=10'
-          %li= link_to 'Game Control announces functional time machine, accurate to within 1 decade - March 22, 2014', 'https://www.facebook.com/photo.php?v=772986119380513&set=vb.646190068726786&type=2&theater'
-          %li= link_to 'Game Control announces new research into time travel - March 15, 2014', 'https://www.facebook.com/photo.php?fbid=769508986394893&set=a.659219530757173.1073741828.646190068726786&type=1&stream_ref=10'
-          %li= link_to 'Professor Cardillo explains the basic mechanics of time travel - March 11, 2014', 'https://www.facebook.com/photo.php?fbid=766827623329696&set=a.659219530757173.1073741828.646190068726786&type=1&stream_ref=10'
+          %li= link_to 'A link to a news item can go here!', 'https://www.google.com'
+          %li= link_to 'Game Control Wants to Google that for you', 'http://lmgtfy.com/'
+          %li= link_to 'Everybody! Everybody!', 'http://www.homestarrunner.com/'
 
     .row
       .span-12
@@ -46,19 +39,19 @@
           Rules
         %br
         %br
-        = link_to 'https://www.facebook.com/GetAClue2014' do
+        = link_to t :fb_link do
           = image_tag 'facebook-f-25.png', size: '25x25'
           Like us on Facebook to get the latest
         %br
         %br
-        %a{href: "https://twitter.com/GetAClue2014", class: "twitter-follow-button", :"data-show-count" => "false", :"data-size" => "large"} Follow @GetAClue2014
+        %a{href: 'https://twitter.com/GAC2015', class: 'twitter-follow-button', :"data-show-count" => "false", :"data-size" => "large"} Follow #{t :twitter}
         :javascript
           !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
   .span-6
-    %div{class: "fb-like-box", :"data-href" => "https://www.facebook.com/GetAClue2014", :"data-width" => 292, :"data-height" => 225, :"data-show-faces" => "true", :"data-header" => "true", :"data-stream" => false, :"data-show-border" => "true"}
+    %div{class: 'fb-like-box', :"data-href" => :facebook_link, :"data-width" => 292, :"data-height" => 225, :"data-show-faces" => 'true', :"data-header" => 'true', :"data-stream" => false, :"data-show-border" => 'true'}
     %br
     %br
-    %div{style: "width: 292px"}
-      %a{class: "twitter-timeline", :"data-dnt" => "true", :href => "https://twitter.com/GetAClue2014", :"data-widget-id" => "397514452368506882", height: 250, width: 292}Tweets by @GetAClue2014
+    %div{style: 'width: 292px'}
+      %a{class: "twitter-timeline", :"data-dnt" => "true", :href => :twitter_link, :"data-widget-id" => '511729045222875136', height: 250, width: 292}Tweets by #{t :twitter}
       :javascript
         !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
