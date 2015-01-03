@@ -31,10 +31,11 @@
           = link_to '/teams' do
             %img.navicon{src: asset_path('glyphicons/043_group.png')}
             Teams
-        %li
-          = link_to page_path('results') do
-            %img.navicon{src: asset_path('glyphicons/074_cup.png')}
-            Game Results
+        - if Game.status == 'closed'
+          %li
+            = link_to page_path('results') do
+              %img.navicon{src: asset_path('glyphicons/074_cup.png')}
+              Game Results
     - if player_signed_in? || can?(:read, :all)
       %li.dropdown
         %a.dropdown-toggle{href: '#', 'data-toggle' => 'dropdown'}

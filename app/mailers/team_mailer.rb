@@ -7,9 +7,9 @@ class TeamMailer < ActionMailer::Base
     mail to: recipient.email, from: player.email, subject: "#{SUBJECT_TAG} New team created: #{team.name}"
   end
 
-  def invitation_to_join(player, team, recipient)
-    @player, @team, @recipient = player, team, recipient
-    mail to: recipient, from: player.email, subject: "#{SUBJECT_TAG} Invitation to join team #{team.name}"
+  def invitation_to_join(player, invitation, recipient)
+    @player, @invitation, @recipient = player, invitation, recipient
+    mail to: recipient, from: player.email, subject: "#{SUBJECT_TAG} Invitation to join team #{invitation.team_name}"
   end
 
   def notify_member_joined(joining_player, notified_player, team)

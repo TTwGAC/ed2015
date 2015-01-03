@@ -9,7 +9,7 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def index
-    @locations = Location.find(:all, order: 'name')
+    @locations = Location.order :name
 
     map_points = {}
 
@@ -55,7 +55,7 @@ class LocationsController < ApplicationController
     respond_to do |format|
       if @location.save
         event "create", :location, @location.id, description: "#{current_player.name} created new location #{@location.name}"
-        format.html { redirect_to @location, notice: 'Location was successfully created.' }
+        format.html { redirect_to @location, flash: { success: 'Location was successfully created.' } }
         format.json { render json: @location, status: :created, location: @location }
       else
         format.html { render action: "new" }
@@ -72,7 +72,7 @@ class LocationsController < ApplicationController
     respond_to do |format|
       if @location.update_attributes(location_params)
         event "update", :location, @location.id, description: "#{current_player.name} updated the details for #{@location.name}"
-        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
+        format.html { redirect_to @location, flash: { success: 'Location was successfully updated.' } }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -96,7 +96,7 @@ class LocationsController < ApplicationController
 
   def posters
     if params[:location_id] == 'all'
-      @locations = Location.all.order :name
+      @locations = Location.order :name
     elsif params[:location_id] == 'tarpit'
       # Special tarpit location
       @locations = [OpenStruct.new(name: '54 Columns', token: '77ab09c2f1928cd50b342958a1b2ba88')]

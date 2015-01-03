@@ -85,7 +85,7 @@ class CheckinsController < ApplicationController
     respond_to do |format|
       if @checkin
         event "create", :checkin, @checkin.id, description: "#{current_player.name} checked in for team #{@checkin.team_name} to #{@checkin.location_name}"
-        format.html { redirect_to '/dashboard', notice: 'Checkin was successfully created.' }
+        format.html { redirect_to '/dashboard', flash: { success: 'Checkin was successfully created.' } }
         format.json { render json: @checkin, status: :created, location: @checkin }
       else
         format.html { redirect_to checkins_url }
@@ -102,7 +102,7 @@ class CheckinsController < ApplicationController
     respond_to do |format|
       if @checkin.update_attributes(checkin_params)
         event "update", :checkin, @checkin.id, description: "#{current_player.name} updated the checkin details for #{@checkin.team_name}'s checkin to #{@checkin.location_name}"
-        format.html { redirect_to @checkin, notice: 'Checkin was successfully updated.' }
+        format.html { redirect_to @checkin, flash: { success: 'Checkin was successfully updated.' } }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

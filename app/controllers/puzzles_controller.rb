@@ -9,7 +9,7 @@ class PuzzlesController < ApplicationController
   # GET /puzzles
   # GET /puzzles.json
   def index
-    @puzzles = Puzzle.find(:all, order: 'name')
+    @puzzles = Puzzle.order :name
 
     respond_to do |format|
       format.html # index.html.erb
@@ -54,7 +54,7 @@ class PuzzlesController < ApplicationController
     respond_to do |format|
       if @puzzle.save
         event "create", :puzzle, @puzzle.id, description: "#{current_player.name} created new puzzle #{@puzzle.name}"
-        format.html { redirect_to @puzzle, notice: 'Puzzle was successfully created.' }
+        format.html { redirect_to @puzzle, flash: { success: 'Puzzle was successfully created.' } }
         format.json { render json: @puzzle, status: :created, location: @puzzle }
       else
         format.html { render action: "new" }
@@ -72,7 +72,7 @@ class PuzzlesController < ApplicationController
     respond_to do |format|
       if @puzzle.update_attributes(puzzle_params)
         event "update", :puzzle, @puzzle.id, description: "#{current_player.name} updated the details for puzzle #{@puzzle.name}"
-        format.html { redirect_to @puzzle, notice: 'Puzzle was successfully updated.' }
+        format.html { redirect_to @puzzle, flash: { success: 'Puzzle was successfully updated.' } }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

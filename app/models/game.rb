@@ -23,6 +23,10 @@ class Game < ActiveRecord::Base
     self.class.status_name(self.status)
   end
 
+  def self.method_missing(m, *args, &block)
+    instance.send m, *args, &block
+  end
+
 end
 
 # ## Schema Information

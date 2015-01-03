@@ -2,11 +2,11 @@
   = f.error_notification
   .form-inputs
     = f.input :name
-    = f.association :cluster, collection: Cluster.find(:all, order: 'name')
+    = f.association :cluster, collection: Cluster.order(:name)
     = f.input :permission_received
     = f.input :open_time
     = f.input :close_time
-    = f.association :next_puzzle, collection: Puzzle.find(:all, order: 'name'), hint: "Creates a puzzle sequence. Use only when a puzzle must be started from this location, like when a physical clue is picked up."
+    = f.association :next_puzzle, collection: Puzzle.order(:name), hint: "Creates a puzzle sequence. Use only when a puzzle must be started from this location, like when a physical clue is picked up."
     %div.button_controlled_box
       %div#location_selector{class: 'btn-group'}
         %button.btn.active{type: 'button', value: 'address'} Address
