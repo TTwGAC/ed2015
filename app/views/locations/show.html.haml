@@ -1,4 +1,7 @@
 - javascript 'gmaps4rails.js'
+- if @game.status_name is 'pregame'
+  = render partial: 'setup_menu'
+
 = render partial: '/locations/map', locals: {map_data: @location.to_gmaps4rails}
 %h2= @location.name
 %p
