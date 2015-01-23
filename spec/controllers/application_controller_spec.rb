@@ -1,22 +1,32 @@
 require 'spec_helper'
 
 describe ApplicationController do
+  include ControllerSpecMixin
   before :each do
-    @request.env["devise.mapping"] = Devise.mappings[:player]
-    @current_player = FactoryGirl.build(:player)
-    @current_player.confirm!
-    sign_in @current_player
+    sign_in_as :player
   end
 
   describe '#event' do
+    after(:each) { Event.delete_all }
+
     it %q{should create a new event} do
-      Event.should_receive(:create).once.with(player: @current_player, action: 'foo', subject: 'bar', subject_id: 1, description: 'test')
-      event 'foo', 'bar', 1, description: 'test'
+      subject.event 'foo', 'bar', 1, description: 'test'
+      e = Event.first
+      e.player.should == subject.current_player
+      e.action.should == 'foo'
+      e.subject.should == 'bar'
+      e.subject_id.should == 1
+      e.description.should == 'test'
     end
 
     it %q{should create a description based on supplied params} do
-      Event.should_receive(:create).once.with(player: @current_player, action: 'foo', subject: 'bar', subject_id: 1, description: 'a: bc, d: ef')
-      event 'foo', 'bar', 1, params: {'a' => 'bc', 'd' => 'ef'}
+      subject.event 'foo', 'bar', 1, params: {'a' => 'bc', 'd' => 'ef'}
+      e = Event.first
+      e.player.should == subject.current_player
+      e.action.should == 'foo'
+      e.subject.should == 'bar'
+      e.subject_id.should == 1
+      e.description.should == 'a: bc, d: ef'
     end
   end
 end

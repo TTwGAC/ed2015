@@ -1,11 +1,17 @@
 class JoinAttemptsController < ApplicationController
+  before_filter do
+    session[:team_invitation_token] = params[:token] if params[:token]
+  end
+
   before_filter :authenticate_player!
   load_and_authorize_resource
 
   def new
-    if params[:token]
-      params[:join_attempt] = {}
-      params[:join_attempt][:token] = params.delete :token
+    token = params.delete(:token) || session[:team_invitation_token]
+    if token
+      # session #delete doesn't work: https://www.ruby-forum.com/topic/103267
+      session[:team_invitation_token] = nil
+      params[:join_attempt] = { token: token }
       create
     else
       @join_attempt = JoinAttempt.new
@@ -21,20 +27,22 @@ class JoinAttemptsController < ApplicationController
     @join_attempt = JoinAttempt.new params[:join_attempt]
     if @join_attempt.save!
       event "create", :join_attempt, nil, description: "#{current_player.name} has joined team #{current_player.team_name}"
-      flash[:notice] = "You have successfully joined this team!"
+      flash[:success] = "You have successfully joined this team!"
       redirect_to team_path(@join_attempt.team_id)
     else
       flash[:error] = "Unable to join team: Invalid token"
+      @join_attempt ||= JoinAttempt.new
+      @team ||= Team.new
       render 'new'
     end
   end
 
   def destroy
-    old_team = current_player.team_name
+    old_team = current_player.team
     observers = Team.where(name: 'Observers').first
     current_player.team = observers
     current_player.save!
-    event "create", :join_attempt, nil, description: "#{current_player.name} has left team #{current_player.team_name}"
+    event "create", :join_attempt, nil, description: "#{current_player.name} has left team #{old_team.name} for #{current_player.team_name}"
     redirect_to root_path
   end
 end

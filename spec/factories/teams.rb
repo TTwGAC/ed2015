@@ -1,4 +1,3 @@
-# This will guess the User class
 FactoryGirl.define do
   factory :team do
     id 999

@@ -11,13 +11,13 @@ describe Team do
   end
 
   it "should create a random team secret on creation" do
-    t = Team.create! name: 'random team secret test'
+    t = Team.create! name: 'random team secret test', phone: '+14045551234'
     t.reload
     t.token.should_not be_empty
   end
 
   it "should associate team members with the Observers team on deletion" do
-    t = Team.create! name: 'about to be destroyed'
+    t = Team.create! name: 'about to be destroyed', phone: '+14045551234'
     u = FactoryGirl.build(:player)
     u.team = t
     t.save!

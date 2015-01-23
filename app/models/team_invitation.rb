@@ -4,6 +4,7 @@ class TeamInvitation < ActiveRecord::Base
   before_save :create_token
   delegate :name, to: :team, prefix: true
   delegate :name, to: :player, prefix: true
+  validates :email, uniqueness: true
 
   def create_token
     self.token ||= SecureRandom.hex(12)

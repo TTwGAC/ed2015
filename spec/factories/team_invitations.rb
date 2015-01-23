@@ -1,9 +1,9 @@
 FactoryGirl.define do
-  factory :team_invitation do |f|
-    f.id 999
-    f.email "jane@newyorkcity.us"
-    f.association :team, factory: :team
-    f.token "1LK4" * 5
+  factory :team_invitation do
+    id 999
+    email "jane@newyorkcity.us"
+    team
+    token "1LK4" * 5
   end
 end
 
