@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
+  <title>Oh noes! Something went wrong (500)</title>
   <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
+    body { 
+      background-color: #fff;
+      background-image: linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px), linear-gradient(#eee .1em, transparent .1em);
+      background-size: 100% 1.2em;
+      color: #666;
+      text-align: center; 
+      font-family: arial, sans-serif; 
+    }
     div.dialog {
       width: 25em;
       padding: 0 4em;
@@ -12,14 +19,15 @@
       border-right-color: #999;
       border-bottom-color: #999;
     }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
+    h1 { font-size: 100%; color: #e80000; line-height: 1.5em; }
   </style>
 </head>
 
 <body>
   <!-- This file lives in public/500.html -->
   <div class="dialog">
-    <h1>We're sorry, but something went wrong.</h1>
+    <h1>Oh Noes! Something went wrong.</h1>
+    <img src='/images/hr_seriously.jpeg' />
   </div>
 </body>
 </html>

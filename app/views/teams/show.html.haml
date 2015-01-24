@@ -2,11 +2,11 @@
   - flash[:notice] = %{Complete your team's regstration! Pay the entrance fee (see below).}
 
 %h3
-  Team
+  Do you has Team?
   = @team.name
 
 - if signed_in? && current_player.team == @team
-  %h4 You are a member of this team!
+  %h4 You has of this team!
 %p
   = image_tag @team.logo_url(:standard), size: '300x300'
 

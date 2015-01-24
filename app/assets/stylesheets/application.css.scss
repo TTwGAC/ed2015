@@ -12,7 +12,7 @@
  *= require_tree .
  */
 @import "bootstrap";
-body { padding-top: 60px; } // Positioning of nav, responsively
+body { padding-top: 55px; } // Positioning of nav, responsively
 @import "bootstrap-responsive";
 
 @mixin rounded($radius) {
@@ -51,13 +51,13 @@ body { padding-top: 60px; } // Positioning of nav, responsively
 
 $facebook_blue: #3c599b;
 $twitter_blue: #00aced;
-$nav_top: #ffffff;
-$nav_bot: #2a377b;
-$nav_dark: #829dc9;
+$nav_top: #eaeaea;
+$nav_bot: #003269;
+$nav_dark: #e80000;
 $nav_admin_top: #fff0d0;
-$nav_admin_bot: #f99;
-$gac_font:  "Michroma", Arial, Helvetica, Sans-Serif;
-$highlight: #7AAFEA;
+$nav_admin_bot: #003269;
+$gac_font: Arial, Helvetica, Sans-Serif;
+$highlight: #ffcc00;
 $lowlight: #5a0000;
 $background: #ee983e;
 $outline: #f5b447;
@@ -67,12 +67,12 @@ body {
   font-family: $gac_font;
   background-color: #fff;
   color: #333;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 18px;
 }
 
 p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
@@ -132,19 +132,27 @@ img.navicon {
   .brand {
     padding: 0 20px;
     margin: 0;
-    color: #000;
+    color: #ffcc00;
   }
 
   a {
     text-decoration: none;
   }
 
+  .nav {
+    padding-top: 3px;
+  }
   .nav li {
     @include background_gradient(to bottom, $nav_top, $nav_dark);
-    margin: 0 3px;
+    margin: 0 4px;
     border: 1px solid $nav_dark;
+    $radius: 5px;
+    @include rounded($radius);
     a {
       color: #000;
+      padding: 6px 15px 6px;
+      font-weight: bolder;
+      text-shadow: none;
     }
   }
   .nav li.admin-only {

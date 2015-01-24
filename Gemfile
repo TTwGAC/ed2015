@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.2'
+ruby '2.1.4'
 
 gem 'rails', '4.1.8'
 gem 'pg'
@@ -35,12 +35,6 @@ gem 'activerecord-session_store'
 gem 'twitter', '~> 4.0'
 gem 'koala', '~> 1.7.0rc1'
 
-# File storage
-gem 'carrierwave'
-gem 'fog'
-gem 'cloudinary'
-gem 'phony_rails'
-
 # Performance
 gem 'dalli'
 gem 'memcachier'
@@ -54,12 +48,19 @@ gem 'mail'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-gem 'unicorn'
+#gem 'unicorn'
+
+# File storage
+gem 'fog'
+gem 'carrierwave'
+gem 'cloudinary'
+gem 'phony_rails'
 
 # Deploy with Capistrano
 # gem 'capistrano'
 
 gem 'airbrake'
+gem 'sqlite3'
 
 # Heroku
 group :production do
@@ -71,7 +72,6 @@ gem 'consistent-hashing'
 
 group :development, :test do
   gem 'dotenv'
-  gem 'sqlite3'
   gem 'pry-rails'
   gem 'pry-doc'
   gem 'better_errors'

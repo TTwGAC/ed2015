@@ -11,11 +11,11 @@ Team.delete_all
 Player.delete_all
 
 # Skip validation because this is a reserved team name
-game_control = Team.new name: "Game Control", slogan: "Keeping you honest since 2014"
+game_control = Team.new name: 'Game Control', slogan: 'Keeping you honest with threat of Burnination'
 game_control.save! validate: false
 
 # Skip validation because this is a reserved team name
-observers = Team.new name: "Observers", slogan: '"I like to watch"'
+observers = Team.new name: 'Observers', slogan: '"I like to watch"'
 observers.save! validate: false
 
 system = Player.new first_name: 'System',
