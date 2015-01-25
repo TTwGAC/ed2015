@@ -51,8 +51,8 @@ body { padding-top: 55px; } // Positioning of nav, responsively
 
 $facebook_blue: #3c599b;
 $twitter_blue: #00aced;
-$nav_top: #eaeaea;
-$nav_bot: #003269;
+$nav_top: #fff;
+$nav_bot: #fff;
 $nav_dark: #e80000;
 $nav_admin_top: #fff0d0;
 $nav_admin_bot: #003269;
@@ -66,6 +66,8 @@ $bright: #e9ea61;
 body {
   font-family: $gac_font;
   background-color: #fff;
+  background-image: linear-gradient(90deg, transparent 79px, #fecccb 79px, #abced4 81px, transparent 81px), linear-gradient(#eee .1em, transparent .1em);
+  background-size: 100% 1.2em;
   color: #333;
   font-size: 14px;
   line-height: 18px;
@@ -153,6 +155,9 @@ img.navicon {
       padding: 6px 15px 6px;
       font-weight: bolder;
       text-shadow: none;
+    }
+    .open{
+      border-radius: inherit;
     }
   }
   .nav li.admin-only {
