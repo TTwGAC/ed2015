@@ -60,17 +60,18 @@ gem 'phony_rails'
 # gem 'capistrano'
 
 gem 'airbrake'
-gem 'sqlite3'
 
 # Heroku
 group :production do
   gem 'rails_12factor'
+  gem 'mysql'
 end
 
 # Used to spread messages across a bank of phone numbers
 gem 'consistent-hashing'
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'dotenv'
   gem 'pry-rails'
   gem 'pry-doc'
