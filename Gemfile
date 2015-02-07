@@ -61,6 +61,8 @@ gem 'phony_rails'
 
 gem 'airbrake'
 
+gem 'dotenv'
+
 # Heroku
 group :production do
   gem 'rails_12factor'
@@ -72,7 +74,6 @@ gem 'consistent-hashing'
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'dotenv'
   gem 'pry-rails'
   gem 'pry-doc'
   gem 'better_errors'
