@@ -80,12 +80,10 @@ Gac2014::Application.configure do
   # Specify the base URL for email notifications
   config.action_mailer.default_url_options = { :host => 'gac2015.com' }
 
-  # Set this for Passenger
-  config.secret_key_base = '2d824bf2b4e9c3d83b64a77eb0e5981305bc49531f6b48ec5352a2e9175c8ef30aebecdba49fd38d890458a1a8d0ee48926f50c54f190e8fcecad4d65636e7ed'
 end
 
 ActionMailer::Base.smtp_settings = {
-  :address        => 'smtp.sendgrid.net',
+  :address        => 'smtp.gmail.com',
   :port           => '587',
   :authentication => :plain,
   :user_name      => ENV['SENDGRID_USERNAME'],

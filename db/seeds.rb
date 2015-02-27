@@ -15,12 +15,12 @@ game_control = Team.new name: 'Game Control', slogan: 'Keeping you honest with t
 game_control.save! validate: false
 
 # Skip validation because this is a reserved team name
-observers = Team.new name: 'Observers', slogan: '"I like to watch"'
+observers = Team.new name: 'Observers', slogan: 'I like to watch'
 observers.save! validate: false
 
 system = Player.new first_name: 'System',
   last_name: 'Player',
-  email: 'noreply@gac2014.com',
+  email: 'noreply@gac2015.com',
   password: SecureRandom.hex(64),
   phone: '14045551234'
 system.skip_confirmation!
