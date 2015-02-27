@@ -38,3 +38,7 @@
 !.elasticbeanstalk/*.global.yml
 
 config/initializers/fog.rb
+
+config/initializers/fog.rb
+
+etc/apache2/envvars.rb
