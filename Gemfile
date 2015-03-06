@@ -35,12 +35,6 @@ gem 'activerecord-session_store'
 gem 'twitter', '~> 4.0'
 gem 'koala', '~> 1.7.0rc1'
 
-# File storage
-gem 'carrierwave'
-gem 'fog'
-gem 'cloudinary'
-gem 'phony_rails'
-
 # Performance
 gem 'dalli'
 gem 'memcachier'
@@ -54,23 +48,31 @@ gem 'mail'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-gem 'unicorn'
+#gem 'unicorn'
+
+# File storage
+gem 'fog'
+gem 'carrierwave'
+gem 'cloudinary'
+gem 'phony_rails'
 
 # Deploy with Capistrano
 # gem 'capistrano'
 
 gem 'airbrake'
 
+gem 'dotenv'
+
 # Heroku
 group :production do
   gem 'rails_12factor'
+  gem 'mysql'
 end
 
 # Used to spread messages across a bank of phone numbers
 gem 'consistent-hashing'
 
 group :development, :test do
-  gem 'dotenv'
   gem 'sqlite3'
   gem 'pry-rails'
   gem 'pry-doc'
@@ -80,7 +82,7 @@ group :development, :test do
   gem 'erb2haml'
   gem 'html2haml'
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  #gem 'factory_girl_rails'
   gem 'guard-rspec'
   gem "letter_opener"
   gem 'terminal-notifier-guard'

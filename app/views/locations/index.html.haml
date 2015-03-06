@@ -1,5 +1,8 @@
 - javascript 'gmaps4rails.js'
+//- if @game.status_name = 'pregame'
+//= render partial: '/locations/setup_menu', locals: {}
 %h1 Listing Locations
+
 %p
   = gmaps4rails map_data(@locations)
 %table.table
@@ -41,6 +44,7 @@
               %b Yes
             - else
               = "No (#{location.num_checkins} / #{Team.playing.count})"
+
 %br/
 = link_to 'New Location', new_location_path
 |

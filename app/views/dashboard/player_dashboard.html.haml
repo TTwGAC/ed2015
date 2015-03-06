@@ -8,7 +8,7 @@
       Dashboard
 %hr
 .row
-  .span8
+  .span8.no-display
     = render 'checkins/current_puzzle_info', locals: {puzzle: @puzzle, location_coordinates: @location_coordinates, next_location_coordinates: @next_location_coordinates}
 
     %hr
@@ -67,50 +67,3 @@
   .span4
     = render partial: 'leaderboard'
 
-:javascript
-  $(document).ready(function(){
-    $('#jp_container_1').hide();
-    $('#show_player').on('click', function() {
-      var stream = { mp3:"http://gchq.gac2014.com:8000/radio_gac" };
-      var ready = false;
-      $("#radio_gac_player").jPlayer({
-        ready: function (event) {
-          $(this).jPlayer("setMedia", stream);
-          $('#radio_gac_player').jPlayer("play");
-          ready = true;
-        },
-        pause: function() {
-          $(this).jPlayer("clearMedia");
-        },
-        stop: function() {
-          $(this).jPlayer("clearMedia");
-        },
-        error: function(event) {
-          if(ready && event.jPlayer.error.type === $.jPlayer.error.URL_NOT_SET) {
-            // Setup the media stream again and play it.
-            $(this).jPlayer("setMedia", stream).jPlayer("play");
-          }
-        },
-        supplied: "mp3",
-        wmode: "window",
-        smoothPlayBar: true,
-        keyEnabled: true
-      });
-      $('#show_player').hide();
-      $('#jp_container_1').show();
-
-    });
-  });
-
-  var clock = $('#news_countdown').FlipClock({
-    // ... your options here
-  });
-  start = new Date()
-  if (start.getMinutes() >= 5) {
-    start.setHours(start.getHours() + 1)
-  }
-  start.setMinutes(5)
-  start.setSeconds(0)
-  console.log(start)
-  clock.setTime(Math.round((start - Date.now()) / 1000))
-  clock.setCountdown(true);

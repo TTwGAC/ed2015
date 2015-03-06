@@ -12,9 +12,10 @@
  *= require_tree .
  */
 @import "bootstrap";
-body { padding-top: 60px; } // Positioning of nav, responsively
+body { padding-top: 55px; } // Positioning of nav, responsively
 @import "bootstrap-responsive";
-
+@import url(http://fonts.googleapis.com/css?family=VT323);
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400);
 @mixin rounded($radius) {
   -webkit-border-radius: $radius;
   -moz-border-radius: $radius;
@@ -51,13 +52,14 @@ body { padding-top: 60px; } // Positioning of nav, responsively
 
 $facebook_blue: #3c599b;
 $twitter_blue: #00aced;
-$nav_top: #ffffff;
-$nav_bot: #2a377b;
-$nav_dark: #829dc9;
+$nav_top: #fff;
+$nav_bot: #fff;
+$nav_dark: #e80000;
 $nav_admin_top: #fff0d0;
-$nav_admin_bot: #f99;
-$gac_font:  "Michroma", Arial, Helvetica, Sans-Serif;
-$highlight: #7AAFEA;
+$nav_admin_bot: #003269;
+$gac_font: 'Source Code Pro', VT323, monospace;
+$gac_font_color: #7FFF00;
+$highlight: #ffcc00;
 $lowlight: #5a0000;
 $background: #ee983e;
 $outline: #f5b447;
@@ -65,14 +67,16 @@ $bright: #e9ea61;
 
 body {
   font-family: $gac_font;
-  background-color: #fff;
-  color: #333;
-  font-size: 13px;
+  background-color: #000;
+  background-image: linear-gradient(#222 1em, transparent 1em);
+  background-size: 100% 1.2em;
+  color: $gac_font_color;
+  font-size: 14px;
   line-height: 18px;
 }
 
 p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: $gac_font;
   font-size: 13px;
   line-height: 18px;
 }
@@ -84,14 +88,14 @@ pre {
 }
 
 a {
-  color: #000;
+  color: $gac_font_color;
   text-decoration: underline;
   &:visited {
-    color: #666;
+    color: $gac_font_color;
   }
   &:hover {
-    color: #fff;
-    background-color: #000;
+    color: #000;
+    background-color:$gac_font_color;
   }
 }
 
@@ -128,23 +132,38 @@ img.navicon {
   max-width: 16px;
 }
 
+.counter{
+  font-size: 1.5em;
+}
+
 .navbar {
   .brand {
     padding: 0 20px;
     margin: 0;
-    color: #000;
+    color: #ffcc00;
   }
 
   a {
     text-decoration: none;
   }
 
+  .nav {
+    padding-top: 3px;
+  }
   .nav li {
     @include background_gradient(to bottom, $nav_top, $nav_dark);
-    margin: 0 3px;
+    margin: 0 4px;
     border: 1px solid $nav_dark;
+    $radius: 5px;
+    @include rounded($radius);
     a {
       color: #000;
+      padding: 6px 15px 6px;
+      font-weight: bolder;
+      text-shadow: none;
+    }
+    .open{
+      border-radius: inherit;
     }
   }
   .nav li.admin-only {
@@ -211,6 +230,10 @@ img.navicon {
   }
 }
 
+.no-display{
+  display: none;
+}
+
 .provider_login_button.facebook {
   background-color: $facebook_blue;
   &:visited { color: #fff }
@@ -234,7 +257,7 @@ img.navicon {
 }
 
 .callout {
-  background-color: whitesmoke;
+  background-color: blue;
   border-radius: 5px;
 }
 
@@ -391,6 +414,11 @@ input, select {
   width: inherit;
 }
 
+
+.long_input{
+  width: 15em;
+}
+
 .button_controlled_box {
   border: 1px solid #999;
   padding: 15px;
@@ -409,6 +437,11 @@ input, select {
 
 .superlative_description {
   font-style: italic;
+}
+
+#message_text{
+  width: 90%;
+  height: 10em;
 }
 
 .gchq_dashboard {
@@ -547,3 +580,4 @@ input, select {
     }
   }
 }
+

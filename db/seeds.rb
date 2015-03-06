@@ -11,37 +11,37 @@ Team.delete_all
 Player.delete_all
 
 # Skip validation because this is a reserved team name
-game_control = Team.new name: "Game Control", slogan: "Keeping you honest since 2014"
+game_control = Team.new name: 'Game Control', slogan: 'Keeping you honest with threat of Burnination'
 game_control.save! validate: false
 
 # Skip validation because this is a reserved team name
-observers = Team.new name: "Observers", slogan: '"I like to watch"'
+observers = Team.new name: 'Observers', slogan: 'I like to watch'
 observers.save! validate: false
 
 system = Player.new first_name: 'System',
   last_name: 'Player',
-  email: 'noreply@gac2014.com',
+  email: 'noreply@gac2015.com',
   password: SecureRandom.hex(64),
   phone: '14045551234'
 system.skip_confirmation!
 system.save!
 
-ben = Player.new first_name: "Ben",
-  last_name: "Klang",
-  nickname: "Leon",
-  email: "ben@alkaloid.net",
+abby = Player.new first_name: "Abby",
+  last_name: "Gaskins",
+  nickname: "Brett Bretterson",
+  email: "abby.gaskins@gmail.com",
   password: "abcdefg", # CHANGE THIS!
   phone: '14045551235'
-ben.team = game_control
-ben.skip_confirmation!
-ben.save!
+abby.team = game_control
+abby.skip_confirmation!
+abby.save!
 
-alicia = Player.new first_name: "Alex",
+alex = Player.new first_name: "Alex",
   last_name: "Bowers",
   nickname: "woot",
   email: "alexandra.bowers@gmail.com",
   password: "abcdefg", # CHANGE THIS!
   phone: '14045551236'
-alicia.team = game_control
-alicia.skip_confirmation!
-alicia.save!
+alex.team = game_control
+alex.skip_confirmation!
+alex.save!

@@ -1,7 +1,7 @@
 = simple_form_for(@location, remote: local_assigns[:remote], html: {class: 'form-horizontal'}) do |f|
   = f.error_notification
   .form-inputs
-    = f.input :name
+    = f.input :name, input_html: {size: 75}
     = f.association :cluster, collection: Cluster.order(:name)
     = f.input :permission_received
     = f.input :open_time

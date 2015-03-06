@@ -5,7 +5,11 @@
     = stylesheet_link_tag "application", :media => "all"
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Michroma", media: 'all'
     :css
-      body { text-align: center }
+      body { 
+          text-align: center; 
+          background: #FFF; 
+          color: #000;
+        }
       @media print {
         a[href]:after {
           content: none !important;
@@ -21,7 +25,7 @@
   %body
     - @locations.each do |location|
       %div.poster
-        %p= image_tag 'logo.png', size: '300x300'
+        %p= image_tag 't3qaRsLo.jpeg', size: '300x300'
         %h1= "Welcome to #{location.name}"
         - checkin_url = new_checkin_url params: {t: location.token}
         = link_to image_tag(qr_code_url(checkin_url)), checkin_url

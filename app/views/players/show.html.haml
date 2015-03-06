@@ -10,7 +10,7 @@
   %p
     Phone:
     - if @player.phone
-      = Phony.formatted @player.phone, spaces: :-, format: :national
+      = Phony.formatted( Phony.normalize(@player.phone), spaces: :-, format: :national )
     - else
       No phone yet!
 %p

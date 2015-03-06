@@ -137,25 +137,3 @@
     %br/
     %br/
     %br/
-:javascript
-  var game_clock = $('#game_clock').FlipClock({
-    // ... your options here
-  });
-  start = new Date()
-  if (start.getHours() < 8) { start.setDate(start.getDate() - 1) }
-  start.setHours(8)
-  start.setMinutes(0)
-  start.setSeconds(0)
-  game_clock.setTime(Math.round((Date.now() - start) / 1000))
-
-  var news_clock = $('#news_countdown').FlipClock({
-    // ... your options here
-  });
-  start = new Date()
-  if (start.getMinutes() >= 5) {
-    start.setHours(start.getHours() + 1)
-  }
-  start.setMinutes(5)
-  start.setSeconds(0)
-  news_clock.setTime(Math.round((start - Date.now()) / 1000))
-  news_clock.setCountdown(true);

@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class MessagingMailer < ActionMailer::Base
-  default from: "burdell@gac2015.com"
+  default from: "get.a.clue.2015@gmail.com"
 
   def burdell_broadcast(to, message)
     @message = message

@@ -78,15 +78,16 @@ Gac2014::Application.configure do
   config.active_support.deprecation = :notify
 
   # Specify the base URL for email notifications
-  config.action_mailer.default_url_options = { :host => 'gac2014.com' }
+  config.action_mailer.default_url_options = { :host => 'gac-2015.elasticbeanstalk.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.sendgrid.net',
+    port:                 587,
+    domain:               'gac-2015.elasticbeanstalk.com',
+    user_name:            ENV['SENDGRID_USERNAME'],
+    password:             ENV['SENDGRID_PASSWORD'],
+    authentication:       'plain',
+    enable_starttls_auto: true  }
 end
 
-ActionMailer::Base.smtp_settings = {
-  :address        => 'smtp.sendgrid.net',
-  :port           => '587',
-  :authentication => :plain,
-  :user_name      => ENV['SENDGRID_USERNAME'],
-  :password       => ENV['SENDGRID_PASSWORD'],
-  :domain         => 'heroku.com',
-  :enable_starttls_auto => true
-}
+
