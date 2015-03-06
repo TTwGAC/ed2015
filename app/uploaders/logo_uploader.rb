@@ -18,7 +18,7 @@ class LogoUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    ActionController::Base.helpers.asset_path 'strongsad.jpg'
+    ActionController::Base.helpers.asset_path 'strongsad.jpeg'
   end
 
 end

@@ -2,6 +2,7 @@ class LocationsController < ApplicationController
   before_filter :authenticate_player_unless_game_closed
   before_filter do
     params[:location] &&= location_params
+    @game = Game.instance
   end
 
   load_and_authorize_resource

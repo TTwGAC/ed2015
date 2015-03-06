@@ -43,7 +43,7 @@
   %p
     Contact Phone:
     - if @team.phone
-      = Phony.formatted @team.phone, spaces: :-
+      = Phony.formatted( Phony.normalize(@team.phone), spaces: :-)
 
 %p
   Description:

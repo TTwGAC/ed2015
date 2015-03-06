@@ -3,6 +3,6 @@
   .form-inputs
     = f.input :delivery_type, collection: Message::DELIVERY_TYPES
     = f.input :text
-    = f.input :destination, collection: @destinations, as: :grouped_select, group_method: :last, value_method: Proc.new { |o| "#{o.class.name}:#{o.id}" }
+    = f.input :destination, collection: @destinations, as: :grouped_select, group_method: :last, value_method: Proc.new { |o| "#{o.class.name}:#{o.id}" }, label_method: Proc.new { |o| "#{o.name}:#{o.id}" }
   .form-actions
     = f.button :submit

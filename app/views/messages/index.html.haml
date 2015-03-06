@@ -1,4 +1,7 @@
 - javascript 'stupidtable.js'
+
+= button_to 'New Message', new_message_path, method: :get
+
 %h1 Listing messages
 %table#messages.table
   %thead
@@ -17,9 +20,9 @@
         %td= message.delivery_type
         %td= message.text
         %td= message.status
-        %td{'data-sort-value' => message.updated_at.to_i}= link_to message.updated_at.localtime.strftime("%l:%M:%S %P"), message
+        %td{ 'data-sort-value' => message.updated_at.to_i}= link_to message.updated_at.localtime.strftime("%l:%M:%S %P"), message
 %br/
-= link_to 'New Message', new_message_path
+= button_to 'New Message', new_message_path, method: :get
 
 :javascript
   $("#messages").stupidtable();

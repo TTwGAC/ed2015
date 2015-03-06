@@ -21,7 +21,7 @@
             %span{style: 'font-style: italic'} hidden
         - if can? :edit, player
           - if player.phone
-            %td= Phony.formatted player.phone, spaces: :-, format: :national
+            %td= Phony.formatted(Phony.normalize(player.phone), format: :national, spaces: :-)
           - else
             %td
               %span{style: 'font-style: italic'} No phone yet!

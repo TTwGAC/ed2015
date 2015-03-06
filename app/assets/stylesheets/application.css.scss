@@ -15,8 +15,7 @@
 body { padding-top: 55px; } // Positioning of nav, responsively
 @import "bootstrap-responsive";
 @import url(http://fonts.googleapis.com/css?family=VT323);
-@import url(http://fonts.googleapis.com/css?family=Share+Tech+Mono);
-
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400);
 @mixin rounded($radius) {
   -webkit-border-radius: $radius;
   -moz-border-radius: $radius;
@@ -58,7 +57,7 @@ $nav_bot: #fff;
 $nav_dark: #e80000;
 $nav_admin_top: #fff0d0;
 $nav_admin_bot: #003269;
-$gac_font: 'Share Tech Mono', VT323, monospace;
+$gac_font: 'Source Code Pro', VT323, monospace;
 $gac_font_color: #7FFF00;
 $highlight: #ffcc00;
 $lowlight: #5a0000;
@@ -231,6 +230,10 @@ img.navicon {
   }
 }
 
+.no-display{
+  display: none;
+}
+
 .provider_login_button.facebook {
   background-color: $facebook_blue;
   &:visited { color: #fff }
@@ -254,7 +257,7 @@ img.navicon {
 }
 
 .callout {
-  background-color: whitesmoke;
+  background-color: blue;
   border-radius: 5px;
 }
 
@@ -411,6 +414,11 @@ input, select {
   width: inherit;
 }
 
+
+.long_input{
+  width: 15em;
+}
+
 .button_controlled_box {
   border: 1px solid #999;
   padding: 15px;
@@ -429,6 +437,11 @@ input, select {
 
 .superlative_description {
   font-style: italic;
+}
+
+#message_text{
+  width: 90%;
+  height: 10em;
 }
 
 .gchq_dashboard {
@@ -567,3 +580,4 @@ input, select {
     }
   }
 }
+
