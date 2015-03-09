@@ -54,6 +54,6 @@ module Gac2014
     config.assets.version = '1.0'
 
     # Do not initialize Rails when precompiling assets -- needed for Heroku
-    #config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = false
   end
 end

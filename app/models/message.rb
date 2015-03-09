@@ -1,6 +1,7 @@
 class Message < ActiveRecord::Base
   STATUSES          = %w(draft sent)
-  DELIVERY_TYPES    = %w(sms email phone)
+  #DELIVERY_TYPES    = %w(sms email phone)
+  DELIVERY_TYPES    = %w(email)
 
   has_many :message_deliveries
   belongs_to :sender, foreign_key: :sender_id, class_name: 'Player'

@@ -99,7 +99,11 @@ private
   def get_penalty_stats
     stats = {}
     stats[:total] = Penalty.count
-    stats[:average] = Penalty.average(:minutes).round(1)
+    if Penalty.average(:minutes) == 0 
+      stats[:average] = 0
+    else
+      stats[:average] = Penalty.average(:minutes).round(1)
+    end
     team_penalties = Penalty.group(:team_id).sum(:minutes)
     team_penalties = team_penalties.sort_by { |team_id, minutes| minutes }
     team_id, minutes = team_penalties.last
@@ -113,7 +117,11 @@ private
     stats = {}
     stats[:total] = Checkin.count
     total_checkin_time = Checkin.all.inject(0) { |i, c| i += c.time_to_complete.to_i }
-    stats[:avg_ttc] = total_checkin_time / stats[:total]
+    if stats[:total] == 0
+      stats[:avg_ttc] = 0
+    else
+      stats[:avg_ttc] = total_checkin_time / stats[:total]
+    end
     stats
   end
 

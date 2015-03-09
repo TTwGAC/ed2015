@@ -15,7 +15,7 @@
     - @puzzles.each do |puzzle|
       %tr
         %td= link_to puzzle.name, puzzle
-        %td
+        %td.puzzle_status
           = status_icon puzzle, size: '16'
           = puzzle.status_name
         %td= puzzle.checkins.count

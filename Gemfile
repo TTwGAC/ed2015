@@ -59,7 +59,7 @@ gem 'phony_rails'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-gem 'airbrake'
+gem 'newrelic_rpm'
 
 gem 'dotenv'
 
