@@ -3,5 +3,13 @@
   .form-inputs
     = f.association :location, collection: Location.order('name')
     = f.association :team, collection: Team.player.order('name')
+    -if @checkin.created_at.present?
+      = f.input :timestamp, hint: "Don't touch the timestamp if you don't neeeeeeeed to. You probably don't need to touch it. Srsly. Also, updating it doesn't actually work right now."
+    %p 
+      Original checkin time in local time: 
+      -if @checkin.created_at.present?
+        =@checkin.created_at.localtime.strftime("%l:%M:%S %P")
+      -else
+        As soon as you submit this form
   .form-actions
     = f.button :submit

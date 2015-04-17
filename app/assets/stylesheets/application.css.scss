@@ -123,6 +123,14 @@ h6 { font-size: 1.1em; }
 .navbar-inner {
   @include background_gradient(to bottom, $nav_top, $nav_bot);
 }
+.nav.pull-right{
+  max-width: 36%;
+}
+@media screen and (max-width: 979px) {
+    .nav.pull-right {
+      max-width: 100%;
+    }
+}
 
 #logo {
   height: 41px;
@@ -286,6 +294,11 @@ img.navicon {
 
 #notice {
   color: green;
+}
+
+.player_names{
+  text-overflow: ellipsis;
+  width: 40%;
 }
 
 .field_with_errors {
@@ -460,7 +473,7 @@ input, select {
   font-style: italic;
 }
 
-#message_text{
+#message_text, #puzzle_description, #puzzle_flavortext{
   width: 90%;
   height: 10em;
 }
@@ -520,7 +533,7 @@ input, select {
       background-color: $lowlight;
       color: $outline;
       font-weight: bold;
-      font-size: 1.3em;
+      font-size: 0.9em;
       td { font-size: 1.0em; }
     }
   }
@@ -548,18 +561,19 @@ input, select {
     #radio_gac_dash {
       background-color: $highlight;
       color: #fff;
-      height: 12%;
+      height: 0%;
+      display: none;
     }
 
     #bottom_row_dash {
-      height: 28%;
+      height: 40%;
     }
 
     .statsbox {
       text-align: justify;
       td {
         font-family: $gac_font;
-        font-size: 1.2em;
+        font-size: 1.0em;
       }
       h5 { text-align: center }
     }

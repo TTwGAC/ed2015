@@ -7,7 +7,7 @@
   %body
     %h1 Your next puzzle!
     %p= markdown.render(@puzzle.flavortext).html_safe
-    - if @puzzle.include_bearing
+    - if @puzzle.include_bearing && @location_coordinates.present? && @next_location_coordinates.present?
       - heading, distance = VectorCalculator.calc_distance *@location_coordinates, *@next_location_coordinates
       %h3 Heading and Distance to the next location:
 

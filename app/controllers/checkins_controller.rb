@@ -98,6 +98,7 @@ class CheckinsController < ApplicationController
   # PUT /checkins/1.json
   def update
     @checkin = Checkin.find(params[:id])
+    binding.pry
 
     respond_to do |format|
       if @checkin.update_attributes(checkin_params)
@@ -128,5 +129,6 @@ private
 
   def checkin_params
     params.require(:checkin).permit(:location_id, :team_id)
+    #params.require(:checkin).permit(:location_id, :team_id, :timestamp) # for when timestamp updating works
   end
 end

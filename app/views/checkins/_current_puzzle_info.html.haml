@@ -6,7 +6,7 @@
 - if locals[:puzzle].flavortext.present?
   %h4 Instructions:
   %p.box= locals[:puzzle].flavortext
-- if locals[:puzzle].include_bearing
+- if locals[:puzzle].include_bearing && locals[:location_coordinates].present? && locals[:next_location_coordinates].present?
   - heading, distance = VectorCalculator.calc_distance *locals[:location_coordinates], *locals[:next_location_coordinates]
   %h3 Heading and Distance to the next location:
   %ul

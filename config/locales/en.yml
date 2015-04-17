@@ -10,12 +10,17 @@ en:
   twitter: '@GAC2015'
   twitter_link: 'https://twitter.com/GAC2015'
   fb_link: 'https://www.facebook.com/GAC2015'
+  official_email: 'get.a.clue.2015@gmail.com'
+  official_website: 'http://gac-2015.elasticbeanstalk.com/'
 
   #contact us
-  gc_contact_phone: '404.555.1234'
+  gc_contact_phone: '678.201.0316'
+  gc_help_phone: '678.201.0878'
 
   #payment info
   payment_email: 'alexandra.bowers[at]gmail[dot]com'
   payment_contact_email: 'alexandra.bowers+gac2015[at]gmail[dot]com'
+
+
 
 
