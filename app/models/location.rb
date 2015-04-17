@@ -40,7 +40,7 @@ class Location < ActiveRecord::Base
 
   def completed?
     num_teams = Team.playing.count
-    num_checkins == num_teams
+    num_checkins >= num_teams
   end
 end
 

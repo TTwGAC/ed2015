@@ -128,5 +128,6 @@ private
 
   def checkin_params
     params.require(:checkin).permit(:location_id, :team_id)
+    #params.require(:checkin).permit(:location_id, :team_id, :timestamp) # for when timestamp updating works
   end
 end

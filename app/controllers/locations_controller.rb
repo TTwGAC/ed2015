@@ -107,6 +107,10 @@ class LocationsController < ApplicationController
     render :poster, layout: false
   end
 
+  def promo
+    render :promo, layout: false
+  end
+
 private
   def location_params
     #if params['location']['open_time(4i)'] == ''

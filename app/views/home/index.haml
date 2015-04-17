@@ -10,10 +10,10 @@
 .row
   .span-6
     .row
-      .span-6{style: 'padding-top: 20px; min-width: 555px'}
-        %h3 GAC is starting up! Game Control is on this. 
+      .span-6.intro_block
+        %h3 GAC is Go! Let's go racing!
         /%ul/%li= link_to 'Final Game Results & Statistics', page_path('results')/%li= link_to 'Radio GAC Archives', page_path('radio_gac')
-        .counter#counter 
+        /.counter#counter 
 
 
     .row
@@ -50,6 +50,6 @@
     %br
     %br
     %div{style: 'width: 292px'}
-      %a{class: "twitter-timeline", :"data-dnt" => "true", :href => :twitter_link, :"data-widget-id" => '511729045222875136', height: 250, width: 292}Tweets by #{t :twitter}
+      %a{class: "twitter-timeline", :"data-dnt" => "true", :href => :twitter_link, :"data-widget-id" => '511729045222875136', height: 750, width: 292}Tweets by #{t :twitter}
       :javascript
         !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");

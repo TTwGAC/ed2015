@@ -1,0 +1,43 @@
+!!!
+%html
+  %head
+    %title GT Band!
+    = stylesheet_link_tag "application", :media => "all"
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Michroma", media: 'all'
+    :css
+      body { 
+          text-align: center; 
+          background: #FFF; 
+          color: #000;
+        }
+      @media print {
+        a[href]:after {
+          content: none !important;
+        }
+        .poster {
+          margin: 0 auto;
+          width: 800px;
+          page-break-after: always;
+          page-break-inside: avoid;
+        }
+        hr { display: none }
+      }
+  %body
+    %div.poster
+      %p= image_tag 't3qaRsLo.jpeg', size: '300x300'
+      %h1.b
+        Georgia Tech Marching Band
+      %h1= "Are You Ready to Take It to the Limit?"
+      %h2= "April 11, 2015"
+      %h3= "Sign up for Get a Clue with your team today!"
+      %h3
+        #{t :official_website}
+      - checkin_url = new_checkin_url params: {t: :official_website}
+      = link_to image_tag(qr_code_url(checkin_url)), checkin_url
+      %h5
+        This poster is part of a game sponsored by the Georgia Tech Marching Band
+        %br
+        It will be removed by April 13, #{t :year}
+        %br
+        For questions contact Game Control at #{t :official_email}
+      %hr

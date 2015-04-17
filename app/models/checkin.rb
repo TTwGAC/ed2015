@@ -148,6 +148,7 @@ class Checkin < ActiveRecord::Base
     [next_puzzle.destination.latitude, next_puzzle.destination.longitude]
   end
 
+
 end
 
 # ## Schema Information

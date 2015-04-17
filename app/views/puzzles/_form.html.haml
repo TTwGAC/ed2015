@@ -5,9 +5,9 @@
     = f.input :name
     = f.input :status, collection: Puzzle.statuses.invert
     = f.association :owner, collection: Team.where(name: 'Game Control').first.players
-    = f.input :description, input_html: {rows: 5, cols: 80, style: 'width: inherit'}
+    = f.input :description, input_html: {rows: 5, cols: 80}
     = f.input :expected_ttc, label: "Expected Time-To-Complete (minutes)"
-    = f.input :flavortext, input_html: {rows: 5, cols: 80, style: 'width: inherit'}
+    = f.input :flavortext, input_html: {rows: 5, cols: 80}
     = f.input :include_bearing, hint: "If this box is checked, the magnetic bearing and distance to this puzzle will be included in the flavor text"
     = f.association :destination, collection: Location.order(:name), label: "Puzzle Destination"
   .form-actions

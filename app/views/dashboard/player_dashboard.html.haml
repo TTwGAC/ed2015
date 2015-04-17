@@ -8,57 +8,19 @@
       Dashboard
 %hr
 .row
-  .span8.no-display
+  .span8
     = render 'checkins/current_puzzle_info', locals: {puzzle: @puzzle, location_coordinates: @location_coordinates, next_location_coordinates: @next_location_coordinates}
 
     %hr
 
-    / #FIXME: Look up contact number from settings or Game Control team
     %h3
       Need help?
     %h4
       Contact Game Control:
-      %a{href: 'tel:+1-678-384-4464'} +1-678-384-4464
-    %h4 Tune in to Radio GAC
-    %ul
-      %li= link_to 'Listen in your own player', 'http://gchq.gac2014.com:8000/radio_gac'
-      %li#show_player
-        %span Launch the web player
-
-    %div#radio_gac_player.jp-jplayer
-    %div#jp_container_1.jp-audio
-      %div.jp-type-single
-        %div.jp-gui.jp-interface
-          %ul.jp-controls
-            %li
-              %a.jp-play{href: "javascript:;", tabindex: 1} play
-            %li
-              %a.jp-pause{href: "javascript:;", tabindex: 1} pause
-            %li
-              %a.jp-stop{href: "javascript:;", tabindex: 1} stop
-            %li
-              %a.jp-mute{href: "javascript:;", tabindex: 1, title: "mute"} mute
-            %li
-              %a.jp-unmute{href: "javascript:;", tabindex: 1, title: "unmute"} unmute
-            %li
-              %a.jp-volume-max{href: "javascript:;", tabindex: 1, title: "max volume"} max volume
-          %div.jp-volume-bar
-            %div.jp-volume-bar-value
-          %div.jp-time-holder
-            %div.jp-current-time
-            %div.jp-duration
-            %ul.jp-toggles
-              %li
-                %a.jp-repeat{href: "javascript:;", tabindex: 1, title: "repeat"} repeat
-              %li
-                %a.jp-repeat-off{href: "javascript:;", tabindex: 1, title: "repeat off"} repeat off
-        %div.jp-title
-          %ul
-            %li Radio GAC
-
-    %h6 Next news in
-    #news_countdown
-
+      %a{href: 'tel:+1-678-201-0878'} #{t :gc_help_phone}
+      or 
+      %a{href: 'mailto:get.a.clue.2015+cluehelp@gmail.com'} #{t :official_email}
+    
     %hr
 
     %h4 Penalties:
