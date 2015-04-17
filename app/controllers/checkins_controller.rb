@@ -98,7 +98,6 @@ class CheckinsController < ApplicationController
   # PUT /checkins/1.json
   def update
     @checkin = Checkin.find(params[:id])
-    binding.pry
 
     respond_to do |format|
       if @checkin.update_attributes(checkin_params)
